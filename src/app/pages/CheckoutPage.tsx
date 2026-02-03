@@ -7,21 +7,21 @@ import { useNavigate } from 'react-router-dom';
 import { CheckCircle } from 'lucide-react';
 
 const europeanCountries = [
-  { code: 'UA', name: 'Ukraine', flag: '🇺🇦', phoneCode: '+380' },
-  { code: 'PL', name: 'Poland', flag: '🇵🇱', phoneCode: '+48' },
-  { code: 'DE', name: 'Germany', flag: '🇩🇪', phoneCode: '+49' },
-  { code: 'FR', name: 'France', flag: '🇫🇷', phoneCode: '+33' },
-  { code: 'IT', name: 'Italy', flag: '🇮🇹', phoneCode: '+39' },
-  { code: 'ES', name: 'Spain', flag: '🇪🇸', phoneCode: '+34' },
-  { code: 'UK', name: 'United Kingdom', flag: '🇬🇧', phoneCode: '+44' },
-  { code: 'NL', name: 'Netherlands', flag: '🇳🇱', phoneCode: '+31' },
-  { code: 'BE', name: 'Belgium', flag: '🇧🇪', phoneCode: '+32' },
-  { code: 'AT', name: 'Austria', flag: '🇦🇹', phoneCode: '+43' },
-  { code: 'CH', name: 'Switzerland', flag: '🇨🇭', phoneCode: '+41' },
-  { code: 'CZ', name: 'Czech Republic', flag: '🇨🇿', phoneCode: '+420' },
-  { code: 'RO', name: 'Romania', flag: '🇷🇴', phoneCode: '+40' },
-  { code: 'HU', name: 'Hungary', flag: '🇭🇺', phoneCode: '+36' },
-  { code: 'SK', name: 'Slovakia', flag: '🇸🇰', phoneCode: '+421' },
+  { code: 'UA', nameKey: 'countries.ukraine', flag: '🇺🇦', phoneCode: '+380' },
+  { code: 'PL', nameKey: 'countries.poland', flag: '🇵🇱', phoneCode: '+48' },
+  { code: 'DE', nameKey: 'countries.germany', flag: '🇩🇪', phoneCode: '+49' },
+  { code: 'FR', nameKey: 'countries.france', flag: '🇫🇷', phoneCode: '+33' },
+  { code: 'IT', nameKey: 'countries.italy', flag: '🇮🇹', phoneCode: '+39' },
+  { code: 'ES', nameKey: 'countries.spain', flag: '🇪🇸', phoneCode: '+34' },
+  { code: 'GB', nameKey: 'countries.unitedKingdom', flag: '🇬🇧', phoneCode: '+44' },
+  { code: 'NL', nameKey: 'countries.netherlands', flag: '🇳🇱', phoneCode: '+31' },
+  { code: 'BE', nameKey: 'countries.belgium', flag: '🇧🇪', phoneCode: '+32' },
+  { code: 'AT', nameKey: 'countries.austria', flag: '🇦🇹', phoneCode: '+43' },
+  { code: 'CH', nameKey: 'countries.switzerland', flag: '🇨🇭', phoneCode: '+41' },
+  { code: 'CZ', nameKey: 'countries.czechRepublic', flag: '🇨🇿', phoneCode: '+420' },
+  { code: 'RO', nameKey: 'countries.romania', flag: '🇷🇴', phoneCode: '+40' },
+  { code: 'HU', nameKey: 'countries.hungary', flag: '🇭🇺', phoneCode: '+36' },
+  { code: 'SK', nameKey: 'countries.slovakia', flag: '🇸🇰', phoneCode: '+421' },
 ];
 
 export const CheckoutPage = () => {
@@ -101,7 +101,7 @@ export const CheckoutPage = () => {
             {t('common.success')}!
           </h2>
           <p className="text-stone-600 mb-6">
-            Ваше замовлення успішно оформлено! Ми зв'яжемося з вами найближчим часом.
+            {t('checkout.orderSuccess')}
           </p>
           <button
             onClick={() => navigate('/')}
@@ -191,7 +191,7 @@ export const CheckoutPage = () => {
                   <option value="">{t('checkout.selectCountry')}</option>
                   {europeanCountries.map(country => (
                     <option key={country.code} value={country.code}>
-                      {country.flag} {country.name}
+                      {country.flag} {t(country.nameKey)}
                     </option>
                   ))}
                 </select>
@@ -271,7 +271,7 @@ export const CheckoutPage = () => {
                     </p>
                   </div>
                   <p className="font-medium text-stone-900">
-                    €{(item.product.price * item.quantity).toFixed(2)}
+                    {t('products.currency')}{(item.product.price * item.quantity).toFixed(2)}
                   </p>
                 </div>
               ))}
@@ -280,7 +280,7 @@ export const CheckoutPage = () => {
             <div className="border-t border-stone-200 pt-4 space-y-2">
               <div className="flex justify-between text-stone-600">
                 <span>{t('checkout.items')}</span>
-                <span>€{total.toFixed(2)}</span>
+                <span>{t('products.currency')}{total.toFixed(2)}</span>
               </div>
               <div className="flex justify-between text-stone-600">
                 <span>{t('checkout.delivery')}</span>
@@ -288,7 +288,7 @@ export const CheckoutPage = () => {
               </div>
               <div className="flex justify-between text-xl font-bold text-stone-900 pt-2 border-t border-stone-200">
                 <span>{t('cart.total')}</span>
-                <span>€{total.toFixed(2)}</span>
+                <span>{t('products.currency')}{total.toFixed(2)}</span>
               </div>
             </div>
           </div>

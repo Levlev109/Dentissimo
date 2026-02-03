@@ -11,19 +11,10 @@ const detectUserLanguage = (): string => {
   // Then check browser language
   const browserLang = navigator.language.split('-')[0];
   
-  // Map common languages
-  const langMap: { [key: string]: string } = {
-    'uk': 'uk',
-    'ru': 'ru',
-    'en': 'en',
-    'de': 'en',
-    'fr': 'en',
-    'es': 'en',
-    'it': 'en',
-    'pl': 'en'
-  };
-
-  return langMap[browserLang] || 'en';
+  // Supported languages
+  const supportedLangs = ['uk', 'ru', 'en', 'de', 'fr', 'es', 'it', 'pl'];
+  
+  return supportedLangs.includes(browserLang) ? browserLang : 'en';
 };
 
 i18n

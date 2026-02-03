@@ -86,7 +86,7 @@ export const CartDrawer = () => {
                             {item.product.name}
                           </h3>
                           <p className="text-sm text-stone-500 mb-2">
-                            €{item.product.price.toFixed(2)}
+                            {t('products.currency')}{item.product.price.toFixed(2)}
                           </p>
                           <div className="flex items-center gap-2">
                             <button
@@ -123,7 +123,7 @@ export const CartDrawer = () => {
                 <div className="border-t border-stone-200 p-6 space-y-4">
                   <div className="flex justify-between items-center text-lg font-bold">
                     <span>{t('cart.total')}:</span>
-                    <span>€{total.toFixed(2)}</span>
+                    <span>{t('products.currency')}{total.toFixed(2)}</span>
                   </div>
                   <a
                     href="/checkout"

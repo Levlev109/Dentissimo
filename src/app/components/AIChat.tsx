@@ -12,7 +12,7 @@ export const AIChat = () => {
   const [showApiKeyModal, setShowApiKeyModal] = useState(false);
   const [apiKeyInput, setApiKeyInput] = useState('');
   const [selectedProvider, setSelectedProvider] = useState<'gemini' | 'huggingface'>('gemini');
-  const { i18n } = useTranslation();
+  const { i18n, t } = useTranslation();
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const assistantRef = useRef<AIAssistant>(new AIAssistant(i18n.language));
 
@@ -45,8 +45,8 @@ export const AIChat = () => {
       const successMessage: Message = {
         id: Date.now().toString(),
         text: selectedProvider === 'gemini' 
-          ? '✅ Google Gemini API підключено! Тепер я використовую справжній штучний інтелект для консультацій.'
-          : '✅ Hugging Face API підключено! Тепер я використовую справжній штучний інтелект для консультацій.',
+          ? t('aiChat.geminiConnected')
+          : t('aiChat.hfConnected'),
         isBot: true,
         timestamp: new Date()
       };
@@ -83,7 +83,7 @@ export const AIChat = () => {
     } catch (error) {
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: '❌ Помилка при отриманні відповіді. Спробуйте ще раз або перевірте налаштування API.',
+        text: t('aiChat.error'),
         isBot: true,
         timestamp: new Date()
       };
@@ -133,11 +133,11 @@ export const AIChat = () => {
               onClick={(e) => e.stopPropagation()}
               className="bg-white rounded-2xl p-6 max-w-md w-full"
             >
-              <h3 className="text-xl font-bold mb-4">🔑 Підключити реальний AI</h3>
+              <h3 className="text-xl font-bold mb-4">🔑 {t('aiChat.connectRealAI')}</h3>
               
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium mb-2">Виберіть провайдера:</label>
+                  <label className="block text-sm font-medium mb-2">{t('aiChat.selectProvider')}</label>
                   <div className="space-y-2">
                     <label className="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-stone-50">
                       <input
@@ -149,8 +149,8 @@ export const AIChat = () => {
                         className="w-4 h-4"
                       />
                       <div className="flex-1">
-                        <div className="font-semibold">Google Gemini</div>
-                        <div className="text-xs text-stone-500">Безкоштовний • Найкраща якість</div>
+                        <div className="font-semibold">{t('aiChat.gemini')}</div>
+                        <div className="text-xs text-stone-500">{t('aiChat.geminiFree')}</div>
                       </div>
                     </label>
                     
@@ -164,15 +164,15 @@ export const AIChat = () => {
                         className="w-4 h-4"
                       />
                       <div className="flex-1">
-                        <div className="font-semibold">Hugging Face</div>
-                        <div className="text-xs text-stone-500">Безкоштовний • Open Source</div>
+                        <div className="font-semibold">{t('aiChat.huggingface')}</div>
+                        <div className="text-xs text-stone-500">{t('aiChat.huggingfaceFree')}</div>
                       </div>
                     </label>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium mb-2">API ключ:</label>
+                  <label className="block text-sm font-medium mb-2">{t('aiChat.apiKey')}</label>
                   <input
                     type="password"
                     value={apiKeyInput}
@@ -185,9 +185,9 @@ export const AIChat = () => {
                 <div className="bg-blue-50 p-3 rounded-lg text-xs text-blue-900">
                   {selectedProvider === 'gemini' ? (
                     <>
-                      <strong>Як отримати ключ:</strong>
+                      <strong>{t('aiChat.howToGetKey')}</strong>
                       <br />
-                      1. Перейдіть на{' '}
+                      {t('aiChat.geminiStep1')}{' '}
                       <a
                         href="https://makersuite.google.com/app/apikey"
                         target="_blank"
@@ -197,15 +197,15 @@ export const AIChat = () => {
                         makersuite.google.com
                       </a>
                       <br />
-                      2. Натисніть "Create API Key"
+                      {t('aiChat.geminiStep2')}
                       <br />
-                      3. Скопіюйте ключ
+                      {t('aiChat.geminiStep3')}
                     </>
                   ) : (
                     <>
-                      <strong>Як отримати ключ:</strong>
+                      <strong>{t('aiChat.howToGetKey')}</strong>
                       <br />
-                      1. Зареєструйтесь на{' '}
+                      {t('aiChat.hfStep1')}{' '}
                       <a
                         href="https://huggingface.co/join"
                         target="_blank"
@@ -215,7 +215,7 @@ export const AIChat = () => {
                         huggingface.co
                       </a>
                       <br />
-                      2. Перейдіть в{' '}
+                      {t('aiChat.hfStep2')}{' '}
                       <a
                         href="https://huggingface.co/settings/tokens"
                         target="_blank"
@@ -225,7 +225,7 @@ export const AIChat = () => {
                         Settings → Tokens
                       </a>
                       <br />
-                      3. Створіть новий токен
+                      {t('aiChat.hfStep3')}
                     </>
                   )}
                 </div>
@@ -235,14 +235,14 @@ export const AIChat = () => {
                     onClick={() => setShowApiKeyModal(false)}
                     className="flex-1 px-4 py-2 border border-stone-300 rounded-lg hover:bg-stone-50"
                   >
-                    Скасувати
+                    {t('common.cancel')}
                   </button>
                   <button
                     onClick={handleSaveApiKey}
                     disabled={!apiKeyInput.trim()}
                     className="flex-1 px-4 py-2 bg-[#D4AF37] text-white rounded-lg hover:bg-[#C4A037] disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Зберегти
+                    {t('aiChat.saveKey')}
                   </button>
                 </div>
               </div>
@@ -268,13 +268,13 @@ export const AIChat = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold flex items-center gap-2">
-                    Dentissimo AI
+                    {t('aiChat.title')}
                     {assistantRef.current.isUsingRealAI() && (
-                      <span className="text-[10px] bg-green-500 px-2 py-0.5 rounded-full">LIVE</span>
+                      <span className="text-[10px] bg-green-500 px-2 py-0.5 rounded-full">{t('common.live')}</span>
                     )}
                   </h3>
                   <p className="text-xs text-white/80">
-                    {assistantRef.current.isUsingRealAI() ? 'Реальний AI' : 'Консультант онлайн'}
+                    {assistantRef.current.isUsingRealAI() ? t('aiChat.realAI') : t('aiChat.online')}
                   </p>
                 </div>
               </div>
@@ -282,7 +282,7 @@ export const AIChat = () => {
                 <button
                   onClick={() => setShowApiKeyModal(true)}
                   className="text-white/80 hover:text-white transition-colors"
-                  title="Підключити AI API"
+                  title={t('aiChat.connectRealAI')}
                 >
                   <Key size={20} />
                 </button>
@@ -315,7 +315,7 @@ export const AIChat = () => {
                     <p className={`text-[10px] mt-1 ${
                       message.isBot ? 'text-stone-400' : 'text-white/70'
                     }`}>
-                      {message.timestamp.toLocaleTimeString('uk-UA', { 
+                      {message.timestamp.toLocaleTimeString(i18n.language, { 
                         hour: '2-digit', 
                         minute: '2-digit' 
                       })}
@@ -347,7 +347,7 @@ export const AIChat = () => {
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={handleKeyPress}
-                  placeholder="Напишіть ваше питання..."
+                  placeholder={t('aiChat.placeholder')}
                   className="flex-1 px-4 py-3 border border-stone-300 rounded-full focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none text-sm"
                 />
                 <button
@@ -359,7 +359,7 @@ export const AIChat = () => {
                 </button>
               </div>
               <p className="text-[10px] text-stone-400 mt-2 text-center">
-                AI консультант допоможе обрати продукт
+                {t('aiChat.helper')}
               </p>
             </div>
           </motion.div>

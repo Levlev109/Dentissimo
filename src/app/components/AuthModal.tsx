@@ -122,7 +122,7 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                     className="w-full px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none"
-                    placeholder="+380 XX XXX XX XX"
+                    placeholder={t('auth.phonePlaceholder')}
                   />
                   <button
                     type="button"

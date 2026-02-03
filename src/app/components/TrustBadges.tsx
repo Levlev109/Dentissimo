@@ -1,29 +1,32 @@
 import { ShieldCheck, Stethoscope, Leaf, Award } from 'lucide-react';
-
-const badges = [
-  {
-    icon: Stethoscope,
-    title: "Dentist Approved",
-    desc: "University of Zurich"
-  },
-  {
-    icon: ShieldCheck,
-    title: "Argentiere Water",
-    desc: "Glacier mineral formula"
-  },
-  {
-    icon: Leaf,
-    title: "Vegan Formulas",
-    desc: "Bio-active ingredients"
-  },
-  {
-    icon: Award,
-    title: "Swiss Quality",
-    desc: "Premium oral care"
-  }
-];
+import { useTranslation } from 'react-i18next';
 
 export const TrustBadges = () => {
+  const { t } = useTranslation();
+  
+  const badges = [
+    {
+      icon: Stethoscope,
+      titleKey: "trustBadges.dentistApproved",
+      descKey: "trustBadges.dentistApprovedDesc"
+    },
+    {
+      icon: ShieldCheck,
+      titleKey: "trustBadges.glacierWater",
+      descKey: "trustBadges.glacierWaterDesc"
+    },
+    {
+      icon: Leaf,
+      titleKey: "trustBadges.ecoFriendly",
+      descKey: "trustBadges.ecoFriendlyDesc"
+    },
+    {
+      icon: Award,
+      titleKey: "trustBadges.swissMade",
+      descKey: "trustBadges.swissMadeDesc"
+    }
+  ];
+
   return (
     <section className="py-16 bg-white border-b border-stone-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -33,8 +36,8 @@ export const TrustBadges = () => {
               <div className="mb-4 p-3 rounded-full bg-stone-50 text-stone-900 group-hover:bg-[#D4AF37] group-hover:text-white transition-colors duration-300">
                 <badge.icon size={28} strokeWidth={1.5} />
               </div>
-              <h3 className="text-sm font-bold text-stone-900 uppercase tracking-wide mb-1">{badge.title}</h3>
-              <p className="text-xs text-stone-500 font-medium">{badge.desc}</p>
+              <h3 className="text-sm font-bold text-stone-900 uppercase tracking-wide mb-1">{t(badge.titleKey)}</h3>
+              <p className="text-xs text-stone-500 font-medium">{t(badge.descKey)}</p>
             </div>
           ))}
         </div>
