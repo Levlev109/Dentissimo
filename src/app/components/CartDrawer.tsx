@@ -79,7 +79,7 @@ export const CartDrawer = () => {
                         <img
                           src={item.product.image}
                           alt={item.product.name}
-                          className="w-20 h-20 object-cover rounded"
+                          className="w-20 h-20 object-contain bg-stone-100 rounded p-1"
                         />
                         <div className="flex-1">
                           <h3 className="font-medium text-stone-900 mb-1">

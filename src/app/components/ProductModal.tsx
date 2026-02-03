@@ -55,11 +55,11 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                     {t('products.new')}
                   </span>
                 )}
-                <div className="aspect-[3/4] bg-stone-100 rounded-xl overflow-hidden">
+                <div className="aspect-[3/4] bg-gradient-to-b from-stone-50 to-stone-100 rounded-xl overflow-hidden">
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain p-6"
                   />
                 </div>
               </div>

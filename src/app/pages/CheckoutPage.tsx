@@ -260,7 +260,7 @@ export const CheckoutPage = () => {
                   <img
                     src={item.product.image}
                     alt={item.product.name}
-                    className="w-16 h-16 object-cover rounded"
+                    className="w-16 h-16 object-contain bg-stone-100 rounded p-1"
                   />
                   <div className="flex-1">
                     <h3 className="font-medium text-stone-900">

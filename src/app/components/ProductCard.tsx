@@ -28,7 +28,7 @@ export const ProductCard = ({ product }: ProductProps) => {
   return (
     <>
       <div className="group relative cursor-pointer" onClick={handleCardClick}>
-        <div className="relative aspect-[3/4] bg-stone-100 overflow-hidden mb-4">
+        <div className="relative aspect-[3/4] bg-gradient-to-b from-stone-50 to-stone-100 overflow-hidden mb-4 rounded-lg">
           {product.isNew && (
             <span className="absolute top-2 left-2 bg-white px-2 py-1 text-[10px] uppercase tracking-widest font-bold text-stone-900 z-10">
               {t('products.new')}
@@ -37,7 +37,8 @@ export const ProductCard = ({ product }: ProductProps) => {
           <img
             src={product.image}
             alt={product.name}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
+            style={{ imageRendering: 'auto' }}
           />
           <motion.button
             whileHover={{ scale: 1.05 }}

@@ -1,5 +1,6 @@
 import { ProductCard } from '@/app/components/ProductCard';
 import { useTranslation } from 'react-i18next';
+import { convertPrice } from '../../services/currency';
 
 const products = [
   // Limited Edition Series
@@ -42,7 +43,7 @@ const products = [
 ];
 
 export const FeaturedProducts = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
     <section id="limited" className="py-24 bg-[#F9F8F6]">
@@ -60,7 +61,8 @@ export const FeaturedProducts = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {products.slice(0, 4).map((product) => (
             <ProductCard key={product.id} product={{
-              ...product, 
+              ...product,
+              price: convertPrice(product.price, i18n.language),
               category: t(`categories.${product.categoryKey}`),
               description: t(product.descriptionKey)
             }} />

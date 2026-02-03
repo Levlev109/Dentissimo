@@ -53,12 +53,12 @@ export const CategorySection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.6 }}
-              className="group block relative overflow-hidden aspect-[3/4] bg-stone-100"
+              className="group block relative overflow-hidden aspect-[3/4] bg-gradient-to-b from-stone-100 to-stone-200"
             >
               <img
                 src={cat.image}
                 alt={t(cat.titleKey)}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-full object-contain p-6 transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors duration-300"></div>
               

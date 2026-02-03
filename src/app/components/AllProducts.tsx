@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ProductCard } from './ProductCard';
 import { useTranslation } from 'react-i18next';
+import { convertPrice } from '../../services/currency';
 
 const allProducts = [
   // Limited Edition Series
@@ -79,7 +80,7 @@ const allProducts = [
 ];
 
 export const AllProducts = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [selectedCategory, setSelectedCategory] = useState('all');
   
   const categories = [
@@ -125,6 +126,7 @@ export const AllProducts = () => {
           {filteredProducts.map((product) => (
             <ProductCard key={product.id} product={{
               ...product,
+              price: convertPrice(product.price, i18n.language),
               category: t(`categories.${product.categoryKey}`),
               description: t(product.descriptionKey)
             }} />
