@@ -36,9 +36,9 @@ export const Benefits = () => {
               ))}
             </ul>
             
-            <button className="mt-10 px-8 py-4 bg-stone-100 text-stone-900 font-medium hover:bg-stone-200 transition-colors">
+            <a href="#about" className="mt-10 inline-block px-8 py-4 bg-stone-100 text-stone-900 font-medium hover:bg-stone-200 transition-colors">
               {t('benefits.learnMore')}
-            </button>
+            </a>
           </div>
         </div>
       </div>

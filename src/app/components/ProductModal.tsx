@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Product } from '../../services/database';
 import { useCart } from '../../contexts/CartContext';
 import { useTranslation } from 'react-i18next';
+import { showCartToast } from './Toast';
 
 interface ProductModalProps {
   product: Product | null;
@@ -22,6 +23,11 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
     for (let i = 0; i < quantity; i++) {
       addToCart(product);
     }
+    showCartToast(
+      quantity > 1 ? `${quantity} × ${t('cart.addedToCart')}` : (t('cart.addedToCart') || 'Added to cart'),
+      product.name,
+      product.image
+    );
     setQuantity(1);
     onClose();
   };

@@ -5,6 +5,7 @@ import { useCart } from '../../contexts/CartContext';
 import { useTranslation } from 'react-i18next';
 import { Product } from '../../services/database';
 import { ProductModal } from './ProductModal';
+import { showCartToast } from './Toast';
 
 interface ProductProps {
   product: Product;
@@ -19,6 +20,7 @@ export const ProductCard = ({ product }: ProductProps) => {
     e.preventDefault();
     e.stopPropagation();
     addToCart(product);
+    showCartToast(t('cart.addedToCart') || 'Added to cart', product.name, product.image);
   };
 
   const handleCardClick = () => {

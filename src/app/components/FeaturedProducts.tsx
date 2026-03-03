@@ -53,7 +53,7 @@ export const FeaturedProducts = () => {
             <h2 className="font-serif text-3xl md:text-4xl text-stone-900 mb-2">{t('featuredProducts.title')}</h2>
             <p className="text-stone-500">{t('featuredProducts.subtitle')}</p>
           </div>
-          <a href="#" className="hidden md:inline-block text-stone-900 font-medium hover:text-[#D4AF37] transition-colors pb-1 border-b border-stone-300 hover:border-[#D4AF37]">
+          <a href="#products" className="hidden md:inline-block text-stone-900 font-medium hover:text-[#D4AF37] transition-colors pb-1 border-b border-stone-300 hover:border-[#D4AF37]">
             {t('featuredProducts.viewAll')}
           </a>
         </div>
@@ -70,7 +70,7 @@ export const FeaturedProducts = () => {
         </div>
         
         <div className="mt-12 text-center md:hidden">
-          <a href="#" className="inline-block px-6 py-3 border border-stone-900 text-stone-900 font-medium">
+          <a href="#products" className="inline-block px-6 py-3 border border-stone-900 text-stone-900 font-medium">
             {t('featuredProducts.viewAll')}
           </a>
         </div>

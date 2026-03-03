@@ -11,28 +11,28 @@ export const CategorySection = () => {
       titleKey: 'categories.limitedEdition',
       descriptionKey: 'categories.limitedEditionDesc',
       image: '/images/DENTISSIMO_box_Gold_Italy.png',
-      link: '#'
+      link: '#products'
     },
     {
       id: 2,
       titleKey: 'categories.professional',
       descriptionKey: 'categories.professionalDesc',
       image: '/images/DENTISSIMO_box_Complete_care (1).png',
-      link: '#'
+      link: '#products'
     },
     {
       id: 3,
       titleKey: 'categories.natural',
       descriptionKey: 'categories.naturalDesc',
       image: '/images/DENTISSIMO_box_Vegan.png',
-      link: '#'
+      link: '#products'
     },
     {
       id: 4,
       titleKey: 'categories.kids',
       descriptionKey: 'categories.kidsDesc',
       image: '/images/DENTISSIMO_box_Kids.png',
-      link: '#'
+      link: '#products'
     }
   ];
 

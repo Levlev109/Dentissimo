@@ -12,7 +12,7 @@ const detectUserLanguage = (): string => {
   const browserLang = navigator.language.split('-')[0];
   
   // Supported languages
-  const supportedLangs = ['uk', 'ru', 'en', 'de', 'fr', 'es', 'it', 'pl'];
+  const supportedLangs = ['uk', 'en', 'de', 'fr', 'es', 'it', 'pl'];
   
   return supportedLangs.includes(browserLang) ? browserLang : 'en';
 };

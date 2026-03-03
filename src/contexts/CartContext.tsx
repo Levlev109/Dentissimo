@@ -18,9 +18,14 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   // Load cart from localStorage on mount
   useEffect(() => {
-    const savedCart = localStorage.getItem('dentissimo_cart');
-    if (savedCart) {
-      setItems(JSON.parse(savedCart));
+    try {
+      const savedCart = localStorage.getItem('dentissimo_cart');
+      if (savedCart) {
+        setItems(JSON.parse(savedCart));
+      }
+    } catch {
+      // corrupted cart data — reset
+      localStorage.removeItem('dentissimo_cart');
     }
   }, []);
 

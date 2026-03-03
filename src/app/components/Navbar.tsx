@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Menu, X, Globe, Search, User } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useTranslation } from 'react-i18next';
@@ -12,11 +12,22 @@ export const Navbar = () => {
   const [showLangMenu, setShowLangMenu] = useState(false);
   const { t, i18n } = useTranslation();
   const { user, logout } = useAuth();
+  const langRef = useRef<HTMLDivElement>(null);
+
+  // Close language menu on outside click
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      if (langRef.current && !langRef.current.contains(e.target as Node)) {
+        setShowLangMenu(false);
+      }
+    };
+    if (showLangMenu) document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, [showLangMenu]);
 
   const languages = [
     { code: 'uk', name: 'Українська', flag: '🇺🇦' },
     { code: 'en', name: 'English', flag: '🇬🇧' },
-    { code: 'ru', name: 'Русский', flag: '🇷🇺' },
     { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
     { code: 'fr', name: 'Français', flag: '🇫🇷' },
     { code: 'es', name: 'Español', flag: '🇪🇸' },
@@ -40,6 +51,7 @@ export const Navbar = () => {
   ];
 
   return (
+    <>
     <nav className="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-stone-100 transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
@@ -55,7 +67,7 @@ export const Navbar = () => {
 
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center justify-center md:justify-start w-full md:w-auto absolute md:relative pointer-events-none md:pointer-events-auto">
-            <a href="#" className="font-serif text-2xl font-bold tracking-wider text-stone-900 pointer-events-auto">
+            <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="font-serif text-2xl font-bold tracking-wider text-stone-900 pointer-events-auto">
               DENTISSIMO
             </a>
           </div>
@@ -75,12 +87,12 @@ export const Navbar = () => {
 
           {/* Right Icons */}
           <div className="flex items-center space-x-4">
-            <button className="hidden md:block text-stone-600 hover:text-stone-900 transition-colors">
+            <a href="#products" className="hidden md:block text-stone-600 hover:text-stone-900 transition-colors">
               <Search size={20} />
-            </button>
+            </a>
             
             {/* Language Selector */}
-            <div className="relative">
+            <div className="relative" ref={langRef}>
               <button
                 onClick={() => setShowLangMenu(!showLangMenu)}
                 className="flex items-center space-x-1 text-stone-600 hover:text-stone-900 transition-colors"
@@ -149,6 +161,7 @@ export const Navbar = () => {
                 <a
                   key={link.name}
                   href={link.href}
+                  onClick={() => setIsOpen(false)}
                   className="block px-3 py-4 text-base font-medium text-stone-800 hover:bg-stone-50 border-b border-stone-50"
                 >
                   {link.name}
@@ -158,9 +171,10 @@ export const Navbar = () => {
           </motion.div>
         )}
       </AnimatePresence>
-
-      {/* Auth Modal */}
-      <AuthModal isOpen={showAuthModal} onClose={() => setShowAuthModal(false)} />
     </nav>
+
+      {/* Auth Modal — rendered OUTSIDE nav to avoid stacking context */}
+      <AuthModal isOpen={showAuthModal} onClose={() => setShowAuthModal(false)} />
+    </>
   );
 };

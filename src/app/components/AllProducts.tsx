@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { ProductCard } from './ProductCard';
 import { useTranslation } from 'react-i18next';
 import { convertPrice } from '../../services/currency';
@@ -122,7 +123,13 @@ export const AllProducts = () => {
         </div>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <motion.div
+          key={selectedCategory}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+        >
           {filteredProducts.map((product) => (
             <ProductCard key={product.id} product={{
               ...product,
@@ -131,7 +138,7 @@ export const AllProducts = () => {
               description: t(product.descriptionKey)
             }} />
           ))}
-        </div>
+        </motion.div>
         
         {filteredProducts.length === 0 && (
           <div className="text-center py-16">

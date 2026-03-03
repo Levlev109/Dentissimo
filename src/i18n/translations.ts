@@ -67,7 +67,8 @@
         total: 'Разом',
         checkout: 'Оформити замовлення',
         remove: 'Видалити',
-        quantity: 'Кількість'
+        quantity: 'Кількість',
+        addedToCart: 'Додано в кошик'
       },
       checkout: {
         title: 'Оформлення замовлення',
@@ -184,7 +185,11 @@
         paragraph1: 'Серед величних Альп, у серці масиву Монблан, бере початок унікальна льодовикова вода Аржантьєра. Тисячі років його крижана вода пробивала собі шлях крізь кам\'яні джунглі гори, збагачуючись цінними мінералами та набуваючи кришталевої прозорості.',
         paragraph2: 'Саме ця приголомлива енергія стала основою формули преміальних зубних паст Dentissimo. Наш порядок - профілактика та підтримка здоров\'я зубів щодня, щоб ваша посмішка залишалася світлою і впевненою.',
         paragraph3: 'Лінійка Dentissimo SPA Expert',
-        paragraph3text: ' - льодовикова Аржантьєра є ключовим символом спілки та продуманості для здоров\'я зубів. Саме він надихнув Dentissimo Premium Oral Care на створення інноваційних продуктів для здоров\'я зубів та ясен, щоб наукою підходу і турботі про природну красу усмішки.'
+        paragraph3text: ' - льодовикова Аржантьєра є ключовим символом спілки та продуманості для здоров\'я зубів. Саме він надихнув Dentissimo Premium Oral Care на створення інноваційних продуктів для здоров\'я зубів та ясен, щоб наукою підходу і турботі про природну красу усмішки.',
+        storyTitle: 'Історія посмішки',
+        storyText1: 'Продукти преміального бренду Dentissimo для догляду за порожниною рота були розроблені спеціалістами провідної стоматологічної клініки Швейцарії Perfect Smile Swiss Dental Care, медичного центру Bad Ragaz Grand Resort.',
+        storyText2: 'Формули зубних паст Dentissimo базуються на унікальному комплексі Regera-PRO: REгенерація, REставрація, REмінералізація. Створені Природою, розроблені Наукою.',
+        doctorQuote: 'Завдяки нашому багаторічному досвіду ми знаємо, що кожен випадок у стоматології унікальний. Мета проєкту — покращити якість життя наших пацієнтів, надаючи їм високоякісні засоби догляду за порожниною рота.'
       },
       trustBadges: {
         dentistApproved: 'Рекомендовано стоматологами',
@@ -328,7 +333,8 @@
         total: 'Total',
         checkout: 'Checkout',
         remove: 'Remove',
-        quantity: 'Quantity'
+        quantity: 'Quantity',
+        addedToCart: 'Added to cart'
       },
       checkout: {
         title: 'Checkout',
@@ -445,7 +451,11 @@
         paragraph1: 'Among the majestic Alps, in the heart of the Mont Blanc massif, the unique Argentiere glacier water begins its journey. For thousands of years, its icy water has carved its way through the stone jungles of the mountain, enriching itself with valuable minerals and acquiring crystal clarity.',
         paragraph2: 'It is this stunning energy that became the basis of the premium Dentissimo toothpaste formula. Our order is prevention and support of dental health every day, so that your smile remains bright and confident.',
         paragraph3: 'Dentissimo SPA Expert Line',
-        paragraph3text: ' - Argentiere glacier water is a key symbol of union and thoughtfulness for dental health. It was this that inspired Dentissimo Premium Oral Care to create innovative products for the health of teeth and gums, combining a scientific approach with care for the natural beauty of your smile.'
+        paragraph3text: ' - Argentiere glacier water is a key symbol of union and thoughtfulness for dental health. It was this that inspired Dentissimo Premium Oral Care to create innovative products for the health of teeth and gums, combining a scientific approach with care for the natural beauty of your smile.',
+        storyTitle: 'The Story of a Smile',
+        storyText1: 'Dentissimo premium oral care products were developed by specialists of the leading dental clinic in Switzerland, Perfect Smile Swiss Dental Care, Bad Ragaz Grand Resort medical center.',
+        storyText2: 'Dentissimo formulas are based on a unique Regera-PRO complex: REgeneration, REstoration, REmineralization. Created by Nature, developed by Science.',
+        doctorQuote: 'Thanks to our experience gained over the years, we know that each individual case in dental care is unique. The goal of the project is to improve the quality of life for our patients by providing them with high-grade oral care products.'
       },
       trustBadges: {
         dentistApproved: 'Dentist Approved',
@@ -521,274 +531,6 @@
       }
     }
   },
-  ru: {
-    translation: {
-      nav: {
-        products: 'Продукция',
-        limitedEdition: 'Limited Edition',
-        about: 'О бренде',
-        contacts: 'Контакты',
-        cart: 'Корзина'
-      },
-      hero: {
-        tagline: 'Швейцарский уход',
-        title: 'In Smile We Trust',
-        description: 'Премиальный бренд Dentissimo для ухода за полостью рта',
-        buyNow: 'Купить',
-        learnMore: 'О нас'
-      },
-      products: {
-        featured: 'Premium Oral Care',
-        featuredDesc: 'Откройте для себя швейцарское качество',
-        allProducts: 'Все продукты',
-        fullRange: 'Наш полный ассортимент',
-        fullRangeDesc: 'Откройте для себя всю коллекцию',
-        addToCart: 'Добавить в корзину',
-        new: 'Новинка',
-        description: 'Описание',
-        features: 'Особенности',
-        quantity: 'Количество',
-        freeDelivery: 'Бесплатная доставка от',
-        feature1: 'Швейцарское качество и инновации',
-        feature2: 'Клинически протестировано стоматологами',
-        feature3: 'Премиальные ингредиенты',
-        feature4: 'Эффективная защита зубов и десен',
-        currency: '€',
-        currencyCode: 'EUR',
-        gentleCareDesc: 'Специальная серия при поддержке ILGA Europe. Дезинфицирующая формула для деликатного ухода.',
-        diamondDesc: 'Для чувствительных зубов с швейцарской алмазной пудрой. Блестящий успокаивающий эффект.',
-        goldDesc: 'Безупречное отбеливание с частицами 24-каратного золота. Инновационная золотая формула.',
-        blackDesc: 'С натуральным 100% активированным углем. Идеально для любителей кофе и чая.',
-        completeCareDesc: 'Уникальный комплекс Regera-Pro для полной защиты. Эффективная защита от кариеса.',
-        veganDesc: '100% веганская формула с витамином B12. Защищает вас и окружающую среду.',
-        kidsDesc: 'Вкус карамели для детей 2-6 лет. Кальций и гидроксиапатит укрепляют эмаль.',
-        juniorDesc: 'Яблочный вкус для детей 6+ лет. Защищает постоянные зубы.'
-      },
-      categories: {
-        title: 'Ваш ежедневный уход',
-        subtitle: 'Швейцарское качество',
-        all: 'Все продукты',
-        limitedEdition: 'Лимитированная серия',
-        limitedEditionDesc: 'Эксклюзивные пасты с уникальными ингредиентами',
-        toothpaste: 'Зубные пасты',
-        toothbrushes: 'Зубные щетки',
-        kidsToothpaste: 'Для детей',
-        kids: 'Для детей',
-        kidsDesc: 'Серии Kids и Junior',
-        professional: 'Профессиональный уход',
-        professionalDesc: 'Серии Complete Care и Pro Care',
-        natural: 'Натуральные формулы',
-        naturalDesc: 'Bio-Natural, Vegan и CBD',
-        kidsBrushes: 'Детские щетки',
-        mouthwash: 'Ополаскиватели'
-      },
-      cart: {
-        title: 'Ваша корзина',
-        empty: 'Корзина пуста',
-        continueShopping: 'Продолжить покупки',
-        total: 'Итого',
-        checkout: 'Оформить заказ',
-        remove: 'Удалить',
-        quantity: 'Количество'
-      },
-      checkout: {
-        title: 'Оформление заказа',
-        personalInfo: 'Личные данные',
-        firstName: 'Имя',
-        lastName: 'Фамилия',
-        phone: 'Номер телефона',
-        phonePlaceholder: '+7 XXX XXX XX XX',
-        country: 'Страна',
-        address: 'Адрес доставки',
-        addressPlaceholder: 'Улица, дом, квартира',
-        placeOrder: 'Оформить заказ',
-        orderSummary: 'Итоги заказа',
-        items: 'Товары',
-        delivery: 'Доставка',
-        free: 'Бесплатно',
-        required: 'Обязательное поле',
-        invalidPhone: 'Неверный формат',
-        selectCountry: 'Выберите страну',
-        orderSuccess: 'Ваш заказ успешно оформлен! Мы свяжемся с вами в ближайшее время.'
-      },
-      countries: {
-        ukraine: 'Украина',
-        poland: 'Польша',
-        germany: 'Германия',
-        france: 'Франция',
-        italy: 'Италия',
-        spain: 'Испания',
-        unitedKingdom: 'Великобритания',
-        netherlands: 'Нидерланды',
-        belgium: 'Бельгия',
-        austria: 'Австрия',
-        switzerland: 'Швейцария',
-        czechRepublic: 'Чехия',
-        romania: 'Румыния',
-        hungary: 'Венгрия',
-        slovakia: 'Словакия'
-      },
-      auth: {
-        login: 'Вход',
-        register: 'Регистрация',
-        logout: 'Выйти',
-        email: 'Email',
-        emailPlaceholder: 'example@email.com',
-        phonePlaceholder: '+7 XXX XXX XX XX',
-        phoneOrEmail: 'Email или телефон',
-        firstName: 'Имя',
-        lastName: 'Фамилия',
-        submit: 'Войти',
-        orUsePhone: 'Или используйте телефон',
-        orUseEmail: 'Или используйте email',
-        welcome: 'Добро пожаловать!',
-        loginToContinue: 'Войдите для продолжения'
-      },
-      trustBadges: {
-        dentistApproved: 'Одобрено стоматологами',
-        dentistApprovedDesc: 'Рекомендовано профессионалами',
-        swissMade: 'Swiss Made',
-        swissMadeDesc: 'Премиум качество с 1976 года',
-        glacierWater: 'Glacier Water',
-        glacierWaterDesc: 'Чистая альпийская ледниковая вода',
-        ecoFriendly: 'Эко-дружественный',
-        ecoFriendlyDesc: 'Перерабатываемая упаковка',
-        universityZurich: 'Университет Цюриха',
-        argentiere: 'Вода Аржантьер',
-        glacierMineral: 'Ледниковая минеральная формула',
-        veganFormulas: 'Веганские формулы',
-        bioActive: 'Био-активные ингредиенты',
-        swissQuality: 'Швейцарское качество',
-        premiumCare: 'Премиум уход'
-      },
-      categorySection: {
-        title: 'Ваш ежедневный уход',
-        subtitle: 'Швейцарское качество для здоровья ваших зубов',
-        limitedEdition: 'Limited Edition',
-        limitedEditionDesc: 'Эксклюзивные пасты с уникальными ингредиентами',
-        professionalCare: 'Профессиональный уход',
-        professionalCareDesc: 'Серии Complete Care и Pro Care',
-        naturalFormulas: 'Натуральные формулы',
-        naturalFormulasDesc: 'Bio-Natural, Vegan и CBD',
-        forKids: 'Для детей',
-        forKidsDesc: 'Серии Kids и Junior',
-        learnMore: 'УЗНАТЬ БОЛЬШЕ'
-      },
-      featuredProducts: {
-        title: 'Premium Oral Care',
-        subtitle: 'Откройте для себя швейцарское качество ухода за зубами',
-        viewAll: 'Все продукты'
-      },
-      allProductsSection: {
-        title: 'Наш полный ассортимент',
-        subtitle: 'Откройте для себя полную коллекцию премиальных продуктов Dentissimo',
-        all: 'Все продукты',
-        toothpaste: 'Зубные пасты',
-        forKids: 'Для детей',
-        notFound: 'Продукты не найдены'
-      },
-      benefits: {
-        title: 'Argentiere Glacier Water',
-        titleHighlight: 'Oral Well-Being',
-        description: 'Мы верим, что уход за полостью рта должен быть ритуалом, а не рутиной. Наши продукты сочетают клиническую точность с премиальной эстетикой и уникальными швейцарскими ингредиентами.',
-        benefit1: 'Термальная вода из Аржантьер для уникального ухода',
-        benefit2: 'Швейцарская алмазная пудра для блеска и здоровья эмали',
-        benefit3: 'Инновационная золотая формула с частицами золота 24 карата',
-        benefit4: '100% веганские и био-натуральные формулы',
-        benefit5: 'Без SLS, парабенов, триклозана и фторидов',
-        benefit6: 'Клинически подтверждено Center of Dental Medicine, University of Zurich',
-        learnMore: 'Читайте о нашей науке'
-      },
-      testimonials: {
-        title: 'Отзывы клиентов',
-        subtitle: 'Присоединяйтесь к тысячам довольных клиентов в Украине и Европе.',
-        review1Name: 'Анна С.',
-        review1Location: 'Москва, Россия',
-        review1Text: 'SPA Expert с термальной водой ледника - это просто чудо! Зубы стали белее, а десны здоровее.',
-        review2Name: 'Дмитрий К.',
-        review2Location: 'Санкт-Петербург, Россия',
-        review2Text: 'Паста Diamond с алмазной пудрой - лучшая для чувствительных зубов. Нежная, но эффективная.',
-        review3Name: 'Екатерина М.',
-        review3Location: 'Казань, Россия',
-        review3Text: 'Золотая паста Advanced Whitening Gold - это роскошь в каждом использовании. Рекомендую всем!'
-      },
-      about: {
-        tagline: 'Dentissimo Premium Oral Care',
-        title: 'Вода, рожденная',
-        titleHighlight: 'в сердце Монблана',
-        glacierTitle: 'Вода, рожденная в сердце Монблана',
-        glacierText1: 'Среди величественных Альп, в сердце массива Монблан, берет начало уникальная ледниковая вода Аржантьер. Тысячи лет его ледяная вода пробивала себе путь сквозь каменные джунгли горы, обогащаясь ценными минералами и приобретая кристальную прозрачность.',
-        glacierText2: 'Именно эта потрясающая энергия стала основой формулы премиальных зубных паст Dentissimo. Наша миссия - профилактика и поддержка здоровья зубов каждый день, чтобы ваша улыбка оставалась светлой и уверенной.',
-        glacierText3: 'Линейка Dentissimo SPA Expert - ледниковая вода Аржантьер является ключевым символом союза науки и природы для здоровья ваших зубов.',
-        paragraph1: 'Среди величественных Альп, в сердце массива Монблан, берет начало уникальная ледниковая вода Аржантьер. Тысячи лет его ледяная вода пробивала себе путь сквозь каменные джунгли горы, обогащаясь ценными минералами и приобретая кристальную прозрачность.',
-        paragraph2: 'Именно эта потрясающая энергия стала основой формулы премиальных зубных паст Dentissimo. Наш порядок - профилактика и поддержка здоровья зубов каждый день, чтобы ваша улыбка оставалась светлой и уверенной.',
-        paragraph3: 'Линейка Dentissimo SPA Expert',
-        paragraph3text: ' - ледниковая Аржантьер является ключевым символом союза и продуманности для здоровья зубов. Именно она вдохновила Dentissimo Premium Oral Care на создание инновационных продуктов для здоровья зубов и десен, сочетая научный подход с заботой о естественной красоте улыбки.'
-      },
-      common: {
-        close: 'Закрыть',
-        save: 'Сохранить',
-        cancel: 'Отменить',
-        edit: 'Редактировать',
-        delete: 'Удалить',
-        confirm: 'Подтвердить',
-        success: 'Успешно',
-        error: 'Ошибка',
-        loading: 'Загрузка...',
-        scroll: 'Листайте',
-        live: 'ОНЛАЙН'
-      },
-      aiChat: {
-        title: 'Dentissimo AI',
-        online: 'Консультант онлайн',
-        realAI: 'Реальный AI',
-        connectRealAI: 'Подключить реальный AI',
-        selectProvider: 'Выберите провайдера:',
-        gemini: 'Google Gemini',
-        geminiFree: 'Бесплатно • Лучшее качество',
-        huggingface: 'Hugging Face',
-        huggingfaceFree: 'Бесплатно • Open Source',
-        apiKey: 'API ключ:',
-        howToGetKey: 'Как получить ключ:',
-        geminiStep1: '1. Перейдите на',
-        geminiStep2: '2. Нажмите "Create API Key"',
-        geminiStep3: '3. Скопируйте ключ',
-        hfStep1: '1. Зарегистрируйтесь на',
-        hfStep2: '2. Перейдите в',
-        hfStep3: '3. Создайте новый токен',
-        saveKey: 'Сохранить',
-        geminiConnected: '✅ Google Gemini API подключен! Теперь я использую настоящий искусственный интеллект для консультаций.',
-        hfConnected: '✅ Hugging Face API подключен! Теперь я использую настоящий искусственный интеллект для консультаций.',
-        error: '❌ Ошибка при получении ответа. Попробуйте снова или проверьте настройки API.',
-        placeholder: 'Напишите ваш вопрос...',
-        helper: 'AI консультант поможет выбрать продукт'
-      },
-      footer: {
-        tagline: 'Премиальные решения для ухода за полостью рта. Швейцарская точность, ежедневная роскошь.',
-        products: 'Продукция',
-        limitedEdition: 'Limited Edition',
-        spaExpert: 'SPA Expert',
-        diamondSeries: 'Diamond Series',
-        bioNatural: 'Bio-Natural & Vegan',
-        forKids: 'Для детей',
-        aboutBrand: 'О бренде',
-        ourStory: 'Наша история',
-        glacierWater: 'Argentiere Glacier Water',
-        swissQuality: 'Swiss Quality',
-        clinicalStudies: 'Клинические исследования',
-        support: 'Поддержка',
-        contacts: 'Контакты',
-        delivery: 'Доставка и возврат',
-        faq: 'Частые вопросы',
-        stores: 'Магазины',
-        copyright: '© 2026 Dentissimo. Все права защищены.',
-        privacy: 'Политика конфиденциальности',
-        terms: 'Условия использования',
-        cookies: 'Политика cookie',
-        disclaimer: 'Соответствует регуляции ЕС 1223/2009 о косметической продукции. Сертифицировано согласно техническим регламентам. Дистрибьютор: Dentissimo International AG, Цюрих, Швейцария.'
-      }
-    }
-  },
   de: {
     translation: {
       nav: {
@@ -857,7 +599,8 @@
         total: 'Gesamt',
         checkout: 'Zur Kasse',
         remove: 'Entfernen',
-        quantity: 'Menge'
+        quantity: 'Menge',
+        addedToCart: 'In den Warenkorb gelegt'
       },
       checkout: {
         title: 'Bestellung',
@@ -991,7 +734,11 @@
         paragraph1: 'Inmitten der majestätischen Alpen, im Herzen des Mont-Blanc-Massivs, entspringt das einzigartige Argentière-Gletscherwasser. Jahrtausende lang bahnte sich sein eisiges Wasser den Weg durch die Steindschungel des Berges, reicherte sich mit wertvollen Mineralien an und erlangte kristallklare Reinheit.',
         paragraph2: 'Es ist diese atemberaubende Energie, die zur Grundlage der Premium-Dentissimo-Zahnpastaformel wurde. Unsere Aufgabe ist die Vorbeugung und Unterstützung der Zahngesundheit jeden Tag, damit Ihr Lächeln hell und selbstbewusst bleibt.',
         paragraph3: 'Dentissimo SPA Expert Linie',
-        paragraph3text: ' - Argentière-Gletscherwasser ist ein Schlüsselsymbol für Verbindung und Durchdachtheit für die Zahngesundheit. Es inspirierte Dentissimo Premium Oral Care zur Schaffung innovativer Produkte für die Gesundheit von Zähnen und Zahnfleisch.'
+        paragraph3text: ' - Argentière-Gletscherwasser ist ein Schlüsselsymbol für Verbindung und Durchdachtheit für die Zahngesundheit. Es inspirierte Dentissimo Premium Oral Care zur Schaffung innovativer Produkte für die Gesundheit von Zähnen und Zahnfleisch.',
+        storyTitle: 'Die Geschichte eines Lächelns',
+        storyText1: 'Die Produkte der Premiummarke Dentissimo für die Mundpflege wurden von Spezialisten der führenden Zahnklinik der Schweiz, Perfect Smile Swiss Dental Care, im medizinischen Zentrum Bad Ragaz Grand Resort entwickelt.',
+        storyText2: 'Dentissimo-Formeln basieren auf dem einzigartigen Regera-PRO-Komplex: REgeneration, REstauration, REmineralisierung. Von der Natur geschaffen, von der Wissenschaft entwickelt.',
+        doctorQuote: 'Dank unserer langjährigen Erfahrung wissen wir, dass jeder einzelne Fall in der Zahnmedizin einzigartig ist. Das Ziel des Projekts ist es, die Lebensqualität unserer Patienten zu verbessern, indem wir ihnen hochwertige Mundpflegeprodukte zur Verfügung stellen.'
       },
       common: {
         close: 'Schließen',
@@ -1125,7 +872,8 @@
         total: 'Total',
         checkout: 'Commander',
         remove: 'Supprimer',
-        quantity: 'Quantité'
+        quantity: 'Quantité',
+        addedToCart: 'Ajouté au panier'
       },
       checkout: {
         title: 'Commande',
@@ -1259,7 +1007,11 @@
         paragraph1: 'Au milieu des majestueuses Alpes, au cœur du massif du Mont Blanc, jaillit l\'eau unique du glacier d\'Argentière. Pendant des millénaires, son eau glacée s\'est frayé un chemin à travers les jungles de pierre de la montagne, s\'enrichissant de précieux minéraux et acquérant une pureté cristalline.',
         paragraph2: 'C\'est cette énergie stupéfiante qui est devenue la base de la formule des dentifrices premium Dentissimo. Notre mission est la prévention et le maintien de la santé dentaire chaque jour, pour que votre sourire reste lumineux et confiant.',
         paragraph3: 'Ligne Dentissimo SPA Expert',
-        paragraph3text: ' - L\'eau du glacier d\'Argentière est un symbole clé d\'union et de réflexion pour la santé dentaire. C\'est elle qui a inspiré Dentissimo Premium Oral Care à créer des produits innovants pour la santé des dents et des gencives.'
+        paragraph3text: ' - L\'eau du glacier d\'Argentière est un symbole clé d\'union et de réflexion pour la santé dentaire. C\'est elle qui a inspiré Dentissimo Premium Oral Care à créer des produits innovants pour la santé des dents et des gencives.',
+        storyTitle: 'L\'histoire d\'un sourire',
+        storyText1: 'Les produits de la marque premium Dentissimo pour les soins bucco-dentaires ont été développés par des spécialistes de la principale clinique dentaire de Suisse, Perfect Smile Swiss Dental Care, au centre médical Bad Ragaz Grand Resort.',
+        storyText2: 'Les formules Dentissimo sont basées sur le complexe unique Regera-PRO : REgénération, REstauration, REminéralisation. Créées par la Nature, développées par la Science.',
+        doctorQuote: 'Grâce à notre expérience acquise au fil des années, nous savons que chaque cas individuel en soins dentaires est unique. L\'objectif du projet est d\'améliorer la qualité de vie de nos patients en leur fournissant des produits de soins bucco-dentaires de haute qualité.'
       },
       common: {
         close: 'Fermer',
@@ -1393,7 +1145,8 @@
         total: 'Total',
         checkout: 'Finalizar compra',
         remove: 'Eliminar',
-        quantity: 'Cantidad'
+        quantity: 'Cantidad',
+        addedToCart: 'Añadido al carrito'
       },
       checkout: {
         title: 'Finalizar compra',
@@ -1527,7 +1280,11 @@
         paragraph1: 'Entre los majestuosos Alpes, en el corazón del macizo del Mont Blanc, nace el agua única del glaciar Argentière. Durante miles de años, su agua helada se ha abierto paso a través de las selvas de piedra de la montaña, enriqueciéndose con valiosos minerales y adquiriendo una pureza cristalina.',
         paragraph2: 'Es esta impresionante energía la que se convirtió en la base de la fórmula de las pastas de dientes premium Dentissimo. Nuestra misión es la prevención y el apoyo a la salud dental cada día, para que tu sonrisa permanezca brillante y segura.',
         paragraph3: 'Línea Dentissimo SPA Expert',
-        paragraph3text: ' - El agua del glaciar Argentière es un símbolo clave de unión y reflexión para la salud dental. Fue ella la que inspiró a Dentissimo Premium Oral Care a crear productos innovadores para la salud de dientes y encías.'
+        paragraph3text: ' - El agua del glaciar Argentière es un símbolo clave de unión y reflexión para la salud dental. Fue ella la que inspiró a Dentissimo Premium Oral Care a crear productos innovadores para la salud de dientes y encías.',
+        storyTitle: 'La historia de una sonrisa',
+        storyText1: 'Los productos de la marca premium Dentissimo para el cuidado bucal fueron desarrollados por especialistas de la principal clínica dental de Suiza, Perfect Smile Swiss Dental Care, en el centro médico Bad Ragaz Grand Resort.',
+        storyText2: 'Las fórmulas de Dentissimo se basan en el complejo único Regera-PRO: REgeneración, REstauración, REmineralización. Creados por la Naturaleza, desarrollados por la Ciencia.',
+        doctorQuote: 'Gracias a nuestra experiencia adquirida a lo largo de los años, sabemos que cada caso individual en el cuidado dental es único. El objetivo del proyecto es mejorar la calidad de vida de nuestros pacientes proporcionándoles productos de cuidado bucal de alta calidad.'
       },
       common: {
         close: 'Cerrar',
@@ -1661,7 +1418,8 @@
         total: 'Totale',
         checkout: 'Procedi al checkout',
         remove: 'Rimuovi',
-        quantity: 'Quantità'
+        quantity: 'Quantità',
+        addedToCart: 'Aggiunto al carrello'
       },
       checkout: {
         title: 'Checkout',
@@ -1795,7 +1553,11 @@
         paragraph1: 'Tra le maestose Alpi, nel cuore del massiccio del Monte Bianco, nasce l\'acqua unica del ghiacciaio Argentière. Per migliaia di anni, la sua acqua ghiacciata si è fatta strada attraverso le giungle di pietra della montagna, arricchendosi di preziosi minerali e acquisendo una purezza cristallina.',
         paragraph2: 'È questa straordinaria energia che è diventata la base della formula dei dentifrici premium Dentissimo. La nostra missione è la prevenzione e il supporto della salute dentale ogni giorno, affinché il tuo sorriso rimanga luminoso e sicuro.',
         paragraph3: 'Linea Dentissimo SPA Expert',
-        paragraph3text: ' - L\'acqua del ghiacciaio Argentière è un simbolo chiave di unione e riflessione per la salute dentale. È stata lei a ispirare Dentissimo Premium Oral Care a creare prodotti innovativi per la salute di denti e gengive.'
+        paragraph3text: ' - L\'acqua del ghiacciaio Argentière è un simbolo chiave di unione e riflessione per la salute dentale. È stata lei a ispirare Dentissimo Premium Oral Care a creare prodotti innovativi per la salute di denti e gengive.',
+        storyTitle: 'La storia di un sorriso',
+        storyText1: 'I prodotti del marchio premium Dentissimo per la cura orale sono stati sviluppati da specialisti della principale clinica dentale svizzera, Perfect Smile Swiss Dental Care, presso il centro medico Bad Ragaz Grand Resort.',
+        storyText2: 'Le formule Dentissimo si basano sull\'esclusivo complesso Regera-PRO: REgenerazione, REstaurazione, REmineralizzazione. Create dalla Natura, sviluppate dalla Scienza.',
+        doctorQuote: 'Grazie alla nostra esperienza maturata nel corso degli anni, sappiamo che ogni singolo caso nell\'odontoiatria è unico. L\'obiettivo del progetto è migliorare la qualità della vita dei nostri pazienti fornendo loro prodotti per la cura orale di alta qualità.'
       },
       common: {
         close: 'Chiudi',
@@ -1929,7 +1691,8 @@
         total: 'Suma',
         checkout: 'Do kasy',
         remove: 'Usuń',
-        quantity: 'Ilość'
+        quantity: 'Ilość',
+        addedToCart: 'Dodano do koszyka'
       },
       checkout: {
         title: 'Kasa',
@@ -2106,7 +1869,11 @@
         glacierTitle: 'Woda, która rodzi się w sercu Mont Blanc',
         glacierText1: 'Każdy produkt Dentissimo zawiera unikalną wodę lodowcową Argentiere, pozyskiwaną z wysokości ponad 2000 metrów. Ta woda, naturalnie filtrowana przez alpejskie skały przez tysiące lat, bogata jest w minerały i mikroelementy.',
         glacierText2: 'Nasze laboratoria w Szwajcarii starannie zachowują jej naturalną kompozycję, dodając tylko najczystsze składniki aktywne dla maksymalnej efektywności i bezpieczeństwa.',
-        glacierText3: 'Każda butelka pasty do zębów Dentissimo - to część lodowca, który stał się synonimem jakości i troski o Twoje zdrowie.'
+        glacierText3: 'Każda butelka pasty do zębów Dentissimo - to część lodowca, który stał się synonimem jakości i troski o Twoje zdrowie.',
+        storyTitle: 'Historia uśmiechu',
+        storyText1: 'Produkty marki premium Dentissimo do pielęgnacji jamy ustnej zostały opracowane przez specjalistów wiodącej kliniki stomatologicznej w Szwajcarii Perfect Smile Swiss Dental Care, w centrum medycznym Bad Ragaz Grand Resort.',
+        storyText2: 'Formuły Dentissimo opierają się na unikalnym kompleksie Regera-PRO: REgeneracja, REstauracja, REmineralizacja. Stworzone przez Naturę, opracowane przez Naukę.',
+        doctorQuote: 'Dzięki naszemu wieloletniemu doświadczeniu wiemy, że każdy indywidualny przypadek w stomatologii jest wyjątkowy. Celem projektu jest poprawa jakości życia naszych pacjentów poprzez dostarczanie im wysokiej jakości produktów do pielęgnacji jamy ustnej.'
       }
     }
   }

@@ -34,21 +34,24 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
   return (
     <AnimatePresence>
       {isOpen && (
-        <>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={onClose}
-            className="fixed inset-0 bg-black/50 z-50"
-          />
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md bg-white rounded-lg shadow-2xl z-50 p-8"
-          >
+        <motion.div
+          key="auth-overlay"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={onClose}
+          className="fixed inset-0 z-[60] overflow-y-auto bg-black/50"
+          style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0 }}
+        >
+          <div className="min-h-full flex items-center justify-center p-4" style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              transition={{ duration: 0.2 }}
+              onClick={(e: React.MouseEvent) => e.stopPropagation()}
+              className="relative w-full max-w-md bg-white rounded-lg shadow-2xl p-8"
+            >
             <button
               onClick={onClose}
               className="absolute right-4 top-4 text-stone-400 hover:text-stone-600"
@@ -141,8 +144,9 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
                 {t('auth.submit')}
               </button>
             </form>
-          </motion.div>
-        </>
+            </motion.div>
+          </div>
+        </motion.div>
       )}
     </AnimatePresence>
   );

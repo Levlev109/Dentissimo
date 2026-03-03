@@ -5,7 +5,6 @@
 const exchangeRates: Record<string, number> = {
   uk: 1,        // UAH - base currency
   en: 41,       // EUR: 1 EUR ≈ 41 UAH
-  ru: 41,       // EUR: 1 EUR ≈ 41 UAH (removed RUB)
   de: 41,       // EUR: 1 EUR ≈ 41 UAH
   fr: 41,       // EUR: 1 EUR ≈ 41 UAH
   es: 41,       // EUR: 1 EUR ≈ 41 UAH

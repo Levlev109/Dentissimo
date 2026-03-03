@@ -11,6 +11,8 @@ import { AboutSection } from "@/app/components/AboutSection";
 import { Footer } from "@/app/components/Footer";
 import { CheckoutPage } from "@/app/pages/CheckoutPage";
 import { AIChat } from "@/app/components/AIChat";
+import { ScrollToTop } from "@/app/components/ScrollToTop";
+import { ToastContainer } from "@/app/components/Toast";
 
 export default function App() {
   const HomePage = () => (
@@ -33,6 +35,8 @@ export default function App() {
         h1, h2, h3, h4, h5, h6, .font-serif { font-family: 'Playfair Display', serif; }
       `}</style>
       
+      <ScrollToTop />
+      <ToastContainer />
       <Navbar />
       <Routes>
         <Route path="/" element={<main><HomePage /></main>} />

@@ -62,8 +62,12 @@ class Database {
   }
 
   getUsers(): User[] {
-    const data = localStorage.getItem(this.USERS_KEY);
-    return data ? JSON.parse(data) : [];
+    try {
+      const data = localStorage.getItem(this.USERS_KEY);
+      return data ? JSON.parse(data) : [];
+    } catch {
+      return [];
+    }
   }
 
   findUserByEmail(email: string): User | undefined {
@@ -79,8 +83,12 @@ class Database {
   }
 
   getCurrentUser(): User | null {
-    const data = localStorage.getItem(this.CURRENT_USER_KEY);
-    return data ? JSON.parse(data) : null;
+    try {
+      const data = localStorage.getItem(this.CURRENT_USER_KEY);
+      return data ? JSON.parse(data) : null;
+    } catch {
+      return null;
+    }
   }
 
   logout(): void {
@@ -101,8 +109,12 @@ class Database {
   }
 
   getOrders(): Order[] {
-    const data = localStorage.getItem(this.ORDERS_KEY);
-    return data ? JSON.parse(data) : [];
+    try {
+      const data = localStorage.getItem(this.ORDERS_KEY);
+      return data ? JSON.parse(data) : [];
+    } catch {
+      return [];
+    }
   }
 
   getUserOrders(userId: string): Order[] {
@@ -111,6 +123,9 @@ class Database {
 
   // Utility
   private generateId(): string {
+    if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+      return crypto.randomUUID();
+    }
     return `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
   }
 }
