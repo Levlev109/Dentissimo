@@ -89,7 +89,7 @@ export const CheckoutPage = () => {
     if (!formData.email.trim()) {
       newErrors.email = t('checkout.required');
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = t('checkout.invalidPhone'); // reuse "invalid format" msg
+      newErrors.email = t('checkout.invalidEmail');
     }
     if (!formData.phone.trim())   newErrors.phone   = t('checkout.required');
     if (!formData.country)        newErrors.country  = t('checkout.selectCountry');
@@ -265,7 +265,7 @@ export const CheckoutPage = () => {
               {/* Email */}
               <div>
                 <label className="block text-sm font-medium text-stone-700 mb-2">
-                  Email *
+                  {t('auth.email')} *
                 </label>
                 <input
                   type="email"

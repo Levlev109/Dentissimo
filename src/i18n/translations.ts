@@ -87,6 +87,7 @@
         free: 'Безкоштовно',
         required: 'Обовязкове поле',
         invalidPhone: 'Невірний формат',
+        invalidEmail: 'Невірний формат email',
         selectCountry: 'Оберіть країну',
         orderSuccess: 'Ваше замовлення успішно оформлено! Ми зв\'яжемося з вами найближчим часом.'
       },
@@ -353,6 +354,7 @@
         free: 'Free',
         required: 'Required field',
         invalidPhone: 'Invalid phone format',
+        invalidEmail: 'Invalid email format',
         selectCountry: 'Select country',
         orderSuccess: 'Your order has been successfully placed! We will contact you shortly.'
       },
@@ -619,6 +621,7 @@
         free: 'Kostenlos',
         required: 'Pflichtfeld',
         invalidPhone: 'Ungültiges Format',
+        invalidEmail: 'Ungültiges E-Mail-Format',
         selectCountry: 'Land auswählen',
         orderSuccess: 'Ihre Bestellung wurde erfolgreich aufgegeben! Wir werden uns in Kürze bei Ihnen melden.'
       },
@@ -892,6 +895,7 @@
         free: 'Gratuit',
         required: 'Champ obligatoire',
         invalidPhone: 'Format invalide',
+        invalidEmail: 'Format d\'email invalide',
         selectCountry: 'Sélectionner un pays',
         orderSuccess: 'Votre commande a été passée avec succès ! Nous vous contacterons sous peu.'
       },
@@ -1165,6 +1169,7 @@
         free: 'Gratis',
         required: 'Campo obligatorio',
         invalidPhone: 'Formato inválido',
+        invalidEmail: 'Formato de email inválido',
         selectCountry: 'Seleccionar país',
         orderSuccess: '¡Tu pedido se ha realizado con éxito! Nos pondremos en contacto contigo pronto.'
       },
@@ -1438,6 +1443,7 @@
         free: 'Gratuita',
         required: 'Campo obbligatorio',
         invalidPhone: 'Formato non valido',
+        invalidEmail: 'Formato email non valido',
         selectCountry: 'Seleziona paese',
         orderSuccess: 'Il tuo ordine è stato effettuato con successo! Ti contatteremo a breve.'
       },
@@ -1711,6 +1717,7 @@
         free: 'Darmowa',
         required: 'Pole wymagane',
         invalidPhone: 'Nieprawidłowy format',
+        invalidEmail: 'Nieprawidłowy format email',
         selectCountry: 'Wybierz kraj',
         orderSuccess: 'Twoje zamówienie zostało pomyślnie złożone! Wkrótce się z Tobą skontaktujemy.'
       },
