@@ -1,8 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
-import { Menu, X, Globe, Search, User } from 'lucide-react';
+import { Menu, X, Globe, Search, User, Moon, Sun } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../contexts/AuthContext';
+import { useTheme } from '../../contexts/ThemeContext';
 import { CartDrawer } from './CartDrawer';
 import { AuthModal } from './AuthModal';
 
@@ -12,6 +13,7 @@ export const Navbar = () => {
   const [showLangMenu, setShowLangMenu] = useState(false);
   const { t, i18n } = useTranslation();
   const { user, logout } = useAuth();
+  const { isDark, toggle: toggleTheme } = useTheme();
   const langRef = useRef<HTMLDivElement>(null);
 
   // Close language menu on outside click
@@ -52,14 +54,14 @@ export const Navbar = () => {
 
   return (
     <>
-    <nav className="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-stone-100 transition-all duration-300">
+    <nav className="fixed w-full z-50 bg-white/90 dark:bg-stone-950/90 backdrop-blur-md border-b border-stone-100 dark:border-stone-800 transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Mobile Menu Button */}
           <div className="flex items-center md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-stone-800 hover:text-stone-600 focus:outline-none"
+              className="text-stone-800 dark:text-stone-200 hover:text-stone-600 dark:hover:text-stone-400 focus:outline-none"
             >
               <Menu size={24} />
             </button>
@@ -67,7 +69,7 @@ export const Navbar = () => {
 
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center justify-center md:justify-start w-full md:w-auto absolute md:relative pointer-events-none md:pointer-events-auto">
-            <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="font-serif text-2xl font-bold tracking-wider text-stone-900 pointer-events-auto">
+            <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="font-serif text-2xl font-bold tracking-wider text-stone-900 dark:text-white pointer-events-auto">
               DENTISSIMO
             </a>
           </div>
@@ -78,7 +80,7 @@ export const Navbar = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors tracking-wide uppercase"
+                className="text-sm font-medium text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white transition-colors tracking-wide uppercase"
               >
                 {link.name}
               </a>
@@ -87,28 +89,37 @@ export const Navbar = () => {
 
           {/* Right Icons */}
           <div className="flex items-center space-x-4">
-            <a href="#products" className="hidden md:block text-stone-600 hover:text-stone-900 transition-colors">
+            <a href="#products" className="hidden md:block text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white transition-colors">
               <Search size={20} />
             </a>
+            
+            {/* Theme Toggle */}
+            <button
+              onClick={toggleTheme}
+              className="text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white transition-colors"
+              aria-label="Toggle dark mode"
+            >
+              {isDark ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
             
             {/* Language Selector */}
             <div className="relative" ref={langRef}>
               <button
                 onClick={() => setShowLangMenu(!showLangMenu)}
-                className="flex items-center space-x-1 text-stone-600 hover:text-stone-900 transition-colors"
+                className="flex items-center space-x-1 text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white transition-colors"
               >
                 <Globe size={18} />
                 <span className="text-xs font-medium">{currentLang.flag}</span>
               </button>
               
               {showLangMenu && (
-                <div className="absolute right-0 top-full mt-2 bg-white rounded-lg shadow-lg border border-stone-200 py-2 w-48 z-50">
+                <div className="absolute right-0 top-full mt-2 bg-white dark:bg-stone-900 rounded-lg shadow-lg border border-stone-200 dark:border-stone-700 py-2 w-48 z-50">
                   {languages.map(lang => (
                     <button
                       key={lang.code}
                       onClick={() => changeLang(lang.code)}
-                      className={`w-full px-4 py-2 text-left hover:bg-stone-50 flex items-center gap-2 ${
-                        i18n.language === lang.code ? 'bg-stone-50 font-medium' : ''
+                      className={`w-full px-4 py-2 text-left hover:bg-stone-50 dark:hover:bg-stone-800 flex items-center gap-2 ${
+                        i18n.language === lang.code ? 'bg-stone-50 dark:bg-stone-800 font-medium' : ''
                       }`}
                     >
                       <span>{lang.flag}</span>
@@ -135,7 +146,7 @@ export const Navbar = () => {
             ) : (
               <button
                 onClick={() => setShowAuthModal(true)}
-                className="text-stone-600 hover:text-stone-900 transition-colors"
+                className="text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white transition-colors"
               >
                 <User size={20} />
               </button>
@@ -154,7 +165,7 @@ export const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-t border-stone-100 overflow-hidden"
+            className="md:hidden bg-white dark:bg-stone-950 border-t border-stone-100 dark:border-stone-800 overflow-hidden"
           >
             <div className="px-4 pt-2 pb-6 space-y-1">
               {navLinks.map((link) => (
@@ -162,7 +173,7 @@ export const Navbar = () => {
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="block px-3 py-4 text-base font-medium text-stone-800 hover:bg-stone-50 border-b border-stone-50"
+                  className="block px-3 py-4 text-base font-medium text-stone-800 dark:text-stone-200 hover:bg-stone-50 dark:hover:bg-stone-800 border-b border-stone-50 dark:border-stone-800"
                 >
                   {link.name}
                 </a>

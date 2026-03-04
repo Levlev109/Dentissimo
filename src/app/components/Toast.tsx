@@ -46,7 +46,7 @@ export const ToastContainer = () => {
             animate={{ opacity: 1, x: 0, scale: 1 }}
             exit={{ opacity: 0, x: 80, scale: 0.95 }}
             transition={{ type: 'spring', duration: 0.4 }}
-            className="pointer-events-auto bg-white rounded-xl shadow-2xl border border-stone-100 p-4 flex items-center gap-3 min-w-[280px] max-w-[360px]"
+            className="pointer-events-auto bg-white dark:bg-stone-900 rounded-xl shadow-2xl border border-stone-100 dark:border-stone-700 p-4 flex items-center gap-3 min-w-[280px] max-w-[360px]"
           >
             {toast.productImage ? (
               <img src={toast.productImage} alt="" className="w-12 h-12 object-contain bg-stone-50 rounded-lg p-1" />

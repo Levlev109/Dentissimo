@@ -20,7 +20,7 @@ export const ProductCard = ({ product }: ProductProps) => {
     e.preventDefault();
     e.stopPropagation();
     addToCart(product);
-    showCartToast(t('cart.addedToCart') || 'Added to cart', product.name, product.image);
+    showCartToast(t('cart.addedToCart'), product.name, product.image);
   };
 
   const handleCardClick = () => {
@@ -30,7 +30,7 @@ export const ProductCard = ({ product }: ProductProps) => {
   return (
     <>
       <div className="group relative cursor-pointer" onClick={handleCardClick}>
-        <div className="relative aspect-[3/4] bg-gradient-to-b from-stone-50 to-stone-100 overflow-hidden mb-4 rounded-lg">
+        <div className="relative aspect-[3/4] bg-gradient-to-b from-stone-50 to-stone-100 dark:from-stone-800 dark:to-stone-900 overflow-hidden mb-4 rounded-lg">
           {product.isNew && (
             <span className="absolute top-2 left-2 bg-white px-2 py-1 text-[10px] uppercase tracking-widest font-bold text-stone-900 z-10">
               {t('products.new')}
@@ -54,14 +54,14 @@ export const ProductCard = ({ product }: ProductProps) => {
         </div>
         
         <div className="text-center">
-          <p className="text-xs text-stone-500 uppercase tracking-wide mb-1">{product.category}</p>
-          <h3 className="font-serif text-lg text-stone-900 mb-1 group-hover:text-[#D4AF37] transition-colors">
+          <p className="text-xs text-stone-500 dark:text-stone-400 uppercase tracking-wide mb-1">{product.category}</p>
+          <h3 className="font-serif text-lg text-stone-900 dark:text-white mb-1 group-hover:text-[#D4AF37] transition-colors">
             {product.name}
           </h3>
           {product.description && (
-            <p className="text-xs text-stone-500 mb-2 line-clamp-2">{product.description}</p>
+            <p className="text-xs text-stone-500 dark:text-stone-400 mb-2 line-clamp-2">{product.description}</p>
           )}
-          <p className="text-stone-600 font-medium">{t('products.currency')}{product.price.toFixed(2)}</p>
+          <p className="text-stone-600 dark:text-stone-300 font-medium">{t('products.currency')}{product.price.toFixed(2)}</p>
         </div>
       </div>
 

@@ -43,12 +43,12 @@ export const CartDrawer = () => {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'tween', duration: 0.3 }}
-              className="fixed right-0 top-0 bottom-0 w-full md:w-[450px] bg-white shadow-2xl z-[60] flex flex-col"
+              className="fixed right-0 top-0 bottom-0 w-full md:w-[450px] bg-white dark:bg-stone-900 shadow-2xl z-[60] flex flex-col"
               style={{ height: '100dvh' }}
             >
               {/* Header */}
               <div className="flex items-center justify-between px-5 py-4 border-b border-stone-200 flex-shrink-0">
-                <h2 className="text-xl font-serif font-bold text-stone-900">
+                <h2 className="text-xl font-serif font-bold text-stone-900 dark:text-white">
                   {t('cart.title')} ({itemCount})
                 </h2>
                 <button

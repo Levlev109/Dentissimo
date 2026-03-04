@@ -46,14 +46,14 @@ export const FeaturedProducts = () => {
   const { t, i18n } = useTranslation();
 
   return (
-    <section id="limited" className="py-24 bg-[#F9F8F6]">
+    <section id="limited" className="py-24 bg-[#F9F8F6] dark:bg-stone-900 transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-end mb-12">
           <div>
-            <h2 className="font-serif text-3xl md:text-4xl text-stone-900 mb-2">{t('featuredProducts.title')}</h2>
-            <p className="text-stone-500">{t('featuredProducts.subtitle')}</p>
+            <h2 className="font-serif text-3xl md:text-4xl text-stone-900 dark:text-white mb-2">{t('featuredProducts.title')}</h2>
+            <p className="text-stone-500 dark:text-stone-400">{t('featuredProducts.subtitle')}</p>
           </div>
-          <a href="#products" className="hidden md:inline-block text-stone-900 font-medium hover:text-[#D4AF37] transition-colors pb-1 border-b border-stone-300 hover:border-[#D4AF37]">
+          <a href="#products" className="hidden md:inline-block text-stone-900 dark:text-white font-medium hover:text-[#D4AF37] transition-colors pb-1 border-b border-stone-300 dark:border-stone-600 hover:border-[#D4AF37]">
             {t('featuredProducts.viewAll')}
           </a>
         </div>
@@ -70,7 +70,7 @@ export const FeaturedProducts = () => {
         </div>
         
         <div className="mt-12 text-center md:hidden">
-          <a href="#products" className="inline-block px-6 py-3 border border-stone-900 text-stone-900 font-medium">
+          <a href="#products" className="inline-block px-6 py-3 border border-stone-900 dark:border-stone-300 text-stone-900 dark:text-white font-medium">
             {t('featuredProducts.viewAll')}
           </a>
         </div>

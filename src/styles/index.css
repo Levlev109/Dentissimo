@@ -1,3 +1,14 @@
 @import './fonts.css';
 @import './tailwind.css';
 @import './theme.css';
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Offset for fixed navbar (h-20 = 5rem = 80px) */
+section[id],
+footer[id] {
+  scroll-margin-top: 5rem;
+}

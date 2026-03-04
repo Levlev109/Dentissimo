@@ -13,6 +13,7 @@ import { CheckoutPage } from "@/app/pages/CheckoutPage";
 import { AIChat } from "@/app/components/AIChat";
 import { ScrollToTop } from "@/app/components/ScrollToTop";
 import { ToastContainer } from "@/app/components/Toast";
+import { DecorativeEffects } from "@/app/components/DecorativeEffects";
 
 export default function App() {
   const HomePage = () => (
@@ -29,7 +30,7 @@ export default function App() {
   );
 
   return (
-    <div className="min-h-screen bg-white text-stone-900 selection:bg-[#D4AF37] selection:text-white">
+    <div className="min-h-screen bg-white dark:bg-stone-950 text-stone-900 dark:text-stone-100 selection:bg-[#D4AF37] selection:text-white transition-colors duration-500">
       <style>{`
         body { font-family: 'Lato', sans-serif; }
         h1, h2, h3, h4, h5, h6, .font-serif { font-family: 'Playfair Display', serif; }
@@ -37,6 +38,7 @@ export default function App() {
       
       <ScrollToTop />
       <ToastContainer />
+      <DecorativeEffects />
       <Navbar />
       <Routes>
         <Route path="/" element={<main><HomePage /></main>} />
