@@ -12,9 +12,9 @@ interface ProductProps {
 }
 
 const badgeConfig = {
-  bestseller: { icon: TrendingUp, labelKey: 'badges.bestseller', color: 'bg-gradient-to-r from-amber-500 to-yellow-500' },
+  bestseller: { icon: TrendingUp, labelKey: 'badges.bestseller', color: 'bg-gradient-to-r from-[#D4AF37] to-[#B8960C]' },
   recommended: { icon: Star, labelKey: 'badges.recommended', color: 'bg-gradient-to-r from-blue-500 to-indigo-500' },
-  topSales: { icon: Flame, labelKey: 'badges.topSales', color: 'bg-gradient-to-r from-red-500 to-orange-500' },
+  topSales: { icon: Flame, labelKey: 'badges.topSales', color: 'bg-gradient-to-r from-red-500 to-rose-500' },
   eco: { icon: Leaf, labelKey: 'badges.eco', color: 'bg-gradient-to-r from-green-500 to-emerald-500' },
 };
 
@@ -42,7 +42,7 @@ export const ProductCard = ({ product }: ProductProps) => {
           <div className="h-[3px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
 
           {/* Image area with enhanced gradient */}
-          <div className="relative aspect-[3/4] bg-gradient-to-br from-white via-amber-50/30 to-stone-50/20 dark:from-amber-950/20 dark:via-stone-900 dark:to-stone-950 overflow-hidden group-hover:from-amber-50/40 group-hover:to-amber-50/30 dark:group-hover:from-amber-900/30 dark:group-hover:to-stone-900 transition-colors duration-500">
+          <div className="relative aspect-[3/4] bg-gradient-to-br from-white via-stone-50/20 to-white dark:from-stone-950/20 dark:via-stone-900 dark:to-stone-950 overflow-hidden group-hover:from-stone-50/30 group-hover:to-stone-50/20 dark:group-hover:from-stone-900/40 dark:group-hover:to-stone-900 transition-colors duration-500">
             {/* Badges */}
             <div className="absolute top-3 left-3 flex flex-col gap-2 z-10">
               {product.isNew && (
@@ -79,7 +79,7 @@ export const ProductCard = ({ product }: ProductProps) => {
           </div>
 
           {/* Product info */}
-          <div className="p-6 text-center border-t border-amber-100/40 dark:border-amber-900/20 bg-gradient-to-b from-white via-stone-50/20 to-white dark:from-stone-900 dark:via-stone-900/50 dark:to-stone-900">
+          <div className="p-6 text-center border-t border-stone-200/30 dark:border-stone-800/20 bg-white dark:from-stone-900 dark:via-stone-900/50 dark:to-stone-900">
             <p className="text-[11px] text-[#D4AF37] dark:text-[#D4AF37] uppercase tracking-widest mb-2 font-bold">{product.category}</p>
             <h3 className="font-serif text-lg text-stone-900 dark:text-white mb-2 group-hover:text-[#D4AF37] transition-colors duration-300">
               {product.name}

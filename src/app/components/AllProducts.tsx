@@ -266,7 +266,7 @@ export const AllProducts = () => {
   });
 
   return (
-    <section id="products" className="py-24 bg-gradient-to-b from-stone-50/30 via-white to-amber-50/20 dark:from-stone-950 dark:via-amber-950/10 dark:to-stone-950 transition-colors duration-500">
+    <section id="products" className="py-24 bg-stone-50/20 dark:from-stone-950 dark:via-stone-950/80 dark:to-stone-950 transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <p className="text-[#D4AF37] uppercase tracking-[0.3em] text-xs font-semibold mb-3">{t('allProductsSection.subtitle')}</p>

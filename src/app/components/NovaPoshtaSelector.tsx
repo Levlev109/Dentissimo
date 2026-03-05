@@ -336,7 +336,7 @@ export const NovaPoshtaSelector = ({ onSelect, cartTotal }: NovaPoshtaSelectorPr
 
       {/* Delivery Cost Summary */}
       {deliveryCost && (
-        <div className="bg-gradient-to-r from-[#D4AF37]/10 to-amber-50 dark:from-[#D4AF37]/10 dark:to-stone-800 border-l-4 border-[#D4AF37] rounded-lg p-4">
+        <div className="bg-gradient-to-r from-[#D4AF37]/10 to-stone-50 dark:from-[#D4AF37]/10 dark:to-stone-800 border-l-4 border-[#D4AF37] rounded-lg p-4">
           <div className="flex items-start gap-3">
             <TruckIcon className="text-[#D4AF37] flex-shrink-0" size={20} />
             <div className="flex-1">

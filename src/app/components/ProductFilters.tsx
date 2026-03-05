@@ -63,7 +63,7 @@ export const ProductFilters = ({
   const hasActiveFilters = selectedCareMethods.length > 0 || selectedIngredients.length > 0;
 
   return (
-    <div className="mb-8 bg-gradient-to-br from-white via-stone-50/30 to-white dark:from-stone-900 dark:via-amber-950/15 dark:to-stone-900 rounded-2xl border border-stone-200/50 dark:border-amber-900/30 p-6 shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-sm">
+    <div className="mb-8 bg-white dark:from-stone-900 dark:via-stone-900/80 dark:to-stone-900 rounded-2xl border border-stone-200/60 dark:border-stone-800/40 p-6 shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-sm">
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-xl font-bold text-stone-900 dark:text-white flex items-center gap-2">
           <span className="w-1 h-6 bg-gradient-to-b from-[#D4AF37] to-[#B8960C] rounded-full"></span>
@@ -72,7 +72,7 @@ export const ProductFilters = ({
         {hasActiveFilters && (
           <button
             onClick={clearAll}
-            className="text-sm text-stone-500 hover:text-white dark:text-stone-400 dark:hover:text-white transition-all duration-300 flex items-center gap-1.5 bg-stone-100/80 dark:bg-amber-950/30 hover:bg-gradient-to-r hover:from-[#D4AF37] hover:to-[#B8960C] px-3 py-1.5 rounded-full font-medium shadow-sm hover:shadow-md"
+            className="text-sm text-stone-500 hover:text-white dark:text-stone-400 dark:hover:text-white transition-all duration-300 flex items-center gap-1.5 bg-stone-100 dark:bg-stone-800/50 hover:bg-gradient-to-r hover:from-[#D4AF37] hover:to-[#B8960C] px-3 py-1.5 rounded-full font-medium shadow-sm hover:shadow-md"
           >
             <X size={16} />
             {t('filters.clearAll')}
@@ -85,7 +85,7 @@ export const ProductFilters = ({
         <div>
           <button
             onClick={() => setCareMethodsOpen(!careMethodsOpen)}
-            className="w-full flex items-center justify-between p-4 rounded-xl bg-gradient-to-r from-white via-stone-50/40 to-amber-50/30 dark:from-amber-950/20 dark:to-stone-900 hover:from-stone-50/60 hover:to-amber-50/50 dark:hover:from-amber-900/30 dark:hover:to-stone-900 transition-all duration-300 shadow-sm hover:shadow-md border border-stone-200/40 dark:border-amber-900/25"
+            className="w-full flex items-center justify-between p-4 rounded-xl bg-stone-50/50 dark:from-stone-950/30 dark:to-stone-900 hover:bg-stone-100/60 dark:hover:from-stone-900/50 dark:hover:to-stone-900 transition-all duration-300 shadow-sm hover:shadow-md border border-stone-200/50 dark:border-stone-800/30"
           >
             <span className="font-semibold text-stone-900 dark:text-white flex items-center gap-2.5">
               <Sparkles size={20} className="text-[#D4AF37] drop-shadow-sm" />
@@ -138,7 +138,7 @@ export const ProductFilters = ({
         <div>
           <button
             onClick={() => setIngredientsOpen(!ingredientsOpen)}
-            className="w-full flex items-center justify-between p-4 rounded-xl bg-gradient-to-r from-white via-stone-50/40 to-amber-50/30 dark:from-amber-950/20 dark:to-stone-900 hover:from-stone-50/60 hover:to-amber-50/50 dark:hover:from-amber-900/30 dark:hover:to-stone-900 transition-all duration-300 shadow-sm hover:shadow-md border border-stone-200/40 dark:border-amber-900/25"
+            className="w-full flex items-center justify-between p-4 rounded-xl bg-stone-50/50 dark:from-stone-950/30 dark:to-stone-900 hover:bg-stone-100/60 dark:hover:from-stone-900/50 dark:hover:to-stone-900 transition-all duration-300 shadow-sm hover:shadow-md border border-stone-200/50 dark:border-stone-800/30"
           >
             <span className="font-semibold text-stone-900 dark:text-white flex items-center gap-2.5">
               <Leaf size={20} className="text-[#D4AF37] drop-shadow-sm" />

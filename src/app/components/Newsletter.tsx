@@ -34,7 +34,7 @@ export const Newsletter = () => {
   };
 
   return (
-    <div className="bg-gradient-to-r from-[#D4AF37]/10 via-amber-50/30 to-white dark:from-amber-950/15 dark:via-stone-850 dark:to-stone-900 py-12 border-t border-stone-100/40 dark:border-amber-900/20">
+    <div className="bg-stone-50/40 dark:from-stone-950/20 dark:via-stone-850 dark:to-stone-900 py-12 border-t border-stone-200/40 dark:border-stone-800/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mx-auto text-center">
           <div className="inline-block p-3 bg-[#D4AF37]/10 dark:bg-[#D4AF37]/20 rounded-full mb-4">

@@ -12,9 +12,9 @@ export const CategorySection = () => {
       descriptionKey: 'categories.limitedEditionDesc',
       image: '/images/DENTISSIMO_box_Gold_Italy.png',
       link: '#products',
-      gradient: 'from-amber-950 via-yellow-900/80 to-stone-950',
-      gradientLight: 'from-amber-100 via-yellow-50 to-amber-200',
-      accent: 'bg-gradient-to-r from-amber-400 to-yellow-500',
+      gradient: 'from-stone-950 via-stone-900/80 to-stone-950',
+      gradientLight: 'from-stone-100 via-stone-50 to-stone-200',
+      accent: 'bg-gradient-to-r from-stone-400 to-stone-500',
     },
     {
       id: 2,
@@ -49,7 +49,7 @@ export const CategorySection = () => {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-white via-stone-50/30 to-white dark:from-stone-950 dark:via-amber-950/10 dark:to-stone-950 transition-colors duration-500">
+    <section className="py-24 bg-white dark:from-stone-950 dark:via-stone-950/70 dark:to-stone-950 transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
           <motion.div
@@ -81,7 +81,7 @@ export const CategorySection = () => {
                 alt={t(cat.titleKey)}
                 className="w-full h-full object-contain p-8 transition-all duration-700 group-hover:scale-110 group-hover:rotate-2 filter group-hover:drop-shadow-2xl"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-amber-950/75 via-stone-900/25 to-transparent group-hover:from-amber-950/85 transition-all duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-stone-950/80 via-stone-900/30 to-transparent group-hover:from-stone-950/90 transition-all duration-500"></div>
               
               <div className="absolute bottom-0 left-0 w-full p-6 text-white transform transition-all duration-500">
                 <h3 className="font-serif text-xl md:text-2xl mb-2 drop-shadow-lg group-hover:text-[#D4AF37] transition-colors">{t(cat.titleKey)}</h3>

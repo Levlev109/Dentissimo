@@ -28,7 +28,7 @@ export const TrustBadges = () => {
   ];
 
   return (
-    <section className="py-8 bg-gradient-to-b from-stone-50/40 to-white dark:from-stone-950 dark:to-amber-950/10 border-b border-stone-100/40 dark:border-amber-900/20 transition-colors duration-500">
+    <section className="py-8 bg-stone-50/30 dark:from-stone-950 dark:to-stone-950/80 border-b border-stone-200/40 dark:border-stone-800/20 transition-colors duration-500">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {badges.map((badge, index) => (

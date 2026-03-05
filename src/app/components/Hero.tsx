@@ -18,11 +18,11 @@ export const Hero = () => {
         >
           <source src="/gorge-water.mp4" type="video/mp4" />
         </video>
-        {/* Enhanced gradient overlays */}
-        <div className="absolute inset-0 bg-gradient-to-r from-amber-950/85 via-stone-900/70 to-transparent"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-amber-900/50 via-transparent to-stone-950/70"></div>
-        {/* Subtle gold glow effect */}
-        <div className="absolute inset-0 bg-gradient-to-tr from-[#D4AF37]/15 via-amber-800/10 to-transparent"></div>
+        {/* Neutral gradient overlays */}
+        <div className="absolute inset-0 bg-gradient-to-r from-stone-950/90 via-stone-900/75 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-stone-900/60 via-transparent to-stone-950/80"></div>
+        {/* Subtle gold accent */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-[#D4AF37]/8 via-transparent to-transparent"></div>
         {/* Bottom fade into next section */}
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#F9F8F6] dark:from-stone-950 to-transparent transition-colors duration-500"></div>
       </div>
@@ -58,7 +58,7 @@ export const Hero = () => {
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
             className="flex flex-col sm:flex-row gap-4 mt-8"
           >
-            <a href="#products" className="px-8 py-4 bg-gradient-to-r from-white to-amber-50 text-stone-900 font-semibold tracking-wide hover:from-[#D4AF37] hover:to-[#B8960C] hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group rounded-xl shadow-xl hover:shadow-2xl hover:shadow-[#D4AF37]/20 hover:scale-105 transform">
+            <a href="#products" className="px-8 py-4 bg-white text-stone-900 font-semibold tracking-wide hover:from-[#D4AF37] hover:to-[#B8960C] hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group rounded-xl shadow-xl hover:shadow-2xl hover:shadow-[#D4AF37]/20 hover:scale-105 transform hover:bg-gradient-to-r">
               {t('hero.buyNow')}
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </a>

@@ -81,7 +81,7 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                     {t('products.new')}
                   </span>
                 )}
-                <div className="aspect-[3/4] bg-gradient-to-b from-white via-amber-50/20 to-stone-50/10 dark:from-amber-950/20 dark:via-stone-900 dark:to-stone-950 rounded-xl overflow-hidden">
+                <div className="aspect-[3/4] bg-gradient-to-b from-white via-stone-50/10 to-white dark:from-stone-950/20 dark:via-stone-900 dark:to-stone-950 rounded-xl overflow-hidden">
                   <img
                     src={product.image}
                     alt={product.name}
