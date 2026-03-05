@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { db, Order, ProductOverride, CustomProduct } from '../../services/database';
+import { orderService } from '../../services/orderService';
 import { allProducts as baseProducts } from '../../data/allProducts';
 import {
   LayoutDashboard, ShoppingBag, Package, Users, LogOut, Lock,
@@ -150,10 +151,13 @@ export const AdminPage = () => {
 const DashboardTab = () => {
   const [orders, setOrders] = useState<Order[]>([]);
   const [customers, setCustomers] = useState(db.getUsers());
+  const [loading, setLoading] = useState(true);
 
-  const refresh = () => {
-    setOrders(db.getOrders().sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()));
+  const refresh = async () => {
+    const data = await orderService.getOrders();
+    setOrders(data);
     setCustomers(db.getUsers());
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -172,7 +176,7 @@ const DashboardTab = () => {
       <div className="flex items-center justify-between">
         <h2 className="text-xl font-semibold text-stone-900 dark:text-white">Огляд</h2>
         <button onClick={refresh} className="flex items-center gap-1.5 text-sm text-stone-500 hover:text-[#D4AF37] transition-colors">
-          <RefreshCw size={14} /> Оновити
+          <RefreshCw size={14} className={loading ? 'animate-spin' : ''} /> Оновити
         </button>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -214,8 +218,14 @@ const OrdersTab = () => {
   const [orders, setOrders] = useState<Order[]>([]);
   const [filter, setFilter] = useState<'all' | Order['status']>('all');
   const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
 
-  const refresh = () => setOrders(db.getOrders().sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()));
+  const refresh = async () => {
+    setLoading(true);
+    const data = await orderService.getOrders();
+    setOrders(data);
+    setLoading(false);
+  };
 
   useEffect(() => {
     refresh();
@@ -225,13 +235,13 @@ const OrdersTab = () => {
     return () => { window.removeEventListener('focus', onFocus); clearInterval(interval); };
   }, []);
 
-  const setStatus = (id: string, status: Order['status']) => {
-    db.updateOrderStatus(id, status);
+  const setStatus = async (id: string, status: Order['status']) => {
+    await orderService.updateStatus(id, status);
     refresh();
   };
 
-  const deleteOrder = (id: string) => {
-    if (confirm('Видалити замовлення?')) { db.deleteOrder(id); refresh(); }
+  const deleteOrder = async (id: string) => {
+    if (confirm('Видалити замовлення?')) { await orderService.deleteOrder(id); refresh(); }
   };
 
   const shown = filter === 'all' ? orders : orders.filter(o => o.status === filter);
@@ -252,7 +262,7 @@ const OrdersTab = () => {
         <div className="flex items-center gap-3">
           <span className="text-sm text-stone-400">{shown.length} записів</span>
           <button onClick={refresh} className="flex items-center gap-1.5 text-sm text-stone-500 hover:text-[#D4AF37] transition-colors">
-            <RefreshCw size={14} /> Оновити
+            <RefreshCw size={14} className={loading ? 'animate-spin' : ''} /> Оновити
           </button>
         </div>
       </div>
@@ -348,7 +358,11 @@ const OrdersTab = () => {
         ))}
         {shown.length === 0 && (
           <div className="text-center py-16 text-stone-400 text-sm bg-white dark:bg-stone-900 rounded-xl border border-stone-200 dark:border-stone-800">
-            Замовлень не знайдено
+            {loading ? (
+              <div className="flex items-center justify-center gap-2">
+                <RefreshCw size={16} className="animate-spin" /> Завантаження…
+              </div>
+            ) : 'Замовлень не знайдено'}
           </div>
         )}
       </div>

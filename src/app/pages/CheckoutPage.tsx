@@ -4,6 +4,7 @@ import { useCart } from '../../contexts/CartContext';
 import { useAuth } from '../../contexts/AuthContext';
 import { useTranslation } from 'react-i18next';
 import { db } from '../../services/database';
+import { orderService } from '../../services/orderService';
 import { useNavigate } from 'react-router-dom';
 import { CheckCircle, Loader2, ArrowLeft, ShoppingBag } from 'lucide-react';
 import { NovaPoshtaSelector } from '../components/NovaPoshtaSelector';
@@ -125,8 +126,8 @@ export const CheckoutPage = () => {
         address:   sanitize(formData.address, 300),
       };
 
-      // Save order to local DB (guest userId = 'guest')
-      db.createOrder({
+      // Save order to Supabase (+ localStorage fallback)
+      await orderService.createOrder({
         userId: user?.id ?? 'guest',
         items,
         total,
