@@ -1,30 +1,35 @@
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { useEffect, useRef } from 'react';
 
 export const Hero = () => {
   const { t } = useTranslation();
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (!videoRef.current) return;
+    const isMobile = window.innerWidth < 768;
+    videoRef.current.src = isMobile ? '/gorge-water-mobile.mp4' : '/gorge-water.mp4';
+    videoRef.current.load();
+  }, []);
+
   return (
     <section className="relative w-full min-h-screen flex items-center overflow-hidden pt-16 md:pt-20">
-      {/* Background Video - hidden on mobile for performance */}
       <div className="absolute inset-0 z-0">
-        {/* Mobile: static gradient background */}
-        <div className="block md:hidden w-full h-full bg-gradient-to-br from-stone-950 via-stone-900 to-stone-800"></div>
-        {/* Desktop: video */}
         <video
+          ref={videoRef}
           autoPlay
           muted
           loop
           playsInline
           preload="auto"
-          className="hidden md:block w-full h-full object-cover"
+          className="w-full h-full object-cover"
           poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3Crect fill='%231c1917' width='1' height='1'/%3E%3C/svg%3E"
-        >
-          <source src="/gorge-water.mp4" type="video/mp4" />
-        </video>
-        {/* Gradient overlays - only on desktop where video is shown */}
-        <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-stone-950/90 via-stone-900/75 to-transparent"></div>
-        <div className="hidden md:block absolute inset-0 bg-gradient-to-b from-stone-900/60 via-transparent to-stone-950/80"></div>
+        />
+        {/* Gradient overlays */}
+        <div className="absolute inset-0 bg-gradient-to-r from-stone-950/90 via-stone-900/60 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-stone-900/50 via-transparent to-stone-950/80"></div>
         {/* Subtle gold accent */}
         <div className="absolute inset-0 bg-gradient-to-tr from-[#D4AF37]/8 via-transparent to-transparent"></div>
         {/* Bottom fade into next section */}
