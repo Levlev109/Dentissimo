@@ -3,8 +3,8 @@ import { db, Order, ProductOverride, CustomProduct } from '../../services/databa
 import { allProducts as baseProducts } from '../../data/allProducts';
 import {
   LayoutDashboard, ShoppingBag, Package, Users, LogOut, Lock,
-  ChevronDown, ChevronUp, Check, Truck, Clock, XCircle,
-  PlusCircle, Pencil, Trash2, Eye, EyeOff, Save, X, AlertTriangle
+  ChevronDown, ChevronUp, Check, XCircle,
+  PlusCircle, Pencil, Trash2, Eye, EyeOff, Save, X, AlertTriangle, RefreshCw
 } from 'lucide-react';
 
 // ─── Admin password ────────────────────────────────────────────────────────────
@@ -148,14 +148,33 @@ export const AdminPage = () => {
 //  DASHBOARD TAB
 // ═══════════════════════════════════════════════════════════════════
 const DashboardTab = () => {
-  const orders = db.getOrders().sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
-  const customers = db.getUsers();
+  const [orders, setOrders] = useState<Order[]>([]);
+  const [customers, setCustomers] = useState(db.getUsers());
+
+  const refresh = () => {
+    setOrders(db.getOrders().sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()));
+    setCustomers(db.getUsers());
+  };
+
+  useEffect(() => {
+    refresh();
+    const onFocus = () => refresh();
+    window.addEventListener('focus', onFocus);
+    const interval = setInterval(refresh, 10000);
+    return () => { window.removeEventListener('focus', onFocus); clearInterval(interval); };
+  }, []);
+
   const revenue = orders.filter(o => o.status !== 'cancelled').reduce((s, o) => s + o.total, 0);
   const pending = orders.filter(o => o.status === 'pending').length;
 
   return (
     <div className="space-y-6">
-      <h2 className="text-xl font-semibold text-stone-900 dark:text-white">Огляд</h2>
+      <div className="flex items-center justify-between">
+        <h2 className="text-xl font-semibold text-stone-900 dark:text-white">Огляд</h2>
+        <button onClick={refresh} className="flex items-center gap-1.5 text-sm text-stone-500 hover:text-[#D4AF37] transition-colors">
+          <RefreshCw size={14} /> Оновити
+        </button>
+      </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <StatCard label="Замовлень" value={orders.length} sub={`${pending} нових`} />
         <StatCard label="Виручка" value={`₴${revenue.toLocaleString('uk-UA', { maximumFractionDigits: 0 })}`} color="text-green-600" />
@@ -192,13 +211,19 @@ const DashboardTab = () => {
 //  ORDERS TAB
 // ═══════════════════════════════════════════════════════════════════
 const OrdersTab = () => {
-  const [orders, setOrders] = useState<Order[]>(() =>
-    db.getOrders().sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
-  );
+  const [orders, setOrders] = useState<Order[]>([]);
   const [filter, setFilter] = useState<'all' | Order['status']>('all');
   const [expandedId, setExpandedId] = useState<string | null>(null);
 
   const refresh = () => setOrders(db.getOrders().sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()));
+
+  useEffect(() => {
+    refresh();
+    const onFocus = () => refresh();
+    window.addEventListener('focus', onFocus);
+    const interval = setInterval(refresh, 10000);
+    return () => { window.removeEventListener('focus', onFocus); clearInterval(interval); };
+  }, []);
 
   const setStatus = (id: string, status: Order['status']) => {
     db.updateOrderStatus(id, status);
@@ -224,7 +249,12 @@ const OrdersTab = () => {
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h2 className="text-xl font-semibold text-stone-900 dark:text-white">Замовлення</h2>
-        <span className="text-sm text-stone-400">{shown.length} записів</span>
+        <div className="flex items-center gap-3">
+          <span className="text-sm text-stone-400">{shown.length} записів</span>
+          <button onClick={refresh} className="flex items-center gap-1.5 text-sm text-stone-500 hover:text-[#D4AF37] transition-colors">
+            <RefreshCw size={14} /> Оновити
+          </button>
+        </div>
       </div>
 
       {/* Filter tabs */}

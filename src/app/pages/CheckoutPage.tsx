@@ -133,6 +133,7 @@ export const CheckoutPage = () => {
         customerInfo: {
           firstName: safe.firstName,
           lastName:  safe.lastName,
+          email:     safe.email,
           phone:     safe.phone,
           country:   safe.country,
           address:   safe.address,
