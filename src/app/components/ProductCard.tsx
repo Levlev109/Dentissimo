@@ -36,8 +36,8 @@ export const ProductCard = ({ product }: ProductProps) => {
 
   return (
     <>
-      <div className="group relative cursor-pointer" onClick={handleCardClick}>
-        <div className="rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-[#D4AF37]/10 transition-all duration-500 bg-white dark:bg-stone-900 border border-stone-200/60 dark:border-stone-700/40 hover:border-[#D4AF37]/30 dark:hover:border-[#D4AF37]/30 transform hover:-translate-y-2">
+      <div className="group relative cursor-pointer h-full" onClick={handleCardClick}>
+        <div className="rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl hover:shadow-[#D4AF37]/10 transition-all duration-500 bg-white dark:bg-stone-900 border border-stone-200/60 dark:border-stone-700/40 hover:border-[#D4AF37]/30 dark:hover:border-[#D4AF37]/30 transform hover:-translate-y-2 flex flex-col h-full">
           {/* Premium gold accent bar with animation */}
           <div className="h-[3px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
 
@@ -78,15 +78,17 @@ export const ProductCard = ({ product }: ProductProps) => {
           </div>
 
           {/* Product info */}
-          <div className="p-3 md:p-6 text-center border-t border-stone-200/30 dark:border-stone-800/20 bg-white dark:bg-stone-900">
-            <p className="text-[10px] md:text-[11px] text-[#D4AF37] uppercase tracking-widest mb-1 md:mb-2 font-bold">{product.category}</p>
-            <h3 className="font-serif text-sm md:text-lg text-stone-900 dark:text-white mb-1 md:mb-2 group-hover:text-[#D4AF37] transition-colors duration-300 leading-tight">
-              {product.name}
-            </h3>
-            {product.description && (
-              <p className="hidden md:block text-xs text-stone-500 dark:text-stone-400 mb-3 line-clamp-2 leading-relaxed">{product.description}</p>
-            )}
-            <p className="text-stone-900 dark:text-white font-bold text-sm md:text-lg bg-gradient-to-r from-[#D4AF37] to-[#B8960C] bg-clip-text text-transparent">{t('products.currency')}{product.price.toFixed(2)}</p>
+          <div className="p-3 md:p-6 text-center border-t border-stone-200/30 dark:border-stone-800/20 bg-white dark:bg-stone-900 flex flex-col flex-1 justify-between">
+            <div>
+              <p className="text-[10px] md:text-[11px] text-[#D4AF37] uppercase tracking-widest mb-1 md:mb-2 font-bold">{product.category}</p>
+              <h3 className="font-serif text-sm md:text-lg text-stone-900 dark:text-white mb-1 md:mb-2 group-hover:text-[#D4AF37] transition-colors duration-300 leading-tight">
+                {product.name}
+              </h3>
+              {product.description && (
+                <p className="hidden md:block text-xs text-stone-500 dark:text-stone-400 mb-3 line-clamp-3 leading-relaxed min-h-[3.75rem]">{product.description}</p>
+              )}
+            </div>
+            <p className="text-stone-900 dark:text-white font-bold text-sm md:text-lg bg-gradient-to-r from-[#D4AF37] to-[#B8960C] bg-clip-text text-transparent mt-1 md:mt-0">{t('products.currency')}{product.price.toFixed(2)}</p>
           </div>
         </div>
       </div>

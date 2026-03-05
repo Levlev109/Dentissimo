@@ -10,7 +10,7 @@ const products = [
     categoryKey: 'limitedEdition',
     price: 175.00,
     descriptionKey: 'products.gentleCareDesc',
-    image: '/images/DENTISSIMO_box_Gentle_Care.png',
+    image: '/images/DENTISSIMO_box_Gentle_Care.webp',
     isNew: true
   },
   {
@@ -19,7 +19,7 @@ const products = [
     categoryKey: 'limitedEdition',
     price: 199.00,
     descriptionKey: 'products.diamondDesc',
-    image: '/images/7640162326834_DENTISSIMO_DIAMOND (1).png',
+    image: '/images/7640162326834_DENTISSIMO_DIAMOND (1).webp',
     isNew: true
   },
   {
@@ -28,7 +28,7 @@ const products = [
     categoryKey: 'limitedEdition',
     price: 219.00,
     descriptionKey: 'products.goldDesc',
-    image: '/images/DENTISSIMO_box_Gold_Italy.png',
+    image: '/images/DENTISSIMO_box_Gold_Italy.webp',
     isNew: true
   },
   {
@@ -37,7 +37,7 @@ const products = [
     categoryKey: 'limitedEdition',
     price: 189.00,
     descriptionKey: 'products.blackDesc',
-    image: '/images/DENTISSIMO_box_EXTRA_whitening (1).png',
+    image: '/images/DENTISSIMO_box_EXTRA_whitening (1).webp',
     isNew: true
   }
 ];
