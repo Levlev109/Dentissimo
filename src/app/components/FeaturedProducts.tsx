@@ -46,7 +46,7 @@ export const FeaturedProducts = () => {
   const { t, i18n } = useTranslation();
 
   return (
-    <section id="limited" className="py-28 bg-white dark:from-stone-900 dark:via-stone-950/50 dark:to-stone-950 transition-colors duration-500 relative overflow-hidden">
+    <section id="limited" className="py-28 bg-white dark:bg-stone-950 transition-colors duration-500 relative overflow-hidden">
       {/* Enhanced premium pattern overlay */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(212,175,55,0.06),transparent_50%)] dark:bg-[radial-gradient(circle_at_30%_20%,rgba(212,175,55,0.08),transparent_50%)]" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(212,175,55,0.04),transparent_50%)] dark:bg-[radial-gradient(circle_at_70%_80%,rgba(212,175,55,0.06),transparent_50%)]" />

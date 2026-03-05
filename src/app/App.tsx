@@ -13,8 +13,6 @@ import { ProfilePage } from "@/app/pages/ProfilePage";
 import { AIChat } from "@/app/components/AIChat";
 import { ScrollToTop } from "@/app/components/ScrollToTop";
 import { ToastContainer } from "@/app/components/Toast";
-import { DecorativeEffects } from "@/app/components/DecorativeEffects";
-
 export default function App() {
   const HomePage = () => (
     <>
@@ -37,7 +35,6 @@ export default function App() {
       
       <ScrollToTop />
       <ToastContainer />
-      <DecorativeEffects />
       <Navbar />
       <Routes>
         <Route path="/" element={<main><HomePage /></main>} />

@@ -79,7 +79,7 @@ export const ProductCard = ({ product }: ProductProps) => {
           </div>
 
           {/* Product info */}
-          <div className="p-6 text-center border-t border-stone-200/30 dark:border-stone-800/20 bg-white dark:from-stone-900 dark:via-stone-900/50 dark:to-stone-900">
+          <div className="p-6 text-center border-t border-stone-200/30 dark:border-stone-800/20 bg-white dark:bg-stone-900">
             <p className="text-[11px] text-[#D4AF37] dark:text-[#D4AF37] uppercase tracking-widest mb-2 font-bold">{product.category}</p>
             <h3 className="font-serif text-lg text-stone-900 dark:text-white mb-2 group-hover:text-[#D4AF37] transition-colors duration-300">
               {product.name}
