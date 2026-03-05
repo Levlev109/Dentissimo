@@ -52,8 +52,10 @@ export const orderService = {
     const createdAt = new Date().toISOString();
     const full: Order = { ...order, id, createdAt };
 
-    // Always save locally (fallback / offline support)
-    db.createOrder(order);
+    // Always save locally with the SAME id (fallback / offline support)
+    const localOrders = db.getOrders();
+    localOrders.push(full);
+    localStorage.setItem('dentissimo_orders', JSON.stringify(localOrders));
 
     // Push to Supabase
     const { error } = await supabase.from('orders').insert(toRow(full));
@@ -67,20 +69,32 @@ export const orderService = {
 
   /** Get all orders — from Supabase, merged with any local-only orders */
   async getOrders(): Promise<Order[]> {
-    const { data, error } = await supabase
-      .from('orders')
-      .select('*')
-      .order('created_at', { ascending: false });
+    const localOrders = db.getOrders();
 
-    if (error || !data) {
-      console.error('[orderService] Supabase fetch error:', error?.message);
-      // Fallback to localStorage
-      return db.getOrders().sort(
-        (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-      );
+    let remoteOrders: Order[] = [];
+    try {
+      const { data, error } = await supabase
+        .from('orders')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error) {
+        console.error('[orderService] Supabase fetch error:', error.message);
+      } else if (data) {
+        remoteOrders = data.map(mapRow);
+      }
+    } catch (e) {
+      console.error('[orderService] Supabase fetch exception:', e);
     }
 
-    return data.map(mapRow);
+    // Merge: remote wins for duplicates; append local-only orders
+    const remoteIds = new Set(remoteOrders.map(o => o.id));
+    const localOnly = localOrders.filter(o => !remoteIds.has(o.id));
+    const merged = [...remoteOrders, ...localOnly];
+
+    return merged.sort(
+      (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+    );
   },
 
   /** Update order status */
