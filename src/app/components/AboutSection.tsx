@@ -164,46 +164,55 @@ export const AboutSection = () => {
 
           {/* Certifications row */}
           <motion.div
-            className="mt-16 pt-12 pb-32 border-t border-stone-800 flex flex-wrap justify-center gap-8 md:gap-16 overflow-visible"
+            className="mt-16 pt-12 border-t border-stone-800"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            {certifications.map((cert) => (
-              <div
-                key={cert.id}
-                className="text-center cursor-pointer group relative"
-                onClick={() => setActiveCert(activeCert === cert.id ? null : cert.id)}
-              >
-                <div className="w-16 h-16 rounded-full border border-stone-700 flex items-center justify-center mx-auto mb-2 group-hover:border-[#D4AF37] group-hover:bg-[#D4AF37]/10 transition-all duration-300">
-                  <cert.icon size={24} className="text-stone-500 group-hover:text-[#D4AF37] transition-colors" />
+            <div className="grid grid-cols-3 sm:grid-cols-5 gap-4 sm:gap-6 md:gap-12 mb-6">
+              {certifications.map((cert) => (
+                <div
+                  key={cert.id}
+                  className="text-center cursor-pointer group"
+                  onClick={() => setActiveCert(activeCert === cert.id ? null : cert.id)}
+                >
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border border-stone-700 flex items-center justify-center mx-auto mb-2 group-hover:border-[#D4AF37] group-hover:bg-[#D4AF37]/10 transition-all duration-300">
+                    <cert.icon size={22} className="text-stone-500 group-hover:text-[#D4AF37] transition-colors" />
+                  </div>
+                  <span className="text-[10px] sm:text-xs text-stone-500 font-medium tracking-wide group-hover:text-stone-300 transition-colors leading-tight block">{t(cert.titleKey)}</span>
                 </div>
-                <span className="text-xs text-stone-500 font-medium tracking-wide group-hover:text-stone-300 transition-colors">{t(cert.titleKey)}</span>
-                
-                <AnimatePresence>
-                  {activeCert === cert.id && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 8, scale: 0.95 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 8, scale: 0.95 }}
-                      transition={{ duration: 0.2 }}
-                      className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-72 md:w-80 bg-stone-800 border border-stone-600 rounded-xl p-5 shadow-2xl z-50"
-                    >
+              ))}
+            </div>
+
+            {/* Expanded cert description — shown below the row */}
+            <AnimatePresence mode="wait">
+              {activeCert && (() => {
+                const cert = certifications.find(c => c.id === activeCert);
+                if (!cert) return null;
+                return (
+                  <motion.div
+                    key={activeCert}
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.25 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="bg-stone-800/80 border border-stone-700 rounded-xl p-5 sm:p-6 max-w-lg mx-auto relative mb-4">
                       <button
                         onClick={(e) => { e.stopPropagation(); setActiveCert(null); }}
-                        className="absolute top-2 right-2 text-stone-500 hover:text-white transition-colors"
+                        className="absolute top-3 right-3 text-stone-500 hover:text-white transition-colors p-1"
                       >
-                        <X size={14} />
+                        <X size={16} />
                       </button>
                       <h5 className="text-[#D4AF37] font-bold text-sm mb-2">{t(cert.titleKey)}</h5>
-                      <p className="text-stone-300 text-xs leading-relaxed">{t(cert.descKey)}</p>
-                      <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-3 h-3 bg-stone-800 border-l border-t border-stone-600 rotate-45" />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            ))}
+                      <p className="text-stone-300 text-sm leading-relaxed">{t(cert.descKey)}</p>
+                    </div>
+                  </motion.div>
+                );
+              })()}
+            </AnimatePresence>
           </motion.div>
         </div>
       </div>
