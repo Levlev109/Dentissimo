@@ -54,14 +54,13 @@ export const Navbar = () => {
 
   return (
     <>
-    <nav className="fixed w-full z-50 bg-white/90 dark:bg-stone-950/90 backdrop-blur-md border-b border-stone-100 dark:border-stone-800 transition-all duration-300">
+    <nav className="fixed w-full z-50 bg-white/95 dark:bg-stone-950/95 backdrop-blur-xl border-b border-stone-200/50 dark:border-stone-800/50 transition-all duration-300 shadow-lg shadow-stone-900/5 dark:shadow-stone-950/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          {/* Mobile Menu Button */}
+        <div className="flex justify-between items-center h-20">\n          {/* Mobile Menu Button */}
           <div className="flex items-center md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-stone-800 dark:text-stone-200 hover:text-stone-600 dark:hover:text-stone-400 focus:outline-none"
+              className="text-stone-800 dark:text-stone-200 hover:text-[#D4AF37] dark:hover:text-[#D4AF37] focus:outline-none transition-colors duration-300"
             >
               <Menu size={24} />
             </button>
@@ -69,7 +68,7 @@ export const Navbar = () => {
 
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center justify-center md:justify-start w-full md:w-auto absolute md:relative pointer-events-none md:pointer-events-auto">
-            <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="font-serif text-2xl font-bold tracking-wider text-stone-900 dark:text-white pointer-events-auto">
+            <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="font-serif text-2xl font-bold tracking-wider bg-gradient-to-r from-stone-900 via-[#D4AF37] to-stone-900 dark:from-white dark:via-[#D4AF37] dark:to-white bg-clip-text text-transparent pointer-events-auto hover:scale-105 transition-transform duration-300">
               DENTISSIMO
             </a>
           </div>
@@ -80,23 +79,24 @@ export const Navbar = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white transition-colors tracking-wide uppercase"
+                className="text-sm font-semibold text-stone-600 dark:text-stone-300 hover:text-[#D4AF37] dark:hover:text-[#D4AF37] transition-all duration-300 tracking-wide uppercase relative group"
               >
                 {link.name}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#D4AF37] to-[#B8960C] group-hover:w-full transition-all duration-300"></span>
               </a>
             ))}
           </div>
 
           {/* Right Icons */}
           <div className="flex items-center space-x-4">
-            <a href="#products" className="hidden md:block text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white transition-colors">
+            <a href="#products" className="hidden md:block text-stone-600 dark:text-stone-300 hover:text-[#D4AF37] dark:hover:text-[#D4AF37] transition-all duration-300 hover:scale-110 transform">
               <Search size={20} />
             </a>
             
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white transition-colors"
+              className="text-stone-600 dark:text-stone-300 hover:text-[#D4AF37] dark:hover:text-[#D4AF37] transition-all duration-300 hover:scale-110 transform hover:rotate-12"
               aria-label="Toggle dark mode"
             >
               {isDark ? <Sun size={18} /> : <Moon size={18} />}
@@ -106,23 +106,23 @@ export const Navbar = () => {
             <div className="relative" ref={langRef}>
               <button
                 onClick={() => setShowLangMenu(!showLangMenu)}
-                className="flex items-center space-x-1 text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white transition-colors"
+                className="flex items-center space-x-1 text-stone-600 dark:text-stone-300 hover:text-[#D4AF37] dark:hover:text-[#D4AF37] transition-all duration-300 hover:scale-110 transform"
               >
                 <Globe size={18} />
-                <span className="text-xs font-medium">{currentLang.flag}</span>
+                <span className="text-sm font-medium">{currentLang.flag}</span>
               </button>
               
               {showLangMenu && (
-                <div className="absolute right-0 top-full mt-2 bg-white dark:bg-stone-900 rounded-lg shadow-lg border border-stone-200 dark:border-stone-700 py-2 w-48 z-50">
+                <div className="absolute right-0 top-full mt-3 bg-white/95 dark:bg-stone-900/95 backdrop-blur-xl rounded-xl shadow-2xl border border-stone-200/50 dark:border-stone-700/50 py-2 w-52 z-50">
                   {languages.map(lang => (
                     <button
                       key={lang.code}
                       onClick={() => changeLang(lang.code)}
-                      className={`w-full px-4 py-2 text-left hover:bg-stone-50 dark:hover:bg-stone-800 flex items-center gap-2 ${
-                        i18n.language === lang.code ? 'bg-stone-50 dark:bg-stone-800 font-medium' : ''
+                      className={`w-full px-4 py-2.5 text-left hover:bg-gradient-to-r hover:from-[#D4AF37]/10 hover:to-[#B8960C]/10 dark:hover:from-[#D4AF37]/20 dark:hover:to-[#B8960C]/20 flex items-center gap-3 transition-all duration-300 ${
+                        i18n.language === lang.code ? 'bg-gradient-to-r from-[#D4AF37]/10 to-[#B8960C]/10 dark:from-[#D4AF37]/20 dark:to-[#B8960C]/20 font-semibold border-l-4 border-[#D4AF37]' : ''
                       }`}
                     >
-                      <span>{lang.flag}</span>
+                      <span className="text-lg">{lang.flag}</span>
                       <span className="text-sm">{lang.name}</span>
                     </button>
                   ))}

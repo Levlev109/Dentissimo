@@ -1,18 +1,28 @@
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion } from 'motion/react';
-import { FlaskConical, Leaf, Shield } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import { FlaskConical, Leaf, Shield, X } from 'lucide-react';
 
 export const AboutSection = () => {
   const { t } = useTranslation();
+  const [activeCert, setActiveCert] = useState<string | null>(null);
   
   const regera = [
-    { key: 'RE', icon: FlaskConical, titleKey: 'about.regeraRegen', descKey: 'about.regeraRegenDesc' },
-    { key: 'RE', icon: Shield, titleKey: 'about.regeraRestor', descKey: 'about.regeraRestorDesc' },
-    { key: 'RE', icon: Leaf, titleKey: 'about.regeraRemin', descKey: 'about.regeraReminDesc' },
+    { icon: FlaskConical, titleKey: 'about.regeraRegen', descKey: 'about.regeraRegenDesc' },
+    { icon: Shield, titleKey: 'about.regeraRestor', descKey: 'about.regeraRestorDesc' },
+    { icon: Leaf, titleKey: 'about.regeraRemin', descKey: 'about.regeraReminDesc' },
+  ];
+
+  const certifications = [
+    { id: 'gmp', titleKey: 'about.certGmpTitle', descKey: 'about.certGmpDesc', icon: Shield },
+    { id: 'iso', titleKey: 'about.certIsoTitle', descKey: 'about.certIsoDesc', icon: Shield },
+    { id: 'halal', titleKey: 'about.certHalalTitle', descKey: 'about.certHalalDesc', icon: Shield },
+    { id: 'vegan', titleKey: 'about.certVeganTitle', descKey: 'about.certVeganDesc', icon: Shield },
+    { id: 'cpnp', titleKey: 'about.certCpnpTitle', descKey: 'about.certCpnpDesc', icon: Shield },
   ];
 
   return (
-    <section id="about" className="bg-stone-900 text-white overflow-hidden">
+    <section id="about" className="bg-stone-900 text-white overflow-visible">
       {/* Part 1: Glacier Water Story */}
       <div className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -38,11 +48,11 @@ export const AboutSection = () => {
                 {t('about.glacierText3')}
               </p>
               
-              <img 
-                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Flag_of_Switzerland.svg/512px-Flag_of_Switzerland.svg.png" 
-                 alt={t('about.swissFlag')} 
-                 className="h-8 w-auto opacity-80 grayscale hover:grayscale-0 transition-all duration-500"
-              />
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" className="h-8 w-8 opacity-80 hover:opacity-100 transition-all duration-500" aria-label={t('about.swissFlag')}>
+                <rect width="32" height="32" rx="2" fill="#DA291C"/>
+                <rect x="13" y="6" width="6" height="20" rx="1" fill="#fff"/>
+                <rect x="6" y="13" width="20" height="6" rx="1" fill="#fff"/>
+              </svg>
             </motion.div>
             <motion.div
               className="w-full md:w-1/2 order-1 md:order-2"
@@ -103,7 +113,9 @@ export const AboutSection = () => {
                   <div className="w-14 h-14 rounded-full bg-[#D4AF37]/10 flex items-center justify-center mx-auto mb-5">
                     <Icon size={24} className="text-[#D4AF37]" />
                   </div>
-                  <h4 className="font-serif text-xl mb-3">{t(item.titleKey)}</h4>
+                  <h4 className="font-serif text-xl mb-3">
+                    <span className="text-[#D4AF37] font-bold">Re</span>{(t(item.titleKey) as string).substring(2)}
+                  </h4>
                   <p className="text-stone-400 text-sm leading-relaxed">{t(item.descKey)}</p>
                 </motion.div>
               );
@@ -152,18 +164,44 @@ export const AboutSection = () => {
 
           {/* Certifications row */}
           <motion.div
-            className="mt-16 pt-12 border-t border-stone-800 flex flex-wrap justify-center gap-8 md:gap-16"
+            className="mt-16 pt-12 pb-32 border-t border-stone-800 flex flex-wrap justify-center gap-8 md:gap-16 overflow-visible"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            {['GMP', 'ISO 9001', 'Halal', 'Vegan Society', 'CPNP (EU)'].map((cert) => (
-              <div key={cert} className="text-center">
-                <div className="w-16 h-16 rounded-full border border-stone-700 flex items-center justify-center mx-auto mb-2 hover:border-[#D4AF37] transition-colors">
-                  <Shield size={24} className="text-stone-500" />
+            {certifications.map((cert) => (
+              <div
+                key={cert.id}
+                className="text-center cursor-pointer group relative"
+                onClick={() => setActiveCert(activeCert === cert.id ? null : cert.id)}
+              >
+                <div className="w-16 h-16 rounded-full border border-stone-700 flex items-center justify-center mx-auto mb-2 group-hover:border-[#D4AF37] group-hover:bg-[#D4AF37]/10 transition-all duration-300">
+                  <cert.icon size={24} className="text-stone-500 group-hover:text-[#D4AF37] transition-colors" />
                 </div>
-                <span className="text-xs text-stone-500 font-medium tracking-wide">{cert}</span>
+                <span className="text-xs text-stone-500 font-medium tracking-wide group-hover:text-stone-300 transition-colors">{t(cert.titleKey)}</span>
+                
+                <AnimatePresence>
+                  {activeCert === cert.id && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 8, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: 8, scale: 0.95 }}
+                      transition={{ duration: 0.2 }}
+                      className="absolute left-1/2 -translate-x-1/2 top-full mt-3 w-72 md:w-80 bg-stone-800 border border-stone-600 rounded-xl p-5 shadow-2xl z-50"
+                    >
+                      <button
+                        onClick={(e) => { e.stopPropagation(); setActiveCert(null); }}
+                        className="absolute top-2 right-2 text-stone-500 hover:text-white transition-colors"
+                      >
+                        <X size={14} />
+                      </button>
+                      <h5 className="text-[#D4AF37] font-bold text-sm mb-2">{t(cert.titleKey)}</h5>
+                      <p className="text-stone-300 text-xs leading-relaxed">{t(cert.descKey)}</p>
+                      <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-3 h-3 bg-stone-800 border-l border-t border-stone-600 rotate-45" />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             ))}
           </motion.div>

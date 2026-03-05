@@ -47,13 +47,13 @@ export const CartDrawer = () => {
               style={{ height: '100dvh' }}
             >
               {/* Header */}
-              <div className="flex items-center justify-between px-5 py-4 border-b border-stone-200 flex-shrink-0">
+              <div className="flex items-center justify-between px-5 py-4 border-b border-stone-200 dark:border-stone-700 flex-shrink-0">
                 <h2 className="text-xl font-serif font-bold text-stone-900 dark:text-white">
                   {t('cart.title')} ({itemCount})
                 </h2>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="text-stone-600 hover:text-stone-900 transition-colors"
+                  className="text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white transition-colors"
                 >
                   <X size={24} />
                 </button>
@@ -63,11 +63,11 @@ export const CartDrawer = () => {
               <div className="flex-1 overflow-y-auto p-4" style={{ minHeight: 0 }}>
                 {items.length === 0 ? (
                   <div className="flex flex-col items-center justify-center h-full text-center">
-                    <ShoppingBag size={64} className="text-stone-300 mb-4" />
-                    <p className="text-stone-500 mb-4">{t('cart.empty')}</p>
+                    <ShoppingBag size={64} className="text-stone-300 dark:text-stone-600 mb-4" />
+                    <p className="text-stone-500 dark:text-stone-400 mb-4">{t('cart.empty')}</p>
                     <button
                       onClick={() => setIsOpen(false)}
-                      className="px-6 py-3 bg-stone-900 text-white hover:bg-stone-800 transition-colors"
+                      className="px-6 py-3 bg-stone-900 dark:bg-stone-100 text-white dark:text-stone-900 hover:bg-stone-800 dark:hover:bg-stone-200 transition-colors"
                     >
                       {t('cart.continueShopping')}
                     </button>
@@ -77,33 +77,33 @@ export const CartDrawer = () => {
                     {items.map((item) => (
                       <div
                         key={item.product.id}
-                        className="flex gap-4 p-4 bg-stone-50 rounded-lg border border-stone-200"
+                        className="flex gap-4 p-4 bg-stone-50 dark:bg-stone-800 rounded-lg border border-stone-200 dark:border-stone-700"
                       >
                         <img
                           src={item.product.image}
                           alt={item.product.name}
-                          className="w-20 h-20 object-contain bg-white rounded p-1 flex-shrink-0 border border-stone-100"
+                          className="w-20 h-20 object-contain bg-white dark:bg-stone-900 rounded p-1 flex-shrink-0 border border-stone-100 dark:border-stone-700"
                         />
                         <div className="flex-1">
-                          <h3 className="font-medium text-stone-900 mb-1">
+                          <h3 className="font-medium text-stone-900 dark:text-white mb-1">
                             {item.product.name}
                           </h3>
-                          <p className="text-sm text-stone-500 mb-2">
+                          <p className="text-sm text-stone-500 dark:text-stone-400 mb-2">
                             {t('products.currency')}{item.product.price.toFixed(2)} × {item.quantity} = {t('products.currency')}{(item.product.price * item.quantity).toFixed(2)}
                           </p>
                           <div className="flex items-center gap-2">
                             <button
                               onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
-                              className="w-7 h-7 flex items-center justify-center bg-white border border-stone-300 hover:bg-stone-100 transition-colors rounded"
+                              className="w-7 h-7 flex items-center justify-center bg-white dark:bg-stone-700 border border-stone-300 dark:border-stone-600 text-stone-900 dark:text-white hover:bg-stone-100 dark:hover:bg-stone-600 transition-colors rounded"
                             >
                               <Minus size={14} />
                             </button>
-                            <span className="w-8 text-center font-medium">
+                            <span className="w-8 text-center font-medium text-stone-900 dark:text-white">
                               {item.quantity}
                             </span>
                             <button
                               onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
-                              className="w-7 h-7 flex items-center justify-center bg-white border border-stone-300 hover:bg-stone-100 transition-colors rounded"
+                              className="w-7 h-7 flex items-center justify-center bg-white dark:bg-stone-700 border border-stone-300 dark:border-stone-600 text-stone-900 dark:text-white hover:bg-stone-100 dark:hover:bg-stone-600 transition-colors rounded"
                             >
                               <Plus size={14} />
                             </button>
@@ -123,8 +123,8 @@ export const CartDrawer = () => {
 
               {/* Footer */}
               {items.length > 0 && (
-                <div className="border-t border-stone-200 px-5 py-4 flex-shrink-0">
-                  <div className="flex justify-between items-center text-lg font-bold mb-3">
+                <div className="border-t border-stone-200 dark:border-stone-700 px-5 py-4 flex-shrink-0">
+                  <div className="flex justify-between items-center text-lg font-bold mb-3 text-stone-900 dark:text-white">
                     <span>{t('cart.total')}:</span>
                     <span>{t('products.currency')}{total.toFixed(2)}</span>
                   </div>

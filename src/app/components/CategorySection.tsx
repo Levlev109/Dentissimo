@@ -11,63 +11,84 @@ export const CategorySection = () => {
       titleKey: 'categories.limitedEdition',
       descriptionKey: 'categories.limitedEditionDesc',
       image: '/images/DENTISSIMO_box_Gold_Italy.png',
-      link: '#products'
+      link: '#products',
+      gradient: 'from-amber-950 via-yellow-900/80 to-stone-950',
+      gradientLight: 'from-amber-100 via-yellow-50 to-amber-200',
+      accent: 'bg-gradient-to-r from-amber-400 to-yellow-500',
     },
     {
       id: 2,
       titleKey: 'categories.professional',
       descriptionKey: 'categories.professionalDesc',
       image: '/images/DENTISSIMO_box_Complete_care (1).png',
-      link: '#products'
+      link: '#products',
+      gradient: 'from-sky-950 via-blue-900/80 to-stone-950',
+      gradientLight: 'from-sky-100 via-blue-50 to-sky-200',
+      accent: 'bg-gradient-to-r from-sky-400 to-blue-500',
     },
     {
       id: 3,
       titleKey: 'categories.natural',
       descriptionKey: 'categories.naturalDesc',
       image: '/images/DENTISSIMO_box_Vegan.png',
-      link: '#products'
+      link: '#products',
+      gradient: 'from-emerald-950 via-green-900/80 to-stone-950',
+      gradientLight: 'from-emerald-100 via-green-50 to-emerald-200',
+      accent: 'bg-gradient-to-r from-emerald-400 to-green-500',
     },
     {
       id: 4,
       titleKey: 'categories.kids',
       descriptionKey: 'categories.kidsDesc',
       image: '/images/DENTISSIMO_box_Kids.png',
-      link: '#products'
+      link: '#products',
+      gradient: 'from-rose-950 via-pink-900/80 to-stone-950',
+      gradientLight: 'from-rose-100 via-pink-50 to-rose-200',
+      accent: 'bg-gradient-to-r from-rose-400 to-pink-500',
     }
   ];
 
   return (
-    <section className="py-20 bg-white dark:bg-stone-950 transition-colors duration-500">
+    <section className="py-24 bg-gradient-to-b from-white via-stone-50/30 to-white dark:from-stone-950 dark:via-amber-950/10 dark:to-stone-950 transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="font-serif text-3xl md:text-4xl text-stone-900 dark:text-white mb-4">{t('categorySection.title')}</h2>
-          <p className="text-stone-500 dark:text-stone-400 max-w-2xl mx-auto">{t('categorySection.subtitle')}</p>
+        <div className="text-center mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <p className="text-[#D4AF37] uppercase tracking-[0.3em] text-xs font-bold mb-4">{t('categorySection.subtitle')}</p>
+            <h2 className="font-serif text-4xl md:text-5xl text-stone-900 dark:text-white mb-4 bg-gradient-to-r from-stone-900 via-[#D4AF37] to-stone-900 dark:from-white dark:via-[#D4AF37] dark:to-white bg-clip-text text-transparent">{t('categorySection.title')}</h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mx-auto mt-6" />
+          </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {categories.map((cat, index) => (
             <motion.a
               href={cat.link}
               key={cat.id}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.6 }}
-              className="group block relative overflow-hidden aspect-[3/4] bg-gradient-to-b from-stone-100 to-stone-200 dark:from-stone-800 dark:to-stone-900"
+              className={`group block relative overflow-hidden aspect-[3/4] bg-gradient-to-b ${cat.gradientLight} dark:${cat.gradient} rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-stone-200/50 dark:border-stone-800/50`}
             >
+              <div className={`absolute top-0 left-0 w-full h-1 ${cat.accent} opacity-80 group-hover:h-1.5 transition-all duration-300`} />
               <img
                 src={cat.image}
                 alt={t(cat.titleKey)}
-                className="w-full h-full object-contain p-6 transition-transform duration-700 group-hover:scale-105"
+                className="w-full h-full object-contain p-8 transition-all duration-700 group-hover:scale-110 group-hover:rotate-2 filter group-hover:drop-shadow-2xl"
               />
-              <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-amber-950/75 via-stone-900/25 to-transparent group-hover:from-amber-950/85 transition-all duration-500"></div>
               
-              <div className="absolute bottom-0 left-0 w-full p-6 text-white">
-                <h3 className="font-serif text-xl mb-1">{t(cat.titleKey)}</h3>
-                <p className="text-sm text-white/80 mb-2">{t(cat.descriptionKey)}</p>
-                <div className="flex items-center gap-2 text-xs font-medium tracking-wide opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+              <div className="absolute bottom-0 left-0 w-full p-6 text-white transform transition-all duration-500">
+                <h3 className="font-serif text-xl md:text-2xl mb-2 drop-shadow-lg group-hover:text-[#D4AF37] transition-colors">{t(cat.titleKey)}</h3>
+                <p className="text-sm text-white/90 mb-3 drop-shadow-md leading-relaxed">{t(cat.descriptionKey)}</p>
+                <div className="flex items-center gap-2 text-xs font-bold tracking-wider uppercase opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 bg-gradient-to-r from-white/20 to-transparent backdrop-blur-sm px-3 py-2 rounded-lg w-fit border border-white/30">
                   <span>{t('categorySection.learnMore')}</span>
-                  <ArrowRight size={14} />
+                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
             </motion.a>

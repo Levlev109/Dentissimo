@@ -1,0 +1,358 @@
+import { useState, useEffect } from 'react';
+import { Search, MapPin, Package, Box, Loader2, TruckIcon } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import { 
+  novaPoshtaService, 
+  NovaPoshtaCity, 
+  NovaPoshtaWarehouse,
+  NovaPoshtaDeliveryCost 
+} from '../../services/novaPoshta';
+
+interface NovaPoshtaSelectorProps {
+  onSelect: (data: {
+    city: NovaPoshtaCity;
+    warehouse: NovaPoshtaWarehouse;
+    cost: NovaPoshtaDeliveryCost;
+  }) => void;
+  cartTotal: number;
+}
+
+export const NovaPoshtaSelector = ({ onSelect, cartTotal }: NovaPoshtaSelectorProps) => {
+  const { t } = useTranslation();
+  
+  // State
+  const [deliveryType, setDeliveryType] = useState<'branch' | 'locker' | 'courier'>('branch');
+  const [citySearch, setCitySearch] = useState('');
+  const [cities, setCities] = useState<NovaPoshtaCity[]>([]);
+  const [selectedCity, setSelectedCity] = useState<NovaPoshtaCity | null>(null);
+  const [warehouses, setWarehouses] = useState<NovaPoshtaWarehouse[]>([]);
+  const [selectedWarehouse, setSelectedWarehouse] = useState<NovaPoshtaWarehouse | null>(null);
+  const [deliveryCost, setDeliveryCost] = useState<NovaPoshtaDeliveryCost | null>(null);
+  
+  const [loadingCities, setLoadingCities] = useState(false);
+  const [loadingWarehouses, setLoadingWarehouses] = useState(false);
+  const [loadingCost, setLoadingCost] = useState(false);
+
+  // Load popular cities on mount
+  useEffect(() => {
+    loadPopularCities();
+  }, []);
+
+  const loadPopularCities = async () => {
+    setLoadingCities(true);
+    try {
+      const popularCities = await novaPoshtaService.getPopularCities();
+      setCities(popularCities);
+    } catch (error) {
+      console.error('Failed to load cities:', error);
+    } finally {
+      setLoadingCities(false);
+    }
+  };
+
+  // Search cities
+  useEffect(() => {
+    if (citySearch.length < 2) {
+      loadPopularCities();
+      return;
+    }
+
+    const timer = setTimeout(async () => {
+      setLoadingCities(true);
+      try {
+        const results = await novaPoshtaService.searchCities(citySearch);
+        setCities(results);
+      } catch (error) {
+        console.error('Failed to search cities:', error);
+      } finally {
+        setLoadingCities(false);
+      }
+    }, 400);
+
+    return () => clearTimeout(timer);
+  }, [citySearch]);
+
+  // Load warehouses when city is selected
+  useEffect(() => {
+    if (!selectedCity) {
+      setWarehouses([]);
+      setSelectedWarehouse(null);
+      return;
+    }
+
+    if (deliveryType === 'courier') {
+      // For courier delivery, no warehouse selection needed
+      calculateCourierCost();
+      return;
+    }
+
+    loadWarehouses();
+  }, [selectedCity, deliveryType]);
+
+  const loadWarehouses = async () => {
+    if (!selectedCity) return;
+    
+    setLoadingWarehouses(true);
+    try {
+      const type = deliveryType === 'locker' ? 'locker' : 'branch';
+      const result = await novaPoshtaService.getWarehouses(selectedCity.ref, type);
+      setWarehouses(result);
+    } catch (error) {
+      console.error('Failed to load warehouses:', error);
+    } finally {
+      setLoadingWarehouses(false);
+    }
+  };
+
+  // Calculate delivery cost when warehouse is selected
+  useEffect(() => {
+    if (!selectedCity || !selectedWarehouse) {
+      setDeliveryCost(null);
+      return;
+    }
+
+    calculateDeliveryCost();
+  }, [selectedWarehouse]);
+
+  const calculateDeliveryCost = async () => {
+    if (!selectedCity || !selectedWarehouse) return;
+
+    setLoadingCost(true);
+    try {
+      // Estimate weight: assume 1 item = 0.15 kg average
+      const estimatedWeight = 0.5; // Base package weight
+      
+      const cost = await novaPoshtaService.calculateCost(
+        selectedCity.ref,
+        selectedWarehouse.ref,
+        estimatedWeight,
+        cartTotal
+      );
+      
+      setDeliveryCost(cost);
+      
+      // Notify parent component
+      onSelect({
+        city: selectedCity,
+        warehouse: selectedWarehouse,
+        cost,
+      });
+    } catch (error) {
+      console.error('Failed to calculate cost:', error);
+    } finally {
+      setLoadingCost(false);
+    }
+  };
+
+  const calculateCourierCost = async () => {
+    if (!selectedCity) return;
+
+    setLoadingCost(true);
+    try {
+      const cost: NovaPoshtaDeliveryCost = {
+        cost: 95, // Courier base cost
+        estimatedDays: selectedCity.ref.includes('kyiv') ? '1-2 дні' : '2-4 дні',
+      };
+      
+      setDeliveryCost(cost);
+      
+      // Create mock warehouse for courier
+      const mockWarehouse: NovaPoshtaWarehouse = {
+        ref: 'courier-' + selectedCity.ref,
+        description: t('novaPoshta.courierDelivery'),
+        number: 'COURIER',
+        cityRef: selectedCity.ref,
+        typeOfWarehouse: 'courier',
+      };
+      
+      onSelect({
+        city: selectedCity,
+        warehouse: mockWarehouse,
+        cost,
+      });
+    } finally {
+      setLoadingCost(false);
+    }
+  };
+
+  const handleCitySelect = (city: NovaPoshtaCity) => {
+    setSelectedCity(city);
+    setCitySearch(city.description);
+    setSelectedWarehouse(null);
+    setDeliveryCost(null);
+  };
+
+  const handleWarehouseSelect = (warehouse: NovaPoshtaWarehouse) => {
+    setSelectedWarehouse(warehouse);
+  };
+
+  return (
+    <div className="space-y-6">
+      {/* Delivery Type Selection */}
+      <div>
+        <label className="block text-sm font-medium text-stone-700 mb-3">
+          {t('novaPoshta.deliveryType')} *
+        </label>
+        <div className="grid grid-cols-3 gap-3">
+          <button
+            type="button"
+            onClick={() => setDeliveryType('branch')}
+            className={`p-4 border-2 rounded-lg transition-all ${
+              deliveryType === 'branch'
+                ? 'border-[#D4AF37] bg-[#D4AF37]/5'
+                : 'border-stone-200 hover:border-stone-300'
+            }`}
+          >
+            <Package className={`mx-auto mb-2 ${deliveryType === 'branch' ? 'text-[#D4AF37]' : 'text-stone-400'}`} size={24} />
+            <div className="text-sm font-medium text-stone-900">{t('novaPoshta.branch')}</div>
+            <div className="text-xs text-stone-500 mt-1">{t('novaPoshta.branchDesc')}</div>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setDeliveryType('locker')}
+            className={`p-4 border-2 rounded-lg transition-all ${
+              deliveryType === 'locker'
+                ? 'border-[#D4AF37] bg-[#D4AF37]/5'
+                : 'border-stone-200 hover:border-stone-300'
+            }`}
+          >
+            <Box className={`mx-auto mb-2 ${deliveryType === 'locker' ? 'text-[#D4AF37]' : 'text-stone-400'}`} size={24} />
+            <div className="text-sm font-medium text-stone-900">{t('novaPoshta.locker')}</div>
+            <div className="text-xs text-stone-500 mt-1">{t('novaPoshta.lockerDesc')}</div>
+          </button>
+
+          <button
+            type="button"
+            onClick={() => setDeliveryType('courier')}
+            className={`p-4 border-2 rounded-lg transition-all ${
+              deliveryType === 'courier'
+                ? 'border-[#D4AF37] bg-[#D4AF37]/5'
+                : 'border-stone-200 hover:border-stone-300'
+            }`}
+          >
+            <TruckIcon className={`mx-auto mb-2 ${deliveryType === 'courier' ? 'text-[#D4AF37]' : 'text-stone-400'}`} size={24} />
+            <div className="text-sm font-medium text-stone-900">{t('novaPoshta.courier')}</div>
+            <div className="text-xs text-stone-500 mt-1">{t('novaPoshta.courierDesc')}</div>
+          </button>
+        </div>
+      </div>
+
+      {/* City Search */}
+      <div>
+        <label className="block text-sm font-medium text-stone-700 mb-2">
+          {t('novaPoshta.city')} *
+        </label>
+        <div className="relative">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-stone-400" size={18} />
+          <input
+            type="text"
+            value={citySearch}
+            onChange={(e) => setCitySearch(e.target.value)}
+            placeholder={t('novaPoshta.cityPlaceholder')}
+            className="w-full pl-10 pr-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none"
+          />
+        </div>
+
+        {/* Cities Dropdown */}
+        {citySearch && cities.length > 0 && (
+          <div className="mt-2 max-h-60 overflow-y-auto border border-stone-200 rounded-lg bg-white shadow-lg">
+            {loadingCities ? (
+              <div className="p-4 text-center text-stone-500">
+                <Loader2 className="animate-spin mx-auto mb-2" size={20} />
+                {t('common.loading')}...
+              </div>
+            ) : (
+              cities.map((city) => (
+                <button
+                  key={city.ref}
+                  type="button"
+                  onClick={() => handleCitySelect(city)}
+                  className="w-full px-4 py-3 text-left hover:bg-stone-50 transition-colors border-b border-stone-100 last:border-0"
+                >
+                  <div className="flex items-start gap-2">
+                    <MapPin className="text-stone-400 flex-shrink-0 mt-0.5" size={16} />
+                    <div>
+                      <div className="font-medium text-stone-900">{city.description}</div>
+                      <div className="text-xs text-stone-500">{city.area}</div>
+                    </div>
+                  </div>
+                </button>
+              ))
+            )}
+          </div>
+        )}
+      </div>
+
+      {/* Courier Address Input (only for courier delivery) */}
+      {selectedCity && deliveryType === 'courier' && (
+        <div>
+          <label className="block text-sm font-medium text-stone-700 mb-2">
+            {t('novaPoshta.courierAddress')} *
+          </label>
+          <input
+            type="text"
+            placeholder={t('novaPoshta.courierAddressPlaceholder')}
+            className="w-full px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none"
+          />
+        </div>
+      )}
+
+      {/* Warehouse Selection (for branch/locker) */}
+      {selectedCity && deliveryType !== 'courier' && warehouses.length > 0 && (
+        <div>
+          <label className="block text-sm font-medium text-stone-700 mb-2">
+            {deliveryType === 'locker' ? t('novaPoshta.selectLocker') : t('novaPoshta.selectBranch')} *
+          </label>
+          
+          {loadingWarehouses ? (
+            <div className="p-4 text-center text-stone-500 border border-stone-200 rounded-lg">
+              <Loader2 className="animate-spin mx-auto mb-2" size={20} />
+              {t('common.loading')}...
+            </div>
+          ) : (
+            <div className="max-h-60 overflow-y-auto border border-stone-200 rounded-lg bg-white">
+              {warehouses.map((warehouse) => (
+                <button
+                  key={warehouse.ref}
+                  type="button"
+                  onClick={() => handleWarehouseSelect(warehouse)}
+                  className={`w-full px-4 py-3 text-left transition-all border-b border-stone-100 last:border-0 ${
+                    selectedWarehouse?.ref === warehouse.ref
+                      ? 'bg-[#D4AF37]/10 border-l-4 border-l-[#D4AF37]'
+                      : 'hover:bg-stone-50'
+                  }`}
+                >
+                  <div className="font-medium text-stone-900">{warehouse.description}</div>
+                  <div className="text-xs text-stone-500 mt-1">
+                    {deliveryType === 'locker' ? t('novaPoshta.locker') : t('novaPoshta.branch')} №{warehouse.number}
+                  </div>
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Delivery Cost Summary */}
+      {deliveryCost && (
+        <div className="bg-gradient-to-r from-[#D4AF37]/10 to-amber-50 dark:from-[#D4AF37]/10 dark:to-stone-800 border-l-4 border-[#D4AF37] rounded-lg p-4">
+          <div className="flex items-start gap-3">
+            <TruckIcon className="text-[#D4AF37] flex-shrink-0" size={20} />
+            <div className="flex-1">
+              <div className="font-semibold text-stone-900 dark:text-white mb-1">
+                {t('novaPoshta.deliveryCost')}
+              </div>
+              <div className="text-2xl font-bold text-[#D4AF37] mb-1">
+                {deliveryCost.cost} ₴
+              </div>
+              <div className="text-sm text-stone-600 dark:text-stone-300">
+                {t('novaPoshta.estimatedDelivery')}: {deliveryCost.estimatedDays}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};

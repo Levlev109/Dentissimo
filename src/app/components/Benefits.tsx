@@ -36,7 +36,7 @@ export const Benefits = () => {
               ))}
             </ul>
             
-            <a href="#about" className="mt-10 inline-block px-8 py-4 bg-stone-100 dark:bg-stone-800 text-stone-900 dark:text-white font-medium hover:bg-stone-200 dark:hover:bg-stone-700 transition-colors">
+            <a href="#about" className="mt-10 inline-block px-8 py-4 bg-white border-2 border-[#D4AF37] dark:bg-stone-900 dark:border-[#D4AF37] text-stone-900 dark:text-white font-semibold hover:bg-[#D4AF37] dark:hover:bg-[#D4AF37] hover:text-white transition-all duration-300 rounded-lg shadow-sm hover:shadow-lg">
               {t('benefits.learnMore')}
             </a>
           </div>

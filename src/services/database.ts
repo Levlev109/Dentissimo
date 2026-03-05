@@ -9,6 +9,15 @@ export interface User {
   createdAt: string;
 }
 
+export type CareMethod = 'whitening' | 'sensitive' | 'gums' | 'natural' | 'kids' | 'pregnant' | 'premium' | 'complete' | 'fresh';
+
+export type Ingredient = 'fluoride' | 'hydroxyapatite' | 'xylitol' | 'calcium' | 'vitaminE' | 
+  'diamondPowder' | 'gold24k' | 'activatedCharcoal' | 'vitaminB12' | 'folicAcid' | 
+  'geranium' | 'chamomile' | 'sage' | 'eucalyptus' | 'liatris' | 'hexetidine' |
+  'biosol' | 'krameria' | 'calendula' | 'commiphoraMyrrh' | 'vitaminB5' | 
+  'calciumGlycerophosphate' | 'mica' | 'sodiumHyaluronate' | 'colloidalSilver' |
+  'cetrariaIslandica' | 'cardamomOil' | 'peppermintOil' | 'zincChloride' | 'ratania';
+
 export interface Product {
   id: string;
   name: string;
@@ -17,6 +26,9 @@ export interface Product {
   description?: string;
   image: string;
   isNew?: boolean;
+  badge?: 'bestseller' | 'recommended' | 'topSales' | 'eco' | 'limitedStock';
+  careMethod?: CareMethod[];
+  ingredients?: Ingredient[];
 }
 
 export interface CartItem {

@@ -50,23 +50,23 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
               exit={{ opacity: 0, y: 20 }}
               transition={{ duration: 0.2 }}
               onClick={(e: React.MouseEvent) => e.stopPropagation()}
-              className="relative w-full max-w-md bg-white rounded-lg shadow-2xl p-8"
+              className="relative w-full max-w-md bg-white dark:bg-stone-900 rounded-lg shadow-2xl p-8"
             >
             <button
               onClick={onClose}
-              className="absolute right-4 top-4 text-stone-400 hover:text-stone-600"
+              className="absolute right-4 top-4 text-stone-400 hover:text-stone-600 dark:hover:text-stone-300"
             >
               <X size={24} />
             </button>
 
-            <h2 className="font-serif text-3xl text-stone-900 mb-2">
+            <h2 className="font-serif text-3xl text-stone-900 dark:text-white mb-2">
               {t('auth.welcome')}
             </h2>
-            <p className="text-stone-500 mb-6">{t('auth.loginToContinue')}</p>
+            <p className="text-stone-500 dark:text-stone-400 mb-6">{t('auth.loginToContinue')}</p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-stone-700 mb-2">
+                <label className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-2">
                   {t('auth.firstName')}
                 </label>
                 <input
@@ -74,13 +74,13 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
                   required
                   value={formData.firstName}
                   onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                  className="w-full px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none"
+                  className="w-full px-4 py-3 border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-800 text-stone-900 dark:text-white rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none"
                   placeholder={t('auth.firstName')}
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-stone-700 mb-2">
+                <label className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-2">
                   {t('auth.lastName')}
                 </label>
                 <input
@@ -88,14 +88,14 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
                   required
                   value={formData.lastName}
                   onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                  className="w-full px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none"
+                  className="w-full px-4 py-3 border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-800 text-stone-900 dark:text-white rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none"
                   placeholder={t('auth.lastName')}
                 />
               </div>
 
               {!usePhone ? (
                 <div>
-                  <label className="block text-sm font-medium text-stone-700 mb-2">
+                  <label className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-2">
                     {t('auth.email')}
                   </label>
                   <input
@@ -103,7 +103,7 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none"
+                    className="w-full px-4 py-3 border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-800 text-stone-900 dark:text-white rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none"
                     placeholder={t('auth.emailPlaceholder')}
                   />
                   <button
@@ -116,7 +116,7 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
                 </div>
               ) : (
                 <div>
-                  <label className="block text-sm font-medium text-stone-700 mb-2">
+                  <label className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-2">
                     {t('auth.phoneOrEmail')}
                   </label>
                   <input
@@ -124,7 +124,7 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
                     required
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none"
+                    className="w-full px-4 py-3 border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-800 text-stone-900 dark:text-white rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none"
                     placeholder={t('auth.phonePlaceholder')}
                   />
                   <button
@@ -139,7 +139,7 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
 
               <button
                 type="submit"
-                className="w-full py-4 bg-stone-900 text-white font-medium hover:bg-stone-800 transition-colors rounded-lg"
+                className="w-full py-4 bg-stone-900 dark:bg-[#D4AF37] text-white font-medium hover:bg-stone-800 dark:hover:bg-[#C4A037] transition-colors rounded-lg"
               >
                 {t('auth.submit')}
               </button>

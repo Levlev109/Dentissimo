@@ -1,8 +1,10 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ProductCard } from './ProductCard';
+import { ProductFilters } from './ProductFilters';
 import { useTranslation } from 'react-i18next';
 import { convertPrice } from '../../services/currency';
+import { CareMethod, Ingredient } from '../../services/database';
 
 const allProducts = [
   // Limited Edition Series (Premium Line)
@@ -13,7 +15,9 @@ const allProducts = [
     price: 175.00,
     descriptionKey: 'products.gentleCareDesc',
     image: '/images/DENTISSIMO_box_Gentle_Care.png',
-    isNew: true
+    isNew: true,
+    careMethod: ['sensitive', 'natural'],
+    ingredients: ['liatris', 'xylitol', 'geranium', 'vitaminE', 'hexetidine']
   },
   {
     id: 'diamond',
@@ -22,7 +26,10 @@ const allProducts = [
     price: 199.00,
     descriptionKey: 'products.diamondDesc',
     image: '/images/7640162326834_DENTISSIMO_DIAMOND (1).png',
-    isNew: true
+    isNew: true,
+    badge: 'topSales' as const,
+    careMethod: ['whitening', 'premium'],
+    ingredients: ['diamondPowder', 'fluoride', 'hydroxyapatite', 'colloidalSilver']
   },
   {
     id: 'whitening-gold',
@@ -31,7 +38,10 @@ const allProducts = [
     price: 219.00,
     descriptionKey: 'products.goldDesc',
     image: '/images/DENTISSIMO_box_Gold_Italy.png',
-    isNew: true
+    isNew: true,
+    badge: 'bestseller' as const,
+    careMethod: ['whitening', 'premium'],
+    ingredients: ['gold24k', 'fluoride', 'mica', 'sodiumHyaluronate']
   },
   {
     id: 'whitening-black',
@@ -40,7 +50,9 @@ const allProducts = [
     price: 189.00,
     descriptionKey: 'products.blackDesc',
     image: '/images/DENTISSIMO_box_EXTRA_whitening (1).png',
-    isNew: true
+    isNew: true,
+    careMethod: ['whitening'],
+    ingredients: ['activatedCharcoal', 'fluoride', 'xylitol']
   },
 
   // Professional Care Series (Pro Line)
@@ -50,7 +62,10 @@ const allProducts = [
     categoryKey: 'toothpaste',
     price: 159.00,
     descriptionKey: 'products.completeCareDesc',
-    image: '/images/DENTISSIMO_box_Complete_care (1).png'
+    image: '/images/DENTISSIMO_box_Complete_care (1).png',
+    badge: 'recommended' as const,
+    careMethod: ['complete', 'gums'],
+    ingredients: ['fluoride', 'hydroxyapatite', 'calcium', 'geranium', 'eucalyptus']
   },
   {
     id: 'pro-care',
@@ -58,7 +73,9 @@ const allProducts = [
     categoryKey: 'toothpaste',
     price: 149.00,
     descriptionKey: 'products.proCareDesc',
-    image: '/images/DENTISSIMO_box_PRO_care.png'
+    image: '/images/DENTISSIMO_box_PRO_care.png',
+    careMethod: ['gums', 'sensitive'],
+    ingredients: ['fluoride', 'krameria', 'geranium', 'biosol']
   },
 
   // Niche Line
@@ -68,7 +85,10 @@ const allProducts = [
     categoryKey: 'toothpaste',
     price: 159.00,
     descriptionKey: 'products.veganDesc',
-    image: '/images/DENTISSIMO_box_Vegan.png'
+    image: '/images/DENTISSIMO_box_Vegan.png',
+    badge: 'eco' as const,
+    careMethod: ['natural'],
+    ingredients: ['vitaminB12', 'xylitol', 'geranium', 'sage', 'commiphoraMyrrh']
   },
   {
     id: 'pregnant',
@@ -76,7 +96,9 @@ const allProducts = [
     categoryKey: 'toothpaste',
     price: 159.00,
     descriptionKey: 'products.pregnantDesc',
-    image: '/images/DENTISSIMO_box_Pregnant.png'
+    image: '/images/DENTISSIMO_box_Pregnant.png',
+    careMethod: ['pregnant', 'natural'],
+    ingredients: ['folicAcid', 'calcium', 'hydroxyapatite', 'calendula', 'geranium', 'xylitol']
   },
 
   // Kids Series
@@ -86,7 +108,9 @@ const allProducts = [
     categoryKey: 'kids',
     price: 139.00,
     descriptionKey: 'products.kidsDesc',
-    image: '/images/DENTISSIMO_box_Kids.png'
+    image: '/images/DENTISSIMO_box_Kids.png',
+    careMethod: ['kids'],
+    ingredients: ['calciumGlycerophosphate', 'vitaminE', 'chamomile', 'geranium', 'vitaminB5']
   },
   {
     id: 'junior-apple',
@@ -94,7 +118,9 @@ const allProducts = [
     categoryKey: 'kids',
     price: 139.00,
     descriptionKey: 'products.juniorDesc',
-    image: '/images/DENTISSIMO_box_Junior.png'
+    image: '/images/DENTISSIMO_box_Junior.png',
+    careMethod: ['kids'],
+    ingredients: ['fluoride', 'calcium', 'vitaminE', 'chamomile', 'geranium']
   },
   {
     id: 'brush-kids',
@@ -175,7 +201,9 @@ const allProducts = [
     price: 169.00,
     descriptionKey: 'products.goldMouthwashDesc',
     image: '/images/7640162327428_Dentissimo_mouthwash_Advanced_Whitening_704x2953.png',
-    isNew: true
+    isNew: true,
+    careMethod: ['whitening', 'premium'],
+    ingredients: ['gold24k', 'fluoride', 'cetrariaIslandica']
   },
   {
     id: 'mouthwash-fresh',
@@ -183,7 +211,9 @@ const allProducts = [
     categoryKey: 'mouthwash',
     price: 149.00,
     descriptionKey: 'products.freshBreathDesc',
-    image: '/images/7640162322416_Dentissimo_mouthwash_Fresh_Breath_704x2953.png'
+    image: '/images/7640162322416_Dentissimo_mouthwash_Fresh_Breath_704x2953.png',
+    careMethod: ['fresh'],
+    ingredients: ['cardamomOil', 'peppermintOil', 'zincChloride']
   },
   {
     id: 'mouthwash-gum',
@@ -191,13 +221,17 @@ const allProducts = [
     categoryKey: 'mouthwash',
     price: 149.00,
     descriptionKey: 'products.gumProtectionDesc',
-    image: '/images/7640162322423_Dentissimo_mouthwash_Gum_Protection_704x2953.png'
+    image: '/images/7640162322423_Dentissimo_mouthwash_Gum_Protection_704x2953.png',
+    careMethod: ['gums'],
+    ingredients: ['ratania', 'chamomile', 'fluoride']
   }
 ];
 
 export const AllProducts = () => {
   const { t, i18n } = useTranslation();
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedCareMethods, setSelectedCareMethods] = useState<CareMethod[]>([]);
+  const [selectedIngredients, setSelectedIngredients] = useState<Ingredient[]>([]);
   
   const categories = [
     { id: 'all', nameKey: 'allProductsSection.all' },
@@ -208,36 +242,62 @@ export const AllProducts = () => {
     { id: 'kids', nameKey: 'allProductsSection.forKids' }
   ];
   
-  const filteredProducts = selectedCategory === 'all' 
-    ? allProducts 
-    : allProducts.filter(p => p.categoryKey === selectedCategory);
+  const filteredProducts = allProducts.filter(p => {
+    // Category filter
+    if (selectedCategory !== 'all' && p.categoryKey !== selectedCategory) {
+      return false;
+    }
+    
+    // Care method filter
+    if (selectedCareMethods.length > 0) {
+      if (!p.careMethod || !p.careMethod.some(method => selectedCareMethods.includes(method))) {
+        return false;
+      }
+    }
+    
+    // Ingredients filter
+    if (selectedIngredients.length > 0) {
+      if (!p.ingredients || !p.ingredients.some(ingredient => selectedIngredients.includes(ingredient))) {
+        return false;
+      }
+    }
+    
+    return true;
+  });
 
   return (
-    <section id="products" className="py-24 bg-white dark:bg-stone-950 transition-colors duration-500">
+    <section id="products" className="py-24 bg-gradient-to-b from-stone-50/30 via-white to-amber-50/20 dark:from-stone-950 dark:via-amber-950/10 dark:to-stone-950 transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="font-serif text-3xl md:text-4xl text-stone-900 dark:text-white mb-4">{t('allProductsSection.title')}</h2>
-          <p className="text-stone-500 dark:text-stone-400 max-w-2xl mx-auto">
-            {t('allProductsSection.subtitle')}
-          </p>
+          <p className="text-[#D4AF37] uppercase tracking-[0.3em] text-xs font-semibold mb-3">{t('allProductsSection.subtitle')}</p>
+          <h2 className="font-serif text-3xl md:text-4xl text-stone-900 dark:text-white mb-2">{t('allProductsSection.title')}</h2>
+          <div className="w-16 h-[2px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mx-auto mt-4" />
         </div>
 
         {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        <div className="flex flex-wrap justify-center gap-3 mb-14">
           {categories.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setSelectedCategory(cat.id)}
-              className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${
+              className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 border ${
                 selectedCategory === cat.id
-                  ? 'bg-stone-900 text-white'
-                  : 'bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-300 hover:bg-stone-200 dark:hover:bg-stone-700'
+                  ? 'bg-gradient-to-r from-[#D4AF37] to-[#B8960C] text-white border-[#D4AF37] shadow-md shadow-[#D4AF37]/20'
+                  : 'bg-white dark:bg-stone-800/60 text-stone-600 dark:text-stone-300 border-stone-200 dark:border-stone-700 hover:border-[#D4AF37]/50 hover:text-[#D4AF37] dark:hover:border-[#D4AF37]/40'
               }`}
             >
               {t(cat.nameKey)}
             </button>
           ))}
         </div>
+
+        {/* Advanced Filters */}
+        <ProductFilters
+          selectedCareMethods={selectedCareMethods}
+          selectedIngredients={selectedIngredients}
+          onCareMethodsChange={setSelectedCareMethods}
+          onIngredientsChange={setSelectedIngredients}
+        />
 
         {/* Products Grid */}
         <motion.div

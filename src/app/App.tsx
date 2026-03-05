@@ -1,7 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { Navbar } from "@/app/components/Navbar";
 import { Hero } from "@/app/components/Hero";
-import { TrustBadges } from "@/app/components/TrustBadges";
 import { CategorySection } from "@/app/components/CategorySection";
 import { FeaturedProducts } from "@/app/components/FeaturedProducts";
 import { AllProducts } from "@/app/components/AllProducts";
@@ -19,7 +18,6 @@ export default function App() {
   const HomePage = () => (
     <>
       <Hero />
-      <TrustBadges />
       <CategorySection />
       <FeaturedProducts />
       <AllProducts />

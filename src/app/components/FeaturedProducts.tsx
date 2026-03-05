@@ -46,15 +46,24 @@ export const FeaturedProducts = () => {
   const { t, i18n } = useTranslation();
 
   return (
-    <section id="limited" className="py-24 bg-[#F9F8F6] dark:bg-stone-900 transition-colors duration-500">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-end mb-12">
-          <div>
-            <h2 className="font-serif text-3xl md:text-4xl text-stone-900 dark:text-white mb-2">{t('featuredProducts.title')}</h2>
-            <p className="text-stone-500 dark:text-stone-400">{t('featuredProducts.subtitle')}</p>
+    <section id="limited" className="py-28 bg-gradient-to-b from-amber-50/40 via-[#FDFBF7] to-white dark:from-stone-900 dark:via-amber-950/10 dark:to-stone-950 transition-colors duration-500 relative overflow-hidden">
+      {/* Enhanced premium pattern overlay */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(212,175,55,0.06),transparent_50%)] dark:bg-[radial-gradient(circle_at_30%_20%,rgba(212,175,55,0.08),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(212,175,55,0.04),transparent_50%)] dark:bg-[radial-gradient(circle_at_70%_80%,rgba(212,175,55,0.06),transparent_50%)]" />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="flex justify-between items-end mb-16">
+          <div className="max-w-xl">
+            <p className="text-[#D4AF37] uppercase tracking-[0.3em] text-xs font-bold mb-3 flex items-center gap-2">
+              <span className="w-8 h-[2px] bg-gradient-to-r from-[#D4AF37] to-transparent"></span>
+              {t('featuredProducts.subtitle')}
+            </p>
+            <h2 className="font-serif text-4xl md:text-5xl text-stone-900 dark:text-white mb-3 leading-tight">{t('featuredProducts.title')}</h2>
+            <div className="w-20 h-1 bg-gradient-to-r from-[#D4AF37] via-[#B8960C] to-transparent mt-4 rounded-full" />
           </div>
-          <a href="#products" className="hidden md:inline-block text-stone-900 dark:text-white font-medium hover:text-[#D4AF37] transition-colors pb-1 border-b border-stone-300 dark:border-stone-600 hover:border-[#D4AF37]">
+          <a href="#products" className="hidden md:inline-flex items-center gap-2 text-stone-800 dark:text-stone-200 font-semibold hover:text-[#D4AF37] dark:hover:text-[#D4AF37] transition-all duration-300 pb-2 border-b-2 border-[#D4AF37]/40 hover:border-[#D4AF37] group hover:gap-3">
             {t('featuredProducts.viewAll')}
+            <span className="text-[#D4AF37]">→</span>
           </a>
         </div>
 
@@ -69,9 +78,10 @@ export const FeaturedProducts = () => {
           ))}
         </div>
         
-        <div className="mt-12 text-center md:hidden">
-          <a href="#products" className="inline-block px-6 py-3 border border-stone-900 dark:border-stone-300 text-stone-900 dark:text-white font-medium">
+        <div className="mt-16 text-center md:hidden">
+          <a href="#products" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#D4AF37] via-[#C4A037] to-[#B8960C] text-white font-bold rounded-xl shadow-xl shadow-[#D4AF37]/30 hover:shadow-2xl hover:shadow-[#D4AF37]/40 transition-all duration-300 transform hover:scale-105 border-2 border-white/20">
             {t('featuredProducts.viewAll')}
+            <span className="text-lg">→</span>
           </a>
         </div>
       </div>

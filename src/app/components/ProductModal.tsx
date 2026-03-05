@@ -81,7 +81,7 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                     {t('products.new')}
                   </span>
                 )}
-                <div className="aspect-[3/4] bg-gradient-to-b from-stone-50 to-stone-100 rounded-xl overflow-hidden">
+                <div className="aspect-[3/4] bg-gradient-to-b from-white via-amber-50/20 to-stone-50/10 dark:from-amber-950/20 dark:via-stone-900 dark:to-stone-950 rounded-xl overflow-hidden">
                   <img
                     src={product.image}
                     alt={product.name}
@@ -94,24 +94,24 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
               <div className="flex flex-col">
                 <button
                   onClick={onClose}
-                  className="self-end text-stone-400 hover:text-stone-900 transition-colors mb-2"
+                  className="self-end text-stone-400 hover:text-stone-900 dark:hover:text-white transition-colors mb-2"
                 >
                   <X size={24} />
                 </button>
 
                 <div className="flex-1 space-y-4">
                   <div>
-                    <p className="text-xs text-stone-500 uppercase tracking-wide mb-1">
+                    <p className="text-xs text-stone-500 dark:text-stone-400 uppercase tracking-wide mb-1">
                       {product.category}
                     </p>
-                    <h2 className="font-serif text-2xl md:text-3xl text-stone-900 mb-3">
+                    <h2 className="font-serif text-2xl md:text-3xl text-stone-900 dark:text-white mb-3">
                       {product.name}
                     </h2>
                     <div className="flex items-baseline gap-2">
-                      <span className="text-2xl md:text-3xl font-bold text-stone-900">
+                      <span className="text-2xl md:text-3xl font-bold text-stone-900 dark:text-white">
                         {t('products.currency')}{product.price.toFixed(2)}
                       </span>
-                      <span className="text-sm text-stone-500">{t('products.currencyCode')}</span>
+                      <span className="text-sm text-stone-500 dark:text-stone-400">{t('products.currencyCode')}</span>
                     </div>
                   </div>
 
@@ -138,10 +138,10 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                   {/* Description */}
                   {product.description && (
                     <div className="bg-stone-50 dark:bg-stone-800 rounded-xl p-4 border border-stone-100 dark:border-stone-700">
-                      <h3 className="text-xs font-semibold text-stone-900 uppercase tracking-wide mb-2">
+                      <h3 className="text-xs font-semibold text-stone-900 dark:text-white uppercase tracking-wide mb-2">
                         {t('products.description')}
                       </h3>
-                      <p className="text-sm text-stone-600 leading-relaxed">
+                      <p className="text-sm text-stone-600 dark:text-stone-300 leading-relaxed">
                         {displayDesc}
                       </p>
                       {isLongDesc && (
@@ -162,14 +162,14 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                   {/* Active Ingredients */}
                   {details?.ingredients && details.ingredients.length > 0 && (
                     <div>
-                      <h3 className="text-xs font-semibold text-stone-900 uppercase tracking-wide mb-2">
+                      <h3 className="text-xs font-semibold text-stone-900 dark:text-white uppercase tracking-wide mb-2">
                         {t('products.activeIngredients')}
                       </h3>
                       <div className="flex flex-wrap gap-1.5">
                         {details.ingredients.map((ingredient) => (
                           <span
                             key={ingredient}
-                            className="px-2.5 py-1 bg-[#D4AF37]/8 text-stone-700 text-xs rounded-full border border-[#D4AF37]/20 font-medium"
+                            className="px-2.5 py-1 bg-[#D4AF37]/8 dark:bg-[#D4AF37]/20 text-stone-700 dark:text-stone-300 text-xs rounded-full border border-[#D4AF37]/20 font-medium"
                           >
                             {t(`ingredients.${ingredient}`)}
                           </span>
@@ -180,24 +180,24 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                 </div>
 
                 {/* Quantity and Add to Cart */}
-                <div className="border-t border-stone-200 pt-4 mt-4">
+                <div className="border-t border-stone-200 dark:border-stone-700 pt-4 mt-4">
                   <div className="flex items-center gap-4 mb-3">
-                    <span className="text-xs font-semibold text-stone-900 uppercase tracking-wide">
+                    <span className="text-xs font-semibold text-stone-900 dark:text-white uppercase tracking-wide">
                       {t('products.quantity')}:
                     </span>
                     <div className="flex items-center gap-2">
                       <button
                         onClick={decrementQuantity}
-                        className="w-9 h-9 flex items-center justify-center border border-stone-300 rounded-lg hover:bg-stone-100 transition-colors"
+                        className="w-9 h-9 flex items-center justify-center border border-stone-300 dark:border-stone-600 text-stone-900 dark:text-white rounded-lg hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors"
                       >
                         <Minus size={14} />
                       </button>
-                      <span className="w-10 text-center font-semibold text-lg">
+                      <span className="w-10 text-center font-semibold text-lg text-stone-900 dark:text-white">
                         {quantity}
                       </span>
                       <button
                         onClick={incrementQuantity}
-                        className="w-9 h-9 flex items-center justify-center border border-stone-300 rounded-lg hover:bg-stone-100 transition-colors"
+                        className="w-9 h-9 flex items-center justify-center border border-stone-300 dark:border-stone-600 text-stone-900 dark:text-white rounded-lg hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors"
                       >
                         <Plus size={14} />
                       </button>
@@ -212,7 +212,7 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                     {t('products.addToCart')}
                   </button>
 
-                  <p className="text-xs text-stone-500 text-center mt-3">
+                  <p className="text-xs text-stone-500 dark:text-stone-400 text-center mt-3">
                     {t('products.freeDelivery')} {t('products.currency')}1000
                   </p>
                 </div>

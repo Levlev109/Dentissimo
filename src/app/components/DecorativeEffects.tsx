@@ -23,6 +23,19 @@ export const DecorativeEffects = () => {
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
 
+    // Theme-aware colors — detect dark mode from <html> class
+    const getIsDark = () => document.documentElement.classList.contains('dark');
+    let isDark = getIsDark();
+
+    // Watch for theme changes
+    const observer = new MutationObserver(() => { isDark = getIsDark(); });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+
+    // Color palette that adapts to theme
+    const c = () => isDark
+      ? { stream: '140, 210, 255', drop: '180, 230, 255', dropMid: '140, 210, 255', dropOuter: '120, 200, 255', glow: '140, 215, 255', rivulet: '160, 220, 255', highlight: 'rgba(255, 255, 255, 0.35)' }
+      : { stream: '30, 100, 180',  drop: '20, 90, 170',   dropMid: '40, 120, 200',  dropOuter: '60, 140, 210',  glow: '40, 120, 200',  rivulet: '50, 130, 200',  highlight: 'rgba(255, 255, 255, 0.5)' };
+
     let W = window.innerWidth;
     let H = window.innerHeight;
 
@@ -38,7 +51,7 @@ export const DecorativeEffects = () => {
     };
     setSize();
 
-    const BAND = 55; // how far from edge droplets appear
+    const BAND = 50; // how far from edge droplets appear
 
     const makeDrop = (): Drop => {
       const side: 'left' | 'right' = Math.random() < 0.5 ? 'left' : 'right';
@@ -47,10 +60,10 @@ export const DecorativeEffects = () => {
           ? Math.random() * BAND
           : W - Math.random() * BAND,
         y: -Math.random() * 80,
-        size: 1 + Math.random() * 2.5,
+        size: 1.5 + Math.random() * 3,
         speedY: 2 + Math.random() * 4,
-        drift: (Math.random() - 0.5) * 0.15,
-        opacity: 0.08 + Math.random() * 0.18,
+        drift: (Math.random() - 0.5) * 0.12,
+        opacity: 0.25 + Math.random() * 0.35,
         wobblePhase: Math.random() * Math.PI * 2,
         wobbleSpeed: 0.01 + Math.random() * 0.025,
         side,
@@ -58,7 +71,7 @@ export const DecorativeEffects = () => {
     };
 
     // Init drops
-    const getCount = () => Math.min(Math.floor(W / 6), 220);
+    const getCount = () => 270;
     dropsRef.current = Array.from({ length: getCount() }, () => {
       const d = makeDrop();
       d.y = Math.random() * H;
@@ -70,9 +83,9 @@ export const DecorativeEffects = () => {
     const drawStreams = (time: number) => {
       // Multiple stream layers for depth
       const layers = [
-        { width: 3, alphaBase: 0.04, speed: 0.002, freq: 0.018, amp: 12 },
-        { width: 2, alphaBase: 0.03, speed: 0.003, freq: 0.025, amp: 8 },
-        { width: 1.5, alphaBase: 0.025, speed: 0.004, freq: 0.04, amp: 5 },
+        { width: 5, alphaBase: 0.12, speed: 0.002, freq: 0.015, amp: 12 },
+        { width: 4, alphaBase: 0.09, speed: 0.003, freq: 0.022, amp: 8 },
+        { width: 3, alphaBase: 0.06, speed: 0.004, freq: 0.035, amp: 5 },
       ];
 
       for (const layer of layers) {
@@ -86,8 +99,9 @@ export const DecorativeEffects = () => {
         ctx.lineTo(0, H);
         ctx.closePath();
         const lgLeft = ctx.createLinearGradient(0, 0, layer.amp + 10, 0);
-        lgLeft.addColorStop(0, `rgba(140, 210, 255, ${layer.alphaBase + Math.sin(time * 0.0008) * 0.01})`);
-        lgLeft.addColorStop(1, 'rgba(140, 210, 255, 0)');
+        lgLeft.addColorStop(0, `rgba(${c().stream}, ${layer.alphaBase + Math.sin(time * 0.0008) * 0.01})`);
+        lgLeft.addColorStop(0.5, `rgba(${c().stream}, ${layer.alphaBase * 0.4})`);
+        lgLeft.addColorStop(1, `rgba(${c().stream}, 0)`);
         ctx.fillStyle = lgLeft;
         ctx.fill();
 
@@ -101,54 +115,57 @@ export const DecorativeEffects = () => {
         ctx.lineTo(W, H);
         ctx.closePath();
         const lgRight = ctx.createLinearGradient(W, 0, W - layer.amp - 10, 0);
-        lgRight.addColorStop(0, `rgba(140, 210, 255, ${layer.alphaBase + Math.sin(time * 0.001) * 0.01})`);
-        lgRight.addColorStop(1, 'rgba(140, 210, 255, 0)');
+        lgRight.addColorStop(0, `rgba(${c().stream}, ${layer.alphaBase + Math.sin(time * 0.001) * 0.01})`);
+        lgRight.addColorStop(0.5, `rgba(${c().stream}, ${layer.alphaBase * 0.4})`);
+        lgRight.addColorStop(1, `rgba(${c().stream}, 0)`);
         ctx.fillStyle = lgRight;
         ctx.fill();
       }
 
-      // Subtle flowing lines (like rivulets)
-      ctx.lineWidth = 1;
-      for (let i = 0; i < 4; i++) {
-        const offsetPhase = i * 1.2;
-        const speed = 0.0015 + i * 0.0005;
+      // Flowing rivulets — subtle water lines
+      for (let i = 0; i < 3; i++) {
+        const offsetPhase = i * 1.5;
+        const speed = 0.0012 + i * 0.0004;
+        ctx.lineWidth = 0.8;
 
         // Left rivulet
         ctx.beginPath();
-        for (let y = 0; y < H; y += 2) {
-          const x = Math.sin((y + time * speed + offsetPhase) * 0.03) * (6 + i * 3)
-                  + Math.sin((y + time * speed * 1.3) * 0.05) * 3;
+        for (let y = 0; y < H; y += 3) {
+          const x = Math.sin((y + time * speed + offsetPhase) * 0.02) * (4 + i * 2)
+                  + Math.sin((y + time * speed * 1.3) * 0.04) * 2;
           if (y === 0) ctx.moveTo(x + 2, y);
           else ctx.lineTo(x + 2, y);
         }
-        ctx.strokeStyle = `rgba(160, 220, 255, ${0.04 + Math.sin(time * 0.0007 + i) * 0.015})`;
+        ctx.strokeStyle = `rgba(${c().rivulet}, ${0.12 + Math.sin(time * 0.0007 + i) * 0.04})`;
         ctx.stroke();
 
         // Right rivulet
         ctx.beginPath();
-        for (let y = 0; y < H; y += 2) {
-          const x = Math.sin((y + time * speed + offsetPhase + 2) * 0.03) * (6 + i * 3)
-                  + Math.sin((y + time * speed * 1.3 + 1) * 0.05) * 3;
+        for (let y = 0; y < H; y += 3) {
+          const x = Math.sin((y + time * speed + offsetPhase + 2) * 0.02) * (4 + i * 2)
+                  + Math.sin((y + time * speed * 1.3 + 1) * 0.04) * 2;
           if (y === 0) ctx.moveTo(W - x - 2, y);
           else ctx.lineTo(W - x - 2, y);
         }
-        ctx.strokeStyle = `rgba(160, 220, 255, ${0.04 + Math.sin(time * 0.0009 + i) * 0.015})`;
+        ctx.strokeStyle = `rgba(${c().rivulet}, ${0.12 + Math.sin(time * 0.0009 + i) * 0.04})`;
         ctx.stroke();
       }
 
       // Soft edge glow
-      const glowW = 35;
+      const glowW = 40;
       const pulse = Math.sin(time * 0.0006) * 0.008;
 
       const lGlow = ctx.createLinearGradient(0, 0, glowW, 0);
-      lGlow.addColorStop(0, `rgba(140, 215, 255, ${0.045 + pulse})`);
-      lGlow.addColorStop(1, 'rgba(140, 215, 255, 0)');
+      lGlow.addColorStop(0, `rgba(${c().glow}, ${0.15 + pulse})`);
+      lGlow.addColorStop(0.5, `rgba(${c().glow}, ${0.06 + pulse * 0.3})`);
+      lGlow.addColorStop(1, `rgba(${c().glow}, 0)`);
       ctx.fillStyle = lGlow;
       ctx.fillRect(0, 0, glowW, H);
 
       const rGlow = ctx.createLinearGradient(W, 0, W - glowW, 0);
-      rGlow.addColorStop(0, `rgba(140, 215, 255, ${0.045 + pulse})`);
-      rGlow.addColorStop(1, 'rgba(140, 215, 255, 0)');
+      rGlow.addColorStop(0, `rgba(${c().glow}, ${0.15 + pulse})`);
+      rGlow.addColorStop(0.5, `rgba(${c().glow}, ${0.06 + pulse * 0.3})`);
+      rGlow.addColorStop(1, `rgba(${c().glow}, 0)`);
       ctx.fillStyle = rGlow;
       ctx.fillRect(W - glowW, 0, glowW, H);
     };
@@ -166,18 +183,18 @@ export const DecorativeEffects = () => {
 
       // Main drop body
       ctx.beginPath();
-      ctx.ellipse(0, 0, r * 0.6, r + stretch, 0, 0, Math.PI * 2);
+      ctx.ellipse(0, 0, r * 0.7, r + stretch, 0, 0, Math.PI * 2);
       const grad = ctx.createRadialGradient(0, -stretch * 0.3, 0, 0, 0, r + stretch);
-      grad.addColorStop(0, 'rgba(180, 230, 255, 0.5)');
-      grad.addColorStop(0.4, 'rgba(140, 210, 255, 0.3)');
-      grad.addColorStop(1, 'rgba(120, 200, 255, 0)');
+      grad.addColorStop(0, `rgba(${c().drop}, 0.8)`);
+      grad.addColorStop(0.4, `rgba(${c().dropMid}, 0.45)`);
+      grad.addColorStop(1, `rgba(${c().dropOuter}, 0)`);
       ctx.fillStyle = grad;
       ctx.fill();
 
-      // Tiny highlight
+      // Bright highlight
       ctx.beginPath();
-      ctx.arc(-r * 0.15, -r * 0.4, r * 0.2, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.35)';
+      ctx.arc(-r * 0.15, -r * 0.4, r * 0.25, 0, Math.PI * 2);
+      ctx.fillStyle = c().highlight;
       ctx.fill();
 
       ctx.restore();
@@ -235,6 +252,7 @@ export const DecorativeEffects = () => {
     return () => {
       cancelAnimationFrame(animRef.current);
       window.removeEventListener('resize', onResize);
+      observer.disconnect();
     };
   }, []);
 

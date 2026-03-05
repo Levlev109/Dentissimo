@@ -18,8 +18,11 @@ export const Hero = () => {
         >
           <source src="/gorge-water.mp4" type="video/mp4" />
         </video>
-        {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30"></div>
+        {/* Enhanced gradient overlays */}
+        <div className="absolute inset-0 bg-gradient-to-r from-amber-950/85 via-stone-900/70 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-amber-900/50 via-transparent to-stone-950/70"></div>
+        {/* Subtle gold glow effect */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-[#D4AF37]/15 via-amber-800/10 to-transparent"></div>
         {/* Bottom fade into next section */}
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#F9F8F6] dark:from-stone-950 to-transparent transition-colors duration-500"></div>
       </div>
@@ -31,12 +34,12 @@ export const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <span className="inline-block py-1 px-3 border border-white/30 rounded-full text-xs font-semibold tracking-widest text-white/80 uppercase mb-4 backdrop-blur-sm">
+            <span className="inline-block py-2 px-4 border border-white/40 rounded-full text-xs font-semibold tracking-widest text-white/90 uppercase mb-6 backdrop-blur-md bg-white/10 shadow-lg hover:bg-white/15 transition-all duration-300">
               {t('hero.tagline')}
             </span>
-            <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl leading-tight text-white">
+            <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl leading-tight text-white drop-shadow-2xl [text-shadow:_0_4px_12px_rgb(0_0_0_/_40%)]">
               {t('hero.title').split(' ').slice(0, 2).join(' ')} <br />
-              <span className="italic text-white/70">{t('hero.title').split(' ').slice(2).join(' ')}</span>
+              <span className="italic text-white/80 bg-gradient-to-r from-white via-white/90 to-white/70 bg-clip-text text-transparent">{t('hero.title').split(' ').slice(2).join(' ')}</span>
             </h1>
           </motion.div>
 
@@ -44,7 +47,7 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-lg text-white/70 max-w-md leading-relaxed font-light mt-8"
+            className="text-lg text-white/80 max-w-md leading-relaxed font-light mt-8 drop-shadow-lg"
           >
             {t('hero.description')}
           </motion.p>
@@ -55,11 +58,11 @@ export const Hero = () => {
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
             className="flex flex-col sm:flex-row gap-4 mt-8"
           >
-            <a href="#products" className="px-8 py-4 bg-white text-stone-900 font-medium tracking-wide hover:bg-[#D4AF37] hover:text-white transition-colors flex items-center justify-center gap-2 group rounded-lg">
+            <a href="#products" className="px-8 py-4 bg-gradient-to-r from-white to-amber-50 text-stone-900 font-semibold tracking-wide hover:from-[#D4AF37] hover:to-[#B8960C] hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group rounded-xl shadow-xl hover:shadow-2xl hover:shadow-[#D4AF37]/20 hover:scale-105 transform">
               {t('hero.buyNow')}
               <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
             </a>
-            <a href="#about" className="px-8 py-4 border border-white/30 text-white font-medium tracking-wide hover:bg-white/10 transition-colors flex items-center justify-center backdrop-blur-sm rounded-lg">
+            <a href="#about" className="px-8 py-4 border-2 border-white/40 text-white font-semibold tracking-wide hover:bg-white/20 hover:border-white/60 transition-all duration-300 flex items-center justify-center backdrop-blur-md rounded-xl shadow-lg hover:scale-105 transform">
               {t('hero.learnMore')}
             </a>
           </motion.div>
