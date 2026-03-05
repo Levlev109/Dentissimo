@@ -49,7 +49,7 @@ export const CategorySection = () => {
   ];
 
   return (
-    <section className="py-24 bg-white dark:from-stone-950 dark:via-stone-950/70 dark:to-stone-950 transition-colors duration-500">
+    <section className="py-24 bg-white dark:bg-stone-950 transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
           <motion.div

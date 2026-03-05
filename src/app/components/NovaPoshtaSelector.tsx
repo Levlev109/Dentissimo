@@ -256,7 +256,7 @@ export const NovaPoshtaSelector = ({ onSelect, cartTotal }: NovaPoshtaSelectorPr
 
         {/* Cities Dropdown */}
         {citySearch && cities.length > 0 && (
-          <div className="mt-2 max-h-60 overflow-y-auto border border-stone-200 rounded-lg bg-white shadow-lg">
+          <div className="mt-2 max-h-60 overflow-y-auto border border-stone-200 dark:border-stone-700 rounded-lg bg-white dark:bg-stone-800 shadow-lg">
             {loadingCities ? (
               <div className="p-4 text-center text-stone-500">
                 <Loader2 className="animate-spin mx-auto mb-2" size={20} />
@@ -311,7 +311,7 @@ export const NovaPoshtaSelector = ({ onSelect, cartTotal }: NovaPoshtaSelectorPr
               {t('common.loading')}...
             </div>
           ) : (
-            <div className="max-h-60 overflow-y-auto border border-stone-200 rounded-lg bg-white">
+            <div className="max-h-60 overflow-y-auto border border-stone-200 dark:border-stone-700 rounded-lg bg-white dark:bg-stone-800">
               {warehouses.map((warehouse) => (
                 <button
                   key={warehouse.ref}

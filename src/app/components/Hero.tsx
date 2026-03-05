@@ -6,14 +6,18 @@ export const Hero = () => {
   const { t } = useTranslation();
   return (
     <section className="relative w-full h-screen min-h-[700px] flex items-center overflow-hidden pt-20">
-      {/* Background Video */}
+      {/* Background Video - hidden on mobile for performance */}
       <div className="absolute inset-0 z-0">
+        {/* Mobile: static gradient background */}
+        <div className="block md:hidden w-full h-full bg-gradient-to-br from-stone-950 via-stone-900 to-stone-800"></div>
+        {/* Desktop: video */}
         <video
           autoPlay
           muted
           loop
           playsInline
-          className="w-full h-full object-cover"
+          preload="none"
+          className="hidden md:block w-full h-full object-cover"
           poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3Crect fill='%231c1917' width='1' height='1'/%3E%3C/svg%3E"
         >
           <source src="/gorge-water.mp4" type="video/mp4" />

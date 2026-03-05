@@ -63,7 +63,7 @@ export const ProductFilters = ({
   const hasActiveFilters = selectedCareMethods.length > 0 || selectedIngredients.length > 0;
 
   return (
-    <div className="mb-8 bg-white dark:from-stone-900 dark:via-stone-900/80 dark:to-stone-900 rounded-2xl border border-stone-200/60 dark:border-stone-800/40 p-6 shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-sm">
+    <div className="mb-8 bg-white dark:bg-stone-900 rounded-2xl border border-stone-200/60 dark:border-stone-800/40 p-6 shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-sm">
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-xl font-bold text-stone-900 dark:text-white flex items-center gap-2">
           <span className="w-1 h-6 bg-gradient-to-b from-[#D4AF37] to-[#B8960C] rounded-full"></span>
@@ -85,7 +85,7 @@ export const ProductFilters = ({
         <div>
           <button
             onClick={() => setCareMethodsOpen(!careMethodsOpen)}
-            className="w-full flex items-center justify-between p-4 rounded-xl bg-stone-50/50 dark:from-stone-950/30 dark:to-stone-900 hover:bg-stone-100/60 dark:hover:from-stone-900/50 dark:hover:to-stone-900 transition-all duration-300 shadow-sm hover:shadow-md border border-stone-200/50 dark:border-stone-800/30"
+            className="w-full flex items-center justify-between p-4 rounded-xl bg-stone-50/50 dark:bg-stone-900 hover:bg-stone-100/60 dark:hover:bg-stone-800 transition-all duration-300 shadow-sm hover:shadow-md border border-stone-200/50 dark:border-stone-800/30"
           >
             <span className="font-semibold text-stone-900 dark:text-white flex items-center gap-2.5">
               <Sparkles size={20} className="text-[#D4AF37] drop-shadow-sm" />
@@ -138,7 +138,7 @@ export const ProductFilters = ({
         <div>
           <button
             onClick={() => setIngredientsOpen(!ingredientsOpen)}
-            className="w-full flex items-center justify-between p-4 rounded-xl bg-stone-50/50 dark:from-stone-950/30 dark:to-stone-900 hover:bg-stone-100/60 dark:hover:from-stone-900/50 dark:hover:to-stone-900 transition-all duration-300 shadow-sm hover:shadow-md border border-stone-200/50 dark:border-stone-800/30"
+            className="w-full flex items-center justify-between p-4 rounded-xl bg-stone-50/50 dark:bg-stone-900 hover:bg-stone-100/60 dark:hover:bg-stone-800 transition-all duration-300 shadow-sm hover:shadow-md border border-stone-200/50 dark:border-stone-800/30"
           >
             <span className="font-semibold text-stone-900 dark:text-white flex items-center gap-2.5">
               <Leaf size={20} className="text-[#D4AF37] drop-shadow-sm" />
