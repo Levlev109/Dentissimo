@@ -8,7 +8,6 @@ import { orderService } from '../../services/orderService';
 import { useNavigate } from 'react-router-dom';
 import { CheckCircle, Loader2, ArrowLeft, ShoppingBag } from 'lucide-react';
 import { NovaPoshtaSelector } from '../components/NovaPoshtaSelector';
-import { NovaPoshtaCity, NovaPoshtaWarehouse, NovaPoshtaDeliveryCost } from '../../services/novaPoshta';
 
 // ─────────────────────────────────────────────────────────────────────────────
 //  EmailJS configuration
@@ -37,23 +36,7 @@ const OWNER_EMAIL         = 'starovlev11@gmail.com';
 const sanitize = (str: string, maxLen = 200): string =>
   str.replace(/<[^>]*>/g, '').trim().slice(0, maxLen);
 
-const europeanCountries = [
-  { code: 'UA', nameKey: 'countries.ukraine',       flag: '🇺🇦', phoneCode: '+380' },
-  { code: 'PL', nameKey: 'countries.poland',        flag: '🇵🇱', phoneCode: '+48'  },
-  { code: 'DE', nameKey: 'countries.germany',       flag: '🇩🇪', phoneCode: '+49'  },
-  { code: 'FR', nameKey: 'countries.france',        flag: '🇫🇷', phoneCode: '+33'  },
-  { code: 'IT', nameKey: 'countries.italy',         flag: '🇮🇹', phoneCode: '+39'  },
-  { code: 'ES', nameKey: 'countries.spain',         flag: '🇪🇸', phoneCode: '+34'  },
-  { code: 'GB', nameKey: 'countries.unitedKingdom', flag: '🇬🇧', phoneCode: '+44'  },
-  { code: 'NL', nameKey: 'countries.netherlands',   flag: '🇳🇱', phoneCode: '+31'  },
-  { code: 'BE', nameKey: 'countries.belgium',       flag: '🇧🇪', phoneCode: '+32'  },
-  { code: 'AT', nameKey: 'countries.austria',       flag: '🇦🇹', phoneCode: '+43'  },
-  { code: 'CH', nameKey: 'countries.switzerland',   flag: '🇨🇭', phoneCode: '+41'  },
-  { code: 'CZ', nameKey: 'countries.czechRepublic', flag: '🇨🇿', phoneCode: '+420' },
-  { code: 'RO', nameKey: 'countries.romania',       flag: '🇷🇴', phoneCode: '+40'  },
-  { code: 'HU', nameKey: 'countries.hungary',       flag: '🇭🇺', phoneCode: '+36'  },
-  { code: 'SK', nameKey: 'countries.slovakia',      flag: '🇸🇰', phoneCode: '+421' },
-];
+
 
 export const CheckoutPage = () => {
   const { items, total, clearCart } = useCart();
@@ -67,22 +50,14 @@ export const CheckoutPage = () => {
     firstName: user?.firstName || '',
     lastName:  user?.lastName  || '',
     email:     user?.email     || '',
-    phone:     user?.phone     || '',
-    country:   '',
+    phone:     user?.phone     || '+380 ',
+    country:   'UA',
     address:   '',
+    city:      '',
+    warehouse: '',
   });
 
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
-
-  // Auto-fill phone prefix when country changes
-  const handleCountryChange = (countryCode: string) => {
-    const country = europeanCountries.find(c => c.code === countryCode);
-    setFormData(prev => ({
-      ...prev,
-      country: countryCode,
-      phone: country ? country.phoneCode + ' ' : '',
-    }));
-  };
 
   const validateForm = (): boolean => {
     const newErrors: { [key: string]: string } = {};
@@ -95,8 +70,7 @@ export const CheckoutPage = () => {
       newErrors.email = t('checkout.invalidEmail');
     }
     if (!formData.phone.trim())   newErrors.phone   = t('checkout.required');
-    if (!formData.country)        newErrors.country  = t('checkout.selectCountry');
-    if (!formData.address.trim()) newErrors.address  = t('checkout.required');
+    if (!formData.city.trim())    newErrors.address  = t('checkout.required');
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -111,7 +85,8 @@ export const CheckoutPage = () => {
       const orderId = typeof crypto !== 'undefined' && crypto.randomUUID
         ? `ORD-${crypto.randomUUID().slice(0, 8).toUpperCase()}`
         : `ORD-${Date.now()}`;
-      const countryLabel = europeanCountries.find(c => c.code === formData.country)?.flag + ' ' + formData.country;
+      const countryLabel = '🇺🇦 Україна';
+      const deliveryInfo = formData.city ? `${formData.city} → ${formData.warehouse}` : formData.address;
       const itemsText = items
         .map(i => `${i.product.name} × ${i.quantity} = ${t('products.currency')}${(i.product.price * i.quantity).toFixed(2)}`)
         .join('\n');
@@ -124,6 +99,8 @@ export const CheckoutPage = () => {
         phone:     sanitize(formData.phone, 30),
         country:   sanitize(formData.country, 5),
         address:   sanitize(formData.address, 300),
+        city:      sanitize(formData.city, 100),
+        warehouse: sanitize(formData.warehouse, 200),
       };
 
       // Save order to Supabase (+ localStorage fallback)
@@ -136,8 +113,10 @@ export const CheckoutPage = () => {
           lastName:  safe.lastName,
           email:     safe.email,
           phone:     safe.phone,
-          country:   safe.country,
-          address:   safe.address,
+          country:   'UA',
+          address:   safe.city ? `${safe.city}, ${safe.warehouse}` : safe.address,
+          city:      safe.city || undefined,
+          warehouse: safe.warehouse || undefined,
         },
         status: 'pending',
       });
@@ -152,7 +131,7 @@ export const CheckoutPage = () => {
           customer_email:   safe.email,
           customer_phone:   safe.phone,
           customer_country: countryLabel,
-          customer_address: safe.address,
+          customer_address: deliveryInfo,
           order_items:      itemsText,
           order_total:      `${t('products.currency')}${total.toFixed(2)}`,
           to_email:         OWNER_EMAIL,
@@ -283,26 +262,8 @@ export const CheckoutPage = () => {
                 )}
               </div>
 
-              <div>
-                <label className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-2">
-                  {t('checkout.country')} *
-                </label>
-                <select
-                  value={formData.country}
-                  onChange={(e) => handleCountryChange(e.target.value)}
-                  className={`w-full px-4 py-3 border ${errors.country ? 'border-red-500' : 'border-stone-300 dark:border-stone-600'} rounded-lg bg-white dark:bg-stone-800 text-stone-900 dark:text-white focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none`}
-                >
-                  <option value="">{t('checkout.selectCountry')}</option>
-                  {europeanCountries.map(country => (
-                    <option key={country.code} value={country.code}>
-                      {country.flag} {t(country.nameKey)}
-                    </option>
-                  ))}
-                </select>
-                {errors.country && (
-                  <p className="text-red-500 text-sm mt-1">{errors.country}</p>
-                )}
-              </div>
+
+
 
               <div>
                 <label className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-2">
@@ -321,15 +282,17 @@ export const CheckoutPage = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-2">
-                  {t('checkout.address')} *
-                </label>
-                <textarea
-                  rows={3}
-                  value={formData.address}
-                  onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                  placeholder={t('checkout.addressPlaceholder')}
-                  className={`w-full px-4 py-3 border ${errors.address ? 'border-red-500' : 'border-stone-300 dark:border-stone-600'} rounded-lg bg-white dark:bg-stone-800 text-stone-900 dark:text-white placeholder-stone-400 focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none resize-none`}
+                <NovaPoshtaSelector
+                  onSelect={(data) => {
+                    setFormData(prev => ({
+                      ...prev,
+                      city:      data.city?.description || '',
+                      warehouse: data.warehouse?.description || '',
+                      address:   data.address || '',
+                    }));
+                    if (errors.address) setErrors(prev => ({ ...prev, address: '' }));
+                  }}
+                  cartTotal={total}
                 />
                 {errors.address && (
                   <p className="text-red-500 text-sm mt-1">{errors.address}</p>
