@@ -66,7 +66,7 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="flex flex-row gap-3 mt-8"
+            className="flex flex-wrap gap-3 mt-8"
           >
             <a href="#products" className="px-6 py-3.5 bg-white text-stone-900 font-semibold tracking-wide hover:bg-gradient-to-r hover:from-[#D4AF37] hover:to-[#B8960C] hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group rounded-xl shadow-xl hover:shadow-2xl hover:shadow-[#D4AF37]/20 hover:scale-105 transform text-sm md:text-base md:px-8 md:py-4">
               {t('hero.buyNow')}

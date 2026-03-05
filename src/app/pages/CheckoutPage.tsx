@@ -152,18 +152,20 @@ export const CheckoutPage = () => {
 
   if (orderPlaced) {
     return (
-      <div className="min-h-screen bg-[#F9F8F6] flex items-center justify-center px-4">
-        <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8 text-center">
-          <CheckCircle size={64} className="text-green-600 mx-auto mb-4" />
-          <h2 className="font-serif text-3xl text-stone-900 mb-2">
+      <div className="min-h-screen bg-[#F9F8F6] dark:bg-stone-950 flex items-center justify-center px-4">
+        <div className="max-w-md w-full bg-white dark:bg-stone-900 rounded-2xl shadow-lg p-8 text-center">
+          <div className="w-20 h-20 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-6">
+            <CheckCircle size={40} className="text-green-600" />
+          </div>
+          <h2 className="font-serif text-3xl text-stone-900 dark:text-white mb-2">
             {t('common.success')}!
           </h2>
-          <p className="text-stone-600 mb-6">
+          <p className="text-stone-600 dark:text-stone-400 mb-8">
             {t('checkout.orderSuccess')}
           </p>
           <button
             onClick={() => navigate('/')}
-            className="px-8 py-3 bg-stone-900 text-white hover:bg-stone-800 transition-colors"
+            className="px-8 py-3.5 bg-gradient-to-r from-[#D4AF37] to-[#B8960C] text-white font-semibold rounded-xl hover:from-[#B8960C] hover:to-[#9A7D0A] transition-all shadow-lg"
           >
             {t('cart.continueShopping')}
           </button>
@@ -174,15 +176,15 @@ export const CheckoutPage = () => {
 
   if (items.length === 0) {
     return (
-      <div className="min-h-screen bg-[#F9F8F6] flex items-center justify-center px-4">
+      <div className="min-h-screen bg-[#F9F8F6] dark:bg-stone-950 flex items-center justify-center px-4">
         <div className="text-center">
-          <ShoppingBag size={64} className="text-stone-300 mx-auto mb-4" />
-          <h2 className="font-serif text-3xl text-stone-900 mb-4">
+          <ShoppingBag size={64} className="text-stone-300 dark:text-stone-600 mx-auto mb-4" />
+          <h2 className="font-serif text-3xl text-stone-900 dark:text-white mb-4">
             {t('cart.empty')}
           </h2>
           <button
             onClick={() => navigate('/')}
-            className="px-8 py-3 bg-stone-900 text-white hover:bg-stone-800 transition-colors rounded-lg"
+            className="px-8 py-3.5 bg-gradient-to-r from-[#D4AF37] to-[#B8960C] text-white font-semibold rounded-xl hover:from-[#B8960C] hover:to-[#9A7D0A] transition-all shadow-lg"
           >
             {t('cart.continueShopping')}
           </button>
@@ -207,13 +209,13 @@ export const CheckoutPage = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Form */}
-          <div className="bg-white dark:bg-stone-900 rounded-lg shadow-sm p-8">
+          <div className="bg-white dark:bg-stone-900 rounded-xl shadow-sm p-4 sm:p-8">
             <h2 className="font-serif text-2xl text-stone-900 dark:text-white mb-6">
               {t('checkout.personalInfo')}
             </h2>
 
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-2">
                     {t('checkout.firstName')} *
@@ -288,7 +290,7 @@ export const CheckoutPage = () => {
                       ...prev,
                       city:      data.city?.description || '',
                       warehouse: data.warehouse?.description || '',
-                      address:   data.address || '',
+                      address:   `${data.city?.description || ''}, ${data.warehouse?.description || ''}`,
                     }));
                     if (errors.address) setErrors(prev => ({ ...prev, address: '' }));
                   }}
@@ -302,7 +304,7 @@ export const CheckoutPage = () => {
               <button
                 type="submit"
                 disabled={sending}
-                className="w-full py-4 bg-stone-900 text-white font-medium hover:bg-stone-800 transition-colors rounded-lg disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="w-full py-4 bg-gradient-to-r from-[#D4AF37] to-[#B8960C] text-white font-semibold tracking-wide hover:from-[#B8960C] hover:to-[#9A7D0A] transition-all rounded-xl disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg hover:shadow-xl text-base"
               >
                 {sending && <Loader2 size={18} className="animate-spin" />}
                 {sending ? '...' : t('checkout.placeOrder')}
@@ -311,7 +313,7 @@ export const CheckoutPage = () => {
           </div>
 
           {/* Order Summary */}
-          <div className="bg-white dark:bg-stone-900 rounded-lg shadow-sm p-8 h-fit sticky top-24">
+          <div className="bg-white dark:bg-stone-900 rounded-xl shadow-sm p-4 sm:p-8 h-fit sticky top-24">
             <h2 className="font-serif text-2xl text-stone-900 dark:text-white mb-6">
               {t('checkout.orderSummary')}
             </h2>

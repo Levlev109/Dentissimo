@@ -94,22 +94,22 @@ export const CartDrawer = () => {
                           <div className="flex items-center gap-2">
                             <button
                               onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
-                              className="w-7 h-7 flex items-center justify-center bg-white dark:bg-stone-700 border border-stone-300 dark:border-stone-600 text-stone-900 dark:text-white hover:bg-stone-100 dark:hover:bg-stone-600 transition-colors rounded"
+                              className="w-9 h-9 flex items-center justify-center bg-white dark:bg-stone-700 border border-stone-300 dark:border-stone-600 text-stone-900 dark:text-white hover:bg-stone-100 dark:hover:bg-stone-600 transition-colors rounded-lg"
                             >
-                              <Minus size={14} />
+                              <Minus size={16} />
                             </button>
                             <span className="w-8 text-center font-medium text-stone-900 dark:text-white">
                               {item.quantity}
                             </span>
                             <button
                               onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
-                              className="w-7 h-7 flex items-center justify-center bg-white dark:bg-stone-700 border border-stone-300 dark:border-stone-600 text-stone-900 dark:text-white hover:bg-stone-100 dark:hover:bg-stone-600 transition-colors rounded"
+                              className="w-9 h-9 flex items-center justify-center bg-white dark:bg-stone-700 border border-stone-300 dark:border-stone-600 text-stone-900 dark:text-white hover:bg-stone-100 dark:hover:bg-stone-600 transition-colors rounded-lg"
                             >
-                              <Plus size={14} />
+                              <Plus size={16} />
                             </button>
                             <button
                               onClick={() => removeFromCart(item.product.id)}
-                              className="ml-auto text-red-600 hover:text-red-700 transition-colors"
+                              className="ml-auto p-2 text-red-600 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
                             >
                               <Trash2 size={18} />
                             </button>
