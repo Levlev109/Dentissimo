@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import { Menu, X, Globe, Search, User, Moon, Sun } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import { useTheme } from '../../contexts/ThemeContext';
 import { CartDrawer } from './CartDrawer';
@@ -14,6 +15,7 @@ export const Navbar = () => {
   const { t, i18n } = useTranslation();
   const { user, logout } = useAuth();
   const { isDark, toggle: toggleTheme } = useTheme();
+  const navigate = useNavigate();
   const langRef = useRef<HTMLDivElement>(null);
 
   // Close language menu on outside click
@@ -133,17 +135,13 @@ export const Navbar = () => {
 
             {/* User Menu */}
             {user ? (
-              <div className="flex items-center gap-2">
-                <span className="hidden md:inline text-sm text-stone-600">
-                  {user.firstName}
-                </span>
-                <button
-                  onClick={logout}
-                  className="text-sm text-stone-600 hover:text-stone-900"
-                >
-                  <User size={20} />
-                </button>
-              </div>
+              <button
+                onClick={() => navigate('/profile')}
+                className="text-stone-600 dark:text-stone-300 hover:text-[#D4AF37] dark:hover:text-[#D4AF37] transition-colors"
+                title={t('profile.title')}
+              >
+                <User size={20} />
+              </button>
             ) : (
               <button
                 onClick={() => setShowAuthModal(true)}

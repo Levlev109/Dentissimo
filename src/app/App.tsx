@@ -9,6 +9,7 @@ import { Testimonials } from "@/app/components/Testimonials";
 import { AboutSection } from "@/app/components/AboutSection";
 import { Footer } from "@/app/components/Footer";
 import { CheckoutPage } from "@/app/pages/CheckoutPage";
+import { ProfilePage } from "@/app/pages/ProfilePage";
 import { AIChat } from "@/app/components/AIChat";
 import { ScrollToTop } from "@/app/components/ScrollToTop";
 import { ToastContainer } from "@/app/components/Toast";
@@ -41,6 +42,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<main><HomePage /></main>} />
         <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
       <Footer />
       <AIChat />

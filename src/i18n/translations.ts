@@ -215,6 +215,29 @@
         welcome: 'Ласкаво просимо!',
         loginToContinue: 'Увійдіть для продовження'
       },
+      profile: {
+        title: 'Особистий кабінет',
+        subtitle: 'Керуйте своїм профілем та замовленнями',
+        member: 'Клієнт з',
+        totalOrders: 'Всього',
+        totalSpent: 'Загалом',
+        logout: 'Вийти',
+        orderHistory: 'Історія замовлень',
+        noOrders: 'Поки немає замовлень',
+        noOrdersDesc: 'Коли ви зробите замовлення, воно з\'явиться тут',
+        startShopping: 'Почати покупки',
+        orderNumber: 'Замовлення',
+        items: 'позицій',
+        orderItems: 'Товари',
+        deliveryAddress: 'Адреса доставки',
+        locale: 'uk-UA',
+        status: {
+          pending: 'Очікує підтвердження',
+          confirmed: 'Підтверджено',
+          shipped: 'Відправлено',
+          delivered: 'Доставлено'
+        }
+      },
       categorySection: {
         title: 'Ваш щоденний догляд',
         subtitle: 'Швейцарська якість для здоров\'я ваших зубів',
@@ -603,6 +626,29 @@
         welcome: 'Welcome!',
         loginToContinue: 'Sign in to continue'
       },
+      profile: {
+        title: 'My Profile',
+        subtitle: 'Manage your profile and orders',
+        member: 'Member since',
+        totalOrders: 'Total',
+        totalSpent: 'Total',
+        logout: 'Logout',
+        orderHistory: 'Order History',
+        noOrders: 'No orders yet',
+        noOrdersDesc: 'When you place an order, it will appear here',
+        startShopping: 'Start Shopping',
+        orderNumber: 'Order',
+        items: 'items',
+        orderItems: 'Items',
+        deliveryAddress: 'Delivery Address',
+        locale: 'en-GB',
+        status: {
+          pending: 'Pending',
+          confirmed: 'Confirmed',
+          shipped: 'Shipped',
+          delivered: 'Delivered'
+        }
+      },
       categorySection: {
         title: 'Your Daily Care',
         subtitle: 'Swiss quality for your dental health',
@@ -990,6 +1036,29 @@
         orUseEmail: 'Oder E-Mail verwenden',
         welcome: 'Willkommen!',
         loginToContinue: 'Anmelden um fortzufahren'
+      },
+      profile: {
+        title: 'Mein Profil',
+        subtitle: 'Verwalten Sie Ihr Profil und Bestellungen',
+        member: 'Mitglied seit',
+        totalOrders: 'Gesamt',
+        totalSpent: 'Gesamt',
+        logout: 'Abmelden',
+        orderHistory: 'Bestellverlauf',
+        noOrders: 'Noch keine Bestellungen',
+        noOrdersDesc: 'Wenn Sie eine Bestellung aufgeben, wird sie hier angezeigt',
+        startShopping: 'Jetzt einkaufen',
+        orderNumber: 'Bestellung',
+        items: 'Artikel',
+        orderItems: 'Artikel',
+        deliveryAddress: 'Lieferadresse',
+        locale: 'de-DE',
+        status: {
+          pending: 'Ausstehend',
+          confirmed: 'Bestätigt',
+          shipped: 'Versandt',
+          delivered: 'Geliefert'
+        }
       },
       trustBadges: {
         dentistApproved: 'Von Zahnärzten empfohlen',
@@ -1386,6 +1455,29 @@
         welcome: 'Bienvenue!',
         loginToContinue: 'Connectez-vous pour continuer'
       },
+      profile: {
+        title: 'Mon Profil',
+        subtitle: 'Gérez votre profil et vos commandes',
+        member: 'Membre depuis',
+        totalOrders: 'Total',
+        totalSpent: 'Total',
+        logout: 'Se déconnecter',
+        orderHistory: 'Historique des commandes',
+        noOrders: 'Aucune commande pour le moment',
+        noOrdersDesc: 'Lorsque vous passez une commande, elle apparaîtra ici',
+        startShopping: 'Commencer les achats',
+        orderNumber: 'Commande',
+        items: 'articles',
+        orderItems: 'Articles',
+        deliveryAddress: 'Adresse de livraison',
+        locale: 'fr-FR',
+        status: {
+          pending: 'En attente',
+          confirmed: 'Confirmé',
+          shipped: 'Expédié',
+          delivered: 'Livré'
+        }
+      },
       trustBadges: {
         dentistApproved: 'Approuvé par les dentistes',
         dentistApprovedDesc: 'Recommandé par les professionnels',
@@ -1780,6 +1872,29 @@
         orUseEmail: 'O usar correo',
         welcome: 'Bienvenido!',
         loginToContinue: 'Inicia sesión para continuar'
+      },
+      profile: {
+        title: 'Mi Perfil',
+        subtitle: 'Gestiona tu perfil y pedidos',
+        member: 'Miembro desde',
+        totalOrders: 'Total',
+        totalSpent: 'Total',
+        logout: 'Cerrar sesión',
+        orderHistory: 'Historial de pedidos',
+        noOrders: 'Aún no hay pedidos',
+        noOrdersDesc: 'Cuando realices un pedido, aparecerá aquí',
+        startShopping: 'Empezar a comprar',
+        orderNumber: 'Pedido',
+        items: 'artículos',
+        orderItems: 'Artículos',
+        deliveryAddress: 'Dirección de entrega',
+        locale: 'es-ES',
+        status: {
+          pending: 'Pendiente',
+          confirmed: 'Confirmado',
+          shipped: 'Enviado',
+          delivered: 'Entregado'
+        }
       },
       trustBadges: {
         dentistApproved: 'Aprobado por dentistas',
@@ -2176,6 +2291,29 @@
         welcome: 'Benvenuto!',
         loginToContinue: 'Accedi per continuare'
       },
+      profile: {
+        title: 'Il Mio Profilo',
+        subtitle: 'Gestisci il tuo profilo e gli ordini',
+        member: 'Membro dal',
+        totalOrders: 'Totale',
+        totalSpent: 'Totale',
+        logout: 'Esci',
+        orderHistory: 'Cronologia ordini',
+        noOrders: 'Nessun ordine ancora',
+        noOrdersDesc: 'Quando effettui un ordine, apparirà qui',
+        startShopping: 'Inizia a fare acquisti',
+        orderNumber: 'Ordine',
+        items: 'articoli',
+        orderItems: 'Articoli',
+        deliveryAddress: 'Indirizzo di consegna',
+        locale: 'it-IT',
+        status: {
+          pending: 'In attesa',
+          confirmed: 'Confermato',
+          shipped: 'Spedito',
+          delivered: 'Consegnato'
+        }
+      },
       trustBadges: {
         dentistApproved: 'Approvato dai dentisti',
         dentistApprovedDesc: 'Raccomandato dai professionisti',
@@ -2570,6 +2708,29 @@
         orUseEmail: 'Lub użyj emaila',
         welcome: 'Witamy!',
         loginToContinue: 'Zaloguj się aby kontynuować'
+      },
+      profile: {
+        title: 'Mój Profil',
+        subtitle: 'Zarządzaj swoim profilem i zamówieniami',
+        member: 'Członek od',
+        totalOrders: 'Łącznie',
+        totalSpent: 'Łącznie',
+        logout: 'Wyloguj',
+        orderHistory: 'Historia zamówień',
+        noOrders: 'Brak zamówień',
+        noOrdersDesc: 'Gdy złożysz zamówienie, pojawi się tutaj',
+        startShopping: 'Zacznij zakupy',
+        orderNumber: 'Zamówienie',
+        items: 'produktów',
+        orderItems: 'Produkty',
+        deliveryAddress: 'Adres dostawy',
+        locale: 'pl-PL',
+        status: {
+          pending: 'Oczekujące',
+          confirmed: 'Potwierdzone',
+          shipped: 'Wysłane',
+          delivered: 'Dostarczone'
+        }
       },
       common: {
         close: 'Zamknij',
