@@ -58,20 +58,25 @@ export const Navbar = () => {
     <>
     <nav className="fixed w-full z-50 bg-white/95 dark:bg-stone-950/95 backdrop-blur-xl border-b border-stone-200/50 dark:border-stone-800/50 transition-all duration-300 shadow-lg shadow-stone-900/5 dark:shadow-stone-950/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          {/* Mobile Menu Button */}
+        <div className="flex justify-between items-center h-16 md:h-20">
+
+          {/* Mobile: Left — hamburger */}
           <div className="flex items-center md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-stone-800 dark:text-stone-200 hover:text-[#D4AF37] dark:hover:text-[#D4AF37] focus:outline-none transition-colors duration-300"
+              className="p-2 text-stone-800 dark:text-stone-200 hover:text-[#D4AF37] dark:hover:text-[#D4AF37] focus:outline-none transition-colors duration-300"
             >
-              <Menu size={24} />
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
 
           {/* Logo */}
-          <div className="flex-shrink-0 flex items-center justify-center md:justify-start w-full md:w-auto absolute md:relative pointer-events-none md:pointer-events-auto">
-            <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="font-serif text-2xl font-bold tracking-wider bg-gradient-to-r from-stone-900 via-[#D4AF37] to-stone-900 dark:from-white dark:via-[#D4AF37] dark:to-white bg-clip-text text-transparent pointer-events-auto hover:scale-105 transition-transform duration-300">
+          <div className="flex-shrink-0 flex items-center justify-center md:justify-start absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0">
+            <a
+              href="#"
+              onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              className="font-serif text-xl md:text-2xl font-bold tracking-wider bg-gradient-to-r from-stone-900 via-[#D4AF37] to-stone-900 dark:from-white dark:via-[#D4AF37] dark:to-white bg-clip-text text-transparent hover:scale-105 transition-transform duration-300"
+            >
               DENTISSIMO
             </a>
           </div>
@@ -91,22 +96,23 @@ export const Navbar = () => {
           </div>
 
           {/* Right Icons */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center gap-2 md:gap-4">
+            {/* Desktop only: Search */}
             <a href="#products" className="hidden md:block text-stone-600 dark:text-stone-300 hover:text-[#D4AF37] dark:hover:text-[#D4AF37] transition-all duration-300 hover:scale-110 transform">
               <Search size={20} />
             </a>
-            
-            {/* Theme Toggle */}
+
+            {/* Desktop only: Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="text-stone-600 dark:text-stone-300 hover:text-[#D4AF37] dark:hover:text-[#D4AF37] transition-all duration-300 hover:scale-110 transform hover:rotate-12"
+              className="hidden md:block text-stone-600 dark:text-stone-300 hover:text-[#D4AF37] dark:hover:text-[#D4AF37] transition-all duration-300 hover:scale-110 transform"
               aria-label="Toggle dark mode"
             >
               {isDark ? <Sun size={18} /> : <Moon size={18} />}
             </button>
-            
-            {/* Language Selector */}
-            <div className="relative" ref={langRef}>
+
+            {/* Desktop only: Language Selector */}
+            <div className="relative hidden md:block" ref={langRef}>
               <button
                 onClick={() => setShowLangMenu(!showLangMenu)}
                 className="flex items-center space-x-1 text-stone-600 dark:text-stone-300 hover:text-[#D4AF37] dark:hover:text-[#D4AF37] transition-all duration-300 hover:scale-110 transform"
@@ -114,7 +120,7 @@ export const Navbar = () => {
                 <Globe size={18} />
                 <span className="text-sm font-medium">{currentLang.flag}</span>
               </button>
-              
+
               {showLangMenu && (
                 <div className="absolute right-0 top-full mt-3 bg-white/95 dark:bg-stone-900/95 backdrop-blur-xl rounded-xl shadow-2xl border border-stone-200/50 dark:border-stone-700/50 py-2 w-52 z-50">
                   {languages.map(lang => (
@@ -133,25 +139,20 @@ export const Navbar = () => {
               )}
             </div>
 
-            {/* User Menu */}
-            {user ? (
-              <button
-                onClick={() => navigate('/profile')}
-                className="text-stone-600 dark:text-stone-300 hover:text-[#D4AF37] dark:hover:text-[#D4AF37] transition-colors"
-                title={t('profile.title')}
-              >
-                <User size={20} />
-              </button>
-            ) : (
-              <button
-                onClick={() => setShowAuthModal(true)}
-                className="text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white transition-colors"
-              >
-                <User size={20} />
-              </button>
-            )}
+            {/* Desktop only: User */}
+            <div className="hidden md:block">
+              {user ? (
+                <button onClick={() => navigate('/profile')} className="text-stone-600 dark:text-stone-300 hover:text-[#D4AF37] dark:hover:text-[#D4AF37] transition-colors" title={t('profile.title')}>
+                  <User size={20} />
+                </button>
+              ) : (
+                <button onClick={() => setShowAuthModal(true)} className="text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white transition-colors">
+                  <User size={20} />
+                </button>
+              )}
+            </div>
 
-            {/* Cart */}
+            {/* Cart — always visible */}
             <CartDrawer />
           </div>
         </div>
@@ -167,6 +168,7 @@ export const Navbar = () => {
             className="md:hidden bg-white dark:bg-stone-950 border-t border-stone-100 dark:border-stone-800 overflow-hidden"
           >
             <div className="px-4 pt-2 pb-6 space-y-1">
+              {/* Nav links */}
               {navLinks.map((link) => (
                 <a
                   key={link.name}
@@ -177,7 +179,29 @@ export const Navbar = () => {
                   {link.name}
                 </a>
               ))}
-              {/* Mobile: Theme toggle */}
+
+              {/* User / Profile */}
+              <div className="px-3 py-4 border-b border-stone-100 dark:border-stone-800">
+                {user ? (
+                  <button
+                    onClick={() => { navigate('/profile'); setIsOpen(false); }}
+                    className="flex items-center gap-3 text-base font-medium text-stone-800 dark:text-stone-200 w-full"
+                  >
+                    <User size={18} className="text-[#D4AF37]" />
+                    {t('profile.title')}
+                  </button>
+                ) : (
+                  <button
+                    onClick={() => { setShowAuthModal(true); setIsOpen(false); }}
+                    className="flex items-center gap-3 text-base font-medium text-stone-800 dark:text-stone-200 w-full"
+                  >
+                    <User size={18} className="text-[#D4AF37]" />
+                    {t('auth.login')}
+                  </button>
+                )}
+              </div>
+
+              {/* Theme toggle */}
               <div className="flex items-center justify-between px-3 py-4 border-b border-stone-100 dark:border-stone-800">
                 <span className="text-base font-medium text-stone-800 dark:text-stone-200">
                   {isDark ? 'Світла тема' : 'Темна тема'}
@@ -190,9 +214,10 @@ export const Navbar = () => {
                   {isDark ? 'Світла' : 'Темна'}
                 </button>
               </div>
-              {/* Mobile: Language selector */}
+
+              {/* Language selector */}
               <div className="px-3 py-3">
-                <p className="text-xs uppercase tracking-widest text-stone-400 mb-2 font-semibold">Мова</p>
+                <p className="text-xs uppercase tracking-widest text-stone-400 mb-3 font-semibold">Мова</p>
                 <div className="grid grid-cols-4 gap-2">
                   {languages.map(lang => (
                     <button

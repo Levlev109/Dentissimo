@@ -68,10 +68,9 @@ export const ProductCard = ({ product }: ProductProps) => {
               style={{ imageRendering: 'auto' }}
             />
             <motion.button
-              whileHover={{ scale: 1.15, rotate: 90 }}
               whileTap={{ scale: 0.9 }}
               onClick={handleAddToCart}
-              className="absolute bottom-4 right-4 bg-gradient-to-br from-[#D4AF37] via-[#C4A037] to-[#B8960C] text-white w-12 h-12 flex items-center justify-center rounded-full shadow-2xl shadow-[#D4AF37]/50 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 border-2 border-white/30 backdrop-blur-sm hover:shadow-xl hover:shadow-[#D4AF37]/70"
+              className="absolute bottom-3 right-3 md:bottom-4 md:right-4 bg-gradient-to-br from-[#D4AF37] via-[#C4A037] to-[#B8960C] text-white w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full shadow-2xl shadow-[#D4AF37]/50 opacity-100 md:opacity-0 md:translate-y-2 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-300 border-2 border-white/30 backdrop-blur-sm"
               aria-label={t('products.addToCart')}
             >
               <Plus size={22} strokeWidth={3} />
@@ -79,15 +78,15 @@ export const ProductCard = ({ product }: ProductProps) => {
           </div>
 
           {/* Product info */}
-          <div className="p-6 text-center border-t border-stone-200/30 dark:border-stone-800/20 bg-white dark:bg-stone-900">
-            <p className="text-[11px] text-[#D4AF37] dark:text-[#D4AF37] uppercase tracking-widest mb-2 font-bold">{product.category}</p>
-            <h3 className="font-serif text-lg text-stone-900 dark:text-white mb-2 group-hover:text-[#D4AF37] transition-colors duration-300">
+          <div className="p-3 md:p-6 text-center border-t border-stone-200/30 dark:border-stone-800/20 bg-white dark:bg-stone-900">
+            <p className="text-[10px] md:text-[11px] text-[#D4AF37] uppercase tracking-widest mb-1 md:mb-2 font-bold">{product.category}</p>
+            <h3 className="font-serif text-sm md:text-lg text-stone-900 dark:text-white mb-1 md:mb-2 group-hover:text-[#D4AF37] transition-colors duration-300 leading-tight">
               {product.name}
             </h3>
             {product.description && (
-              <p className="text-xs text-stone-500 dark:text-stone-400 mb-3 line-clamp-2 leading-relaxed">{product.description}</p>
+              <p className="hidden md:block text-xs text-stone-500 dark:text-stone-400 mb-3 line-clamp-2 leading-relaxed">{product.description}</p>
             )}
-            <p className="text-stone-900 dark:text-white font-bold text-lg bg-gradient-to-r from-[#D4AF37] to-[#B8960C] bg-clip-text text-transparent group-hover:from-[#C4A037] group-hover:to-[#A8860C] transition-all duration-300">{t('products.currency')}{product.price.toFixed(2)}</p>
+            <p className="text-stone-900 dark:text-white font-bold text-sm md:text-lg bg-gradient-to-r from-[#D4AF37] to-[#B8960C] bg-clip-text text-transparent">{t('products.currency')}{product.price.toFixed(2)}</p>
           </div>
         </div>
       </div>

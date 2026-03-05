@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 export const Hero = () => {
   const { t } = useTranslation();
   return (
-    <section className="relative w-full h-screen min-h-[700px] flex items-center overflow-hidden pt-20">
+    <section className="relative w-full min-h-screen flex items-center overflow-hidden pt-16 md:pt-20">
       {/* Background Video - hidden on mobile for performance */}
       <div className="absolute inset-0 z-0">
         {/* Mobile: static gradient background */}
@@ -41,7 +41,7 @@ export const Hero = () => {
             <span className="inline-block py-2 px-4 border border-white/40 rounded-full text-xs font-semibold tracking-widest text-white/90 uppercase mb-6 backdrop-blur-md bg-white/10 shadow-lg hover:bg-white/15 transition-all duration-300">
               {t('hero.tagline')}
             </span>
-            <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl leading-tight text-white drop-shadow-2xl [text-shadow:_0_4px_12px_rgb(0_0_0_/_40%)]">
+            <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl leading-tight text-white drop-shadow-2xl [text-shadow:_0_4px_12px_rgb(0_0_0_/_40%)]">
               {t('hero.title').split(' ').slice(0, 2).join(' ')} <br />
               <span className="italic text-white/80 bg-gradient-to-r from-white via-white/90 to-white/70 bg-clip-text text-transparent">{t('hero.title').split(' ').slice(2).join(' ')}</span>
             </h1>
