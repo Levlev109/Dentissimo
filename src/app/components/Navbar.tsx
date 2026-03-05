@@ -172,11 +172,44 @@ export const Navbar = () => {
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="block px-3 py-4 text-base font-medium text-stone-800 dark:text-stone-200 hover:bg-stone-50 dark:hover:bg-stone-800 border-b border-stone-50 dark:border-stone-800"
+                  className="block px-3 py-4 text-base font-medium text-stone-800 dark:text-stone-200 hover:bg-stone-50 dark:hover:bg-stone-800 border-b border-stone-100 dark:border-stone-800"
                 >
                   {link.name}
                 </a>
               ))}
+              {/* Mobile: Theme toggle */}
+              <div className="flex items-center justify-between px-3 py-4 border-b border-stone-100 dark:border-stone-800">
+                <span className="text-base font-medium text-stone-800 dark:text-stone-200">
+                  {isDark ? 'Світла тема' : 'Темна тема'}
+                </span>
+                <button
+                  onClick={() => { toggleTheme(); setIsOpen(false); }}
+                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-200 font-medium text-sm transition-all duration-300"
+                >
+                  {isDark ? <Sun size={18} className="text-[#D4AF37]" /> : <Moon size={18} />}
+                  {isDark ? 'Світла' : 'Темна'}
+                </button>
+              </div>
+              {/* Mobile: Language selector */}
+              <div className="px-3 py-3">
+                <p className="text-xs uppercase tracking-widest text-stone-400 mb-2 font-semibold">Мова</p>
+                <div className="grid grid-cols-4 gap-2">
+                  {languages.map(lang => (
+                    <button
+                      key={lang.code}
+                      onClick={() => { changeLang(lang.code); setIsOpen(false); }}
+                      className={`py-2 px-1 rounded-lg text-center text-xs font-medium transition-all ${
+                        i18n.language === lang.code
+                          ? 'bg-[#D4AF37] text-white'
+                          : 'bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300'
+                      }`}
+                    >
+                      <div className="text-lg">{lang.flag}</div>
+                      <div className="text-[10px] mt-0.5">{lang.code.toUpperCase()}</div>
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
           </motion.div>
         )}

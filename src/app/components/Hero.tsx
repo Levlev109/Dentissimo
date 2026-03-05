@@ -22,9 +22,9 @@ export const Hero = () => {
         >
           <source src="/gorge-water.mp4" type="video/mp4" />
         </video>
-        {/* Neutral gradient overlays */}
-        <div className="absolute inset-0 bg-gradient-to-r from-stone-950/90 via-stone-900/75 to-transparent"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-stone-900/60 via-transparent to-stone-950/80"></div>
+        {/* Gradient overlays - only on desktop where video is shown */}
+        <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-stone-950/90 via-stone-900/75 to-transparent"></div>
+        <div className="hidden md:block absolute inset-0 bg-gradient-to-b from-stone-900/60 via-transparent to-stone-950/80"></div>
         {/* Subtle gold accent */}
         <div className="absolute inset-0 bg-gradient-to-tr from-[#D4AF37]/8 via-transparent to-transparent"></div>
         {/* Bottom fade into next section */}
@@ -60,13 +60,13 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="flex flex-col sm:flex-row gap-4 mt-8"
+            className="flex flex-row gap-3 mt-8"
           >
-            <a href="#products" className="px-8 py-4 bg-white text-stone-900 font-semibold tracking-wide hover:from-[#D4AF37] hover:to-[#B8960C] hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group rounded-xl shadow-xl hover:shadow-2xl hover:shadow-[#D4AF37]/20 hover:scale-105 transform hover:bg-gradient-to-r">
+            <a href="#products" className="px-6 py-3.5 bg-white text-stone-900 font-semibold tracking-wide hover:bg-gradient-to-r hover:from-[#D4AF37] hover:to-[#B8960C] hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group rounded-xl shadow-xl hover:shadow-2xl hover:shadow-[#D4AF37]/20 hover:scale-105 transform text-sm md:text-base md:px-8 md:py-4">
               {t('hero.buyNow')}
-              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </a>
-            <a href="#about" className="px-8 py-4 border-2 border-white/40 text-white font-semibold tracking-wide hover:bg-white/20 hover:border-white/60 transition-all duration-300 flex items-center justify-center backdrop-blur-md rounded-xl shadow-lg hover:scale-105 transform">
+            <a href="#about" className="px-6 py-3.5 border-2 border-white/40 text-white font-semibold tracking-wide hover:bg-white/20 hover:border-white/60 transition-all duration-300 flex items-center justify-center backdrop-blur-md rounded-xl shadow-lg hover:scale-105 transform text-sm md:text-base md:px-8 md:py-4">
               {t('hero.learnMore')}
             </a>
           </motion.div>
