@@ -44,11 +44,34 @@ export interface Order {
   customerInfo: {
     firstName: string;
     lastName: string;
+    email?: string;
     phone: string;
     country: string;
     address: string;
+    city?: string;
+    warehouse?: string;
   };
-  status: 'pending' | 'confirmed' | 'shipped' | 'delivered';
+  status: 'pending' | 'confirmed' | 'shipped' | 'delivered' | 'cancelled';
+  createdAt: string;
+}
+
+export interface ProductOverride {
+  id: string;
+  price?: number;
+  badge?: string;
+  hidden?: boolean;
+  name?: string;
+}
+
+export interface CustomProduct {
+  id: string;
+  name: string;
+  categoryKey: string;
+  price: number;
+  description: string;
+  image: string;
+  badge?: string;
+  isNew?: boolean;
   createdAt: string;
 }
 
@@ -56,6 +79,9 @@ class Database {
   private readonly USERS_KEY = 'dentissimo_users';
   private readonly ORDERS_KEY = 'dentissimo_orders';
   private readonly CURRENT_USER_KEY = 'dentissimo_current_user';
+  private readonly PRODUCT_OVERRIDES_KEY = 'dentissimo_product_overrides';
+  private readonly CUSTOM_PRODUCTS_KEY = 'dentissimo_custom_products';
+  private readonly ADMIN_SESSION_KEY = 'dentissimo_admin_session';
 
   // User Management
   createUser(email: string | undefined, phone: string | undefined, firstName: string, lastName: string): User {
@@ -131,6 +157,85 @@ class Database {
 
   getUserOrders(userId: string): Order[] {
     return this.getOrders().filter(order => order.userId === userId);
+  }
+
+  updateOrderStatus(orderId: string, status: Order['status']): void {
+    const orders = this.getOrders();
+    const idx = orders.findIndex(o => o.id === orderId);
+    if (idx !== -1) {
+      orders[idx].status = status;
+      localStorage.setItem(this.ORDERS_KEY, JSON.stringify(orders));
+    }
+  }
+
+  deleteOrder(orderId: string): void {
+    const orders = this.getOrders().filter(o => o.id !== orderId);
+    localStorage.setItem(this.ORDERS_KEY, JSON.stringify(orders));
+  }
+
+  // Product Overrides
+  getProductOverrides(): ProductOverride[] {
+    try {
+      const data = localStorage.getItem(this.PRODUCT_OVERRIDES_KEY);
+      return data ? JSON.parse(data) : [];
+    } catch { return []; }
+  }
+
+  setProductOverride(override: ProductOverride): void {
+    const overrides = this.getProductOverrides();
+    const idx = overrides.findIndex(o => o.id === override.id);
+    if (idx !== -1) overrides[idx] = override;
+    else overrides.push(override);
+    localStorage.setItem(this.PRODUCT_OVERRIDES_KEY, JSON.stringify(overrides));
+  }
+
+  deleteProductOverride(id: string): void {
+    const overrides = this.getProductOverrides().filter(o => o.id !== id);
+    localStorage.setItem(this.PRODUCT_OVERRIDES_KEY, JSON.stringify(overrides));
+  }
+
+  // Custom Products
+  getCustomProducts(): CustomProduct[] {
+    try {
+      const data = localStorage.getItem(this.CUSTOM_PRODUCTS_KEY);
+      return data ? JSON.parse(data) : [];
+    } catch { return []; }
+  }
+
+  saveCustomProduct(product: Omit<CustomProduct, 'id' | 'createdAt'>): CustomProduct {
+    const products = this.getCustomProducts();
+    const newProduct: CustomProduct = {
+      ...product,
+      id: `custom-${this.generateId().slice(0, 8)}`,
+      createdAt: new Date().toISOString()
+    };
+    products.push(newProduct);
+    localStorage.setItem(this.CUSTOM_PRODUCTS_KEY, JSON.stringify(products));
+    return newProduct;
+  }
+
+  updateCustomProduct(id: string, data: Partial<CustomProduct>): void {
+    const products = this.getCustomProducts();
+    const idx = products.findIndex(p => p.id === id);
+    if (idx !== -1) {
+      products[idx] = { ...products[idx], ...data };
+      localStorage.setItem(this.CUSTOM_PRODUCTS_KEY, JSON.stringify(products));
+    }
+  }
+
+  deleteCustomProduct(id: string): void {
+    const products = this.getCustomProducts().filter(p => p.id !== id);
+    localStorage.setItem(this.CUSTOM_PRODUCTS_KEY, JSON.stringify(products));
+  }
+
+  // Admin session
+  isAdminLoggedIn(): boolean {
+    return localStorage.getItem(this.ADMIN_SESSION_KEY) === 'true';
+  }
+
+  setAdminSession(val: boolean): void {
+    if (val) localStorage.setItem(this.ADMIN_SESSION_KEY, 'true');
+    else localStorage.removeItem(this.ADMIN_SESSION_KEY);
   }
 
   // Utility

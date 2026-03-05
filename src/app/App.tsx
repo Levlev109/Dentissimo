@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { Navbar } from "@/app/components/Navbar";
 import { Hero } from "@/app/components/Hero";
 import { CategorySection } from "@/app/components/CategorySection";
@@ -10,10 +10,13 @@ import { AboutSection } from "@/app/components/AboutSection";
 import { Footer } from "@/app/components/Footer";
 import { CheckoutPage } from "@/app/pages/CheckoutPage";
 import { ProfilePage } from "@/app/pages/ProfilePage";
+import { AdminPage } from "@/app/pages/AdminPage";
 import { AIChat } from "@/app/components/AIChat";
 import { ScrollToTop } from "@/app/components/ScrollToTop";
 import { ToastContainer } from "@/app/components/Toast";
 export default function App() {
+  const location = useLocation();
+  const isAdmin = location.pathname.startsWith('/admin');
   const HomePage = () => (
     <>
       <Hero />
@@ -35,14 +38,15 @@ export default function App() {
       
       <ScrollToTop />
       <ToastContainer />
-      <Navbar />
+      {!isAdmin && <Navbar />}
       <Routes>
         <Route path="/" element={<main><HomePage /></main>} />
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/admin" element={<AdminPage />} />
       </Routes>
-      <Footer />
-      <AIChat />
+      {!isAdmin && <Footer />}
+      {!isAdmin && <AIChat />}
     </div>
   );
 }
