@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { db, Order, ProductOverride, CustomProduct } from '../../services/database';
-import { orderService } from '../../services/orderService';
+import { orderService, checkSupabaseSetup } from '../../services/orderService';
 import { allProducts as baseProducts } from '../../data/allProducts';
 import {
   LayoutDashboard, ShoppingBag, Package, Users, LogOut, Lock,
@@ -48,6 +48,12 @@ export const AdminPage = () => {
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState('');
   const [activeTab, setActiveTab] = useState<'dashboard' | 'orders' | 'products' | 'customers'>('dashboard');
+  const [supabaseError, setSupabaseError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!loggedIn) return;
+    checkSupabaseSetup().then(err => setSupabaseError(err));
+  }, [loggedIn]);
 
   // ── Login ──────────────────────────────────────────────────────────────────
   const handleLogin = (e: React.FormEvent) => {
@@ -136,6 +142,37 @@ export const AdminPage = () => {
       </div>
 
       <main className="flex-1 p-4 md:p-6 max-w-7xl mx-auto w-full">
+        {supabaseError && (
+          <div className="mb-6 p-4 bg-red-50 dark:bg-red-950 border border-red-300 dark:border-red-800 rounded-xl">
+            <div className="flex items-start gap-3">
+              <AlertTriangle size={20} className="text-red-500 mt-0.5 shrink-0" />
+              <div className="flex-1 min-w-0">
+                <p className="font-semibold text-red-700 dark:text-red-400">Supabase не підключений — замовлення не зберігаються в базі!</p>
+                <p className="text-red-600 dark:text-red-500 text-sm mt-1 break-all">Помилка: {supabaseError}</p>
+                <details className="mt-3">
+                  <summary className="text-sm text-red-600 dark:text-red-400 cursor-pointer font-medium">Як виправити — запусти цей SQL в Supabase</summary>
+                  <pre className="mt-2 p-3 bg-stone-900 text-green-400 text-xs rounded-lg overflow-x-auto whitespace-pre-wrap">{`-- 1. Відкрий app.supabase.com → твій проект → SQL Editor
+-- 2. Встав цей код і натисни Run:
+
+create table if not exists orders (
+  id text primary key,
+  user_id text,
+  items jsonb not null,
+  total numeric not null,
+  customer_info jsonb not null,
+  status text not null default 'pending',
+  created_at timestamptz default now()
+);
+alter table orders enable row level security;
+create policy "allow_all" on orders for all using (true) with check (true);`}</pre>
+                </details>
+              </div>
+              <button onClick={() => checkSupabaseSetup().then(err => setSupabaseError(err))} className="text-red-400 hover:text-red-600 shrink-0">
+                <RefreshCw size={16} />
+              </button>
+            </div>
+          </div>
+        )}
         {activeTab === 'dashboard' && <DashboardTab />}
         {activeTab === 'orders' && <OrdersTab />}
         {activeTab === 'products' && <ProductsTab />}

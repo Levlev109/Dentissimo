@@ -34,6 +34,17 @@ function toRow(order: Order) {
 
 // ─────────────────────────────────────────────────────────────────────────────
 
+/** Returns null if OK, or error string if Supabase/table is broken */
+export async function checkSupabaseSetup(): Promise<string | null> {
+  try {
+    const { error } = await supabase.from('orders').select('id').limit(1);
+    if (error) return error.message;
+    return null;
+  } catch (e: unknown) {
+    return e instanceof Error ? e.message : String(e);
+  }
+}
+
 export const orderService = {
   /** Create order — saves to Supabase AND localStorage (dual write for safety) */
   async createOrder(order: Omit<Order, 'id' | 'createdAt'>): Promise<Order> {
