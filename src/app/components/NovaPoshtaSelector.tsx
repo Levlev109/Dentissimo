@@ -190,7 +190,7 @@ export const NovaPoshtaSelector = ({ onSelect, cartTotal }: NovaPoshtaSelectorPr
     <div className="space-y-6">
       {/* Delivery Type Selection */}
       <div>
-        <label className="block text-sm font-medium text-stone-700 mb-3">
+        <label className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-3">
           {t('novaPoshta.deliveryType')} *
         </label>
         <div className="grid grid-cols-3 gap-3">
@@ -200,11 +200,11 @@ export const NovaPoshtaSelector = ({ onSelect, cartTotal }: NovaPoshtaSelectorPr
             className={`p-4 border-2 rounded-lg transition-all ${
               deliveryType === 'branch'
                 ? 'border-[#D4AF37] bg-[#D4AF37]/5'
-                : 'border-stone-200 hover:border-stone-300'
+                : 'border-stone-200 dark:border-stone-700 hover:border-stone-300 dark:hover:border-stone-500'
             }`}
           >
             <Package className={`mx-auto mb-2 ${deliveryType === 'branch' ? 'text-[#D4AF37]' : 'text-stone-400'}`} size={24} />
-            <div className="text-sm font-medium text-stone-900">{t('novaPoshta.branch')}</div>
+            <div className="text-sm font-medium text-stone-900 dark:text-white">{t('novaPoshta.branch')}</div>
             <div className="text-xs text-stone-500 mt-1">{t('novaPoshta.branchDesc')}</div>
           </button>
 
@@ -214,11 +214,11 @@ export const NovaPoshtaSelector = ({ onSelect, cartTotal }: NovaPoshtaSelectorPr
             className={`p-4 border-2 rounded-lg transition-all ${
               deliveryType === 'locker'
                 ? 'border-[#D4AF37] bg-[#D4AF37]/5'
-                : 'border-stone-200 hover:border-stone-300'
+                : 'border-stone-200 dark:border-stone-700 hover:border-stone-300 dark:hover:border-stone-500'
             }`}
           >
             <Box className={`mx-auto mb-2 ${deliveryType === 'locker' ? 'text-[#D4AF37]' : 'text-stone-400'}`} size={24} />
-            <div className="text-sm font-medium text-stone-900">{t('novaPoshta.locker')}</div>
+            <div className="text-sm font-medium text-stone-900 dark:text-white">{t('novaPoshta.locker')}</div>
             <div className="text-xs text-stone-500 mt-1">{t('novaPoshta.lockerDesc')}</div>
           </button>
 
@@ -228,11 +228,11 @@ export const NovaPoshtaSelector = ({ onSelect, cartTotal }: NovaPoshtaSelectorPr
             className={`p-4 border-2 rounded-lg transition-all ${
               deliveryType === 'courier'
                 ? 'border-[#D4AF37] bg-[#D4AF37]/5'
-                : 'border-stone-200 hover:border-stone-300'
+                : 'border-stone-200 dark:border-stone-700 hover:border-stone-300 dark:hover:border-stone-500'
             }`}
           >
             <TruckIcon className={`mx-auto mb-2 ${deliveryType === 'courier' ? 'text-[#D4AF37]' : 'text-stone-400'}`} size={24} />
-            <div className="text-sm font-medium text-stone-900">{t('novaPoshta.courier')}</div>
+            <div className="text-sm font-medium text-stone-900 dark:text-white">{t('novaPoshta.courier')}</div>
             <div className="text-xs text-stone-500 mt-1">{t('novaPoshta.courierDesc')}</div>
           </button>
         </div>
@@ -240,7 +240,7 @@ export const NovaPoshtaSelector = ({ onSelect, cartTotal }: NovaPoshtaSelectorPr
 
       {/* City Search */}
       <div>
-        <label className="block text-sm font-medium text-stone-700 mb-2">
+        <label className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-2">
           {t('novaPoshta.city')} *
         </label>
         <div className="relative">
@@ -250,7 +250,7 @@ export const NovaPoshtaSelector = ({ onSelect, cartTotal }: NovaPoshtaSelectorPr
             value={citySearch}
             onChange={(e) => setCitySearch(e.target.value)}
             placeholder={t('novaPoshta.cityPlaceholder')}
-            className="w-full pl-10 pr-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none"
+            className="w-full pl-10 pr-4 py-3 border border-stone-300 dark:border-stone-600 rounded-lg bg-white dark:bg-stone-800 text-stone-900 dark:text-white placeholder-stone-400 focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none"
           />
         </div>
 
@@ -268,13 +268,13 @@ export const NovaPoshtaSelector = ({ onSelect, cartTotal }: NovaPoshtaSelectorPr
                   key={city.ref}
                   type="button"
                   onClick={() => handleCitySelect(city)}
-                  className="w-full px-4 py-3 text-left hover:bg-stone-50 transition-colors border-b border-stone-100 last:border-0"
+                  className="w-full px-4 py-3 text-left hover:bg-stone-50 dark:hover:bg-stone-700 transition-colors border-b border-stone-100 dark:border-stone-700 last:border-0"
                 >
                   <div className="flex items-start gap-2">
                     <MapPin className="text-stone-400 flex-shrink-0 mt-0.5" size={16} />
                     <div>
-                      <div className="font-medium text-stone-900">{city.description}</div>
-                      <div className="text-xs text-stone-500">{city.area}</div>
+                      <div className="font-medium text-stone-900 dark:text-white">{city.description}</div>
+                      <div className="text-xs text-stone-500 dark:text-stone-400">{city.area}</div>
                     </div>
                   </div>
                 </button>
@@ -287,13 +287,13 @@ export const NovaPoshtaSelector = ({ onSelect, cartTotal }: NovaPoshtaSelectorPr
       {/* Courier Address Input (only for courier delivery) */}
       {selectedCity && deliveryType === 'courier' && (
         <div>
-          <label className="block text-sm font-medium text-stone-700 mb-2">
+          <label className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-2">
             {t('novaPoshta.courierAddress')} *
           </label>
           <input
             type="text"
             placeholder={t('novaPoshta.courierAddressPlaceholder')}
-            className="w-full px-4 py-3 border border-stone-300 rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none"
+            className="w-full px-4 py-3 border border-stone-300 dark:border-stone-600 rounded-lg bg-white dark:bg-stone-800 text-stone-900 dark:text-white placeholder-stone-400 focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none"
           />
         </div>
       )}
@@ -301,12 +301,12 @@ export const NovaPoshtaSelector = ({ onSelect, cartTotal }: NovaPoshtaSelectorPr
       {/* Warehouse Selection (for branch/locker) */}
       {selectedCity && deliveryType !== 'courier' && warehouses.length > 0 && (
         <div>
-          <label className="block text-sm font-medium text-stone-700 mb-2">
+          <label className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-2">
             {deliveryType === 'locker' ? t('novaPoshta.selectLocker') : t('novaPoshta.selectBranch')} *
           </label>
           
           {loadingWarehouses ? (
-            <div className="p-4 text-center text-stone-500 border border-stone-200 rounded-lg">
+              <div className="p-4 text-center text-stone-500 dark:text-stone-400 border border-stone-200 dark:border-stone-700 rounded-lg">
               <Loader2 className="animate-spin mx-auto mb-2" size={20} />
               {t('common.loading')}...
             </div>
@@ -317,14 +317,14 @@ export const NovaPoshtaSelector = ({ onSelect, cartTotal }: NovaPoshtaSelectorPr
                   key={warehouse.ref}
                   type="button"
                   onClick={() => handleWarehouseSelect(warehouse)}
-                  className={`w-full px-4 py-3 text-left transition-all border-b border-stone-100 last:border-0 ${
+                  className={`w-full px-4 py-3 text-left transition-all border-b border-stone-100 dark:border-stone-700 last:border-0 ${
                     selectedWarehouse?.ref === warehouse.ref
                       ? 'bg-[#D4AF37]/10 border-l-4 border-l-[#D4AF37]'
-                      : 'hover:bg-stone-50'
+                      : 'hover:bg-stone-50 dark:hover:bg-stone-700'
                   }`}
                 >
-                  <div className="font-medium text-stone-900">{warehouse.description}</div>
-                  <div className="text-xs text-stone-500 mt-1">
+                  <div className="font-medium text-stone-900 dark:text-white">{warehouse.description}</div>
+                  <div className="text-xs text-stone-500 dark:text-stone-400 mt-1">
                     {deliveryType === 'locker' ? t('novaPoshta.locker') : t('novaPoshta.branch')} №{warehouse.number}
                   </div>
                 </button>

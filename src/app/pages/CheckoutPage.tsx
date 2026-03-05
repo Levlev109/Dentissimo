@@ -211,37 +211,37 @@ export const CheckoutPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-[#F9F8F6] pt-28 pb-16 px-4">
+    <div className="min-h-screen bg-[#F9F8F6] dark:bg-stone-950 pt-28 pb-16 px-4">
       <div className="max-w-6xl mx-auto">
         <button
           onClick={() => navigate('/')}
-          className="flex items-center gap-2 text-stone-600 hover:text-stone-900 transition-colors mb-6 group"
+          className="flex items-center gap-2 text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-white transition-colors mb-6 group"
         >
           <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" />
           {t('cart.continueShopping')}
         </button>
-        <h1 className="font-serif text-4xl text-stone-900 mb-8">
+        <h1 className="font-serif text-4xl text-stone-900 dark:text-white mb-8">
           {t('checkout.title')}
         </h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Form */}
-          <div className="bg-white rounded-lg shadow-sm p-8">
-            <h2 className="font-serif text-2xl text-stone-900 mb-6">
+          <div className="bg-white dark:bg-stone-900 rounded-lg shadow-sm p-8">
+            <h2 className="font-serif text-2xl text-stone-900 dark:text-white mb-6">
               {t('checkout.personalInfo')}
             </h2>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium text-stone-700 mb-2">
+                  <label className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-2">
                     {t('checkout.firstName')} *
                   </label>
                   <input
                     type="text"
                     value={formData.firstName}
                     onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                    className={`w-full px-4 py-3 border ${errors.firstName ? 'border-red-500' : 'border-stone-300'} rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none`}
+                    className={`w-full px-4 py-3 border ${errors.firstName ? 'border-red-500' : 'border-stone-300 dark:border-stone-600'} rounded-lg bg-white dark:bg-stone-800 text-stone-900 dark:text-white placeholder-stone-400 focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none`}
                   />
                   {errors.firstName && (
                     <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>
@@ -249,14 +249,14 @@ export const CheckoutPage = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-stone-700 mb-2">
+                  <label className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-2">
                     {t('checkout.lastName')} *
                   </label>
                   <input
                     type="text"
                     value={formData.lastName}
                     onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                    className={`w-full px-4 py-3 border ${errors.lastName ? 'border-red-500' : 'border-stone-300'} rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none`}
+                    className={`w-full px-4 py-3 border ${errors.lastName ? 'border-red-500' : 'border-stone-300 dark:border-stone-600'} rounded-lg bg-white dark:bg-stone-800 text-stone-900 dark:text-white placeholder-stone-400 focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none`}
                   />
                   {errors.lastName && (
                     <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>
@@ -266,7 +266,7 @@ export const CheckoutPage = () => {
 
               {/* Email */}
               <div>
-                <label className="block text-sm font-medium text-stone-700 mb-2">
+                <label className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-2">
                   {t('auth.email')} *
                 </label>
                 <input
@@ -274,7 +274,7 @@ export const CheckoutPage = () => {
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="example@mail.com"
-                  className={`w-full px-4 py-3 border ${errors.email ? 'border-red-500' : 'border-stone-300'} rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none`}
+                  className={`w-full px-4 py-3 border ${errors.email ? 'border-red-500' : 'border-stone-300 dark:border-stone-600'} rounded-lg bg-white dark:bg-stone-800 text-stone-900 dark:text-white placeholder-stone-400 focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none`}
                 />
                 {errors.email && (
                   <p className="text-red-500 text-sm mt-1">{errors.email}</p>
@@ -282,13 +282,13 @@ export const CheckoutPage = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-stone-700 mb-2">
+                <label className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-2">
                   {t('checkout.country')} *
                 </label>
                 <select
                   value={formData.country}
                   onChange={(e) => handleCountryChange(e.target.value)}
-                  className={`w-full px-4 py-3 border ${errors.country ? 'border-red-500' : 'border-stone-300'} rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none`}
+                  className={`w-full px-4 py-3 border ${errors.country ? 'border-red-500' : 'border-stone-300 dark:border-stone-600'} rounded-lg bg-white dark:bg-stone-800 text-stone-900 dark:text-white focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none`}
                 >
                   <option value="">{t('checkout.selectCountry')}</option>
                   {europeanCountries.map(country => (
@@ -303,7 +303,7 @@ export const CheckoutPage = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-stone-700 mb-2">
+                <label className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-2">
                   {t('checkout.phone')} *
                 </label>
                 <input
@@ -311,7 +311,7 @@ export const CheckoutPage = () => {
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   placeholder={t('checkout.phonePlaceholder')}
-                  className={`w-full px-4 py-3 border ${errors.phone ? 'border-red-500' : 'border-stone-300'} rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none`}
+                  className={`w-full px-4 py-3 border ${errors.phone ? 'border-red-500' : 'border-stone-300 dark:border-stone-600'} rounded-lg bg-white dark:bg-stone-800 text-stone-900 dark:text-white placeholder-stone-400 focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none`}
                 />
                 {errors.phone && (
                   <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
@@ -319,7 +319,7 @@ export const CheckoutPage = () => {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-stone-700 mb-2">
+                <label className="block text-sm font-medium text-stone-700 dark:text-stone-300 mb-2">
                   {t('checkout.address')} *
                 </label>
                 <textarea
@@ -327,7 +327,7 @@ export const CheckoutPage = () => {
                   value={formData.address}
                   onChange={(e) => setFormData({ ...formData, address: e.target.value })}
                   placeholder={t('checkout.addressPlaceholder')}
-                  className={`w-full px-4 py-3 border ${errors.address ? 'border-red-500' : 'border-stone-300'} rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none resize-none`}
+                  className={`w-full px-4 py-3 border ${errors.address ? 'border-red-500' : 'border-stone-300 dark:border-stone-600'} rounded-lg bg-white dark:bg-stone-800 text-stone-900 dark:text-white placeholder-stone-400 focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none resize-none`}
                 />
                 {errors.address && (
                   <p className="text-red-500 text-sm mt-1">{errors.address}</p>
@@ -346,8 +346,8 @@ export const CheckoutPage = () => {
           </div>
 
           {/* Order Summary */}
-          <div className="bg-white rounded-lg shadow-sm p-8 h-fit sticky top-24">
-            <h2 className="font-serif text-2xl text-stone-900 mb-6">
+          <div className="bg-white dark:bg-stone-900 rounded-lg shadow-sm p-8 h-fit sticky top-24">
+            <h2 className="font-serif text-2xl text-stone-900 dark:text-white mb-6">
               {t('checkout.orderSummary')}
             </h2>
 
@@ -360,30 +360,30 @@ export const CheckoutPage = () => {
                     className="w-16 h-16 object-contain bg-stone-100 rounded p-1"
                   />
                   <div className="flex-1">
-                    <h3 className="font-medium text-stone-900">
+                    <h3 className="font-medium text-stone-900 dark:text-white">
                       {item.product.name}
                     </h3>
-                    <p className="text-sm text-stone-500">
+                    <p className="text-sm text-stone-500 dark:text-stone-400">
                       {t('cart.quantity')}: {item.quantity}
                     </p>
                   </div>
-                  <p className="font-medium text-stone-900">
+                  <p className="font-medium text-stone-900 dark:text-white">
                     {t('products.currency')}{(item.product.price * item.quantity).toFixed(2)}
                   </p>
                 </div>
               ))}
             </div>
 
-            <div className="border-t border-stone-200 pt-4 space-y-2">
-              <div className="flex justify-between text-stone-600">
+            <div className="border-t border-stone-200 dark:border-stone-700 pt-4 space-y-2">
+              <div className="flex justify-between text-stone-600 dark:text-stone-400">
                 <span>{t('checkout.items')}</span>
                 <span>{t('products.currency')}{total.toFixed(2)}</span>
               </div>
-              <div className="flex justify-between text-stone-600">
+              <div className="flex justify-between text-stone-600 dark:text-stone-400">
                 <span>{t('checkout.delivery')}</span>
                 <span className="text-green-600">{t('checkout.free')}</span>
               </div>
-              <div className="flex justify-between text-xl font-bold text-stone-900 pt-2 border-t border-stone-200">
+              <div className="flex justify-between text-xl font-bold text-stone-900 dark:text-white pt-2 border-t border-stone-200 dark:border-stone-700">
                 <span>{t('cart.total')}</span>
                 <span>{t('products.currency')}{total.toFixed(2)}</span>
               </div>
