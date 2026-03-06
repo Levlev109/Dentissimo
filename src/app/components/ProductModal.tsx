@@ -206,10 +206,11 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
 
                   <button
                     onClick={handleAddToCart}
-                    className="w-full bg-stone-900 text-white py-3.5 rounded-lg font-semibold uppercase tracking-wide hover:bg-stone-800 transition-colors flex items-center justify-center gap-2 group"
+                    className="w-full py-4 rounded-xl font-semibold uppercase tracking-widest flex items-center justify-center gap-3 group relative overflow-hidden bg-gradient-to-r from-stone-900 via-stone-800 to-stone-900 text-white shadow-[0_6px_30px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.35)] border border-white/10 hover:border-white/20 transition-all duration-500 hover:scale-[1.01]"
                   >
-                    <ShoppingCart size={18} className="group-hover:scale-110 transition-transform" />
-                    {t('products.addToCart')}
+                    <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                    <ShoppingCart size={18} className="relative z-10 group-hover:scale-110 transition-transform" />
+                    <span className="relative z-10">{t('products.addToCart')}</span>
                   </button>
 
                   <p className="text-xs text-stone-500 dark:text-stone-400 text-center mt-3">

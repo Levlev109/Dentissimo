@@ -16,11 +16,11 @@ export const CartDrawer = () => {
       {/* Cart Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className="relative text-stone-600 hover:text-stone-900 transition-colors"
+        className="relative text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white transition-all duration-300 hover:scale-110"
       >
-        <ShoppingBag size={20} />
+        <ShoppingBag size={22} strokeWidth={1.8} />
         {itemCount > 0 && (
-          <span className="absolute -top-1 -right-1 bg-stone-900 text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full font-bold">
+          <span className="absolute -top-2 -right-2 bg-gradient-to-br from-stone-800 to-black text-white text-[10px] w-5 h-5 flex items-center justify-center rounded-full font-bold shadow-lg border border-white/20 animate-pulse">
             {itemCount}
           </span>
         )}
@@ -129,10 +129,11 @@ export const CartDrawer = () => {
                     <span>{t('products.currency')}{total.toFixed(2)}</span>
                   </div>
                   <button
-                    className="block w-full py-3 bg-stone-900 text-white text-center font-semibold hover:bg-stone-800 transition-colors rounded-lg uppercase tracking-wide"
+                    className="group relative block w-full py-4 text-white text-center font-semibold rounded-xl uppercase tracking-widest overflow-hidden bg-gradient-to-r from-stone-900 via-stone-800 to-stone-900 shadow-[0_6px_30px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.35)] border border-white/10 hover:border-white/20 transition-all duration-500 hover:scale-[1.01]"
                     onClick={() => { setIsOpen(false); navigate('/checkout'); }}
                   >
-                    {t('cart.checkout')}
+                    <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+                    <span className="relative z-10">{t('cart.checkout')}</span>
                   </button>
                 </div>
               )}

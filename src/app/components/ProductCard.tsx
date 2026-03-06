@@ -69,11 +69,12 @@ export const ProductCard = ({ product }: ProductProps) => {
             />
             <motion.button
               whileTap={{ scale: 0.9 }}
+              whileHover={{ scale: 1.1 }}
               onClick={handleAddToCart}
-              className="absolute bottom-3 right-3 md:bottom-4 md:right-4 bg-stone-900 text-white w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full shadow-2xl shadow-stone-900/30 opacity-100 md:opacity-0 md:translate-y-2 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-300 border-2 border-white/30 backdrop-blur-sm hover:bg-stone-800"
+              className="absolute bottom-3 right-3 md:bottom-4 md:right-4 w-11 h-11 md:w-13 md:h-13 flex items-center justify-center rounded-full opacity-100 md:opacity-0 md:translate-y-2 md:group-hover:opacity-100 md:group-hover:translate-y-0 transition-all duration-300 bg-gradient-to-br from-stone-800 via-stone-900 to-black text-white shadow-[0_4px_20px_rgba(0,0,0,0.3)] border border-white/20 hover:border-white/40 hover:shadow-[0_4px_25px_rgba(0,0,0,0.4)] backdrop-blur-md"
               aria-label={t('products.addToCart')}
             >
-              <Plus size={22} strokeWidth={3} />
+              <Plus size={22} strokeWidth={2.5} />
             </motion.button>
           </div>
 
