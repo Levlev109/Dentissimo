@@ -1,18 +1,42 @@
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export const Hero = () => {
   const { t } = useTranslation();
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoLoaded, setVideoLoaded] = useState(false);
 
   useEffect(() => {
-    if (!videoRef.current) return;
+    const video = videoRef.current;
+    if (!video) return;
+
     const isMobile = window.innerWidth < 768;
-    const v = Date.now();                // timestamp to guarantee fresh load
-    videoRef.current.src = isMobile ? `/gorge-water-mobile.mp4?v=${v}` : `/gorge-water.mp4?v=${v}`;
-    videoRef.current.load();
+    const src = isMobile ? '/gorge-water-mobile.mp4' : '/gorge-water.mp4';
+
+    const tryPlay = () => {
+      video.play().then(() => setVideoLoaded(true)).catch(() => {
+        // Autoplay might be blocked, mute and retry
+        video.muted = true;
+        video.play().then(() => setVideoLoaded(true)).catch(() => {});
+      });
+    };
+
+    video.src = src;
+    video.addEventListener('canplay', tryPlay, { once: true });
+    video.addEventListener('error', () => {
+      // Retry once on error
+      setTimeout(() => {
+        video.src = src + '?retry=' + Date.now();
+        video.load();
+      }, 2000);
+    }, { once: true });
+    video.load();
+
+    return () => {
+      video.removeEventListener('canplay', tryPlay);
+    };
   }, []);
 
   return (
@@ -25,8 +49,7 @@ export const Hero = () => {
           loop
           playsInline
           preload="auto"
-          className="w-full h-full object-cover"
-          poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1'%3E%3Crect fill='%231c1917' width='1' height='1'/%3E%3C/svg%3E"
+          className={`w-full h-full object-cover transition-opacity duration-1000 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
         />
         {/* Gradient overlays */}
         <div className="absolute inset-0 bg-gradient-to-r from-stone-950/90 via-stone-900/60 to-transparent"></div>
