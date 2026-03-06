@@ -7,6 +7,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import { useTheme } from '../../contexts/ThemeContext';
 import { CartDrawer } from './CartDrawer';
 import { AuthModal } from './AuthModal';
+import { DentissimoLogo } from './DentissimoLogo';
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -75,9 +76,9 @@ export const Navbar = () => {
             <a
               href="#"
               onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-              className="font-serif text-xl md:text-2xl font-bold tracking-wider bg-gradient-to-r from-stone-900 via-[#D4AF37] to-stone-900 dark:from-white dark:via-[#D4AF37] dark:to-white bg-clip-text text-transparent hover:scale-105 transition-transform duration-300"
+              className="hover:scale-105 transition-transform duration-300"
             >
-              DENTISSIMO
+              <DentissimoLogo size="md" />
             </a>
           </div>
 

@@ -1,5 +1,6 @@
 import { Facebook, Instagram, Twitter } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { DentissimoLogo } from './DentissimoLogo';
 
 export const Footer = () => {
   const { t } = useTranslation();
@@ -8,7 +9,9 @@ export const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="space-y-6">
-            <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="font-serif text-2xl font-bold tracking-wider">DENTISSIMO</a>
+            <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
+              <DentissimoLogo size="lg" light />
+            </a>
             <p className="text-stone-400 text-sm leading-relaxed max-w-xs">
               {t('footer.tagline')}
             </p>
