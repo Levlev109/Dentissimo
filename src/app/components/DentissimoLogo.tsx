@@ -16,27 +16,26 @@ const sizes = {
   lg: { icon: 44, text: 'text-2xl', gap: 'gap-2.5'  },
 };
 
-/** Official Dentissimo leaf/wave mark — two flowing curves */
+/** Official Dentissimo swoosh mark — two flowing brushstroke waves */
 const LeafIcon = ({ size = 36, color = 'currentColor' }: { size?: number; color?: string }) => (
   <svg
     width={size}
-    height={size * 0.5}
-    viewBox="0 0 120 52"
+    height={size * 0.45}
+    viewBox="0 0 200 80"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
   >
-    {/* Upper leaf/wave — curves right and tapers */}
+    {/* Upper swoosh — larger, flows left to right */}
     <path
-      d="M58 6C46 6 34 10 26 18c-6 6-10 13-8 18 1.5 4 6 5 12 3 8-3 18-10 28-10 8 0 14 3 20 3 5 0 9-2 12-6 4-5 4-12 0-16C86 4 72 6 58 6z"
+      d="M8 38c12-18 32-30 56-32 20-1.5 38 6 54 4 14-1.8 26-8 36-16-6 14-20 24-38 28-16 3.5-34-2-52-2C44 20 26 28 8 38z"
       fill={color}
-      opacity="0.7"
     />
-    {/* Lower leaf/wave — curves left, overlapping */}
+    {/* Lower swoosh — smaller, slightly below */}
     <path
-      d="M62 46c12 0 24-4 32-12 6-6 10-13 8-18-1.5-4-6-5-12-3-8 3-18 10-28 10-8 0-14-3-20-3-5 0-9 2-12 6-4 5-4 12 0 16C34 48 48 46 62 46z"
+      d="M30 58c10-12 26-22 46-24 16-1.5 30 4 44 3 12-1 22-6 30-12-5 10-16 18-30 22-14 3-28-1-42-1-14 0-30 4-48 12z"
       fill={color}
-      opacity="0.45"
+      opacity="0.65"
     />
   </svg>
 );
