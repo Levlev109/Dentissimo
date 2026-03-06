@@ -1,15 +1,14 @@
-﻿import { useState } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { ProductCard } from './ProductCard';
 import { ProductFilters } from './ProductFilters';
 import { useTranslation } from 'react-i18next';
 import { convertPrice } from '../../services/currency';
-import { CareMethod, Ingredient, db } from '../../services/database';
+import { CareMethod, Ingredient, ProductOverride, CustomProduct } from '../../services/database';
+import { productService } from '../../services/productService';
 import { allProducts as baseProducts } from '../../data/allProducts';
 
-const buildProductList = () => {
-  const overrides = db.getProductOverrides();
-  const customs = db.getCustomProducts();
+const buildProductList = (overrides: ProductOverride[], customs: CustomProduct[]) => {
   const merged = baseProducts
     .map(p => {
       const ov = overrides.find(o => o.id === p.id);
@@ -31,7 +30,15 @@ export const AllProducts = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [selectedCareMethods, setSelectedCareMethods] = useState<CareMethod[]>([]);
   const [selectedIngredients, setSelectedIngredients] = useState<Ingredient[]>([]);
-  const allProducts = buildProductList();
+  const [overrides, setOverrides] = useState<ProductOverride[]>([]);
+  const [customs, setCustoms] = useState<CustomProduct[]>([]);
+
+  useEffect(() => {
+    productService.getOverrides().then(setOverrides);
+    productService.getCustomProducts().then(setCustoms);
+  }, []);
+
+  const allProducts = buildProductList(overrides, customs);
 
   const categories = [
     { id: 'all', nameKey: 'allProductsSection.all' },

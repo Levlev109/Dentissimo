@@ -1,8 +1,11 @@
+import { useState, useEffect } from 'react';
 import { ProductCard } from '@/app/components/ProductCard';
 import { useTranslation } from 'react-i18next';
 import { convertPrice } from '../../services/currency';
+import { ProductOverride } from '../../services/database';
+import { productService } from '../../services/productService';
 
-const products = [
+const baseProducts = [
   // Limited Edition Series
   {
     id: 'gentle-care',
@@ -44,6 +47,20 @@ const products = [
 
 export const FeaturedProducts = () => {
   const { t, i18n } = useTranslation();
+  const [overrides, setOverrides] = useState<ProductOverride[]>([]);
+
+  useEffect(() => {
+    productService.getOverrides().then(setOverrides);
+  }, []);
+
+  const products = baseProducts
+    .map(p => {
+      const ov = overrides.find(o => o.id === p.id);
+      if (ov?.hidden) return null;
+      if (!ov) return p;
+      return { ...p, price: ov.price ?? p.price, name: ov.name ?? p.name };
+    })
+    .filter(Boolean) as typeof baseProducts;
 
   return (
     <section id="limited" className="py-28 bg-white dark:bg-stone-950 transition-colors duration-500 relative overflow-hidden">

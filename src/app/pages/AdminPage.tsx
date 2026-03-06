@@ -1,6 +1,7 @@
 ﻿import { useState, useEffect } from 'react';
 import { db, Order, ProductOverride, CustomProduct } from '../../services/database';
 import { orderService, checkSupabaseSetup } from '../../services/orderService';
+import { productService } from '../../services/productService';
 import { allProducts as baseProducts } from '../../data/allProducts';
 import {
   LayoutDashboard, ShoppingBag, Package, Users, LogOut, Lock,
@@ -151,8 +152,8 @@ export const AdminPage = () => {
                 <p className="text-red-600 dark:text-red-500 text-sm mt-1 break-all">РџРѕРјРёР»РєР°: {supabaseError}</p>
                 <details className="mt-3">
                   <summary className="text-sm text-red-600 dark:text-red-400 cursor-pointer font-medium">РЇРє РІРёРїСЂР°РІРёС‚Рё вЂ” Р·Р°РїСѓСЃС‚Рё С†РµР№ SQL РІ Supabase</summary>
-                  <pre className="mt-2 p-3 bg-stone-900 text-green-400 text-xs rounded-lg overflow-x-auto whitespace-pre-wrap">{`-- 1. Р’С–РґРєСЂРёР№ app.supabase.com в†’ С‚РІС–Р№ РїСЂРѕРµРєС‚ в†’ SQL Editor
--- 2. Р’СЃС‚Р°РІ С†РµР№ РєРѕРґ С– РЅР°С‚РёСЃРЅРё Run:
+                  <pre className="mt-2 p-3 bg-stone-900 text-green-400 text-xs rounded-lg overflow-x-auto whitespace-pre-wrap">{`-- 1. Відкрий app.supabase.com → твій проєкт → SQL Editor
+-- 2. Встав цей код і натисни Run:
 
 create table if not exists orders (
   id text primary key,
@@ -164,7 +165,31 @@ create table if not exists orders (
   created_at timestamptz default now()
 );
 alter table orders enable row level security;
-create policy "allow_all" on orders for all using (true) with check (true);`}</pre>
+create policy "allow_all_orders" on orders for all using (true) with check (true);
+
+create table if not exists product_overrides (
+  id text primary key,
+  price numeric,
+  badge text,
+  hidden boolean default false,
+  name text
+);
+alter table product_overrides enable row level security;
+create policy "allow_all_overrides" on product_overrides for all using (true) with check (true);
+
+create table if not exists custom_products (
+  id text primary key,
+  name text not null,
+  category_key text not null,
+  price numeric not null,
+  description text,
+  image text,
+  badge text,
+  is_new boolean default false,
+  created_at timestamptz default now()
+);
+alter table custom_products enable row level security;
+create policy "allow_all_custom" on custom_products for all using (true) with check (true);`}</pre>
                 </details>
               </div>
               <button onClick={() => checkSupabaseSetup().then(err => setSupabaseError(err))} className="text-red-400 hover:text-red-600 shrink-0">
@@ -414,52 +439,55 @@ const CATEGORIES = ['limitedEdition', 'toothpaste', 'toothbrushes', 'mouthwash',
 const BADGES = ['', 'bestseller', 'recommended', 'topSales', 'eco', 'limitedStock'];
 
 const ProductsTab = () => {
-  const [overrides, setOverrides] = useState<ProductOverride[]>(() => db.getProductOverrides());
-  const [customs, setCustoms] = useState<CustomProduct[]>(() => db.getCustomProducts());
+  const [overrides, setOverrides] = useState<ProductOverride[]>([]);
+  const [customs, setCustoms] = useState<CustomProduct[]>([]);
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editValues, setEditValues] = useState<{ price: string; badge: string; name: string }>({ price: '', badge: '', name: '' });
   const [showAddForm, setShowAddForm] = useState(false);
   const [newProduct, setNewProduct] = useState({ name: '', categoryKey: 'toothpaste', price: '', description: '', image: '', badge: '', isNew: false });
   const [activeSection, setActiveSection] = useState<'base' | 'custom'>('base');
 
-  const refresh = () => {
-    setOverrides(db.getProductOverrides());
-    setCustoms(db.getCustomProducts());
+  const refresh = async () => {
+    const [ov, cp] = await Promise.all([productService.getOverrides(), productService.getCustomProducts()]);
+    setOverrides(ov);
+    setCustoms(cp);
   };
+
+  useEffect(() => { refresh(); }, []);
 
   const startEdit = (p: { id: string; name: string; price: number; badge?: string }) => {
     setEditingId(p.id);
     setEditValues({ price: String(p.price), badge: p.badge || '', name: p.name });
   };
 
-  const saveEdit = (id: string) => {
-    db.setProductOverride({ id, price: parseFloat(editValues.price) || undefined, badge: editValues.badge || undefined, name: editValues.name || undefined });
+  const saveEdit = async (id: string) => {
+    await productService.setOverride({ id, price: parseFloat(editValues.price) || undefined, badge: editValues.badge || undefined, name: editValues.name || undefined });
     setEditingId(null);
-    refresh();
+    await refresh();
   };
 
-  const toggleHide = (id: string) => {
+  const toggleHide = async (id: string) => {
     const ov = overrides.find(o => o.id === id);
-    db.setProductOverride({ ...ov, id, hidden: !ov?.hidden });
-    refresh();
+    await productService.setOverride({ ...ov, id, hidden: !ov?.hidden });
+    await refresh();
   };
 
-  const resetOverride = (id: string) => {
-    db.deleteProductOverride(id);
-    refresh();
+  const resetOverride = async (id: string) => {
+    await productService.deleteOverride(id);
+    await refresh();
   };
 
-  const addCustomProduct = (e: React.FormEvent) => {
+  const addCustomProduct = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!newProduct.name || !newProduct.price) return;
-    db.saveCustomProduct({ name: newProduct.name, categoryKey: newProduct.categoryKey, price: parseFloat(newProduct.price), description: newProduct.description, image: newProduct.image || '/images/DENTISSIMO_box_Gentle_Care.webp', badge: newProduct.badge || undefined, isNew: newProduct.isNew });
+    await productService.saveCustomProduct({ name: newProduct.name, categoryKey: newProduct.categoryKey, price: parseFloat(newProduct.price), description: newProduct.description, image: newProduct.image || '/images/DENTISSIMO_box_Gentle_Care.webp', badge: newProduct.badge || undefined, isNew: newProduct.isNew });
     setNewProduct({ name: '', categoryKey: 'toothpaste', price: '', description: '', image: '', badge: '', isNew: false });
     setShowAddForm(false);
-    refresh();
+    await refresh();
   };
 
-  const deleteCustom = (id: string) => {
-    if (confirm('Р’РёРґР°Р»РёС‚Рё РїСЂРѕРґСѓРєС‚?')) { db.deleteCustomProduct(id); refresh(); }
+  const deleteCustom = async (id: string) => {
+    if (confirm('Видалити продукт?')) { await productService.deleteCustomProduct(id); await refresh(); }
   };
 
   return (
