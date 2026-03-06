@@ -28,7 +28,6 @@ export default function App() {
       <AllProducts />
       <Benefits />
       <Testimonials />
-      <FAQ />
       <AboutSection />
     </>
   );
