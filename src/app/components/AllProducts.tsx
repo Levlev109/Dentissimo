@@ -63,12 +63,13 @@ export const AllProducts = () => {
   });
 
   return (
-    <section id="products" className="py-24 bg-stone-50/20 dark:bg-stone-950 transition-colors duration-500">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="products" className="py-24 bg-gradient-to-b from-stone-50/30 to-white dark:from-stone-900/30 dark:to-stone-950 transition-colors duration-500 relative">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_50%_at_50%_0%,rgba(56,189,248,0.04),transparent)]" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-12">
-          <p className="text-stone-700 dark:text-stone-400 uppercase tracking-[0.3em] text-xs font-semibold mb-3">{t('allProductsSection.subtitle')}</p>
-          <h2 className="font-serif text-3xl md:text-4xl text-stone-900 dark:text-white mb-2">{t('allProductsSection.title')}</h2>
-          <div className="w-16 h-[2px] bg-gradient-to-r from-transparent via-sky-400 to-transparent mx-auto mt-4" />
+          <p className="text-sky-600 uppercase tracking-[0.3em] text-xs font-bold mb-3">{t('allProductsSection.subtitle')}</p>
+          <h2 className="font-serif text-3xl md:text-5xl text-stone-900 dark:text-white mb-2">{t('allProductsSection.title')}</h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-transparent via-sky-400 to-transparent mx-auto mt-6" />
         </div>
         <div className="flex flex-wrap justify-center gap-3 mb-14">
           {categories.map(cat => (

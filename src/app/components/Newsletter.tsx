@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Mail, Check } from 'lucide-react';
+import { Mail, Check, Sparkles } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -34,32 +34,45 @@ export const Newsletter = () => {
   };
 
   return (
-    <div className="bg-stone-50/40 dark:bg-stone-900 py-12 border-t border-stone-200/40 dark:border-stone-800/20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl mx-auto text-center">
-          <div className="inline-block p-3 bg-sky-100 dark:bg-sky-900/30 rounded-full mb-4">
-            <Mail className="text-stone-700 dark:text-stone-300" size={32} />
+    <section className="py-20 bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900 dark:from-stone-950 dark:via-stone-900 dark:to-stone-950 relative overflow-hidden">
+      {/* Decorative background */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_80%_at_50%_-20%,rgba(56,189,248,0.12),transparent)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_40%_60%_at_80%_100%,rgba(56,189,248,0.06),transparent)]" />
+      
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <motion.div
+          className="max-w-2xl mx-auto text-center"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/10 mb-6">
+            <Sparkles size={14} className="text-sky-400" />
+            <span className="text-sky-300 text-xs font-bold tracking-wider uppercase">
+              {t('newsletter.discount', '10% off your first order')}
+            </span>
           </div>
-          <h3 className="text-2xl md:text-3xl font-serif font-bold text-stone-900 dark:text-white mb-2">
+          <h3 className="text-3xl md:text-4xl font-serif font-bold text-white mb-3">
             {t('newsletter.title')}
           </h3>
-          <p className="text-stone-600 dark:text-stone-400 mb-6">
+          <p className="text-stone-400 mb-8 text-lg">
             {t('newsletter.subtitle')}
           </p>
 
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder={t('newsletter.placeholder')}
-              className="flex-1 px-5 py-3 border-2 border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-900 dark:text-white rounded-lg focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none"
+              className="flex-1 px-5 py-4 border border-white/10 bg-white/5 backdrop-blur-sm text-white placeholder-stone-500 rounded-xl focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none transition-all duration-300"
               disabled={loading || subscribed}
             />
             <button
               type="submit"
               disabled={loading || subscribed}
-              className="px-6 py-3 bg-stone-900 text-white font-semibold rounded-lg hover:bg-stone-800 transition-all disabled:opacity-60 disabled:cursor-not-allowed shadow-md hover:shadow-lg flex items-center justify-center gap-2 whitespace-nowrap"
+              className="px-8 py-4 bg-sky-500 text-white font-bold rounded-xl hover:bg-sky-400 transition-all disabled:opacity-60 disabled:cursor-not-allowed shadow-lg shadow-sky-500/25 hover:shadow-xl hover:shadow-sky-400/30 hover:scale-105 transform flex items-center justify-center gap-2 whitespace-nowrap"
             >
               <AnimatePresence mode="wait">
                 {subscribed ? (
@@ -79,12 +92,8 @@ export const Newsletter = () => {
               </AnimatePresence>
             </button>
           </form>
-
-          <p className="text-xs text-stone-500 dark:text-stone-400 mt-4">
-            {t('newsletter.discount')}
-          </p>
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </section>
   );
 };

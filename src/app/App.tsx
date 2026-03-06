@@ -1,13 +1,17 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import { Navbar } from "@/app/components/Navbar";
 import { Hero } from "@/app/components/Hero";
+import { TrustBadges } from "@/app/components/TrustBadges";
 import { CategorySection } from "@/app/components/CategorySection";
 import { FeaturedProducts } from "@/app/components/FeaturedProducts";
 import { AllProducts } from "@/app/components/AllProducts";
 import { Benefits } from "@/app/components/Benefits";
 import { Testimonials } from "@/app/components/Testimonials";
+import { FAQ } from "@/app/components/FAQ";
 import { AboutSection } from "@/app/components/AboutSection";
+import { Newsletter } from "@/app/components/Newsletter";
 import { Footer } from "@/app/components/Footer";
+import { DecorativeEffects } from "@/app/components/DecorativeEffects";
 import { CheckoutPage } from "@/app/pages/CheckoutPage";
 import { ProfilePage } from "@/app/pages/ProfilePage";
 import { AdminPage } from "@/app/pages/AdminPage";
@@ -20,12 +24,15 @@ export default function App() {
   const HomePage = () => (
     <>
       <Hero />
+      <TrustBadges />
       <CategorySection />
       <FeaturedProducts />
       <AllProducts />
       <Benefits />
       <Testimonials />
+      <FAQ />
       <AboutSection />
+      <Newsletter />
     </>
   );
 
@@ -46,6 +53,7 @@ export default function App() {
       </Routes>
       {!isAdmin && <Footer />}
       {!isAdmin && <AIChat />}
+      {!isAdmin && <DecorativeEffects />}
     </div>
   );
 }

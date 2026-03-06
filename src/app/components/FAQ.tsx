@@ -17,22 +17,34 @@ export const FAQ = () => {
   ];
 
   return (
-    <section className="py-20 bg-white dark:bg-stone-950 transition-colors duration-500">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="font-serif text-3xl md:text-4xl text-stone-900 dark:text-white mb-4">
+    <section className="py-24 bg-gradient-to-b from-white to-stone-50/50 dark:from-stone-950 dark:to-stone-900/50 transition-colors duration-500 relative">
+      {/* Decorative pattern */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(56,189,248,0.04),transparent_60%)]" />
+
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <motion.div
+          className="text-center mb-14"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <p className="text-sky-600 uppercase tracking-[0.3em] text-xs font-bold mb-4">{t('faq.subtitle')}</p>
+          <h2 className="font-serif text-3xl md:text-5xl text-stone-900 dark:text-white mb-4">
             {t('faq.title')}
           </h2>
-          <p className="text-stone-600 dark:text-stone-400 max-w-2xl mx-auto">
-            {t('faq.subtitle')}
-          </p>
-        </div>
+          <div className="w-24 h-1 bg-gradient-to-r from-transparent via-sky-400 to-transparent mx-auto mt-6" />
+        </motion.div>
 
         <div className="space-y-3">
           {faqs.map((faq, index) => (
-            <div
+            <motion.div
               key={index}
-              className="border border-stone-200 dark:border-stone-700 rounded-xl overflow-hidden bg-white dark:bg-stone-900 shadow-sm hover:shadow-md transition-shadow"
+              className="border border-stone-200 dark:border-stone-700 rounded-xl overflow-hidden bg-white dark:bg-stone-900 shadow-sm hover:shadow-md transition-all duration-300"
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.06 }}
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
@@ -65,21 +77,27 @@ export const FAQ = () => {
                   </motion.div>
                 )}
               </AnimatePresence>
-            </div>
+            </motion.div>
           ))}
         </div>
 
-        <div className="mt-12 text-center">
+        <motion.div
+            className="mt-14 text-center"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
           <p className="text-stone-600 dark:text-stone-400 mb-4">
             {t('faq.stillHaveQuestions')}
           </p>
           <a
             href="mailto:info@blasspharma.com"
-            className="inline-block px-6 py-3 bg-stone-100 dark:bg-stone-800 text-stone-900 dark:text-white font-medium rounded-lg hover:bg-stone-200 dark:hover:bg-stone-700 transition-colors"
+            className="inline-block px-8 py-3.5 bg-stone-900 dark:bg-white text-white dark:text-stone-900 font-semibold rounded-xl hover:bg-stone-800 dark:hover:bg-stone-100 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 transform"
           >
             {t('faq.contactUs')}
           </a>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

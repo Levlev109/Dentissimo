@@ -1,5 +1,6 @@
 import { Truck, Users, Lock, RotateCcw } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { motion } from 'motion/react';
 
 export const TrustBadges = () => {
   const { t } = useTranslation();
@@ -28,19 +29,26 @@ export const TrustBadges = () => {
   ];
 
   return (
-    <section className="py-8 bg-stone-50/30 dark:bg-stone-950 border-b border-stone-200/40 dark:border-stone-800/20 transition-colors duration-500">
+    <section className="py-10 bg-white dark:bg-stone-950 border-b border-stone-100 dark:border-stone-800/30 transition-colors duration-500">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
           {badges.map((badge, index) => (
-            <div key={index} className="flex items-center gap-3 group cursor-default">
-              <div className="p-2.5 rounded-lg bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-900 dark:text-white group-hover:border-sky-400 group-hover:bg-sky-50 dark:group-hover:bg-sky-900/30 transition-all duration-300 flex-shrink-0">
-                <badge.icon size={20} strokeWidth={1.8} />
+            <motion.div
+              key={index}
+              className="flex flex-col items-center text-center gap-3 group cursor-default"
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.1 }}
+            >
+              <div className="p-3.5 rounded-2xl bg-sky-50 dark:bg-sky-900/20 border border-sky-100 dark:border-sky-800/30 text-sky-600 dark:text-sky-400 group-hover:bg-sky-100 dark:group-hover:bg-sky-800/30 group-hover:scale-110 transition-all duration-300 shadow-sm">
+                <badge.icon size={22} strokeWidth={1.5} />
               </div>
-              <div className="flex-1 min-w-0">
-                <h3 className="text-xs font-bold text-stone-900 dark:text-stone-100 leading-tight mb-0.5">{t(badge.titleKey)}</h3>
-                <p className="text-[10px] text-stone-500 dark:text-stone-400 leading-tight truncate">{t(badge.descKey)}</p>
+              <div>
+                <h3 className="text-sm font-bold text-stone-900 dark:text-stone-100 leading-tight mb-0.5">{t(badge.titleKey)}</h3>
+                <p className="text-xs text-stone-500 dark:text-stone-400 leading-tight">{t(badge.descKey)}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
