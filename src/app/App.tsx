@@ -24,7 +24,6 @@ export default function App() {
   const HomePage = () => (
     <>
       <Hero />
-      <TrustBadges />
       <CategorySection />
       <FeaturedProducts />
       <AllProducts />
@@ -32,7 +31,6 @@ export default function App() {
       <Testimonials />
       <FAQ />
       <AboutSection />
-      <Newsletter />
     </>
   );
 
