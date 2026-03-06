@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'motion/react';
 import { FlaskConical, Leaf, Shield, X } from 'lucide-react';
@@ -38,13 +38,13 @@ export const AboutSection = () => {
               <h2 className="font-serif text-3xl md:text-5xl mb-6 leading-tight text-stone-900">
                 {t('about.glacierTitle')}
               </h2>
-              <p className="text-stone-600 mb-6 leading-relaxed font-light">
+              <p className="text-stone-700 mb-6 leading-relaxed font-normal">
                 {t('about.glacierText1')}
               </p>
-              <p className="text-stone-600 mb-6 leading-relaxed font-light">
+              <p className="text-stone-700 mb-6 leading-relaxed font-normal">
                 {t('about.glacierText2')}
               </p>
-              <p className="text-stone-600 mb-8 leading-relaxed font-light">
+              <p className="text-stone-700 mb-8 leading-relaxed font-normal">
                 {t('about.glacierText3')}
               </p>
               
@@ -63,17 +63,17 @@ export const AboutSection = () => {
             >
               <div className="bg-sky-50 rounded-2xl p-8 border border-sky-200/50">
                 <h3 className="font-serif text-2xl text-stone-900 mb-6">{t('about.storyTitle')}</h3>
-                <p className="text-stone-600 mb-4 leading-relaxed font-light text-sm">
+                <p className="text-stone-700 mb-4 leading-relaxed font-normal text-sm">
                   {t('about.storyText1')}
                 </p>
-                <p className="text-stone-600 mb-6 leading-relaxed font-light text-sm">
+                <p className="text-stone-700 mb-6 leading-relaxed font-normal text-sm">
                   {t('about.storyText2')}
                 </p>
-                <blockquote className="border-l-2 border-sky-400 pl-4 italic text-stone-500 text-sm leading-relaxed">
+                <blockquote className="border-l-2 border-sky-400 pl-4 italic text-stone-600 text-sm leading-relaxed">
                   {t('about.doctorQuote')}
                 </blockquote>
-                <p className="text-stone-500 text-xs mt-3 font-medium">
-                  — Dr. Michael Meier, Perfect Smile Swiss Dental Care
+                <p className="text-stone-600 text-xs mt-3 font-medium">
+                  вЂ” Dr. Michael Meier, Perfect Smile Swiss Dental Care
                 </p>
               </div>
             </motion.div>
@@ -93,7 +93,7 @@ export const AboutSection = () => {
           >
             <span className="text-sky-600 text-xs font-bold tracking-[0.2em] uppercase mb-3 block">{t('about.complexLabel')}</span>
             <h3 className="font-serif text-3xl md:text-4xl mb-4 text-stone-900">{t('about.complexTitle')}</h3>
-            <p className="text-stone-500 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-stone-600 max-w-2xl mx-auto leading-relaxed">
               {t('about.complexDesc')}
             </p>
           </motion.div>
@@ -116,7 +116,7 @@ export const AboutSection = () => {
                   <h4 className="font-serif text-xl mb-3 text-stone-900">
                     <span className="text-sky-600 font-bold">Re</span>{(t(item.titleKey) as string).substring(2)}
                   </h4>
-                  <p className="text-stone-500 text-sm leading-relaxed">{t(item.descKey)}</p>
+                  <p className="text-stone-600 text-sm leading-relaxed">{t(item.descKey)}</p>
                 </motion.div>
               );
             })}
@@ -137,10 +137,10 @@ export const AboutSection = () => {
             >
               <span className="text-sky-600 text-xs font-bold tracking-[0.2em] uppercase mb-3 block">{t('about.badRagazLabel')}</span>
               <h3 className="font-serif text-2xl md:text-3xl mb-6 text-stone-900">{t('about.badRagazTitle')}</h3>
-              <p className="text-stone-600 mb-5 leading-relaxed font-light text-sm">
+              <p className="text-stone-700 mb-5 leading-relaxed font-normal text-sm">
                 {t('about.badRagazText1')}
               </p>
-              <p className="text-stone-600 mb-5 leading-relaxed font-light text-sm">
+              <p className="text-stone-700 mb-5 leading-relaxed font-normal text-sm">
                 {t('about.badRagazText2')}
               </p>
             </motion.div>
@@ -153,10 +153,10 @@ export const AboutSection = () => {
             >
               <span className="text-sky-600 text-xs font-bold tracking-[0.2em] uppercase mb-3 block">{t('about.manufactureLabel')}</span>
               <h3 className="font-serif text-2xl md:text-3xl mb-6 text-stone-900">{t('about.manufactureTitle')}</h3>
-              <p className="text-stone-600 mb-5 leading-relaxed font-light text-sm">
+              <p className="text-stone-700 mb-5 leading-relaxed font-normal text-sm">
                 {t('about.manufactureText1')}
               </p>
-              <p className="text-stone-600 leading-relaxed font-light text-sm">
+              <p className="text-stone-700 leading-relaxed font-normal text-sm">
                 {t('about.manufactureText2')}
               </p>
             </motion.div>
@@ -185,7 +185,7 @@ export const AboutSection = () => {
               ))}
             </div>
 
-            {/* Expanded cert description — shown below the row */}
+            {/* Expanded cert description вЂ” shown below the row */}
             <AnimatePresence mode="wait">
               {activeCert && (() => {
                 const cert = certifications.find(c => c.id === activeCert);

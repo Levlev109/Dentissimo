@@ -81,11 +81,11 @@ export const CategorySection = () => {
                 alt={t(cat.titleKey)}
                 className="w-full h-full object-contain p-8 transition-all duration-700 group-hover:scale-110 group-hover:rotate-2 filter group-hover:drop-shadow-2xl"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-stone-900/60 via-transparent to-transparent group-hover:from-stone-900/70 transition-all duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-stone-900/20 to-transparent group-hover:from-stone-900/85 transition-all duration-500"></div>
               
               <div className="absolute bottom-0 left-0 w-full p-6 text-white transform transition-all duration-500">
-                <h3 className="font-serif text-xl md:text-2xl mb-2 drop-shadow-lg group-hover:text-stone-300 transition-colors">{t(cat.titleKey)}</h3>
-                <p className="text-sm text-white/90 mb-3 drop-shadow-md leading-relaxed">{t(cat.descriptionKey)}</p>
+                <h3 className="font-serif text-xl md:text-2xl mb-2 drop-shadow-lg font-bold group-hover:text-stone-200 transition-colors">{t(cat.titleKey)}</h3>
+                <p className="text-sm text-white/95 mb-3 drop-shadow-md leading-relaxed font-medium">{t(cat.descriptionKey)}</p>
                 <div className="flex items-center gap-2 text-xs font-bold tracking-wider uppercase opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 bg-gradient-to-r from-white/20 to-transparent backdrop-blur-sm px-3 py-2 rounded-lg w-fit border border-white/30">
                   <span>{t('categorySection.learnMore')}</span>
                   <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
