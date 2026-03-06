@@ -33,7 +33,7 @@ export const TrustBadges = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {badges.map((badge, index) => (
             <div key={index} className="flex items-center gap-3 group cursor-default">
-              <div className="p-2.5 rounded-lg bg-white border border-stone-200 text-stone-900 group-hover:border-sky-400 group-hover:bg-sky-50 transition-all duration-300 flex-shrink-0">
+              <div className="p-2.5 rounded-lg bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 text-stone-900 dark:text-white group-hover:border-sky-400 group-hover:bg-sky-50 dark:group-hover:bg-sky-900/30 transition-all duration-300 flex-shrink-0">
                 <badge.icon size={20} strokeWidth={1.8} />
               </div>
               <div className="flex-1 min-w-0">
