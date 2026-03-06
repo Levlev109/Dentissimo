@@ -25,7 +25,6 @@ export default function App() {
     <>
       <Hero />
       <CategorySection />
-      <FeaturedProducts />
       <AllProducts />
       <Benefits />
       <Testimonials />
