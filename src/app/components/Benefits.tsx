@@ -19,7 +19,7 @@ export const Benefits = () => {
         <div className="flex flex-col md:flex-row items-center gap-16">
           <div className="w-full md:w-1/2">
             <h2 className="font-serif text-3xl md:text-5xl text-stone-900 dark:text-white mb-6 leading-tight">
-              {t('benefits.title')}<br/> <span className="text-[#D4AF37] italic">{t('benefits.titleHighlight')}</span>
+              {t('benefits.title')}<br/> <span className="text-stone-800 dark:text-stone-200 italic">{t('benefits.titleHighlight')}</span>
             </h2>
             <p className="text-lg text-stone-600 dark:text-stone-300 mb-8 leading-relaxed">
               {t('benefits.description')}
@@ -28,7 +28,7 @@ export const Benefits = () => {
             <ul className="space-y-4">
               {benefitKeys.map((key, index) => (
                 <li key={index} className="flex items-start gap-3">
-                  <div className="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-[#D4AF37]/20 flex items-center justify-center text-[#D4AF37]">
+                  <div className="mt-1 flex-shrink-0 w-5 h-5 rounded-full bg-stone-200 dark:bg-stone-700 flex items-center justify-center text-stone-700 dark:text-stone-300">
                     <Check size={12} strokeWidth={3} />
                   </div>
                   <span className="text-stone-700 dark:text-stone-300 font-medium">{t(key)}</span>
@@ -36,7 +36,7 @@ export const Benefits = () => {
               ))}
             </ul>
             
-            <a href="#about" className="mt-10 inline-block px-8 py-4 bg-white border-2 border-[#D4AF37] dark:bg-stone-900 dark:border-[#D4AF37] text-stone-900 dark:text-white font-semibold hover:bg-[#D4AF37] dark:hover:bg-[#D4AF37] hover:text-white transition-all duration-300 rounded-lg shadow-sm hover:shadow-lg">
+            <a href="#about" className="mt-10 inline-block px-8 py-4 bg-stone-900 text-white font-semibold hover:bg-stone-800 transition-all duration-300 rounded-lg shadow-sm hover:shadow-lg">
               {t('benefits.learnMore')}
             </a>
           </div>

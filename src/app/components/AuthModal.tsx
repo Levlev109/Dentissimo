@@ -74,7 +74,7 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
                   required
                   value={formData.firstName}
                   onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                  className="w-full px-4 py-3 border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-800 text-stone-900 dark:text-white rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none"
+                  className="w-full px-4 py-3 border border-stone-300 bg-white text-stone-900 rounded-lg focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none"
                   placeholder={t('auth.firstName')}
                 />
               </div>
@@ -88,7 +88,7 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
                   required
                   value={formData.lastName}
                   onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                  className="w-full px-4 py-3 border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-800 text-stone-900 dark:text-white rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none"
+                  className="w-full px-4 py-3 border border-stone-300 bg-white text-stone-900 rounded-lg focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none"
                   placeholder={t('auth.lastName')}
                 />
               </div>
@@ -103,13 +103,13 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-800 text-stone-900 dark:text-white rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none"
+                    className="w-full px-4 py-3 border border-stone-300 bg-white text-stone-900 rounded-lg focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none"
                     placeholder={t('auth.emailPlaceholder')}
                   />
                   <button
                     type="button"
                     onClick={() => setUsePhone(true)}
-                    className="text-sm text-[#D4AF37] hover:underline mt-2"
+                    className="text-sm text-stone-700 dark:text-stone-300 hover:underline mt-2"
                   >
                     {t('auth.orUsePhone')}
                   </button>
@@ -124,13 +124,13 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
                     required
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-4 py-3 border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-800 text-stone-900 dark:text-white rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none"
+                    className="w-full px-4 py-3 border border-stone-300 bg-white text-stone-900 rounded-lg focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none"
                     placeholder={t('auth.phonePlaceholder')}
                   />
                   <button
                     type="button"
                     onClick={() => setUsePhone(false)}
-                    className="text-sm text-[#D4AF37] hover:underline mt-2"
+                    className="text-sm text-stone-700 dark:text-stone-300 hover:underline mt-2"
                   >
                     {t('auth.orUseEmail')}
                   </button>
@@ -139,7 +139,7 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
 
               <button
                 type="submit"
-                className="w-full py-4 bg-stone-900 dark:bg-[#D4AF37] text-white font-medium hover:bg-stone-800 dark:hover:bg-[#C4A037] transition-colors rounded-lg"
+                className="w-full py-4 bg-stone-900 text-white font-medium hover:bg-stone-800 transition-colors rounded-lg"
               >
                 {t('auth.submit')}
               </button>

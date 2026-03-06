@@ -22,7 +22,7 @@ export const AboutSection = () => {
   ];
 
   return (
-    <section id="about" className="bg-stone-900 text-white overflow-visible">
+    <section id="about" className="bg-[#F0F7FB] text-stone-900 overflow-visible">
       {/* Part 1: Glacier Water Story */}
       <div className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -34,17 +34,17 @@ export const AboutSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <span className="block text-[#D4AF37] text-xs font-bold tracking-[0.2em] uppercase mb-4">{t('about.tagline')}</span>
-              <h2 className="font-serif text-3xl md:text-5xl mb-6 leading-tight">
+              <span className="block text-sky-600 text-xs font-bold tracking-[0.2em] uppercase mb-4">{t('about.tagline')}</span>
+              <h2 className="font-serif text-3xl md:text-5xl mb-6 leading-tight text-stone-900">
                 {t('about.glacierTitle')}
               </h2>
-              <p className="text-stone-300 mb-6 leading-relaxed font-light">
+              <p className="text-stone-600 mb-6 leading-relaxed font-light">
                 {t('about.glacierText1')}
               </p>
-              <p className="text-stone-300 mb-6 leading-relaxed font-light">
+              <p className="text-stone-600 mb-6 leading-relaxed font-light">
                 {t('about.glacierText2')}
               </p>
-              <p className="text-stone-300 mb-8 leading-relaxed font-light">
+              <p className="text-stone-600 mb-8 leading-relaxed font-light">
                 {t('about.glacierText3')}
               </p>
               
@@ -61,18 +61,18 @@ export const AboutSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <div className="bg-stone-800/50 rounded-2xl p-8 border border-stone-700/50">
-                <h3 className="font-serif text-2xl text-[#D4AF37] mb-6">{t('about.storyTitle')}</h3>
-                <p className="text-stone-300 mb-4 leading-relaxed font-light text-sm">
+              <div className="bg-sky-50 rounded-2xl p-8 border border-sky-200/50">
+                <h3 className="font-serif text-2xl text-stone-900 mb-6">{t('about.storyTitle')}</h3>
+                <p className="text-stone-600 mb-4 leading-relaxed font-light text-sm">
                   {t('about.storyText1')}
                 </p>
-                <p className="text-stone-300 mb-6 leading-relaxed font-light text-sm">
+                <p className="text-stone-600 mb-6 leading-relaxed font-light text-sm">
                   {t('about.storyText2')}
                 </p>
-                <blockquote className="border-l-2 border-[#D4AF37] pl-4 italic text-stone-400 text-sm leading-relaxed">
+                <blockquote className="border-l-2 border-sky-400 pl-4 italic text-stone-500 text-sm leading-relaxed">
                   {t('about.doctorQuote')}
                 </blockquote>
-                <p className="text-[#D4AF37] text-xs mt-3 font-medium">
+                <p className="text-stone-500 text-xs mt-3 font-medium">
                   — Dr. Michael Meier, Perfect Smile Swiss Dental Care
                 </p>
               </div>
@@ -82,7 +82,7 @@ export const AboutSection = () => {
       </div>
 
       {/* Part 2: Regera-PRO Complex */}
-      <div className="py-20 bg-stone-800/30 border-y border-stone-800">
+      <div className="py-20 bg-white/60 border-y border-sky-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="text-center mb-16"
@@ -91,9 +91,9 @@ export const AboutSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-[#D4AF37] text-xs font-bold tracking-[0.2em] uppercase mb-3 block">{t('about.complexLabel')}</span>
-            <h3 className="font-serif text-3xl md:text-4xl mb-4">{t('about.complexTitle')}</h3>
-            <p className="text-stone-400 max-w-2xl mx-auto leading-relaxed">
+            <span className="text-sky-600 text-xs font-bold tracking-[0.2em] uppercase mb-3 block">{t('about.complexLabel')}</span>
+            <h3 className="font-serif text-3xl md:text-4xl mb-4 text-stone-900">{t('about.complexTitle')}</h3>
+            <p className="text-stone-500 max-w-2xl mx-auto leading-relaxed">
               {t('about.complexDesc')}
             </p>
           </motion.div>
@@ -104,19 +104,19 @@ export const AboutSection = () => {
               return (
                 <motion.div
                   key={index}
-                  className="bg-stone-800/50 rounded-xl p-8 border border-stone-700/30 text-center hover:border-[#D4AF37]/30 transition-colors duration-500"
+                  className="bg-sky-50 rounded-xl p-8 border border-sky-100 text-center hover:border-sky-300 transition-colors duration-500"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.15 }}
                 >
-                  <div className="w-14 h-14 rounded-full bg-[#D4AF37]/10 flex items-center justify-center mx-auto mb-5">
-                    <Icon size={24} className="text-[#D4AF37]" />
+                  <div className="w-14 h-14 rounded-full bg-sky-100 flex items-center justify-center mx-auto mb-5">
+                    <Icon size={24} className="text-sky-600" />
                   </div>
-                  <h4 className="font-serif text-xl mb-3">
-                    <span className="text-[#D4AF37] font-bold">Re</span>{(t(item.titleKey) as string).substring(2)}
+                  <h4 className="font-serif text-xl mb-3 text-stone-900">
+                    <span className="text-sky-600 font-bold">Re</span>{(t(item.titleKey) as string).substring(2)}
                   </h4>
-                  <p className="text-stone-400 text-sm leading-relaxed">{t(item.descKey)}</p>
+                  <p className="text-stone-500 text-sm leading-relaxed">{t(item.descKey)}</p>
                 </motion.div>
               );
             })}
@@ -135,12 +135,12 @@ export const AboutSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <span className="text-[#D4AF37] text-xs font-bold tracking-[0.2em] uppercase mb-3 block">{t('about.badRagazLabel')}</span>
-              <h3 className="font-serif text-2xl md:text-3xl mb-6">{t('about.badRagazTitle')}</h3>
-              <p className="text-stone-300 mb-5 leading-relaxed font-light text-sm">
+              <span className="text-sky-600 text-xs font-bold tracking-[0.2em] uppercase mb-3 block">{t('about.badRagazLabel')}</span>
+              <h3 className="font-serif text-2xl md:text-3xl mb-6 text-stone-900">{t('about.badRagazTitle')}</h3>
+              <p className="text-stone-600 mb-5 leading-relaxed font-light text-sm">
                 {t('about.badRagazText1')}
               </p>
-              <p className="text-stone-300 mb-5 leading-relaxed font-light text-sm">
+              <p className="text-stone-600 mb-5 leading-relaxed font-light text-sm">
                 {t('about.badRagazText2')}
               </p>
             </motion.div>
@@ -151,12 +151,12 @@ export const AboutSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <span className="text-[#D4AF37] text-xs font-bold tracking-[0.2em] uppercase mb-3 block">{t('about.manufactureLabel')}</span>
-              <h3 className="font-serif text-2xl md:text-3xl mb-6">{t('about.manufactureTitle')}</h3>
-              <p className="text-stone-300 mb-5 leading-relaxed font-light text-sm">
+              <span className="text-sky-600 text-xs font-bold tracking-[0.2em] uppercase mb-3 block">{t('about.manufactureLabel')}</span>
+              <h3 className="font-serif text-2xl md:text-3xl mb-6 text-stone-900">{t('about.manufactureTitle')}</h3>
+              <p className="text-stone-600 mb-5 leading-relaxed font-light text-sm">
                 {t('about.manufactureText1')}
               </p>
-              <p className="text-stone-300 leading-relaxed font-light text-sm">
+              <p className="text-stone-600 leading-relaxed font-light text-sm">
                 {t('about.manufactureText2')}
               </p>
             </motion.div>
@@ -164,7 +164,7 @@ export const AboutSection = () => {
 
           {/* Certifications row */}
           <motion.div
-            className="mt-16 pt-12 border-t border-stone-800"
+            className="mt-16 pt-12 border-t border-sky-200/50"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -177,10 +177,10 @@ export const AboutSection = () => {
                   className="text-center cursor-pointer group"
                   onClick={() => setActiveCert(activeCert === cert.id ? null : cert.id)}
                 >
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border border-stone-700 flex items-center justify-center mx-auto mb-2 group-hover:border-[#D4AF37] group-hover:bg-[#D4AF37]/10 transition-all duration-300">
-                    <cert.icon size={22} className="text-stone-500 group-hover:text-[#D4AF37] transition-colors" />
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border border-stone-200 flex items-center justify-center mx-auto mb-2 group-hover:border-sky-400 group-hover:bg-sky-50 transition-all duration-300">
+                    <cert.icon size={22} className="text-stone-400 group-hover:text-sky-600 transition-colors" />
                   </div>
-                  <span className="text-[10px] sm:text-xs text-stone-500 font-medium tracking-wide group-hover:text-stone-300 transition-colors leading-tight block">{t(cert.titleKey)}</span>
+                  <span className="text-[10px] sm:text-xs text-stone-500 font-medium tracking-wide group-hover:text-stone-700 transition-colors leading-tight block">{t(cert.titleKey)}</span>
                 </div>
               ))}
             </div>
@@ -199,15 +199,15 @@ export const AboutSection = () => {
                     transition={{ duration: 0.25 }}
                     className="overflow-hidden"
                   >
-                    <div className="bg-stone-800/80 border border-stone-700 rounded-xl p-5 sm:p-6 max-w-lg mx-auto relative mb-4">
+                    <div className="bg-sky-50 border border-sky-200 rounded-xl p-5 sm:p-6 max-w-lg mx-auto relative mb-4">
                       <button
                         onClick={(e) => { e.stopPropagation(); setActiveCert(null); }}
-                        className="absolute top-3 right-3 text-stone-500 hover:text-white transition-colors p-1"
+                        className="absolute top-3 right-3 text-stone-400 hover:text-stone-700 transition-colors p-1"
                       >
                         <X size={16} />
                       </button>
-                      <h5 className="text-[#D4AF37] font-bold text-sm mb-2">{t(cert.titleKey)}</h5>
-                      <p className="text-stone-300 text-sm leading-relaxed">{t(cert.descKey)}</p>
+                      <h5 className="text-stone-900 font-bold text-sm mb-2">{t(cert.titleKey)}</h5>
+                      <p className="text-stone-600 text-sm leading-relaxed">{t(cert.descKey)}</p>
                     </div>
                   </motion.div>
                 );

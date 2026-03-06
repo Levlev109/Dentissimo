@@ -46,7 +46,7 @@ export const FAQ = () => {
                   transition={{ duration: 0.2 }}
                   className="flex-shrink-0"
                 >
-                  <ChevronDown className="text-[#D4AF37]" size={20} />
+                  <ChevronDown className="text-stone-700 dark:text-stone-300" size={20} />
                 </motion.div>
               </button>
 

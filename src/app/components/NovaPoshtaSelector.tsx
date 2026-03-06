@@ -201,11 +201,11 @@ export const NovaPoshtaSelector = ({ onSelect, cartTotal }: NovaPoshtaSelectorPr
             onClick={() => setDeliveryType('branch')}
             className={`p-4 border-2 rounded-xl transition-all ${
               deliveryType === 'branch'
-                ? 'border-[#D4AF37] bg-[#D4AF37]/5'
+                ? 'border-stone-900 bg-stone-50'
                 : 'border-stone-200 dark:border-stone-700 hover:border-stone-300 dark:hover:border-stone-500'
             }`}
           >
-            <Package className={`mx-auto sm:mx-auto mb-2 ${deliveryType === 'branch' ? 'text-[#D4AF37]' : 'text-stone-400'}`} size={24} />
+            <Package className={`mx-auto sm:mx-auto mb-2 ${deliveryType === 'branch' ? 'text-stone-900 dark:text-white' : 'text-stone-400'}`} size={24} />
             <div className="text-sm font-medium text-stone-900 dark:text-white">{t('novaPoshta.branch')}</div>
             <div className="text-xs text-stone-500 mt-1">{t('novaPoshta.branchDesc')}</div>
           </button>
@@ -215,11 +215,11 @@ export const NovaPoshtaSelector = ({ onSelect, cartTotal }: NovaPoshtaSelectorPr
             onClick={() => setDeliveryType('locker')}
             className={`p-4 border-2 rounded-xl transition-all ${
               deliveryType === 'locker'
-                ? 'border-[#D4AF37] bg-[#D4AF37]/5'
+                ? 'border-stone-900 bg-stone-50'
                 : 'border-stone-200 dark:border-stone-700 hover:border-stone-300 dark:hover:border-stone-500'
             }`}
           >
-            <Box className={`mx-auto sm:mx-auto mb-2 ${deliveryType === 'locker' ? 'text-[#D4AF37]' : 'text-stone-400'}`} size={24} />
+            <Box className={`mx-auto sm:mx-auto mb-2 ${deliveryType === 'locker' ? 'text-stone-900 dark:text-white' : 'text-stone-400'}`} size={24} />
             <div className="text-sm font-medium text-stone-900 dark:text-white">{t('novaPoshta.locker')}</div>
             <div className="text-xs text-stone-500 mt-1">{t('novaPoshta.lockerDesc')}</div>
           </button>
@@ -229,11 +229,11 @@ export const NovaPoshtaSelector = ({ onSelect, cartTotal }: NovaPoshtaSelectorPr
             onClick={() => setDeliveryType('courier')}
             className={`p-4 border-2 rounded-xl transition-all ${
               deliveryType === 'courier'
-                ? 'border-[#D4AF37] bg-[#D4AF37]/5'
+                ? 'border-stone-900 bg-stone-50'
                 : 'border-stone-200 dark:border-stone-700 hover:border-stone-300 dark:hover:border-stone-500'
             }`}
           >
-            <TruckIcon className={`mx-auto sm:mx-auto mb-2 ${deliveryType === 'courier' ? 'text-[#D4AF37]' : 'text-stone-400'}`} size={24} />
+            <TruckIcon className={`mx-auto sm:mx-auto mb-2 ${deliveryType === 'courier' ? 'text-stone-900 dark:text-white' : 'text-stone-400'}`} size={24} />
             <div className="text-sm font-medium text-stone-900 dark:text-white">{t('novaPoshta.courier')}</div>
             <div className="text-xs text-stone-500 mt-1">{t('novaPoshta.courierDesc')}</div>
           </button>
@@ -260,7 +260,7 @@ export const NovaPoshtaSelector = ({ onSelect, cartTotal }: NovaPoshtaSelectorPr
             onFocus={() => setCityFocused(true)}
             onBlur={() => setTimeout(() => setCityFocused(false), 200)}
             placeholder={t('novaPoshta.cityPlaceholder')}
-            className="w-full pl-10 pr-4 py-3 border border-stone-300 dark:border-stone-600 rounded-lg bg-white dark:bg-stone-800 text-stone-900 dark:text-white placeholder-stone-400 focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none"
+            className="w-full pl-10 pr-4 py-3 border border-stone-300 rounded-lg bg-white text-stone-900 placeholder-stone-400 focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none"
           />
         </div>
 
@@ -303,7 +303,7 @@ export const NovaPoshtaSelector = ({ onSelect, cartTotal }: NovaPoshtaSelectorPr
           <input
             type="text"
             placeholder={t('novaPoshta.courierAddressPlaceholder')}
-            className="w-full px-4 py-3 border border-stone-300 dark:border-stone-600 rounded-lg bg-white dark:bg-stone-800 text-stone-900 dark:text-white placeholder-stone-400 focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none"
+            className="w-full px-4 py-3 border border-stone-300 rounded-lg bg-white text-stone-900 placeholder-stone-400 focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none"
           />
         </div>
       )}
@@ -329,7 +329,7 @@ export const NovaPoshtaSelector = ({ onSelect, cartTotal }: NovaPoshtaSelectorPr
                   onClick={() => handleWarehouseSelect(warehouse)}
                   className={`w-full px-4 py-3 text-left transition-all border-b border-stone-100 dark:border-stone-700 last:border-0 ${
                     selectedWarehouse?.ref === warehouse.ref
-                      ? 'bg-[#D4AF37]/10 border-l-4 border-l-[#D4AF37]'
+                      ? 'bg-sky-50 border-l-4 border-l-sky-400'
                       : 'hover:bg-stone-50 dark:hover:bg-stone-700'
                   }`}
                 >
@@ -346,14 +346,14 @@ export const NovaPoshtaSelector = ({ onSelect, cartTotal }: NovaPoshtaSelectorPr
 
       {/* Delivery Cost Summary */}
       {deliveryCost && (
-        <div className="bg-gradient-to-r from-[#D4AF37]/10 to-stone-50 dark:from-[#D4AF37]/10 dark:to-stone-800 border-l-4 border-[#D4AF37] rounded-lg p-4">
+        <div className="bg-sky-50 border-l-4 border-sky-400 rounded-lg p-4">
           <div className="flex items-start gap-3">
-            <TruckIcon className="text-[#D4AF37] flex-shrink-0" size={20} />
+            <TruckIcon className="text-stone-700 dark:text-stone-300 flex-shrink-0" size={20} />
             <div className="flex-1">
               <div className="font-semibold text-stone-900 dark:text-white mb-1">
                 {t('novaPoshta.deliveryCost')}
               </div>
-              <div className="text-2xl font-bold text-[#D4AF37] mb-1">
+              <div className="text-2xl font-bold text-stone-900 dark:text-white mb-1">
                 {deliveryCost.cost} ₴
               </div>
               <div className="text-sm text-stone-600 dark:text-stone-300">

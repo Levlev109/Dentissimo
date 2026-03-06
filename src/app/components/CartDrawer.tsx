@@ -20,7 +20,7 @@ export const CartDrawer = () => {
       >
         <ShoppingBag size={20} />
         {itemCount > 0 && (
-          <span className="absolute -top-1 -right-1 bg-[#D4AF37] text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full font-bold">
+          <span className="absolute -top-1 -right-1 bg-stone-900 text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full font-bold">
             {itemCount}
           </span>
         )}
@@ -129,7 +129,7 @@ export const CartDrawer = () => {
                     <span>{t('products.currency')}{total.toFixed(2)}</span>
                   </div>
                   <button
-                    className="block w-full py-3 bg-[#D4AF37] text-white text-center font-semibold hover:bg-[#C4A037] transition-colors rounded-lg uppercase tracking-wide"
+                    className="block w-full py-3 bg-stone-900 text-white text-center font-semibold hover:bg-stone-800 transition-colors rounded-lg uppercase tracking-wide"
                     onClick={() => { setIsOpen(false); navigate('/checkout'); }}
                   >
                     {t('cart.checkout')}

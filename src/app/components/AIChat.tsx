@@ -105,7 +105,7 @@ export const AIChat = () => {
       {/* Floating Button */}
       <motion.button
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-6 right-6 z-40 bg-[#D4AF37] text-white p-4 rounded-full shadow-2xl hover:bg-[#C4A037] transition-colors"
+        className="fixed bottom-6 right-6 z-40 bg-stone-900 text-white p-4 rounded-full shadow-2xl hover:bg-stone-800 transition-colors"
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         animate={isOpen ? { scale: 0 } : { scale: 1 }}
@@ -178,7 +178,7 @@ export const AIChat = () => {
                     value={apiKeyInput}
                     onChange={(e) => setApiKeyInput(e.target.value)}
                     placeholder={selectedProvider === 'gemini' ? 'AIza...' : 'hf_...'}
-                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-[#D4AF37] outline-none"
+                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-sky-400 outline-none"
                   />
                 </div>
 
@@ -240,7 +240,7 @@ export const AIChat = () => {
                   <button
                     onClick={handleSaveApiKey}
                     disabled={!apiKeyInput.trim()}
-                    className="flex-1 px-4 py-2 bg-[#D4AF37] text-white rounded-lg hover:bg-[#C4A037] disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="flex-1 px-4 py-2 bg-stone-900 text-white rounded-lg hover:bg-stone-800 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {t('aiChat.saveKey')}
                   </button>
@@ -261,7 +261,7 @@ export const AIChat = () => {
             className="fixed bottom-6 right-6 z-50 w-[380px] h-[600px] bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden"
           >
             {/* Header */}
-            <div className="bg-gradient-to-r from-[#D4AF37] to-[#C4A037] text-white p-4 flex items-center justify-between">
+            <div className="bg-stone-900 text-white p-4 flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
                   <Sparkles size={20} />
@@ -306,7 +306,7 @@ export const AIChat = () => {
                     className={`max-w-[80%] rounded-2xl p-3 ${
                       message.isBot
                         ? 'bg-white text-stone-900 shadow-sm'
-                        : 'bg-[#D4AF37] text-white'
+                        : 'bg-stone-900 text-white'
                     }`}
                   >
                     <p className="text-sm whitespace-pre-line leading-relaxed">
@@ -348,12 +348,12 @@ export const AIChat = () => {
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder={t('aiChat.placeholder')}
-                  className="flex-1 px-4 py-3 border border-stone-300 rounded-full focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none text-sm"
+                  className="flex-1 px-4 py-3 border border-stone-300 rounded-full focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none text-sm"
                 />
                 <button
                   onClick={handleSend}
                   disabled={!inputValue.trim()}
-                  className="bg-[#D4AF37] text-white p-3 rounded-full hover:bg-[#C4A037] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="bg-stone-900 text-white p-3 rounded-full hover:bg-stone-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Send size={20} />
                 </button>

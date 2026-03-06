@@ -165,7 +165,7 @@ export const CheckoutPage = () => {
           </p>
           <button
             onClick={() => navigate('/')}
-            className="px-8 py-3.5 bg-gradient-to-r from-[#D4AF37] to-[#B8960C] text-white font-semibold rounded-xl hover:from-[#B8960C] hover:to-[#9A7D0A] transition-all shadow-lg"
+            className="px-8 py-3.5 bg-stone-900 text-white font-semibold rounded-xl hover:bg-stone-800 transition-all shadow-lg"
           >
             {t('cart.continueShopping')}
           </button>
@@ -184,7 +184,7 @@ export const CheckoutPage = () => {
           </h2>
           <button
             onClick={() => navigate('/')}
-            className="px-8 py-3.5 bg-gradient-to-r from-[#D4AF37] to-[#B8960C] text-white font-semibold rounded-xl hover:from-[#B8960C] hover:to-[#9A7D0A] transition-all shadow-lg"
+            className="px-8 py-3.5 bg-stone-900 text-white font-semibold rounded-xl hover:bg-stone-800 transition-all shadow-lg"
           >
             {t('cart.continueShopping')}
           </button>
@@ -224,7 +224,7 @@ export const CheckoutPage = () => {
                     type="text"
                     value={formData.firstName}
                     onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                    className={`w-full px-4 py-3 border ${errors.firstName ? 'border-red-500' : 'border-stone-300 dark:border-stone-600'} rounded-lg bg-white dark:bg-stone-800 text-stone-900 dark:text-white placeholder-stone-400 focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none`}
+                    className={`w-full px-4 py-3 border ${errors.firstName ? 'border-red-500' : 'border-stone-300'} rounded-lg bg-white text-stone-900 placeholder-stone-400 focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none`}
                   />
                   {errors.firstName && (
                     <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>
@@ -239,7 +239,7 @@ export const CheckoutPage = () => {
                     type="text"
                     value={formData.lastName}
                     onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                    className={`w-full px-4 py-3 border ${errors.lastName ? 'border-red-500' : 'border-stone-300 dark:border-stone-600'} rounded-lg bg-white dark:bg-stone-800 text-stone-900 dark:text-white placeholder-stone-400 focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none`}
+                    className={`w-full px-4 py-3 border ${errors.lastName ? 'border-red-500' : 'border-stone-300'} rounded-lg bg-white text-stone-900 placeholder-stone-400 focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none`}
                   />
                   {errors.lastName && (
                     <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>
@@ -257,7 +257,7 @@ export const CheckoutPage = () => {
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="example@mail.com"
-                  className={`w-full px-4 py-3 border ${errors.email ? 'border-red-500' : 'border-stone-300 dark:border-stone-600'} rounded-lg bg-white dark:bg-stone-800 text-stone-900 dark:text-white placeholder-stone-400 focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none`}
+                  className={`w-full px-4 py-3 border ${errors.email ? 'border-red-500' : 'border-stone-300'} rounded-lg bg-white text-stone-900 placeholder-stone-400 focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none`}
                 />
                 {errors.email && (
                   <p className="text-red-500 text-sm mt-1">{errors.email}</p>
@@ -276,7 +276,7 @@ export const CheckoutPage = () => {
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   placeholder={t('checkout.phonePlaceholder')}
-                  className={`w-full px-4 py-3 border ${errors.phone ? 'border-red-500' : 'border-stone-300 dark:border-stone-600'} rounded-lg bg-white dark:bg-stone-800 text-stone-900 dark:text-white placeholder-stone-400 focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none`}
+                  className={`w-full px-4 py-3 border ${errors.phone ? 'border-red-500' : 'border-stone-300'} rounded-lg bg-white text-stone-900 placeholder-stone-400 focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none`}
                 />
                 {errors.phone && (
                   <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
@@ -304,7 +304,7 @@ export const CheckoutPage = () => {
               <button
                 type="submit"
                 disabled={sending}
-                className="w-full py-4 bg-gradient-to-r from-[#D4AF37] to-[#B8960C] text-white font-semibold tracking-wide hover:from-[#B8960C] hover:to-[#9A7D0A] transition-all rounded-xl disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg hover:shadow-xl text-base"
+                className="w-full py-4 bg-stone-900 text-white font-semibold tracking-wide hover:bg-stone-800 transition-all rounded-xl disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2 shadow-lg hover:shadow-xl text-base"
               >
                 {sending && <Loader2 size={18} className="animate-spin" />}
                 {sending ? '...' : t('checkout.placeOrder')}

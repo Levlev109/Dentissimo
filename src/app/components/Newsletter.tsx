@@ -37,8 +37,8 @@ export const Newsletter = () => {
     <div className="bg-stone-50/40 dark:bg-stone-900 py-12 border-t border-stone-200/40 dark:border-stone-800/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-2xl mx-auto text-center">
-          <div className="inline-block p-3 bg-[#D4AF37]/10 dark:bg-[#D4AF37]/20 rounded-full mb-4">
-            <Mail className="text-[#D4AF37]" size={32} />
+          <div className="inline-block p-3 bg-sky-100 rounded-full mb-4">
+            <Mail className="text-stone-700 dark:text-stone-300" size={32} />
           </div>
           <h3 className="text-2xl md:text-3xl font-serif font-bold text-stone-900 dark:text-white mb-2">
             {t('newsletter.title')}
@@ -53,13 +53,13 @@ export const Newsletter = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder={t('newsletter.placeholder')}
-              className="flex-1 px-5 py-3 border-2 border-stone-200 dark:border-stone-600 bg-white dark:bg-stone-800 text-stone-900 dark:text-white rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent outline-none"
+              className="flex-1 px-5 py-3 border-2 border-stone-200 bg-white text-stone-900 rounded-lg focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none"
               disabled={loading || subscribed}
             />
             <button
               type="submit"
               disabled={loading || subscribed}
-              className="px-6 py-3 bg-gradient-to-r from-[#D4AF37] to-[#B8960C] text-white font-semibold rounded-lg hover:from-[#C4A037] hover:to-[#A8860B] transition-all disabled:opacity-60 disabled:cursor-not-allowed shadow-md hover:shadow-lg flex items-center justify-center gap-2 whitespace-nowrap"
+              className="px-6 py-3 bg-stone-900 text-white font-semibold rounded-lg hover:bg-stone-800 transition-all disabled:opacity-60 disabled:cursor-not-allowed shadow-md hover:shadow-lg flex items-center justify-center gap-2 whitespace-nowrap"
             >
               <AnimatePresence mode="wait">
                 {subscribed ? (

@@ -39,7 +39,7 @@ export const Testimonials = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {reviews.map((review) => (
             <div key={review.id} className="bg-white dark:bg-stone-800 p-8 shadow-sm hover:shadow-md transition-shadow border border-stone-100 dark:border-stone-700">
-              <div className="flex gap-1 text-[#D4AF37] mb-4">
+              <div className="flex gap-1 text-stone-800 dark:text-stone-300 mb-4">
                 {[...Array(review.rating)].map((_, i) => (
                   <Star key={i} size={16} fill="currentColor" />
                 ))}

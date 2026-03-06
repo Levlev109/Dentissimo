@@ -74,7 +74,7 @@ export const ProfilePage = () => {
           >
             <div className="bg-white rounded-lg shadow-sm p-6 sticky top-24">
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#D4AF37] to-[#B8960C] flex items-center justify-center">
+                <div className="w-16 h-16 rounded-full bg-stone-900 flex items-center justify-center">
                   <User size={32} className="text-white" />
                 </div>
                 <div>
@@ -90,13 +90,13 @@ export const ProfilePage = () => {
               <div className="space-y-4 mb-6">
                 {user.email && (
                   <div className="flex items-center gap-3 text-stone-600">
-                    <Mail size={18} className="text-[#D4AF37]" />
+                    <Mail size={18} className="text-stone-700" />
                     <span className="text-sm">{user.email}</span>
                   </div>
                 )}
                 {user.phone && (
                   <div className="flex items-center gap-3 text-stone-600">
-                    <Phone size={18} className="text-[#D4AF37]" />
+                    <Phone size={18} className="text-stone-700" />
                     <span className="text-sm">{user.phone}</span>
                   </div>
                 )}
@@ -105,7 +105,7 @@ export const ProfilePage = () => {
               <div className="border-t border-stone-200 pt-6">
                 <div className="grid grid-cols-2 gap-4 mb-6">
                   <div className="text-center p-4 bg-stone-50 rounded-lg">
-                    <div className="text-2xl font-bold text-[#D4AF37]">
+                    <div className="text-2xl font-bold text-stone-900">
                       {orders.length}
                     </div>
                     <div className="text-xs text-stone-600 mt-1">
@@ -113,7 +113,7 @@ export const ProfilePage = () => {
                     </div>
                   </div>
                   <div className="text-center p-4 bg-stone-50 rounded-lg">
-                    <div className="text-2xl font-bold text-[#D4AF37]">
+                    <div className="text-2xl font-bold text-stone-900">
                       {t('products.currency')}{orders.reduce((sum, order) => sum + order.total, 0).toFixed(2)}
                     </div>
                     <div className="text-xs text-stone-600 mt-1">
@@ -137,7 +137,7 @@ export const ProfilePage = () => {
           <div className="lg:col-span-2">
             <div className="bg-white rounded-lg shadow-sm p-6">
               <h2 className="font-serif text-2xl text-stone-900 mb-6 flex items-center gap-2">
-                <Package size={24} className="text-[#D4AF37]" />
+                <Package size={24} className="text-stone-700" />
                 {t('profile.orderHistory')}
               </h2>
 
@@ -152,7 +152,7 @@ export const ProfilePage = () => {
                   </p>
                   <button
                     onClick={() => navigate('/')}
-                    className="bg-[#D4AF37] hover:bg-[#B8960C] text-white px-6 py-3 rounded-lg transition-colors"
+                    className="bg-stone-900 hover:bg-stone-800 text-white px-6 py-3 rounded-lg transition-colors"
                   >
                     {t('profile.startShopping')}
                   </button>
@@ -183,7 +183,7 @@ export const ProfilePage = () => {
                           </div>
                         </div>
                         <div className="text-right">
-                          <div className="text-2xl font-bold text-[#D4AF37]">
+                          <div className="text-2xl font-bold text-stone-900">
                             {t('products.currency')}{order.total.toFixed(2)}
                           </div>
                           <div className="text-xs text-stone-500">
@@ -225,7 +225,7 @@ export const ProfilePage = () => {
                           {t('profile.deliveryAddress')}:
                         </h4>
                         <div className="flex items-start gap-2 text-sm text-stone-600">
-                          <MapPin size={16} className="text-[#D4AF37] mt-0.5 flex-shrink-0" />
+                          <MapPin size={16} className="text-stone-700 mt-0.5 flex-shrink-0" />
                           <div>
                             <p>{order.customerInfo.firstName} {order.customerInfo.lastName}</p>
                             <p>{order.customerInfo.phone}</p>

@@ -59,14 +59,14 @@ export const AllProducts = () => {
     <section id="products" className="py-24 bg-stone-50/20 dark:bg-stone-950 transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <p className="text-[#D4AF37] uppercase tracking-[0.3em] text-xs font-semibold mb-3">{t('allProductsSection.subtitle')}</p>
+          <p className="text-stone-700 dark:text-stone-400 uppercase tracking-[0.3em] text-xs font-semibold mb-3">{t('allProductsSection.subtitle')}</p>
           <h2 className="font-serif text-3xl md:text-4xl text-stone-900 dark:text-white mb-2">{t('allProductsSection.title')}</h2>
-          <div className="w-16 h-[2px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mx-auto mt-4" />
+          <div className="w-16 h-[2px] bg-gradient-to-r from-transparent via-sky-400 to-transparent mx-auto mt-4" />
         </div>
         <div className="flex flex-wrap justify-center gap-3 mb-14">
           {categories.map(cat => (
             <button key={cat.id} onClick={() => setSelectedCategory(cat.id)}
-              className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 border ${selectedCategory === cat.id ? 'bg-gradient-to-r from-[#D4AF37] to-[#B8960C] text-white border-[#D4AF37] shadow-md shadow-[#D4AF37]/20' : 'bg-white dark:bg-stone-800/60 text-stone-600 dark:text-stone-300 border-stone-200 dark:border-stone-700 hover:border-[#D4AF37]/50 hover:text-[#D4AF37]'}`}>
+              className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 border ${selectedCategory === cat.id ? 'bg-stone-900 dark:bg-white text-white dark:text-stone-900 border-stone-900 dark:border-white shadow-md' : 'bg-white dark:bg-stone-800/60 text-stone-600 dark:text-stone-300 border-stone-200 dark:border-stone-700 hover:border-stone-500 hover:text-stone-900 dark:hover:text-white'}`}>
               {t(cat.nameKey)}
             </button>
           ))}

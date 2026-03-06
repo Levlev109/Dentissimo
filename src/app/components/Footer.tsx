@@ -5,7 +5,7 @@ import { DentissimoLogo } from './DentissimoLogo';
 export const Footer = () => {
   const { t } = useTranslation();
   return (
-    <footer id="contacts" className="bg-stone-900 text-white pt-20 pb-10 border-t border-stone-800">
+    <footer id="contacts" className="bg-stone-800 text-white pt-20 pb-10 border-t border-stone-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
           <div className="space-y-6">
@@ -54,7 +54,7 @@ export const Footer = () => {
           </div>
         </div>
         
-        <div className="border-t border-stone-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-stone-500">
+        <div className="border-t border-stone-700 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-stone-400">
           <p>{t('footer.copyright')}</p>
           <div className="flex flex-wrap justify-center gap-4">
             <a href="#contacts" className="hover:text-stone-300">{t('footer.privacy')}</a>

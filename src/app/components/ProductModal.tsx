@@ -77,7 +77,7 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
               {/* Image Section */}
               <div className="relative">
                 {product.isNew && (
-                  <span className="absolute top-4 left-4 bg-[#D4AF37] text-white px-3 py-1 text-xs uppercase tracking-widest font-bold z-10 rounded-full">
+                  <span className="absolute top-4 left-4 bg-stone-900 text-white px-3 py-1 text-xs uppercase tracking-widest font-bold z-10 rounded-full">
                     {t('products.new')}
                   </span>
                 )}
@@ -147,7 +147,7 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                       {isLongDesc && (
                         <button
                           onClick={() => setShowFullDesc(!showFullDesc)}
-                          className="mt-2 text-xs text-[#D4AF37] hover:text-[#B8962E] font-medium flex items-center gap-1 transition-colors"
+                          className="mt-2 text-xs text-stone-700 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white font-medium flex items-center gap-1 transition-colors"
                         >
                           {showFullDesc ? (
                             <><ChevronUp size={14} />{t('products.showLess')}</>
@@ -169,7 +169,7 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                         {details.ingredients.map((ingredient) => (
                           <span
                             key={ingredient}
-                            className="px-2.5 py-1 bg-[#D4AF37]/8 dark:bg-[#D4AF37]/20 text-stone-700 dark:text-stone-300 text-xs rounded-full border border-[#D4AF37]/20 font-medium"
+                            className="px-2.5 py-1 bg-sky-50 text-stone-700 text-xs rounded-full border border-sky-200 font-medium"
                           >
                             {t(`ingredients.${ingredient}`)}
                           </span>
@@ -206,7 +206,7 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
 
                   <button
                     onClick={handleAddToCart}
-                    className="w-full bg-[#D4AF37] text-white py-3.5 rounded-lg font-semibold uppercase tracking-wide hover:bg-[#C4A037] transition-colors flex items-center justify-center gap-2 group"
+                    className="w-full bg-stone-900 text-white py-3.5 rounded-lg font-semibold uppercase tracking-wide hover:bg-stone-800 transition-colors flex items-center justify-center gap-2 group"
                   >
                     <ShoppingCart size={18} className="group-hover:scale-110 transition-transform" />
                     {t('products.addToCart')}

@@ -65,7 +65,7 @@ export const Navbar = () => {
           <div className="flex items-center md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 text-stone-800 dark:text-stone-200 hover:text-[#D4AF37] dark:hover:text-[#D4AF37] focus:outline-none transition-colors duration-300"
+              className="p-2 text-stone-800 dark:text-stone-200 hover:text-stone-900 dark:hover:text-white focus:outline-none transition-colors duration-300"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -88,10 +88,10 @@ export const Navbar = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-sm font-semibold text-stone-600 dark:text-stone-300 hover:text-[#D4AF37] dark:hover:text-[#D4AF37] transition-all duration-300 tracking-wide uppercase relative group"
+                className="text-sm font-semibold text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white transition-all duration-300 tracking-wide uppercase relative group"
               >
                 {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-[#D4AF37] to-[#B8960C] group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-stone-900 dark:bg-white group-hover:w-full transition-all duration-300"></span>
               </a>
             ))}
           </div>
@@ -99,14 +99,14 @@ export const Navbar = () => {
           {/* Right Icons */}
           <div className="flex items-center gap-2 md:gap-4">
             {/* Desktop only: Search */}
-            <a href="#products" className="hidden md:block text-stone-600 dark:text-stone-300 hover:text-[#D4AF37] dark:hover:text-[#D4AF37] transition-all duration-300 hover:scale-110 transform">
+            <a href="#products" className="hidden md:block text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white transition-all duration-300 hover:scale-110 transform">
               <Search size={20} />
             </a>
 
             {/* Desktop only: Theme Toggle */}
             <button
               onClick={toggleTheme}
-              className="hidden md:block text-stone-600 dark:text-stone-300 hover:text-[#D4AF37] dark:hover:text-[#D4AF37] transition-all duration-300 hover:scale-110 transform"
+              className="hidden md:block text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white transition-all duration-300 hover:scale-110 transform"
               aria-label="Toggle dark mode"
             >
               {isDark ? <Sun size={18} /> : <Moon size={18} />}
@@ -116,7 +116,7 @@ export const Navbar = () => {
             <div className="relative hidden md:block" ref={langRef}>
               <button
                 onClick={() => setShowLangMenu(!showLangMenu)}
-                className="flex items-center space-x-1 text-stone-600 dark:text-stone-300 hover:text-[#D4AF37] dark:hover:text-[#D4AF37] transition-all duration-300 hover:scale-110 transform"
+                className="flex items-center space-x-1 text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white transition-all duration-300 hover:scale-110 transform"
               >
                 <Globe size={18} />
                 <span className="text-sm font-medium">{currentLang.flag}</span>
@@ -128,8 +128,8 @@ export const Navbar = () => {
                     <button
                       key={lang.code}
                       onClick={() => changeLang(lang.code)}
-                      className={`w-full px-4 py-2.5 text-left hover:bg-gradient-to-r hover:from-[#D4AF37]/10 hover:to-[#B8960C]/10 dark:hover:from-[#D4AF37]/20 dark:hover:to-[#B8960C]/20 flex items-center gap-3 transition-all duration-300 ${
-                        i18n.language === lang.code ? 'bg-gradient-to-r from-[#D4AF37]/10 to-[#B8960C]/10 dark:from-[#D4AF37]/20 dark:to-[#B8960C]/20 font-semibold border-l-4 border-[#D4AF37]' : ''
+                      className={`w-full px-4 py-2.5 text-left hover:bg-stone-100 dark:hover:bg-stone-800 flex items-center gap-3 transition-all duration-300 ${
+                        i18n.language === lang.code ? 'bg-stone-100 dark:bg-stone-800 font-semibold border-l-4 border-stone-900 dark:border-white' : ''
                       }`}
                     >
                       <span className="text-lg">{lang.flag}</span>
@@ -143,7 +143,7 @@ export const Navbar = () => {
             {/* Desktop only: User */}
             <div className="hidden md:block">
               {user ? (
-                <button onClick={() => navigate('/profile')} className="text-stone-600 dark:text-stone-300 hover:text-[#D4AF37] dark:hover:text-[#D4AF37] transition-colors" title={t('profile.title')}>
+                <button onClick={() => navigate('/profile')} className="text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white transition-colors" title={t('profile.title')}>
                   <User size={20} />
                 </button>
               ) : (
@@ -188,7 +188,7 @@ export const Navbar = () => {
                     onClick={() => { navigate('/profile'); setIsOpen(false); }}
                     className="flex items-center gap-3 text-base font-medium text-stone-800 dark:text-stone-200 w-full"
                   >
-                    <User size={18} className="text-[#D4AF37]" />
+                    <User size={18} className="text-stone-700 dark:text-stone-300" />
                     {t('profile.title')}
                   </button>
                 ) : (
@@ -196,7 +196,7 @@ export const Navbar = () => {
                     onClick={() => { setShowAuthModal(true); setIsOpen(false); }}
                     className="flex items-center gap-3 text-base font-medium text-stone-800 dark:text-stone-200 w-full"
                   >
-                    <User size={18} className="text-[#D4AF37]" />
+                    <User size={18} className="text-stone-700 dark:text-stone-300" />
                     {t('auth.login')}
                   </button>
                 )}
@@ -211,7 +211,7 @@ export const Navbar = () => {
                   onClick={() => { toggleTheme(); setIsOpen(false); }}
                   className="flex items-center gap-2 px-4 py-2 rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-200 font-medium text-sm transition-all duration-300"
                 >
-                  {isDark ? <Sun size={18} className="text-[#D4AF37]" /> : <Moon size={18} />}
+                  {isDark ? <Sun size={18} className="text-stone-700 dark:text-stone-300" /> : <Moon size={18} />}
                   {isDark ? 'Світла' : 'Темна'}
                 </button>
               </div>
@@ -226,7 +226,7 @@ export const Navbar = () => {
                       onClick={() => { changeLang(lang.code); setIsOpen(false); }}
                       className={`py-2 px-1 rounded-lg text-center text-xs font-medium transition-all ${
                         i18n.language === lang.code
-                          ? 'bg-[#D4AF37] text-white'
+                          ? 'bg-stone-900 text-white'
                           : 'bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300'
                       }`}
                     >

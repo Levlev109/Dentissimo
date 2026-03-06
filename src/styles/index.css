@@ -24,10 +24,10 @@ footer[id] {
 
 @keyframes pulse-glow {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
   }
   50% {
-    box-shadow: 0 0 40px rgba(212, 175, 55, 0.6);
+    box-shadow: 0 0 40px rgba(56, 189, 248, 0.6);
   }
 }
 
@@ -57,7 +57,7 @@ footer[id] {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(212, 175, 55, 0.1) 50%,
+    rgba(56, 189, 248, 0.1) 50%,
     transparent 100%
   );
   background-size: 2000px 100%;
@@ -78,14 +78,14 @@ footer[id] {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #D4AF37, #B8960C);
+  background: linear-gradient(180deg, #5BA3D9, #3B82C4);
   border-radius: 6px;
   border: 2px solid transparent;
   background-clip: padding-box;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #C4A037, #A8860C);
+  background: linear-gradient(180deg, #4A93C9, #2B72B4);
   border-radius: 6px;
   border: 2px solid transparent;
   background-clip: padding-box;
@@ -93,7 +93,7 @@ footer[id] {
 
 /* Selection styling */
 ::selection {
-  background-color: rgba(212, 175, 55, 0.3);
+  background-color: rgba(56, 153, 220, 0.25);
   color: inherit;
 }
 
@@ -104,7 +104,7 @@ button, a, input, textarea, select {
 
 /* Enhanced focus states */
 *:focus-visible {
-  outline: 2px solid #D4AF37;
+  outline: 2px solid #5BA3D9;
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -123,10 +123,7 @@ button, a, input, textarea, select {
 
 /* Premium gradient text */
 .gradient-text {
-  background: linear-gradient(135deg, #D4AF37, #B8960C);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #333333;
 }
 
 /* Subtle animations for better UX */
