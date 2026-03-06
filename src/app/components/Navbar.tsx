@@ -78,7 +78,7 @@ export const Navbar = () => {
               onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
               className="hover:scale-105 transition-transform duration-300"
             >
-              <DentissimoLogo size="lg" />
+              <DentissimoLogo size="md" className="md:h-20" />
             </a>
           </div>
 

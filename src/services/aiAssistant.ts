@@ -24,52 +24,66 @@ const AI_CONFIG = {
 
 const productKnowledge = {
   whitening: {
-    keywords: ['білити', 'відбілювання', 'білі зуби', 'whitening', 'white', 'yellow'],
+    keywords: ['білити', 'відбілювання', 'білі зуби', 'whitening', 'white', 'yellow', 'отбеливан', 'белые зубы', 'желт', 'белизн', 'белее', 'отбели'],
     recommendation: {
-      uk: 'Для відбілювання зубів я рекомендую:\n\n1. **Advanced Whitening Gold** (€219) - найефективніша формула з золотом 24К\n2. **Extra-Whitening Black** (€189) - з натуральним активованим вугіллям\n3. **Pro-Whitening** (€159) - професійне відбілювання\n\nВсі ці пасти безпечні для емалі та дають видимий результат через 1-2 тижні.',
-      en: 'For teeth whitening, I recommend:\n\n1. **Advanced Whitening Gold** (€219) - most effective formula with 24K gold\n2. **Extra-Whitening Black** (€189) - with natural activated charcoal\n3. **Pro-Whitening** (€159) - professional whitening\n\nAll these toothpastes are safe for enamel and show visible results in 1-2 weeks.'
+      uk: 'Для відбілювання зубів я рекомендую:\n\n1. **Advanced Whitening Gold** (€219) - найефективніша формула з золотом 24К\n2. **Extra-Whitening Black** (€189) - з натуральним активованим вугіллям\n3. **Pro-Whitening** (€159) - професійне відбілювання\n\nВсі ці пасти безпечні для емалі та дають видимий результат через 1-2 тижні.\n\n👉 Перейти до продуктів: натисніть на розділ "Продукти" вище.',
+      en: 'For teeth whitening, I recommend:\n\n1. **Advanced Whitening Gold** (€219) - most effective formula with 24K gold\n2. **Extra-Whitening Black** (€189) - with natural activated charcoal\n3. **Pro-Whitening** (€159) - professional whitening\n\nAll these toothpastes are safe for enamel and show visible results in 1-2 weeks.\n\n👉 Go to products: click "Products" section above.'
     }
   },
   sensitive: {
-    keywords: ['чутливі', 'болять', 'біль', 'sensitive', 'pain', 'hurt'],
+    keywords: ['чутливі', 'болять', 'біль', 'sensitive', 'pain', 'hurt', 'чувствительн', 'боль', 'болят', 'реагируют на холод', 'реагують'],
     recommendation: {
-      uk: 'Для чутливих зубів ідеально підходять:\n\n1. **SPA Expert** (€189) - з термальною водою льодовика, ніжно доглядає\n2. **Complete Care** (€159) - комплекс Regera-Pro для захисту\n3. **Diamond** (€199) - алмазна пудра без агресивних компонентів\n\n**Щітка**: Обов\'язково використовуйте Sensitive (€89) з м\'якою щетиною.',
-      en: 'For sensitive teeth, perfect choices are:\n\n1. **SPA Expert** (€189) - with glacier thermal water, gentle care\n2. **Complete Care** (€159) - Regera-Pro complex for protection\n3. **Diamond** (€199) - diamond powder without aggressive components\n\n**Brush**: Use Sensitive (€89) with soft bristles.'
+      uk: 'Для чутливих зубів ідеально підходять:\n\n1. **SPA Expert** (€189) - з термальною водою льодовика, ніжно доглядає\n2. **Complete Care** (€159) - комплекс Regera-Pro для захисту\n3. **Diamond** (€199) - алмазна пудра без агресивних компонентів\n\n**Щітка**: Обов\'язково використовуйте Sensitive (€89) з м\'якою щетиною.\n\n👉 Перейти до продуктів: натисніть на розділ "Продукти" вище.',
+      en: 'For sensitive teeth, perfect choices are:\n\n1. **SPA Expert** (€189) - with glacier thermal water, gentle care\n2. **Complete Care** (€159) - Regera-Pro complex for protection\n3. **Diamond** (€199) - diamond powder without aggressive components\n\n**Brush**: Use Sensitive (€89) with soft bristles.\n\n👉 Go to products: click "Products" section above.'
     }
   },
   kids: {
-    keywords: ['дитина', 'дітям', 'kids', 'children', 'child'],
+    keywords: ['дитина', 'дітям', 'kids', 'children', 'child', 'ребенок', 'детям', 'детск', 'дитяч'],
     recommendation: {
-      uk: 'Для дітей у нас є спеціальна серія:\n\n**2-6 років:**\n- Kids 2-6 Years (€139) - смак карамелі\n- Kids Brush 2-6 Years (€69) - м\'яка щітка\n\n**6+ років:**\n- Junior 6+ Years (€139) - яблучний смак\n- Junior Brush 6+ Years (€69)\n\nВсі продукти безпечні, без фтору, з приємним смаком!',
-      en: 'For children we have a special series:\n\n**2-6 years:**\n- Kids 2-6 Years (€139) - caramel flavor\n- Kids Brush 2-6 Years (€69) - soft brush\n\n**6+ years:**\n- Junior 6+ Years (€139) - apple flavor\n- Junior Brush 6+ Years (€69)\n\nAll products are safe, fluoride-free, with pleasant taste!'
+      uk: 'Для дітей у нас є спеціальна серія:\n\n**2-6 років:**\n- Kids 2-6 Years (€139) - смак карамелі\n- Kids Brush 2-6 Years (€69) - м\'яка щітка\n\n**6+ років:**\n- Junior 6+ Years (€139) - яблучний смак\n- Junior Brush 6+ Years (€69)\n\nВсі продукти безпечні, без фтору, з приємним смаком!\n\n👉 Перейти до продуктів: натисніть на розділ "Продукти" вище.',
+      en: 'For children we have a special series:\n\n**2-6 years:**\n- Kids 2-6 Years (€139) - caramel flavor\n- Kids Brush 2-6 Years (€69) - soft brush\n\n**6+ years:**\n- Junior 6+ Years (€139) - apple flavor\n- Junior Brush 6+ Years (€69)\n\nAll products are safe, fluoride-free, with pleasant taste!\n\n👉 Go to products: click "Products" section above.'
     }
   },
   gums: {
-    keywords: ['ясна', 'кровоточать', 'запалення', 'gums', 'bleeding', 'inflammation'],
+    keywords: ['ясна', 'кровоточать', 'запалення', 'gums', 'bleeding', 'inflammation', 'десна', 'десны', 'кровоточ', 'воспален', 'пародонт'],
     recommendation: {
-      uk: 'При проблемах з яснами рекомендую:\n\n1. **Pro Care Teeth & Gums** (€159) - спеціально для ясен\n2. **Perio Care CBD** (€179) - з екстрактом конопель, зменшує запалення\n3. **Ополаскувач для порожнини рота** (€169) - проти кровоточивості\n\n**Щітка**: Parodontal (€99) - спеціальна для пародонтального догляду.',
-      en: 'For gum problems, I recommend:\n\n1. **Pro Care Teeth & Gums** (€159) - specially for gums\n2. **Perio Care CBD** (€179) - with hemp extract, reduces inflammation\n3. **Mouthwash** (€169) - against bleeding\n\n**Brush**: Parodontal (€99) - special for periodontal care.'
+      uk: 'При проблемах з яснами рекомендую:\n\n1. **Pro Care Teeth & Gums** (€159) - спеціально для ясен\n2. **Perio Care CBD** (€179) - з екстрактом конопель, зменшує запалення\n3. **Ополаскувач для порожнини рота** (€169) - проти кровоточивості\n\n**Щітка**: Parodontal (€99) - спеціальна для пародонтального догляду.\n\n👉 Перейти до продуктів: натисніть на розділ "Продукти" вище.',
+      en: 'For gum problems, I recommend:\n\n1. **Pro Care Teeth & Gums** (€159) - specially for gums\n2. **Perio Care CBD** (€179) - with hemp extract, reduces inflammation\n3. **Mouthwash** (€169) - against bleeding\n\n**Brush**: Parodontal (€99) - special for periodontal care.\n\n👉 Go to products: click "Products" section above.'
     }
   },
   natural: {
-    keywords: ['натуральн', 'органічн', 'веган', 'natural', 'organic', 'vegan', 'eco'],
+    keywords: ['натуральн', 'органічн', 'веган', 'natural', 'organic', 'vegan', 'eco', 'органик', 'эко', 'без химии', 'без хімії'],
     recommendation: {
-      uk: 'Натуральні та веганські продукти:\n\n1. **Bio-Natural with Herbs** (€159) - створено природою\n2. **Vegan with Vitamin B12** (€159) - 100% веганська формула\n3. **Perio Care CBD** (€179) - з натуральним екстрактом конопель\n\nВсі продукти без SLS, парабенів, тестування на тваринах!',
-      en: 'Natural and vegan products:\n\n1. **Bio-Natural with Herbs** (€159) - created by nature\n2. **Vegan with Vitamin B12** (€159) - 100% vegan formula\n3. **Perio Care CBD** (€179) - with natural hemp extract\n\nAll products are SLS-free, paraben-free, cruelty-free!'
+      uk: 'Натуральні та веганські продукти:\n\n1. **Bio-Natural with Herbs** (€159) - створено природою\n2. **Vegan with Vitamin B12** (€159) - 100% веганська формула\n3. **Perio Care CBD** (€179) - з натуральним екстрактом конопель\n\nВсі продукти без SLS, парабенів, тестування на тваринах!\n\n👉 Перейти до продуктів: натисніть на розділ "Продукти" вище.',
+      en: 'Natural and vegan products:\n\n1. **Bio-Natural with Herbs** (€159) - created by nature\n2. **Vegan with Vitamin B12** (€159) - 100% vegan formula\n3. **Perio Care CBD** (€179) - with natural hemp extract\n\nAll products are SLS-free, paraben-free, cruelty-free!\n\n👉 Go to products: click "Products" section above.'
     }
   },
   premium: {
-    keywords: ['дорогий', 'преміум', 'найкращ', 'люкс', 'premium', 'luxury', 'best', 'expensive'],
+    keywords: ['дорогий', 'преміум', 'найкращ', 'люкс', 'premium', 'luxury', 'best', 'expensive', 'лучш', 'дорог', 'элитн', 'елітн'],
     recommendation: {
-      uk: 'Преміальна серія Limited Edition:\n\n1. **Advanced Whitening Gold** (€219) - з золотом 24К\n2. **Diamond** (€199) - зі швейцарською алмазною пудрою\n3. **SPA Expert** (€189) - з водою льодовика Аржантьєра\n4. **Extra-Whitening Black** (€189) - з активованим вугіллям\n\n**Щітки**: Gold/Silver Limited Edition (€149)',
-      en: 'Premium Limited Edition series:\n\n1. **Advanced Whitening Gold** (€219) - with 24K gold\n2. **Diamond** (€199) - with Swiss diamond powder\n3. **SPA Expert** (€189) - with Argentiere glacier water\n4. **Extra-Whitening Black** (€189) - with activated charcoal\n\n**Brushes**: Gold/Silver Limited Edition (€149)'
+      uk: 'Преміальна серія Limited Edition:\n\n1. **Advanced Whitening Gold** (€219) - з золотом 24К\n2. **Diamond** (€199) - зі швейцарською алмазною пудрою\n3. **SPA Expert** (€189) - з водою льодовика Аржантьєра\n4. **Extra-Whitening Black** (€189) - з активованим вугіллям\n\n**Щітки**: Gold/Silver Limited Edition (€149)\n\n👉 Перейти до продуктів: натисніть на розділ "Продукти" вище.',
+      en: 'Premium Limited Edition series:\n\n1. **Advanced Whitening Gold** (€219) - with 24K gold\n2. **Diamond** (€199) - with Swiss diamond powder\n3. **SPA Expert** (€189) - with Argentiere glacier water\n4. **Extra-Whitening Black** (€189) - with activated charcoal\n\n**Brushes**: Gold/Silver Limited Edition (€149)\n\n👉 Go to products: click "Products" section above.'
     }
   },
   pregnant: {
-    keywords: ['вагітн', 'мама', 'pregnant', 'pregnancy', 'mother'],
+    keywords: ['вагітн', 'мама', 'pregnant', 'pregnancy', 'mother', 'беременн', 'мам'],
     recommendation: {
-      uk: 'Для вагітних і молодих мам:\n\n**Pregnant & Young Mum** (€159) - спеціальна формула:\n- Безпечна для вагітних\n- М\'які компоненти\n- Без агресивних речовин\n- Підходить для чутливих ясен\n\n**Щітка**: Sensitive (€89) з м\'якою щетиною',
-      en: 'For pregnant and young mothers:\n\n**Pregnant & Young Mum** (€159) - special formula:\n- Safe for pregnancy\n- Gentle components\n- No aggressive substances\n- Suitable for sensitive gums\n\n**Brush**: Sensitive (€89) with soft bristles'
+      uk: 'Для вагітних і молодих мам:\n\n**Pregnant & Young Mum** (€159) - спеціальна формула:\n- Безпечна для вагітних\n- М\'які компоненти\n- Без агресивних речовин\n- Підходить для чутливих ясен\n\n**Щітка**: Sensitive (€89) з м\'якою щетиною\n\n👉 Перейти до продуктів: натисніть на розділ "Продукти" вище.',
+      en: 'For pregnant and young mothers:\n\n**Pregnant & Young Mum** (€159) - special formula:\n- Safe for pregnancy\n- Gentle components\n- No aggressive substances\n- Suitable for sensitive gums\n\n**Brush**: Sensitive (€89) with soft bristles\n\n👉 Go to products: click "Products" section above.'
+    }
+  },
+  toothpaste: {
+    keywords: ['паст', 'зубн', 'зубная', 'toothpaste', 'paste', 'tooth'],
+    recommendation: {
+      uk: 'У нас є зубні пасти для будь-яких потреб:\n\n💎 **Преміум серія** (€189-219):\n- Advanced Whitening Gold, Diamond, SPA Expert, Extra-Whitening Black\n\n🦷 **Професійна серія** (€159):\n- Complete Care, Pro-Whitening, Pro Care Teeth & Gums\n\n🌿 **Натуральна серія** (€159-179):\n- Bio-Natural, Vegan B12, Perio Care CBD\n\n👶 **Дитяча серія** (€139):\n- Kids 2-6 Years, Junior 6+ Years\n\nЩо саме вас цікавить? Відбілювання, чутливі зуби, натуральний склад?',
+      en: 'We have toothpastes for every need:\n\n💎 **Premium series** (€189-219):\n- Advanced Whitening Gold, Diamond, SPA Expert, Extra-Whitening Black\n\n🦷 **Professional series** (€159):\n- Complete Care, Pro-Whitening, Pro Care Teeth & Gums\n\n🌿 **Natural series** (€159-179):\n- Bio-Natural, Vegan B12, Perio Care CBD\n\n👶 **Kids series** (€139):\n- Kids 2-6 Years, Junior 6+ Years\n\nWhat exactly interests you? Whitening, sensitive teeth, natural ingredients?'
+    }
+  },
+  brush: {
+    keywords: ['щітк', 'щетк', 'brush', 'зубна щітка', 'зубная щетка'],
+    recommendation: {
+      uk: 'Наші зубні щітки:\n\n👑 **Преміум**: Gold/Silver Limited Edition (€149) - 6500 щетинок\n🦷 **Для відбілювання**: Whitening (€99) - середня жорсткість\n💎 **Для чутливих зубів**: Sensitive (€89) - м\'яка щетина\n🏥 **Для ясен**: Parodontal (€99) - спеціальна для пародонтального догляду\n👶 **Дитячі**: Kids 2-6 (€69), Junior 6+ (€69)\n\nЯку проблему хочете вирішити?',
+      en: 'Our toothbrushes:\n\n👑 **Premium**: Gold/Silver Limited Edition (€149) - 6500 bristles\n🦷 **For whitening**: Whitening (€99) - medium hardness\n💎 **For sensitive teeth**: Sensitive (€89) - soft bristles\n🏥 **For gums**: Parodontal (€99) - special for periodontal care\n👶 **Kids**: Kids 2-6 (€69), Junior 6+ (€69)\n\nWhat problem do you want to solve?'
     }
   }
 };
@@ -268,16 +282,16 @@ Your task is to understand customer problems and recommend the best products. Be
 
   private getGreeting(): string {
     const greetings = {
-      uk: 'Вітаю! Я AI-консультант Dentissimo. Допоможу вам обрати ідеальний продукт для догляду за зубами. Що вас цікавить?',
-      en: 'Hello! I\'m Dentissimo AI consultant. I\'ll help you choose the perfect oral care product. What are you interested in?'
+      uk: 'Вітаю! 👋 Я AI-консультант Dentissimo.\n\nДопоможу підібрати ідеальну зубну пасту чи щітку. Просто напишіть що вас цікавить, наприклад:\n• "потрібна паста для відбілювання"\n• "болять зуби від холодного"\n• "що підійде дитині 4 роки?"\n\nЧим можу допомогти?',
+      en: 'Hello! 👋 I\'m Dentissimo AI consultant.\n\nI\'ll help you choose the perfect toothpaste or brush. Just tell me what you need, for example:\n• "I need a whitening toothpaste"\n• "my teeth hurt from cold"\n• "what\'s good for a 4-year-old?"\n\nHow can I help?'
     };
     return greetings[this.lang as keyof typeof greetings] || greetings.uk;
   }
 
   private getDefaultResponse(): string {
     const responses = {
-      uk: 'Я можу допомогти вам з:\n\n🦷 Відбілюванням зубів\n💎 Чутливими зубами\n👶 Продуктами для дітей\n🌿 Натуральними/веганськими пастами\n💉 Проблемами з яснами\n👑 Преміальними продуктами\n🤰 Засобами для вагітних\n\nПросто опишіть вашу проблему або побажання!',
-      en: 'I can help you with:\n\n🦷 Teeth whitening\n💎 Sensitive teeth\n👶 Products for kids\n🌿 Natural/vegan toothpastes\n💉 Gum problems\n👑 Premium products\n🤰 Products for pregnant women\n\nJust describe your problem or wishes!'
+      uk: 'Я можу допомогти вам з:\n\n🦷 Відбілюванням зубів — напишіть "відбілювання"\n💎 Чутливими зубами — напишіть "чутливі зуби"\n👶 Продуктами для дітей — напишіть "для дітей"\n🌿 Натуральними/веганськими пастами — напишіть "натуральна"\n💉 Проблемами з яснами — напишіть "ясна"\n👑 Преміальними продуктами — напишіть "преміум"\n🤰 Засобами для вагітних — напишіть "вагітність"\n🪥 Зубними щітками — напишіть "щітка"\n\nАбо просто опишіть вашу проблему — я підберу найкращий продукт!',
+      en: 'I can help you with:\n\n🦷 Teeth whitening — type "whitening"\n💎 Sensitive teeth — type "sensitive"\n👶 Products for kids — type "kids"\n🌿 Natural/vegan toothpastes — type "natural"\n💉 Gum problems — type "gums"\n👑 Premium products — type "premium"\n🤰 Products for pregnant women — type "pregnant"\n🪥 Toothbrushes — type "brush"\n\nOr just describe your problem — I\'ll find the best product!'
     };
     return responses[this.lang as keyof typeof responses] || responses.uk;
   }
