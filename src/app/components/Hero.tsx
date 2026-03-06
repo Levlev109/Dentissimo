@@ -10,7 +10,7 @@ export const Hero = () => {
   useEffect(() => {
     if (!videoRef.current) return;
     const isMobile = window.innerWidth < 768;
-    const v = '5';                       // bump to bust browser cache
+    const v = Date.now();                // timestamp to guarantee fresh load
     videoRef.current.src = isMobile ? `/gorge-water-mobile.mp4?v=${v}` : `/gorge-water.mp4?v=${v}`;
     videoRef.current.load();
   }, []);
