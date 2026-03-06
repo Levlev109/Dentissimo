@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { X, Send, MessageCircle, Sparkles, Key, Check } from 'lucide-react';
+import { X, Send, MessageCircle, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { AIAssistant, Message } from '../../services/aiAssistant';
@@ -9,9 +9,6 @@ export const AIChat = () => {
   const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
-  const [showApiKeyModal, setShowApiKeyModal] = useState(false);
-  const [apiKeyInput, setApiKeyInput] = useState('');
-  const [selectedProvider, setSelectedProvider] = useState<'gemini' | 'huggingface'>('gemini');
   const { i18n, t } = useTranslation();
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const assistantRef = useRef<AIAssistant>(new AIAssistant(i18n.language));
@@ -33,25 +30,6 @@ export const AIChat = () => {
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
-
-  const handleSaveApiKey = () => {
-    if (apiKeyInput.trim()) {
-      assistantRef.current.setApiKey(selectedProvider, apiKeyInput.trim());
-      setShowApiKeyModal(false);
-      setApiKeyInput('');
-      
-      // Add success message
-      const successMessage: Message = {
-        id: Date.now().toString(),
-        text: selectedProvider === 'gemini' 
-          ? t('aiChat.geminiConnected')
-          : t('aiChat.hfConnected'),
-        isBot: true,
-        timestamp: new Date()
-      };
-      setMessages(prev => [...prev, successMessage]);
-    }
   };
 
   const handleSend = async () => {
@@ -116,141 +94,6 @@ export const AIChat = () => {
         </span>
       </motion.button>
 
-      {/* API Key Modal */}
-      <AnimatePresence>
-        {showApiKeyModal && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 z-[60] flex items-center justify-center p-4"
-            onClick={() => setShowApiKeyModal(false)}
-          >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              onClick={(e) => e.stopPropagation()}
-              className="bg-white dark:bg-stone-800 rounded-2xl p-6 max-w-md w-full"
-            >
-              <h3 className="text-xl font-bold mb-4 text-stone-900 dark:text-white">🔑 {t('aiChat.connectRealAI')}</h3>
-              
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium mb-2">{t('aiChat.selectProvider')}</label>
-                  <div className="space-y-2">
-                    <label className="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-stone-50">
-                      <input
-                        type="radio"
-                        name="provider"
-                        value="gemini"
-                        checked={selectedProvider === 'gemini'}
-                        onChange={() => setSelectedProvider('gemini')}
-                        className="w-4 h-4"
-                      />
-                      <div className="flex-1">
-                        <div className="font-semibold">{t('aiChat.gemini')}</div>
-                        <div className="text-xs text-stone-500">{t('aiChat.geminiFree')}</div>
-                      </div>
-                    </label>
-                    
-                    <label className="flex items-center gap-3 p-3 border rounded-lg cursor-pointer hover:bg-stone-50">
-                      <input
-                        type="radio"
-                        name="provider"
-                        value="huggingface"
-                        checked={selectedProvider === 'huggingface'}
-                        onChange={() => setSelectedProvider('huggingface')}
-                        className="w-4 h-4"
-                      />
-                      <div className="flex-1">
-                        <div className="font-semibold">{t('aiChat.huggingface')}</div>
-                        <div className="text-xs text-stone-500">{t('aiChat.huggingfaceFree')}</div>
-                      </div>
-                    </label>
-                  </div>
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium mb-2">{t('aiChat.apiKey')}</label>
-                  <input
-                    type="password"
-                    value={apiKeyInput}
-                    onChange={(e) => setApiKeyInput(e.target.value)}
-                    placeholder={selectedProvider === 'gemini' ? 'AIza...' : 'hf_...'}
-                    className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-sky-400 outline-none"
-                  />
-                </div>
-
-                <div className="bg-blue-50 p-3 rounded-lg text-xs text-blue-900">
-                  {selectedProvider === 'gemini' ? (
-                    <>
-                      <strong>{t('aiChat.howToGetKey')}</strong>
-                      <br />
-                      {t('aiChat.geminiStep1')}{' '}
-                      <a
-                        href="https://makersuite.google.com/app/apikey"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline font-semibold"
-                      >
-                        makersuite.google.com
-                      </a>
-                      <br />
-                      {t('aiChat.geminiStep2')}
-                      <br />
-                      {t('aiChat.geminiStep3')}
-                    </>
-                  ) : (
-                    <>
-                      <strong>{t('aiChat.howToGetKey')}</strong>
-                      <br />
-                      {t('aiChat.hfStep1')}{' '}
-                      <a
-                        href="https://huggingface.co/join"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline font-semibold"
-                      >
-                        huggingface.co
-                      </a>
-                      <br />
-                      {t('aiChat.hfStep2')}{' '}
-                      <a
-                        href="https://huggingface.co/settings/tokens"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline font-semibold"
-                      >
-                        Settings → Tokens
-                      </a>
-                      <br />
-                      {t('aiChat.hfStep3')}
-                    </>
-                  )}
-                </div>
-
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => setShowApiKeyModal(false)}
-                    className="flex-1 px-4 py-2 border border-stone-300 rounded-lg hover:bg-stone-50"
-                  >
-                    {t('common.cancel')}
-                  </button>
-                  <button
-                    onClick={handleSaveApiKey}
-                    disabled={!apiKeyInput.trim()}
-                    className="flex-1 px-4 py-2 bg-stone-900 text-white rounded-lg hover:bg-stone-800 disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    {t('aiChat.saveKey')}
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       {/* Chat Window */}
       <AnimatePresence>
         {isOpen && (
@@ -269,30 +112,19 @@ export const AIChat = () => {
                 <div>
                   <h3 className="font-semibold flex items-center gap-2">
                     {t('aiChat.title')}
-                    {assistantRef.current.isUsingRealAI() && (
-                      <span className="text-[10px] bg-green-500 px-2 py-0.5 rounded-full">{t('common.live')}</span>
-                    )}
+                    <span className="text-[10px] bg-green-500 px-2 py-0.5 rounded-full">AI</span>
                   </h3>
                   <p className="text-xs text-white/80">
-                    {assistantRef.current.isUsingRealAI() ? t('aiChat.realAI') : t('aiChat.online')}
+                    {t('aiChat.online')}
                   </p>
                 </div>
               </div>
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => setShowApiKeyModal(true)}
-                  className="text-white/80 hover:text-white transition-colors"
-                  title={t('aiChat.connectRealAI')}
-                >
-                  <Key size={20} />
-                </button>
-                <button
-                  onClick={() => setIsOpen(false)}
-                  className="text-white/80 hover:text-white transition-colors"
-                >
-                  <X size={24} />
-                </button>
-              </div>
+              <button
+                onClick={() => setIsOpen(false)}
+                className="text-white/80 hover:text-white transition-colors"
+              >
+                <X size={24} />
+              </button>
             </div>
 
             {/* Messages */}
