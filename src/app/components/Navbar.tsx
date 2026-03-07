@@ -50,7 +50,6 @@ export const Navbar = () => {
 
   const navLinks = [
     { name: t('nav.products'), href: '#products' },
-    { name: t('nav.limitedEdition'), href: '#limited' },
     { name: t('nav.about'), href: '#about' },
     { name: t('nav.contacts'), href: '#contacts' },
   ];
