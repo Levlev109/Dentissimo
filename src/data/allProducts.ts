@@ -48,7 +48,7 @@ export const allProducts: ProductEntry[] = [
     isNew: true,
     badge: 'bestseller' as const,
     careMethod: ['whitening', 'premium'],
-    ingredients: ['gold24k', 'fluoride', 'mica', 'sodiumHyaluronate']
+    ingredients: ['gold24k', 'sodiumHyaluronate', 'sodiumMonofluorophosphate', 'leuconostoc', 'colloidalSilver']
   },
   {
     id: 'whitening-black',

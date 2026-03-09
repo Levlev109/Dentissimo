@@ -16,7 +16,8 @@ export type Ingredient = 'fluoride' | 'hydroxyapatite' | 'xylitol' | 'calcium' |
   'geranium' | 'chamomile' | 'sage' | 'eucalyptus' | 'liatris' | 'hexetidine' |
   'biosol' | 'krameria' | 'calendula' | 'commiphoraMyrrh' | 'vitaminB5' | 
   'calciumGlycerophosphate' | 'mica' | 'sodiumHyaluronate' | 'colloidalSilver' |
-  'cetrariaIslandica' | 'cardamomOil' | 'peppermintOil' | 'zincChloride' | 'ratania';
+  'cetrariaIslandica' | 'cardamomOil' | 'peppermintOil' | 'zincChloride' | 'ratania' |
+  'sodiumMonofluorophosphate' | 'leuconostoc';
 
 export interface Product {
   id: string;

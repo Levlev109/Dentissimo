@@ -25,8 +25,8 @@ export const productDetailsMap: Record<string, ProductDetails> = {
   },
 
   'whitening-gold': {
-    ingredients: ['gold24k', 'hydratedSilica', 'xylitol', 'colloidalSilver', 'mica', 'sodiumHyaluronate', 'leuconostoc'],
-    badges: ['vegan', 'swissMade'],
+    ingredients: ['gold24k', 'sodiumHyaluronate', 'sodiumMonofluorophosphate', 'leuconostoc', 'colloidalSilver'],
+    badges: ['vegan', 'swissMade', 'containsFluoride', 'noParabens', 'noSLS'],
     keyBenefits: ['products.benefits.whitening', 'products.benefits.antibacterial', 'products.benefits.gumHealth']
   },
 
