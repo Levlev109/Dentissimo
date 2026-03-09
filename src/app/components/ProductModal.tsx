@@ -1,4 +1,4 @@
-import { X, Plus, Minus, ShoppingCart, Leaf, Droplets, Shield, FlaskConical, Award, ChevronDown, ChevronUp } from 'lucide-react';
+import { X, Plus, Minus, ShoppingCart, Leaf, Droplets, Shield, FlaskConical, Award, ChevronDown, ChevronUp, Sparkles, Atom, Heart, Gem } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useState } from 'react';
 import { Product } from '../../services/database';
@@ -23,6 +23,19 @@ const badgeConfig: Record<string, { icon: typeof Leaf; color: string; bg: string
   noParabens: { icon: Leaf, color: 'text-emerald-700', bg: 'bg-emerald-50 border-emerald-200' },
   noSLS: { icon: Droplets, color: 'text-teal-700', bg: 'bg-teal-50 border-teal-200' },
 };
+
+const ingredientIconPool = [Sparkles, Droplets, Shield, FlaskConical, Atom, Leaf, Heart, Gem] as const;
+
+const ingredientColorPool = [
+  { bg: 'bg-amber-50 dark:bg-amber-900/20', text: 'text-amber-600 dark:text-amber-400', border: 'border-amber-200 dark:border-amber-800/40' },
+  { bg: 'bg-sky-50 dark:bg-sky-900/20', text: 'text-sky-600 dark:text-sky-400', border: 'border-sky-200 dark:border-sky-800/40' },
+  { bg: 'bg-emerald-50 dark:bg-emerald-900/20', text: 'text-emerald-600 dark:text-emerald-400', border: 'border-emerald-200 dark:border-emerald-800/40' },
+  { bg: 'bg-violet-50 dark:bg-violet-900/20', text: 'text-violet-600 dark:text-violet-400', border: 'border-violet-200 dark:border-violet-800/40' },
+  { bg: 'bg-rose-50 dark:bg-rose-900/20', text: 'text-rose-600 dark:text-rose-400', border: 'border-rose-200 dark:border-rose-800/40' },
+  { bg: 'bg-teal-50 dark:bg-teal-900/20', text: 'text-teal-600 dark:text-teal-400', border: 'border-teal-200 dark:border-teal-800/40' },
+  { bg: 'bg-orange-50 dark:bg-orange-900/20', text: 'text-orange-600 dark:text-orange-400', border: 'border-orange-200 dark:border-orange-800/40' },
+  { bg: 'bg-stone-50 dark:bg-stone-800/40', text: 'text-stone-600 dark:text-stone-400', border: 'border-stone-200 dark:border-stone-700/40' },
+];
 
 export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) => {
   const [quantity, setQuantity] = useState(1);
@@ -159,21 +172,35 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                     </div>
                   )}
 
-                  {/* Active Ingredients */}
+                  {/* Active Ingredients with descriptions */}
                   {details?.ingredients && details.ingredients.length > 0 && (
                     <div>
-                      <h3 className="text-xs font-semibold text-stone-900 dark:text-white uppercase tracking-wide mb-2">
+                      <h3 className="text-xs font-semibold text-stone-900 dark:text-white uppercase tracking-wide mb-3">
                         {t('products.activeIngredients')}
                       </h3>
-                      <div className="flex flex-wrap gap-1.5">
-                        {details.ingredients.map((ingredient) => (
-                          <span
-                            key={ingredient}
-                            className="px-2.5 py-1 bg-sky-50 text-stone-700 text-xs rounded-full border border-sky-200 font-medium"
-                          >
-                            {t(`ingredients.${ingredient}`)}
-                          </span>
-                        ))}
+                      <div className="space-y-2">
+                        {details.ingredients.map((ingredient, idx) => {
+                          const Icon = ingredientIconPool[idx % ingredientIconPool.length];
+                          const color = ingredientColorPool[idx % ingredientColorPool.length];
+                          return (
+                            <div
+                              key={ingredient}
+                              className={`flex items-start gap-3 p-3 rounded-xl border ${color.border} ${color.bg} transition-all duration-200`}
+                            >
+                              <div className={`flex-shrink-0 w-8 h-8 rounded-lg bg-white/80 dark:bg-stone-800/60 flex items-center justify-center`}>
+                                <Icon size={15} className={color.text} />
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <p className="text-sm font-semibold text-stone-900 dark:text-white leading-tight">
+                                  {t(`ingredients.${ingredient}`)}
+                                </p>
+                                <p className="text-xs text-stone-600 dark:text-stone-400 leading-relaxed mt-0.5">
+                                  {t(`ingredientDesc.${ingredient}`)}
+                                </p>
+                              </div>
+                            </div>
+                          );
+                        })}
                       </div>
                     </div>
                   )}
