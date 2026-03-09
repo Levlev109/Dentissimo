@@ -525,7 +525,25 @@
         leuconostoc: 'Лейконосток',
         leuconostocDesc: 'Має антимікробні переваги, отримується з редьки, збродженої молочнокислими бактеріями, містить пептид з антимікробною дією.',
         colloidalSilver: 'Колоїдне срібло',
-        colloidalSilverDesc: 'Запобігає накопиченню зубного нальоту, бореться зі шкідливими бактеріями та патогенами у роті. Найкращий натуральний антибіотик.'
+        colloidalSilverDesc: 'Запобігає накопиченню зубного нальоту, бореться зі шкідливими бактеріями та патогенами у роті. Найкращий натуральний антибіотик.',
+        tabProduct: 'Товар',
+        tabBenefits: 'Переваги',
+        tabIngredients: 'Склад',
+        tabExtra: 'Додатково',
+        gentleClean: 'Бережно очищає і полірує емаль',
+        fluorideNote: 'Містить фтор 950ppm — зміцнює емаль та захищає від карієсу при щоденному використанні.',
+        toothpasteGel: 'Зубна паста-гель',
+        exclusiveShine: 'Ексклюзивний блиск з частинками золота для бездоганної посмішки',
+        aesthetics: 'Естетика та здоров\'я ясен — краса кожного дня',
+        fantasticSmile: 'Фантастична посмішка починається з правильного догляду',
+        innovativeFormula: 'Інноваційна формула',
+        dailyUseTitle: 'Для щоденного використання',
+        howToUseTitle: 'Спосіб застосування',
+        howToUse: 'Чистити зуби двічі на день протягом 2–3 хвилин. Рекомендовано для дорослих та дітей від 12 років.',
+        compositionTitle: 'Повний склад',
+        composition: 'Aqua, Sorbitol, Hydrated Silica, Glycerin, PEG-32, Sodium Monofluorophosphate, Cellulose Gum, Aroma, Sodium Methyl Cocoyl Taurate, Titanium Dioxide, Sodium Saccharin, Gold, Sodium Hyaluronate, Leuconostoc/Radish Root Ferment Filtrate, Colloidal Silver, Limonene.',
+        storageTitle: 'Умови зберігання',
+        storage: 'Зберігати при температурі від +5°C до +25°C. Уникати прямих сонячних променів.'
       }
     }
   },
@@ -1055,7 +1073,25 @@
         leuconostoc: 'Leuconostoc',
         leuconostocDesc: 'Has antimicrobial benefits, derived from radish fermented by lactic acid bacteria, contains a peptide with antimicrobial action.',
         colloidalSilver: 'Colloidal Silver',
-        colloidalSilverDesc: 'Prevents dental plaque buildup, fights harmful bacteria and pathogens in the mouth. The best natural antibiotic.'
+        colloidalSilverDesc: 'Prevents dental plaque buildup, fights harmful bacteria and pathogens in the mouth. The best natural antibiotic.',
+        tabProduct: 'Product',
+        tabBenefits: 'Benefits',
+        tabIngredients: 'Ingredients',
+        tabExtra: 'Extra',
+        gentleClean: 'Gently cleanses and polishes enamel',
+        fluorideNote: 'Contains fluoride 950ppm — strengthens enamel and protects against cavities with daily use.',
+        toothpasteGel: 'Toothpaste Gel',
+        exclusiveShine: 'Exclusive shine with gold particles for a flawless smile',
+        aesthetics: 'Aesthetics and gum health — beauty every day',
+        fantasticSmile: 'A fantastic smile starts with the right care',
+        innovativeFormula: 'Innovative formula',
+        dailyUseTitle: 'For Daily Use',
+        howToUseTitle: 'How to use',
+        howToUse: 'Brush teeth twice a day for 2–3 minutes. Recommended for adults and children over 12.',
+        compositionTitle: 'Full Composition',
+        composition: 'Aqua, Sorbitol, Hydrated Silica, Glycerin, PEG-32, Sodium Monofluorophosphate, Cellulose Gum, Aroma, Sodium Methyl Cocoyl Taurate, Titanium Dioxide, Sodium Saccharin, Gold, Sodium Hyaluronate, Leuconostoc/Radish Root Ferment Filtrate, Colloidal Silver, Limonene.',
+        storageTitle: 'Storage',
+        storage: 'Store at +5°C to +25°C. Avoid direct sunlight.'
       }
     }
   },

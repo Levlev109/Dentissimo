@@ -83,18 +83,18 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
             transition={{ type: "spring", duration: 0.5 }}
-            className="bg-white dark:bg-stone-900 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl"
+            className="bg-white dark:bg-stone-900 rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-2xl border border-stone-200/50 dark:border-stone-800"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="grid md:grid-cols-2 gap-6 p-6 md:p-8 max-h-[90vh] overflow-y-auto">
+            <div className="grid md:grid-cols-2 gap-0 max-h-[90vh] overflow-y-auto">
               {/* Image Section */}
-              <div className="relative">
+              <div className="relative bg-gradient-to-b from-stone-50 to-white dark:from-stone-900 dark:to-stone-950 p-6 md:p-8">
                 {product.isNew && (
-                  <span className="absolute top-4 left-4 bg-stone-900 text-white px-3 py-1 text-xs uppercase tracking-widest font-bold z-10 rounded-full">
+                  <span className="absolute top-4 left-4 bg-amber-500 text-white px-3 py-1 text-xs uppercase tracking-widest font-bold z-10 rounded-full">
                     {t('products.new')}
                   </span>
                 )}
-                <div className="aspect-[3/4] bg-gradient-to-b from-white via-stone-50/10 to-white dark:from-stone-950/20 dark:via-stone-900 dark:to-stone-950 rounded-xl overflow-hidden">
+                <div className="aspect-[3/4] overflow-hidden flex items-center justify-center">
                   <img
                     src={product.image}
                     alt={product.name}
@@ -104,7 +104,7 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
               </div>
 
               {/* Content Section */}
-              <div className="flex flex-col">
+              <div className="flex flex-col p-6 md:p-8">
                 <button
                   onClick={onClose}
                   className="self-end text-stone-400 hover:text-stone-900 dark:hover:text-white transition-colors mb-2"
@@ -233,7 +233,7 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
 
                   <button
                     onClick={handleAddToCart}
-                    className="w-full py-4 rounded-xl font-semibold uppercase tracking-widest flex items-center justify-center gap-3 group relative overflow-hidden bg-gradient-to-r from-stone-900 via-stone-800 to-stone-900 text-white shadow-[0_6px_30px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.35)] border border-white/10 hover:border-white/20 transition-all duration-500 hover:scale-[1.01]"
+                    className="w-full py-4 rounded-xl font-semibold uppercase tracking-widest flex items-center justify-center gap-3 group relative overflow-hidden bg-stone-900 dark:bg-white text-white dark:text-stone-900 shadow-lg hover:bg-amber-500 dark:hover:bg-amber-400 hover:shadow-xl transition-all duration-300"
                   >
                     <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                     <ShoppingCart size={18} className="relative z-10 group-hover:scale-110 transition-transform" />

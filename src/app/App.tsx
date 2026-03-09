@@ -16,6 +16,7 @@ import { DecorativeEffects } from "@/app/components/DecorativeEffects";
 import { CheckoutPage } from "@/app/pages/CheckoutPage";
 import { ProfilePage } from "@/app/pages/ProfilePage";
 import { AdminPage } from "@/app/pages/AdminPage";
+import { GoldShowcase } from "@/app/components/GoldShowcase";
 import { AIChat } from "@/app/components/AIChat";
 import { ScrollToTop } from "@/app/components/ScrollToTop";
 import { ToastContainer } from "@/app/components/Toast";
@@ -26,6 +27,7 @@ export default function App() {
     <>
       <Hero />
       <CategorySection />
+      <GoldShowcase />
       <ProductLines />
       <AllProducts />
       <Benefits />
