@@ -6,6 +6,8 @@ import { CategorySection } from "@/app/components/CategorySection";
 import { FeaturedProducts } from "@/app/components/FeaturedProducts";
 import { AllProducts } from "@/app/components/AllProducts";
 import { Benefits } from "@/app/components/Benefits";
+import { GoldShowcase } from "@/app/components/GoldShowcase";
+import { ProductLines } from "@/app/components/ProductLines";
 import { Testimonials } from "@/app/components/Testimonials";
 import { FAQ } from "@/app/components/FAQ";
 import { AboutSection } from "@/app/components/AboutSection";
@@ -25,6 +27,8 @@ export default function App() {
     <>
       <Hero />
       <CategorySection />
+      <GoldShowcase />
+      <ProductLines />
       <AllProducts />
       <Benefits />
       <Testimonials />
