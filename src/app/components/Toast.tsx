@@ -46,10 +46,10 @@ export const ToastContainer = () => {
             animate={{ opacity: 1, x: 0, scale: 1 }}
             exit={{ opacity: 0, x: 80, scale: 0.95 }}
             transition={{ type: 'spring', duration: 0.4 }}
-            className="pointer-events-auto bg-stone-900 rounded-xl shadow-2xl border border-stone-700 p-4 flex items-center gap-3 min-w-[280px] max-w-[360px]"
+            className="pointer-events-auto bg-stone-900 shadow-2xl border border-stone-700 p-4 flex items-center gap-3 min-w-[280px] max-w-[360px]"
           >
             {toast.productImage ? (
-              <img src={toast.productImage} alt="" className="w-12 h-12 object-contain bg-stone-900 rounded-lg p-1 border border-stone-800" />
+              <img src={toast.productImage} alt="" className="w-12 h-12 object-contain bg-stone-900 p-1 border border-stone-800" />
             ) : (
               <div className="w-10 h-10 rounded-full bg-green-900/30 flex items-center justify-center flex-shrink-0">
                 <ShoppingBag size={18} className="text-green-400" />

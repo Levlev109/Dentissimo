@@ -91,7 +91,7 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.92, opacity: 0, y: 20 }}
             transition={{ type: "spring", duration: 0.5, bounce: 0.15 }}
-            className="bg-stone-950 rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-hidden shadow-2xl border border-white/[0.08] relative"
+            className="bg-stone-950 max-w-5xl w-full max-h-[90vh] overflow-hidden shadow-2xl border border-white/[0.08] relative"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Accent glow at top */}
@@ -101,12 +101,12 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
 
             {/* Tab bar */}
             <div className="flex items-center justify-between px-5 pt-4 pb-3 border-b border-white/[0.06] relative z-10">
-              <div className="flex bg-white/[0.04] rounded-xl p-1 backdrop-blur-sm border border-white/[0.06]">
+              <div className="flex bg-white/[0.04] p-1 backdrop-blur-sm border border-white/[0.06]">
                 {tabs.map((tab) => (
                   <button
                     key={tab.key}
                     onClick={() => setActiveTab(tab.key)}
-                    className={`px-4 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all duration-200 ${
+                    className={`px-4 py-1.5 text-xs font-semibold tracking-wide transition-all duration-200 ${
                       activeTab === tab.key
                         ? 'text-stone-900 shadow-sm'
                         : 'text-stone-500 hover:text-stone-300'
@@ -117,7 +117,7 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                   </button>
                 ))}
               </div>
-              <button onClick={onClose} className="text-stone-500 hover:text-white transition-colors w-8 h-8 rounded-lg hover:bg-white/[0.06] flex items-center justify-center">
+              <button onClick={onClose} className="text-stone-500 hover:text-white transition-colors w-8 h-8 hover:bg-white/[0.06] flex items-center justify-center">
                 <X size={18} />
               </button>
             </div>
@@ -131,7 +131,7 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                 </div>
 
                 {product.isNew && (
-                  <span className="absolute top-3 left-3 px-3 py-0.5 text-[10px] uppercase tracking-widest font-bold rounded-lg text-stone-900"
+                  <span className="absolute top-3 left-3 px-3 py-0.5 text-[10px] uppercase tracking-widest font-bold text-stone-900"
                     style={{ backgroundColor: accent }}>
                     {t('products.new')}
                   </span>
@@ -149,18 +149,18 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                       {t('products.currency')}{product.price.toFixed(0)}
                     </span>
                     <div className="flex items-center gap-1.5">
-                      <button onClick={() => setQuantity(q => Math.max(1, q - 1))} className="w-8 h-8 flex items-center justify-center rounded-lg border border-white/10 text-stone-300 hover:bg-white/[0.06] transition-colors">
+                      <button onClick={() => setQuantity(q => Math.max(1, q - 1))} className="w-8 h-8 flex items-center justify-center border border-white/10 text-stone-300 hover:bg-white/[0.06] transition-colors">
                         <Minus size={14} />
                       </button>
                       <span className="w-8 text-center text-sm font-semibold text-white">{quantity}</span>
-                      <button onClick={() => setQuantity(q => q + 1)} className="w-8 h-8 flex items-center justify-center rounded-lg border border-white/10 text-stone-300 hover:bg-white/[0.06] transition-colors">
+                      <button onClick={() => setQuantity(q => q + 1)} className="w-8 h-8 flex items-center justify-center border border-white/10 text-stone-300 hover:bg-white/[0.06] transition-colors">
                         <Plus size={14} />
                       </button>
                     </div>
                   </div>
                   <button
                     onClick={handleAddToCart}
-                    className="w-full py-3 rounded-xl font-semibold flex items-center justify-center gap-2 text-stone-900 shadow-lg hover:shadow-xl transition-all duration-200 text-sm"
+                    className="w-full py-3 font-semibold flex items-center justify-center gap-2 text-stone-900 shadow-lg hover:shadow-xl transition-all duration-200 text-sm"
                     style={{
                       background: `linear-gradient(135deg, ${accent}, ${accent}cc)`,
                       boxShadow: `0 8px 24px ${accent}30`,
@@ -183,7 +183,7 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                     </div>
 
                     {product.description && (
-                      <div className="p-4 rounded-xl bg-white/[0.04] border border-white/[0.06]" style={{ borderLeftColor: accent + '40', borderLeftWidth: '3px' }}>
+                      <div className="p-4 bg-white/[0.04] border border-white/[0.06]" style={{ borderLeftColor: accent + '40', borderLeftWidth: '3px' }}>
                         <p className="text-stone-300 text-sm leading-relaxed">{product.description}</p>
                       </div>
                     )}
@@ -192,7 +192,7 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                     {details?.badges && details.badges.length > 0 && (
                       <div className="flex flex-wrap gap-1.5">
                         {details.badges.map((badge) => (
-                          <span key={badge} className="px-3 py-1 text-[10px] font-semibold rounded-lg bg-white/[0.06] text-stone-300 border border-white/[0.08]">
+                          <span key={badge} className="px-3 py-1 text-[10px] font-semibold bg-white/[0.06] text-stone-300 border border-white/[0.08]">
                             {t(`badges.${badge}`)}
                           </span>
                         ))}
@@ -216,7 +216,7 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                     {details?.badges && details.badges.length > 0 && (
                       <div className="space-y-2">
                         {details.badges.map((badge) => (
-                          <div key={badge} className="flex items-center gap-3 p-3 bg-white/[0.03] rounded-xl border border-white/[0.06]">
+                          <div key={badge} className="flex items-center gap-3 p-3 bg-white/[0.03] border border-white/[0.06]">
                             <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: accent }} />
                             <p className="text-sm font-medium text-stone-200">{t(`badges.${badge}`)}</p>
                           </div>
@@ -235,7 +235,7 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                         {details.ingredients.map((ingredient, idx) => {
                           const Icon = ingredientIcons[idx % ingredientIcons.length];
                           return (
-                            <div key={ingredient} className="p-3.5 rounded-xl bg-white/[0.03] border border-white/[0.06]" style={{ borderLeftColor: accent + '50', borderLeftWidth: '3px' }}>
+                            <div key={ingredient} className="p-3.5 bg-white/[0.03] border border-white/[0.06]" style={{ borderLeftColor: accent + '50', borderLeftWidth: '3px' }}>
                               <div className="flex items-start gap-3">
                                 <Icon size={15} className="mt-0.5 flex-shrink-0" style={{ color: accent }} />
                                 <div>
@@ -260,7 +260,7 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
 
                     <p className="text-sm text-stone-400 leading-relaxed">{t(extraKeys.noHarmful)}</p>
 
-                    <div className="p-4 bg-white/[0.03] rounded-xl border border-white/[0.06]" style={{ borderLeftColor: accent + '40', borderLeftWidth: '3px' }}>
+                    <div className="p-4 bg-white/[0.03] border border-white/[0.06]" style={{ borderLeftColor: accent + '40', borderLeftWidth: '3px' }}>
                       <h3 className="font-bold text-white text-sm mb-1">{t('goldShowcase.howToUseTitle')}</h3>
                       <p className="text-stone-400 text-sm leading-relaxed">{t(extraKeys.howToUse)}</p>
                     </div>

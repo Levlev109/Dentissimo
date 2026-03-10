@@ -19,7 +19,7 @@ export const FAQ = () => {
   return (
     <section className="py-24 bg-gradient-to-b from-stone-950 to-stone-900/50 transition-colors duration-500 relative">
       {/* Decorative pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(56,189,248,0.04),transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(20,184,166,0.04),transparent_60%)]" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <motion.div
@@ -40,7 +40,7 @@ export const FAQ = () => {
           {faqs.map((faq, index) => (
             <motion.div
               key={index}
-              className="border border-stone-700 rounded-xl overflow-hidden bg-stone-900 shadow-sm hover:shadow-md transition-all duration-300"
+              className="border border-stone-700 overflow-hidden bg-stone-900 shadow-sm hover:shadow-md transition-all duration-300"
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -93,7 +93,7 @@ export const FAQ = () => {
           </p>
           <a
             href="mailto:info@blasspharma.com"
-            className="inline-block px-8 py-3.5 bg-white text-stone-900 font-semibold rounded-xl hover:bg-stone-100 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 transform"
+            className="inline-block px-8 py-3.5 bg-white text-stone-900 font-semibold hover:bg-stone-100 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 transform"
           >
             {t('faq.contactUs')}
           </a>

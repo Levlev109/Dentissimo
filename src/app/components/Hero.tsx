@@ -189,7 +189,7 @@ export const Hero = () => {
             {/* Inner ring */}
             <motion.div
               className="absolute rounded-full"
-              style={{ border: '1px solid rgba(56,189,248,0.15)' }}
+              style={{ border: '1px solid rgba(20,184,166,0.15)' }}
               initial={{ width: 0, height: 0 }}
               animate={{ width: 160, height: 160, opacity: splashPhase >= 2 ? 0 : 0.4 }}
               transition={{ duration: 0.8, delay: 0.1, ease: 'easeOut' }}
@@ -239,7 +239,7 @@ export const Hero = () => {
             {/* Radial pulse */}
             <motion.div
               className="absolute w-[300px] h-[300px] rounded-full"
-              style={{ background: 'radial-gradient(circle, rgba(56,189,248,0.06) 0%, transparent 70%)' }}
+              style={{ background: 'radial-gradient(circle, rgba(20,184,166,0.06) 0%, transparent 70%)' }}
               animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0, 0.3] }}
               transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
             />
