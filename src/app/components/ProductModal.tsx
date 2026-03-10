@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Product } from '../../services/database';
 import { useCart } from '../../contexts/CartContext';
 import { useTranslation } from 'react-i18next';
+import { formatPrice } from '../../services/currency';
 import { showCartToast } from './Toast';
 import { productDetailsMap } from './productData';
 
@@ -31,7 +32,7 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState<ModalTab>('product');
   const { addToCart } = useCart();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   useEffect(() => {
     if (isOpen) {
@@ -146,7 +147,7 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                 <div className="w-full max-w-xs mt-6 space-y-3 relative z-10">
                   <div className="flex items-center justify-between">
                     <span className="text-2xl font-bold text-white">
-                      {t('products.currency')}{product.price.toFixed(0)}
+                      {t('products.currency')}{formatPrice(product.price, i18n.language)}
                     </span>
                     <div className="flex items-center gap-1.5">
                       <button onClick={() => setQuantity(q => Math.max(1, q - 1))} className="w-8 h-8 flex items-center justify-center border border-white/10 text-stone-300 hover:bg-white/[0.06] transition-colors">

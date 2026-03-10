@@ -158,7 +158,7 @@ class NovaPoshtaService {
     
     // Estimated delivery time
     const isCapital = cityRef.includes('kyiv');
-    const estimatedDays = isCapital ? '1-2 дні' : '2-4 дні';
+    const estimatedDays = isCapital ? '1-2' : '2-4';
     
     return {
       cost: deliveryCost,

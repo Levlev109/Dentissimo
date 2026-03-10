@@ -58,9 +58,9 @@ export const Footer = () => {
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-stone-400">
           <p>{t('footer.copyright')}</p>
           <div className="flex flex-wrap justify-center gap-4">
-            <a href="mailto:info@blasspharma.com" className="hover:text-stone-300 transition-colors">{t('footer.privacy')}</a>
-            <a href="mailto:info@blasspharma.com" className="hover:text-stone-300 transition-colors">{t('footer.terms')}</a>
-            <a href="mailto:info@blasspharma.com" className="hover:text-stone-300 transition-colors">{t('footer.cookies')}</a>
+            <a href="https://dentissimo.ua/" target="_blank" rel="noopener noreferrer" className="hover:text-stone-300 transition-colors">{t('footer.privacy')}</a>
+            <a href="https://dentissimo.ua/" target="_blank" rel="noopener noreferrer" className="hover:text-stone-300 transition-colors">{t('footer.terms')}</a>
+            <a href="https://dentissimo.ua/" target="_blank" rel="noopener noreferrer" className="hover:text-stone-300 transition-colors">{t('footer.cookies')}</a>
           </div>
         </div>
         

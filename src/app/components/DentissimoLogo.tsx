@@ -4,8 +4,6 @@
 
 interface LogoProps {
   size?: 'sm' | 'md' | 'lg';
-  /** When true the logo renders with brightness filter for dark backgrounds */
-  light?: boolean;
   className?: string;
 }
 
@@ -15,7 +13,7 @@ const heights = {
   lg: 'h-20',
 };
 
-export const DentissimoLogo = ({ size = 'md', light = false, className = '' }: LogoProps) => {
+export const DentissimoLogo = ({ size = 'md', className = '' }: LogoProps) => {
   return (
     <img
       src="/images/dentissimo-logo.png"

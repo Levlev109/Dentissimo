@@ -43,11 +43,11 @@ export const ProfilePage = () => {
 
   const getStatusColor = (status: Order['status']) => {
     const colors: Record<string, string> = {
-      pending: 'bg-yellow-100 text-yellow-800 border-yellow-300',
-      confirmed: 'bg-blue-100 text-blue-800 border-blue-300',
-      shipped: 'bg-purple-100 text-purple-800 border-purple-300',
-      delivered: 'bg-green-100 text-green-800 border-green-300',
-      cancelled: 'bg-red-100 text-red-800 border-red-300'
+      pending: 'bg-yellow-900/30 text-yellow-400 border-yellow-700',
+      confirmed: 'bg-blue-900/30 text-blue-400 border-blue-700',
+      shipped: 'bg-purple-900/30 text-purple-400 border-purple-700',
+      delivered: 'bg-green-900/30 text-green-400 border-green-700',
+      cancelled: 'bg-red-900/30 text-red-400 border-red-700'
     };
     return colors[status] || colors.pending;
   };

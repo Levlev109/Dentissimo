@@ -70,7 +70,7 @@ export const CheckoutPage = () => {
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = t('checkout.invalidEmail');
     }
-    if (!formData.phone.trim() || formData.phone.replace(/[\s\-\(\)]/g, '').length < 10)
+    if (!formData.phone.trim() || !/^\+?[\d\s\-()]{10,}$/.test(formData.phone.trim()))
       newErrors.phone = t('checkout.required');
     if (!formData.city.trim())    newErrors.city    = t('checkout.required');
 
@@ -88,7 +88,7 @@ export const CheckoutPage = () => {
         ? `ORD-${crypto.randomUUID().slice(0, 8).toUpperCase()}`
         : `ORD-${Date.now()}`;
       const countryLabel = `\uD83C\uDDFA\uD83C\uDDE6 ${t('countries.ukraine')}`;
-      const deliveryInfo = formData.city ? `${formData.city} в†’ ${formData.warehouse}` : formData.address;
+      const deliveryInfo = formData.city ? `${formData.city} → ${formData.warehouse}` : formData.address;
       const itemsText = items
         .map(i => `${i.product.name} × ${i.quantity} = ${t('products.currency')}${formatPrice(i.product.price * i.quantity, i18n.language)}`)
         .join('\n');

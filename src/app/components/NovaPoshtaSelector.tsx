@@ -338,7 +338,7 @@ export const NovaPoshtaSelector = ({ onSelect, cartTotal }: NovaPoshtaSelectorPr
                 >
                   <div className="font-medium text-white">{warehouse.description}</div>
                   <div className="text-xs text-stone-400 mt-1">
-                    {deliveryType === 'locker' ? t('novaPoshta.locker') : t('novaPoshta.branch')} в„–{warehouse.number}
+                    {deliveryType === 'locker' ? t('novaPoshta.locker') : t('novaPoshta.branch')} №{warehouse.number}
                   </div>
                 </button>
               ))}
@@ -357,7 +357,7 @@ export const NovaPoshtaSelector = ({ onSelect, cartTotal }: NovaPoshtaSelectorPr
                 {t('novaPoshta.deliveryCost')}
               </div>
               <div className="text-2xl font-bold text-white mb-1">
-                {deliveryCost.cost} в‚ґ
+                {deliveryCost.cost} {t('products.currency').trim()}
               </div>
               <div className="text-sm text-stone-300">
                 {t('novaPoshta.estimatedDelivery')}: {deliveryCost.estimatedDays}
