@@ -13,7 +13,7 @@ export const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-12 mb-10 md:mb-16">
           <div className="space-y-6">
             <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-              <DentissimoLogo size="lg" light />
+              <DentissimoLogo size="lg" />
             </a>
             <p className="text-stone-300 text-sm leading-relaxed max-w-xs">
               {t('footer.tagline')}
