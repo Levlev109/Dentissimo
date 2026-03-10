@@ -1,16 +1,15 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { db, Order, ProductOverride, CustomProduct } from '../../services/database';
 import { orderService, checkSupabaseSetup } from '../../services/orderService';
 import { productService } from '../../services/productService';
 import { allProducts as baseProducts } from '../../data/allProducts';
+import { supabase } from '../../services/supabase';
 import {
   LayoutDashboard, ShoppingBag, Package, Users, LogOut, Lock,
   ChevronDown, ChevronUp, Check, XCircle,
-  PlusCircle, Pencil, Trash2, Eye, EyeOff, Save, X, AlertTriangle, RefreshCw
+  PlusCircle, Pencil, Trash2, Eye, EyeOff, Save, X, AlertTriangle, RefreshCw, Mail
 } from 'lucide-react';
 
-// в”Ђв”Ђв”Ђ Admin password в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ
-const ADMIN_PASSWORD = 'Dentissimo@admin25';
 
 // в”Ђв”Ђв”Ђ Helpers в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ
 const fmt = (iso: string) =>
@@ -45,32 +44,54 @@ const StatCard = ({ label, value, sub, color = 'text-white' }: StatCardProps) =>
 // в”Ђв”Ђв”Ђ ADMIN PAGE в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ
 
 export const AdminPage = () => {
-  const [loggedIn, setLoggedIn] = useState(() => db.isAdminLoggedIn());
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [authLoading, setAuthLoading] = useState(true);
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loginError, setLoginError] = useState('');
+  const [loginLoading, setLoginLoading] = useState(false);
   const [activeTab, setActiveTab] = useState<'dashboard' | 'orders' | 'products' | 'customers'>('dashboard');
   const [supabaseError, setSupabaseError] = useState<string | null>(null);
+
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setLoggedIn(!!session);
+      setAuthLoading(false);
+    });
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+      setLoggedIn(!!session);
+    });
+    return () => subscription.unsubscribe();
+  }, []);
 
   useEffect(() => {
     if (!loggedIn) return;
     checkSupabaseSetup().then(err => setSupabaseError(err));
   }, [loggedIn]);
 
-  // в”Ђв”Ђ Login в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === ADMIN_PASSWORD) {
-      db.setAdminSession(true);
-      setLoggedIn(true);
-    } else {
-      setLoginError('РќРµРІС–СЂРЅРёР№ РїР°СЂРѕР»СЊ');
+    setLoginError('');
+    setLoginLoading(true);
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    setLoginLoading(false);
+    if (error) {
+      setLoginError('\u041d\u0435\u0432\u0456\u0440\u043d\u0438\u0439 email \u0430\u0431\u043e \u043f\u0430\u0440\u043e\u043b\u044c');
     }
   };
 
-  const handleLogout = () => {
-    db.setAdminSession(false);
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
     setLoggedIn(false);
   };
+
+  if (authLoading) {
+    return (
+      <div className="min-h-screen bg-stone-950 flex items-center justify-center">
+        <RefreshCw size={24} className="text-stone-500 animate-spin" />
+      </div>
+    );
+  }
 
   if (!loggedIn) {
     return (
@@ -81,14 +102,26 @@ export const AdminPage = () => {
               <Lock size={24} className="text-stone-300" />
             </div>
             <h1 className="font-serif text-2xl text-white">Dentissimo Admin</h1>
-            <p className="text-stone-400 text-sm mt-1">РџР°РЅРµР»СЊ РєРµСЂСѓРІР°РЅРЅСЏ</p>
+            <p className="text-stone-400 text-sm mt-1">u041fu0430u043du0435u043bu044c u043au0435u0440u0443u0432u0430u043du043du044f</p>
           </div>
           <form onSubmit={handleLogin} className="space-y-4">
+            <div className="relative">
+              <Mail size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-stone-500" />
+              <input
+                type="email"
+                value={email}
+                onChange={e => { setEmail(e.target.value); setLoginError(''); }}
+                placeholder="Email"
+                autoComplete="email"
+                className="w-full pl-10 pr-4 py-3 bg-stone-800 border border-stone-700 rounded-lg text-white placeholder-stone-500 focus:outline-none focus:border-sky-400"
+              />
+            </div>
             <input
               type="password"
               value={password}
               onChange={e => { setPassword(e.target.value); setLoginError(''); }}
-              placeholder="РџР°СЂРѕР»СЊ"
+              placeholder="u041fu0430u0440u043eu043bu044c"
+              autoComplete="current-password"
               className="w-full px-4 py-3 bg-stone-800 border border-stone-700 rounded-lg text-white placeholder-stone-500 focus:outline-none focus:border-sky-400"
             />
             {loginError && (
@@ -96,10 +129,11 @@ export const AdminPage = () => {
                 <AlertTriangle size={14} /> {loginError}
               </p>
             )}
-            <button type="submit" className="w-full py-3 bg-stone-700 hover:bg-stone-600 text-white font-semibold rounded-lg transition-colors">
-              РЈРІС–Р№С‚Рё
+            <button type="submit" disabled={loginLoading} className="w-full py-3 bg-stone-700 hover:bg-stone-600 disabled:opacity-50 text-white font-semibold rounded-lg transition-colors">
+              {loginLoading ? 'u0412u0445u0456u0434\u2026' : 'u0423u0432u0456u0439u0442u0438'}
             </button>
           </form>
+          <p className="text-xs text-stone-600 text-center mt-4">u0421u0442u0432u043eu0440u0456u0442u044c u0430u0434u043cu0456u043d-u0430u043au0430u0443u043du0442 u0443 Supabase Dashboard u2192 Authentication u2192 Users</p>
         </div>
       </div>
     );
@@ -165,7 +199,8 @@ create table if not exists orders (
   created_at timestamptz default now()
 );
 alter table orders enable row level security;
-create policy "allow_all_orders" on orders for all using (true) with check (true);
+create policy "anon_insert_orders" on orders for insert to anon with check (true);
+create policy "auth_all_orders" on orders for all to authenticated using (true) with check (true);
 
 create table if not exists product_overrides (
   id text primary key,
@@ -175,7 +210,8 @@ create table if not exists product_overrides (
   name text
 );
 alter table product_overrides enable row level security;
-create policy "allow_all_overrides" on product_overrides for all using (true) with check (true);
+create policy "anon_read_overrides" on product_overrides for select to anon using (true);
+create policy "auth_all_overrides" on product_overrides for all to authenticated using (true) with check (true);
 
 create table if not exists custom_products (
   id text primary key,
@@ -189,7 +225,8 @@ create table if not exists custom_products (
   created_at timestamptz default now()
 );
 alter table custom_products enable row level security;
-create policy "allow_all_custom" on custom_products for all using (true) with check (true);`}</pre>
+create policy "anon_read_custom" on custom_products for select to anon using (true);
+create policy "auth_all_custom" on custom_products for all to authenticated using (true) with check (true);`}</pre>
                 </details>
               </div>
               <button onClick={() => checkSupabaseSetup().then(err => setSupabaseError(err))} className="text-red-400 hover:text-red-600 shrink-0">

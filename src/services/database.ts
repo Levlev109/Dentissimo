@@ -82,7 +82,7 @@ class Database {
   private readonly CURRENT_USER_KEY = 'dentissimo_current_user';
   private readonly PRODUCT_OVERRIDES_KEY = 'dentissimo_product_overrides';
   private readonly CUSTOM_PRODUCTS_KEY = 'dentissimo_custom_products';
-  private readonly ADMIN_SESSION_KEY = 'dentissimo_admin_session';
+
 
   // User Management
   createUser(email: string | undefined, phone: string | undefined, firstName: string, lastName: string): User {
@@ -229,15 +229,7 @@ class Database {
     localStorage.setItem(this.CUSTOM_PRODUCTS_KEY, JSON.stringify(products));
   }
 
-  // Admin session
-  isAdminLoggedIn(): boolean {
-    return localStorage.getItem(this.ADMIN_SESSION_KEY) === 'true';
-  }
 
-  setAdminSession(val: boolean): void {
-    if (val) localStorage.setItem(this.ADMIN_SESSION_KEY, 'true');
-    else localStorage.removeItem(this.ADMIN_SESSION_KEY);
-  }
 
   // Utility
   private generateId(): string {
