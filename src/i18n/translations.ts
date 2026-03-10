@@ -14,7 +14,8 @@
         title: 'In Smile We Trust',
         description: 'Преміальний бренд Dentissimo для догляду за порожниною рота',
         buyNow: 'Купити',
-        learnMore: 'Про нас'
+        learnMore: 'Про нас',
+        sideLabel: 'Est. Switzerland'
       },
       products: {
         featured: 'Premium Oral Care',
@@ -201,6 +202,8 @@
         selectLocker: 'Оберіть поштомат',
         deliveryCost: 'Вартість доставки',
         estimatedDelivery: 'Орієнтовний термін',
+        days12: '1-2 дні',
+        days24: '2-4 дні',
       },
       countries: {
         ukraine: 'Україна',
@@ -329,6 +332,7 @@
         storyText1: 'Продукти преміального бренду Dentissimo для догляду за порожниною рота були розроблені спеціалістами провідної стоматологічної клініки Швейцарії Perfect Smile Swiss Dental Care, медичного центру Bad Ragaz Grand Resort.',
         storyText2: 'Формули зубних паст Dentissimo базуються на унікальному комплексі Regera-PRO: REгенерація, REставрація, REмінералізація. Створені Природою, розроблені Наукою.',
         doctorQuote: 'Завдяки нашому багаторічному досвіду ми знаємо, що кожен випадок у стоматології унікальний. Мета проєкту — покращити якість життя наших пацієнтів, надаючи їм високоякісні засоби догляду за порожниною рота.',
+        doctorAttribution: '— Dr. Michael Meier, Perfect Smile Swiss Dental Care',
         complexLabel: 'Унікальний комплекс',
         complexTitle: 'Regera-PRO Complex',
         complexDesc: 'Дія продуктів Dentissimo базується на унікальному комплексі Regera-PRO — три ключові напрямки для здоров\'я зубів та ясен.',
@@ -371,7 +375,7 @@
         moneyBack: 'Гарантія повернення',
         moneyBackDesc: '14 днів на повернення',
         happyCustomers: 'Задоволені клієнти',
-        happyCustomersDesc: 'Понад 10 000+ клієнтів'
+        happyCustomersDesc: 'Понад 10 000 клієнтів'
       },
       common: {
         close: 'Закрити',
@@ -584,7 +588,8 @@
         title: 'In Smile We Trust',
         description: 'Premium Dentissimo brand for oral care',
         buyNow: 'Buy Now',
-        learnMore: 'Learn More'
+        learnMore: 'Learn More',
+        sideLabel: 'Est. Switzerland'
       },
       products: {
         featured: 'Premium Oral Care',
@@ -771,6 +776,8 @@
         selectLocker: 'Select parcel locker',
         deliveryCost: 'Delivery cost',
         estimatedDelivery: 'Estimated delivery',
+        days12: '1-2 days',
+        days24: '2-4 days',
       },
       countries: {
         ukraine: 'Ukraine',
@@ -899,6 +906,7 @@
         storyText1: 'Dentissimo premium oral care products were developed by specialists of the leading dental clinic in Switzerland, Perfect Smile Swiss Dental Care, Bad Ragaz Grand Resort medical center.',
         storyText2: 'Dentissimo formulas are based on a unique Regera-PRO complex: REgeneration, REstoration, REmineralization. Created by Nature, developed by Science.',
         doctorQuote: 'Thanks to our experience gained over the years, we know that each individual case in dental care is unique. The goal of the project is to improve the quality of life for our patients by providing them with high-grade oral care products.',
+        doctorAttribution: '— Dr. Michael Meier, Perfect Smile Swiss Dental Care',
         complexLabel: 'Unique Complex',
         complexTitle: 'Regera-PRO Complex',
         complexDesc: 'Dentissimo products are based on the unique Regera-PRO complex — three key directions for teeth and gum health.',
@@ -941,7 +949,7 @@
         moneyBack: 'Money Back',
         moneyBackDesc: '14-day return guarantee',
         happyCustomers: 'Happy Customers',
-        happyCustomersDesc: 'Over 10,000+ customers'
+        happyCustomersDesc: 'Over 10,000 customers'
       },
       common: {
         close: 'Close',

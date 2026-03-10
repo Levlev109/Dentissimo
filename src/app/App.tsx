@@ -2,7 +2,6 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { Navbar } from "@/app/components/Navbar";
 import { Hero } from "@/app/components/Hero";
 import { TrustBadges } from "@/app/components/TrustBadges";
-import { FeaturedProducts } from "@/app/components/FeaturedProducts";
 import { AllProducts } from "@/app/components/AllProducts";
 import { Testimonials } from "@/app/components/Testimonials";
 import { AboutSection } from "@/app/components/AboutSection";
@@ -12,7 +11,6 @@ import { CheckoutPage } from "@/app/pages/CheckoutPage";
 import { ProfilePage } from "@/app/pages/ProfilePage";
 import { AdminPage } from "@/app/pages/AdminPage";
 import { GoldShowcase } from "@/app/components/GoldShowcase";
-// import { AIChat } from '@/app/components/AIChat';
 import { ScrollToTop } from "@/app/components/ScrollToTop";
 import { ToastContainer } from "@/app/components/Toast";
 
@@ -73,7 +71,6 @@ export default function App() {
         <Route path="/admin" element={<AdminPage />} />
       </Routes>
       {!isAdmin && <Footer />}
-      {/* {!isAdmin && <AIChat />} */}
       {!isAdmin && <DecorativeEffects />}
     </div>
   );

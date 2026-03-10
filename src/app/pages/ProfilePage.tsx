@@ -3,13 +3,14 @@ import { useAuth } from '../../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { db, Order } from '../../services/database';
 import { useTranslation } from 'react-i18next';
+import { formatPrice } from '../../services/currency';
 import { User, Package, LogOut, ShoppingBag, Calendar, MapPin, Phone, Mail } from 'lucide-react';
 import { motion } from 'motion/react';
 
 export const ProfilePage = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [orders, setOrders] = useState<Order[]>([]);
 
   useEffect(() => {
@@ -115,7 +116,7 @@ export const ProfilePage = () => {
                   </div>
                   <div className="text-center p-4 bg-stone-800">
                     <div className="text-2xl font-bold text-white">
-                      {t('products.currency')}{orders.reduce((sum, order) => sum + order.total, 0).toFixed(2)}
+                      {t('products.currency')}{formatPrice(orders.reduce((sum, order) => sum + order.total, 0), i18n.language)}
                     </div>
                     <div className="text-xs text-stone-400 mt-1">
                       {t('profile.totalSpent')}
@@ -125,7 +126,7 @@ export const ProfilePage = () => {
 
                 <button
                   onClick={handleLogout}
-                  className="w-full bg-white hover:bg-stone-100 text-stone-900 py-3 transition-colors flex items-center justify-center gap-2"
+                  className="w-full bg-stone-800 border border-stone-600 hover:bg-stone-700 text-white py-3 transition-colors flex items-center justify-center gap-2"
                 >
                   <LogOut size={18} />
                   {t('profile.logout')}
@@ -153,7 +154,7 @@ export const ProfilePage = () => {
                   </p>
                   <button
                     onClick={() => navigate('/')}
-                    className="bg-white hover:bg-stone-100 text-stone-900 px-6 py-3 transition-colors"
+                    className="bg-stone-800 border border-stone-600 hover:bg-stone-700 text-white px-6 py-3 transition-colors"
                   >
                     {t('profile.startShopping')}
                   </button>
@@ -185,7 +186,7 @@ export const ProfilePage = () => {
                         </div>
                         <div className="text-right">
                           <div className="text-2xl font-bold text-white">
-                            {t('products.currency')}{order.total.toFixed(2)}
+                            {t('products.currency')}{formatPrice(order.total, i18n.language)}
                           </div>
                           <div className="text-xs text-stone-400">
                             {order.items.reduce((sum, item) => sum + item.quantity, 0)} {t('profile.items')}
@@ -213,7 +214,7 @@ export const ProfilePage = () => {
                                   {item.product.name}
                                 </p>
                                 <p className="text-xs text-stone-400">
-                                  {item.quantity} Г— {t('products.currency')}{item.product.price.toFixed(2)}
+                                  {item.quantity} × {t('products.currency')}{formatPrice(item.product.price, i18n.language)}
                                 </p>
                               </div>
                             </div>

@@ -1,13 +1,14 @@
 import { ShoppingBag, X, Minus, Plus, Trash2 } from 'lucide-react';
 import { useCart } from '../../contexts/CartContext';
 import { useTranslation } from 'react-i18next';
+import { formatPrice } from '../../services/currency';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 
 export const CartDrawer = () => {
   const { items, removeFromCart, updateQuantity, total, itemCount } = useCart();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
@@ -67,7 +68,7 @@ export const CartDrawer = () => {
                     <p className="text-stone-400 mb-4">{t('cart.empty')}</p>
                     <button
                       onClick={() => setIsOpen(false)}
-                      className="px-6 py-3 bg-stone-100 text-stone-900 hover:bg-stone-200 transition-colors"
+                      className="px-6 py-3 bg-stone-800 border border-stone-600 text-white hover:bg-stone-700 transition-colors"
                     >
                       {t('cart.continueShopping')}
                     </button>
@@ -89,7 +90,7 @@ export const CartDrawer = () => {
                             {item.product.name}
                           </h3>
                           <p className="text-sm text-stone-400 mb-2">
-                            {t('products.currency')}{item.product.price.toFixed(2)} × {item.quantity} = {t('products.currency')}{(item.product.price * item.quantity).toFixed(2)}
+                            {t('products.currency')}{formatPrice(item.product.price, i18n.language)} × {item.quantity} = {t('products.currency')}{formatPrice(item.product.price * item.quantity, i18n.language)}
                           </p>
                           <div className="flex items-center gap-2">
                             <button
@@ -126,7 +127,7 @@ export const CartDrawer = () => {
                 <div className="border-t border-stone-700 px-5 py-4 flex-shrink-0">
                   <div className="flex justify-between items-center text-lg font-bold mb-3 text-white">
                     <span>{t('cart.total')}:</span>
-                    <span>{t('products.currency')}{total.toFixed(2)}</span>
+                    <span>{t('products.currency')}{formatPrice(total, i18n.language)}</span>
                   </div>
                   <button
                     className="group relative block w-full py-4 text-white text-center font-semibold uppercase tracking-widest overflow-hidden bg-gradient-to-r from-stone-900 via-stone-800 to-stone-900 shadow-[0_6px_30px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.35)] border border-white/10 hover:border-white/20 transition-all duration-500 hover:scale-[1.01]"

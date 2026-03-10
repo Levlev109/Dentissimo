@@ -73,7 +73,7 @@ export const AboutSection = () => {
                   {t('about.doctorQuote')}
                 </blockquote>
                 <p className="text-stone-400 text-sm mt-3 font-medium">
-                  — Dr. Michael Meier, Perfect Smile Swiss Dental Care
+                  {t('about.doctorAttribution')}
                 </p>
               </div>
             </motion.div>

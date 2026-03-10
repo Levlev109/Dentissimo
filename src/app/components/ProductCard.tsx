@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { useState } from 'react';
 import { useCart } from '../../contexts/CartContext';
 import { useTranslation } from 'react-i18next';
+import { formatPrice } from '../../services/currency';
 import { Product } from '../../services/database';
 import { ProductModal } from './ProductModal';
 import { showCartToast } from './Toast';
@@ -20,7 +21,7 @@ const badgeConfig = {
 
 export const ProductCard = ({ product }: ProductProps) => {
   const { addToCart } = useCart();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleAddToCart = (e: React.MouseEvent) => {
@@ -87,7 +88,7 @@ export const ProductCard = ({ product }: ProductProps) => {
                 <p className="hidden md:block text-sm text-stone-400 mb-3 line-clamp-2 leading-relaxed">{product.description}</p>
               )}
             </div>
-            <p className="text-white font-bold text-sm md:text-lg mt-1 md:mt-0">{t('products.currency')}{product.price.toFixed(2)}</p>
+            <p className="text-white font-bold text-sm md:text-lg mt-1 md:mt-0">{t('products.currency')}{formatPrice(product.price, i18n.language)}</p>
           </div>
         </div>
       </div>

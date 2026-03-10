@@ -3,7 +3,7 @@ import { useState, useMemo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ShoppingCart, ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useCart } from '../../contexts/CartContext';
-import { convertPrice } from '../../services/currency';
+import { convertPrice, formatPrice } from '../../services/currency';
 import { showCartToast } from './Toast';
 import { ProductModal } from './ProductModal';
 import { allProducts as baseProducts, type ProductEntry } from '../../data/allProducts';
@@ -303,7 +303,7 @@ export const GoldShowcase = () => {
                 {/* Price tag */}
                 <div className="flex items-baseline gap-2">
                   <span className="text-2xl md:text-3xl lg:text-4xl font-bold text-white tracking-tight">
-                    {t('products.currency')}{price.toFixed(0)}
+                    {t('products.currency')}{formatPrice(price, i18n.language)}
                   </span>
                   <span className="text-stone-400 text-sm">{t('products.perUnit')}</span>
                 </div>

@@ -3,6 +3,7 @@ import emailjs from '@emailjs/browser';
 import { useCart } from '../../contexts/CartContext';
 import { useAuth } from '../../contexts/AuthContext';
 import { useTranslation } from 'react-i18next';
+import { formatPrice } from '../../services/currency';
 import { db } from '../../services/database';
 import { orderService } from '../../services/orderService';
 import { useNavigate } from 'react-router-dom';
@@ -41,7 +42,7 @@ const sanitize = (str: string, maxLen = 200): string =>
 export const CheckoutPage = () => {
   const { items, total, clearCart } = useCart();
   const { user } = useAuth();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const [orderPlaced, setOrderPlaced] = useState(false);
   const [sending, setSending] = useState(false);
@@ -69,8 +70,9 @@ export const CheckoutPage = () => {
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = t('checkout.invalidEmail');
     }
-    if (!formData.phone.trim())   newErrors.phone   = t('checkout.required');
-    if (!formData.city.trim())    newErrors.address  = t('checkout.required');
+    if (!formData.phone.trim() || formData.phone.replace(/[\s\-\(\)]/g, '').length < 10)
+      newErrors.phone = t('checkout.required');
+    if (!formData.city.trim())    newErrors.city    = t('checkout.required');
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -85,10 +87,10 @@ export const CheckoutPage = () => {
       const orderId = typeof crypto !== 'undefined' && crypto.randomUUID
         ? `ORD-${crypto.randomUUID().slice(0, 8).toUpperCase()}`
         : `ORD-${Date.now()}`;
-      const countryLabel = 'рџ‡єрџ‡¦ РЈРєСЂР°С—РЅР°';
+      const countryLabel = `\uD83C\uDDFA\uD83C\uDDE6 ${t('countries.ukraine')}`;
       const deliveryInfo = formData.city ? `${formData.city} в†’ ${formData.warehouse}` : formData.address;
       const itemsText = items
-        .map(i => `${i.product.name} Г— ${i.quantity} = ${t('products.currency')}${(i.product.price * i.quantity).toFixed(2)}`)
+        .map(i => `${i.product.name} × ${i.quantity} = ${t('products.currency')}${formatPrice(i.product.price * i.quantity, i18n.language)}`)
         .join('\n');
 
       // Sanitize inputs before storage
@@ -133,7 +135,7 @@ export const CheckoutPage = () => {
           customer_country: countryLabel,
           customer_address: deliveryInfo,
           order_items:      itemsText,
-          order_total:      `${t('products.currency')}${total.toFixed(2)}`,
+          order_total:      `${t('products.currency')}${formatPrice(total, i18n.language)}`,
           to_email:         OWNER_EMAIL,
         },
         EMAILJS_PUBLIC_KEY
@@ -292,12 +294,12 @@ export const CheckoutPage = () => {
                       warehouse: data.warehouse?.description || '',
                       address:   `${data.city?.description || ''}, ${data.warehouse?.description || ''}`,
                     }));
-                    if (errors.address) setErrors(prev => ({ ...prev, address: '' }));
+                    if (errors.city) setErrors(prev => ({ ...prev, city: '' }));
                   }}
                   cartTotal={total}
                 />
-                {errors.address && (
-                  <p className="text-red-500 text-sm mt-1">{errors.address}</p>
+                {errors.city && (
+                  <p className="text-red-500 text-sm mt-1">{errors.city}</p>
                 )}
               </div>
 
@@ -338,7 +340,7 @@ export const CheckoutPage = () => {
                     </p>
                   </div>
                   <p className="font-medium text-white">
-                    {t('products.currency')}{(item.product.price * item.quantity).toFixed(2)}
+                    {t('products.currency')}{formatPrice(item.product.price * item.quantity, i18n.language)}
                   </p>
                 </div>
               ))}
@@ -347,7 +349,7 @@ export const CheckoutPage = () => {
             <div className="border-t border-stone-700 pt-4 space-y-2">
               <div className="flex justify-between text-stone-400">
                 <span>{t('checkout.items')}</span>
-                <span>{t('products.currency')}{total.toFixed(2)}</span>
+                <span>{t('products.currency')}{formatPrice(total, i18n.language)}</span>
               </div>
               <div className="flex justify-between text-stone-400">
                 <span>{t('checkout.delivery')}</span>
@@ -355,7 +357,7 @@ export const CheckoutPage = () => {
               </div>
               <div className="flex justify-between text-xl font-bold text-white pt-2 border-t border-stone-700">
                 <span>{t('cart.total')}</span>
-                <span>{t('products.currency')}{total.toFixed(2)}</span>
+                <span>{t('products.currency')}{formatPrice(total, i18n.language)}</span>
               </div>
             </div>
           </div>

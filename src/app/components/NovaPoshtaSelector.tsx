@@ -33,6 +33,7 @@ export const NovaPoshtaSelector = ({ onSelect, cartTotal }: NovaPoshtaSelectorPr
   const [loadingWarehouses, setLoadingWarehouses] = useState(false);
   const [loadingCost, setLoadingCost] = useState(false);
   const [cityFocused, setCityFocused] = useState(false);
+  const [courierAddress, setCourierAddress] = useState('');
 
   // Load popular cities on mount
   useEffect(() => {
@@ -152,7 +153,7 @@ export const NovaPoshtaSelector = ({ onSelect, cartTotal }: NovaPoshtaSelectorPr
     try {
       const cost: NovaPoshtaDeliveryCost = {
         cost: 95, // Courier base cost
-        estimatedDays: selectedCity.ref.includes('kyiv') ? '1-2 РґРЅС–' : '2-4 РґРЅС–',
+        estimatedDays: selectedCity.ref.includes('kyiv') ? t('novaPoshta.days12') : t('novaPoshta.days24'),
       };
       
       setDeliveryCost(cost);
@@ -302,6 +303,8 @@ export const NovaPoshtaSelector = ({ onSelect, cartTotal }: NovaPoshtaSelectorPr
           </label>
           <input
             type="text"
+            value={courierAddress}
+            onChange={(e) => setCourierAddress(e.target.value)}
             placeholder={t('novaPoshta.courierAddressPlaceholder')}
             className="w-full px-4 py-3 border border-stone-700 bg-stone-800 text-white placeholder-stone-500 focus:ring-2 focus:ring-teal-400 focus:border-transparent outline-none"
           />

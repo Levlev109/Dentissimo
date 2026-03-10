@@ -73,6 +73,7 @@ export const Navbar = () => {
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 text-stone-200 hover:text-white focus:outline-none transition-colors duration-300"
+              aria-label={isOpen ? 'Close menu' : 'Open menu'}
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>

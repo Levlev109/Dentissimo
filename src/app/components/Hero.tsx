@@ -129,30 +129,6 @@ export const Hero = () => {
   const bgOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.2]);
   const contentY = useTransform(scrollYProgress, [0, 0.5], [0, -60]);
 
-  /* ── OLD VIDEO BACKGROUND — kept for easy restore ──
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [videoLoaded, setVideoLoaded] = useState(false);
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    const isMobile = window.innerWidth < 768;
-    const src = isMobile ? '/waterfall-blue-mobile.mp4' : '/waterfall-blue.mp4';
-    const tryPlay = () => {
-      video.play().then(() => setVideoLoaded(true)).catch(() => {
-        video.muted = true;
-        video.play().then(() => setVideoLoaded(true)).catch(() => {});
-      });
-    };
-    video.src = src;
-    video.addEventListener('canplay', tryPlay, { once: true });
-    video.addEventListener('error', () => {
-      setTimeout(() => { video.src = src + '?retry=' + Date.now(); video.load(); }, 2000);
-    }, { once: true });
-    video.load();
-    return () => { video.removeEventListener('canplay', tryPlay); };
-  }, []);
-  ── END OLD VIDEO BACKGROUND ── */
-
   // Splash sequence: ring expand → text reveal → fade out
   useEffect(() => {
     const t1 = setTimeout(() => setSplashPhase(1), 400);
@@ -240,41 +216,6 @@ export const Hero = () => {
           style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.4) 2px, rgba(0,0,0,0.4) 4px)' }}
         />
       </motion.div>
-
-      {/* ═══ OLD VIDEO BACKGROUND — uncomment to restore ═══
-      <motion.div
-        className="absolute inset-3 sm:inset-4 md:inset-6 lg:inset-8 z-0 overflow-hidden rounded-xl sm:rounded-2xl md:rounded-3xl"
-        style={{ scale: bgScale, opacity: bgOpacity }}
-      >
-        <video
-          ref={videoRef}
-          autoPlay muted loop playsInline preload="auto"
-          className={`w-full h-full object-cover transition-opacity duration-1000 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
-          style={{ filter: 'saturate(0.5) brightness(0.85) contrast(1.2)', animation: 'slow-zoom 30s alternate infinite ease-in-out' }}
-        />
-        <div className="absolute inset-0 z-30 rounded-xl sm:rounded-2xl md:rounded-3xl ring-1 ring-inset ring-white/[0.08] pointer-events-none" />
-        <div className="absolute inset-0 z-[1]">
-          <div className="absolute inset-0 bg-gradient-to-b from-stone-950/35 via-transparent to-stone-950/60" />
-          <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 80% 70% at 50% 40%, transparent 20%, rgba(12,10,9,0.55) 100%)' }} />
-        </div>
-        <motion.div
-          className="absolute inset-0 z-[2]"
-          style={{ background: 'linear-gradient(135deg, rgba(15,70,90,0.2), transparent 55%, rgba(10,40,70,0.12))', mixBlendMode: 'overlay' }}
-          animate={{ opacity: [0.7, 0.25, 0.7] }}
-          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-        />
-        <motion.div
-          className="absolute inset-0 z-[2]"
-          style={{ background: 'linear-gradient(315deg, rgba(10,55,85,0.15), transparent 55%, rgba(20,65,80,0.12))', mixBlendMode: 'overlay' }}
-          animate={{ opacity: [0.25, 0.7, 0.25] }}
-          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-        />
-        <div
-          className="absolute inset-0 z-[3] pointer-events-none opacity-[0.035]"
-          style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.5) 2px, rgba(0,0,0,0.5) 4px)' }}
-        />
-      </motion.div>
-      ═══ END OLD VIDEO BACKGROUND ═══ */}
 
       {/* Decorative geometric elements */}
       <div className="absolute inset-0 z-[2] pointer-events-none overflow-hidden">
@@ -447,7 +388,7 @@ export const Hero = () => {
         transition={{ delay: 1.2, duration: 1 }}
       >
         <span className="text-[9px] uppercase tracking-[0.3em] text-white font-semibold [writing-mode:vertical-rl] rotate-180">
-          Est. Switzerland
+          {t('hero.sideLabel', 'Est. Switzerland')}
         </span>
       </motion.div>
     </section>

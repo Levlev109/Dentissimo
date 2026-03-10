@@ -26,7 +26,7 @@ export const Footer = () => {
           <div>
             <h4 className="text-sm font-bold uppercase tracking-widest mb-6 text-white">{t('footer.products')}</h4>
             <ul className="space-y-4 text-sm text-stone-400">
-              <li><a href="#limited" className="hover:text-teal-400 transition-colors duration-200">{t('footer.limitedEdition')}</a></li>
+              <li><a href="#products" className="hover:text-teal-400 transition-colors duration-200">{t('footer.limitedEdition')}</a></li>
               <li><a href="#products" className="hover:text-teal-400 transition-colors duration-200">{t('footer.spaExpert')}</a></li>
               <li><a href="#products" className="hover:text-teal-400 transition-colors duration-200">{t('footer.diamondSeries')}</a></li>
               <li><a href="#products" className="hover:text-teal-400 transition-colors duration-200">{t('footer.bioNatural')}</a></li>
@@ -58,9 +58,9 @@ export const Footer = () => {
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-stone-400">
           <p>{t('footer.copyright')}</p>
           <div className="flex flex-wrap justify-center gap-4">
-            <a href="#contacts" className="hover:text-stone-300 transition-colors">{t('footer.privacy')}</a>
-            <a href="#contacts" className="hover:text-stone-300 transition-colors">{t('footer.terms')}</a>
-            <a href="#contacts" className="hover:text-stone-300 transition-colors">{t('footer.cookies')}</a>
+            <a href="mailto:info@blasspharma.com" className="hover:text-stone-300 transition-colors">{t('footer.privacy')}</a>
+            <a href="mailto:info@blasspharma.com" className="hover:text-stone-300 transition-colors">{t('footer.terms')}</a>
+            <a href="mailto:info@blasspharma.com" className="hover:text-stone-300 transition-colors">{t('footer.cookies')}</a>
           </div>
         </div>
         
