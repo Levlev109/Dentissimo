@@ -1,21 +1,137 @@
 import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
+
+// ─── Glacier Aurora Canvas Background ───
+// Renders flowing light waves that mimic glacier water refraction / aurora
+const useGlacierCanvas = (canvasRef: React.RefObject<HTMLCanvasElement | null>, active: boolean) => {
+  const animRef = useRef<number>(0);
+  const timeRef = useRef(0);
+
+  const draw = useCallback((ctx: CanvasRenderingContext2D, W: number, H: number) => {
+    timeRef.current += 0.003;
+    const t = timeRef.current;
+    ctx.clearRect(0, 0, W, H);
+
+    // Dark base
+    ctx.fillStyle = '#0c0a09';
+    ctx.fillRect(0, 0, W, H);
+
+    // Aurora / glacier light waves
+    const waves = [
+      { yBase: 0.32, amp: 0.06, freq: 0.8, speed: 0.7, color: [15, 80, 120], alpha: 0.25, width: 0.45 },
+      { yBase: 0.42, amp: 0.08, freq: 0.5, speed: -0.5, color: [20, 110, 140], alpha: 0.18, width: 0.6 },
+      { yBase: 0.50, amp: 0.05, freq: 1.1, speed: 0.9, color: [40, 160, 180], alpha: 0.12, width: 0.35 },
+      { yBase: 0.55, amp: 0.10, freq: 0.35, speed: -0.3, color: [10, 60, 100], alpha: 0.22, width: 0.7 },
+      { yBase: 0.65, amp: 0.04, freq: 1.4, speed: 1.1, color: [30, 140, 160], alpha: 0.10, width: 0.3 },
+      { yBase: 0.38, amp: 0.07, freq: 0.6, speed: 0.4, color: [8, 50, 90], alpha: 0.20, width: 0.55 },
+    ];
+
+    for (const wave of waves) {
+      const bandH = H * wave.width;
+      const centerY = H * wave.yBase + Math.sin(t * wave.speed * 0.5) * H * 0.03;
+
+      // Each wave is drawn as a series of horizontal gradient bands
+      const steps = 60;
+      for (let i = 0; i < steps; i++) {
+        const frac = i / steps;
+        const x = frac * W;
+        const nextX = (i + 1) / steps * W;
+
+        // Sine displacement
+        const yOff = Math.sin(frac * Math.PI * 2 * wave.freq + t * wave.speed) * H * wave.amp
+                   + Math.sin(frac * Math.PI * 3.7 * wave.freq + t * wave.speed * 1.3) * H * wave.amp * 0.3;
+
+        const y = centerY + yOff;
+
+        // Gaussian-like vertical falloff
+        const grad = ctx.createLinearGradient(x, y - bandH / 2, x, y + bandH / 2);
+        const [r, g, b] = wave.color;
+        const peakAlpha = wave.alpha * (0.7 + 0.3 * Math.sin(frac * Math.PI * 4 + t * 2));
+        grad.addColorStop(0, `rgba(${r}, ${g}, ${b}, 0)`);
+        grad.addColorStop(0.3, `rgba(${r}, ${g}, ${b}, ${peakAlpha * 0.5})`);
+        grad.addColorStop(0.5, `rgba(${r}, ${g}, ${b}, ${peakAlpha})`);
+        grad.addColorStop(0.7, `rgba(${r}, ${g}, ${b}, ${peakAlpha * 0.5})`);
+        grad.addColorStop(1, `rgba(${r}, ${g}, ${b}, 0)`);
+
+        ctx.fillStyle = grad;
+        ctx.fillRect(x, y - bandH / 2, nextX - x + 1, bandH);
+      }
+    }
+
+    // Bright focal glow (center-upper area, like light through ice)
+    const glowX = W * (0.5 + Math.sin(t * 0.4) * 0.1);
+    const glowY = H * (0.38 + Math.sin(t * 0.25) * 0.04);
+    const glowR = Math.min(W, H) * 0.45;
+    const glow = ctx.createRadialGradient(glowX, glowY, 0, glowX, glowY, glowR);
+    glow.addColorStop(0, 'rgba(40, 160, 200, 0.06)');
+    glow.addColorStop(0.4, 'rgba(20, 100, 140, 0.03)');
+    glow.addColorStop(1, 'rgba(0, 0, 0, 0)');
+    ctx.fillStyle = glow;
+    ctx.fillRect(0, 0, W, H);
+
+    // Secondary warm accent (very subtle)
+    const glow2X = W * (0.35 + Math.sin(t * 0.3 + 2) * 0.15);
+    const glow2Y = H * (0.55 + Math.sin(t * 0.2 + 1) * 0.05);
+    const glow2 = ctx.createRadialGradient(glow2X, glow2Y, 0, glow2X, glow2Y, glowR * 0.6);
+    glow2.addColorStop(0, 'rgba(60, 180, 160, 0.04)');
+    glow2.addColorStop(1, 'rgba(0, 0, 0, 0)');
+    ctx.fillStyle = glow2;
+    ctx.fillRect(0, 0, W, H);
+  }, []);
+
+  useEffect(() => {
+    if (!active) return;
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const setSize = () => {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const W = canvas.clientWidth;
+      const H = canvas.clientHeight;
+      canvas.width = W * dpr;
+      canvas.height = H * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+    setSize();
+
+    const animate = () => {
+      const W = canvas.clientWidth;
+      const H = canvas.clientHeight;
+      draw(ctx, W, H);
+      animRef.current = requestAnimationFrame(animate);
+    };
+    animate();
+
+    window.addEventListener('resize', setSize);
+    return () => {
+      cancelAnimationFrame(animRef.current);
+      window.removeEventListener('resize', setSize);
+    };
+  }, [active, canvasRef, draw]);
+};
 
 export const Hero = () => {
   const { t } = useTranslation();
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const glacierCanvasRef = useRef<HTMLCanvasElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
-  const [videoLoaded, setVideoLoaded] = useState(false);
   const [splashDone, setSplashDone] = useState(false);
-  const [splashPhase, setSplashPhase] = useState(0); // 0=ring, 1=text, 2=done
+  const [splashPhase, setSplashPhase] = useState(0);
+
+  // Activate glacier canvas
+  useGlacierCanvas(glacierCanvasRef, true);
 
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end start'] });
-  const videoScale = useTransform(scrollYProgress, [0, 1], [1, 0.92]);
-  const videoOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.2]);
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 0.92]);
+  const bgOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.2]);
   const contentY = useTransform(scrollYProgress, [0, 0.5], [0, -60]);
 
+  /* ── OLD VIDEO BACKGROUND — kept for easy restore ──
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoLoaded, setVideoLoaded] = useState(false);
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
@@ -35,6 +151,7 @@ export const Hero = () => {
     video.load();
     return () => { video.removeEventListener('canplay', tryPlay); };
   }, []);
+  ── END OLD VIDEO BACKGROUND ── */
 
   // Splash sequence: ring expand → text reveal → fade out
   useEffect(() => {
@@ -130,10 +247,31 @@ export const Hero = () => {
         )}
       </AnimatePresence>
 
-      {/* Video in premium "glacier window" frame */}
+      {/* ═══ Glacier Aurora Canvas Background ═══ */}
       <motion.div
         className="absolute inset-3 sm:inset-4 md:inset-6 lg:inset-8 z-0 overflow-hidden rounded-xl sm:rounded-2xl md:rounded-3xl"
-        style={{ scale: videoScale, opacity: videoOpacity }}
+        style={{ scale: bgScale, opacity: bgOpacity }}
+      >
+        <canvas
+          ref={glacierCanvasRef}
+          className="w-full h-full"
+          style={{ display: 'block' }}
+        />
+
+        {/* Frame border */}
+        <div className="absolute inset-0 z-30 rounded-xl sm:rounded-2xl md:rounded-3xl ring-1 ring-inset ring-white/[0.08] pointer-events-none" />
+
+        {/* Subtle noise texture over canvas */}
+        <div
+          className="absolute inset-0 z-[3] pointer-events-none opacity-[0.04]"
+          style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.4) 2px, rgba(0,0,0,0.4) 4px)' }}
+        />
+      </motion.div>
+
+      {/* ═══ OLD VIDEO BACKGROUND — uncomment to restore ═══
+      <motion.div
+        className="absolute inset-3 sm:inset-4 md:inset-6 lg:inset-8 z-0 overflow-hidden rounded-xl sm:rounded-2xl md:rounded-3xl"
+        style={{ scale: bgScale, opacity: bgOpacity }}
       >
         <video
           ref={videoRef}
@@ -141,17 +279,11 @@ export const Hero = () => {
           className={`w-full h-full object-cover transition-opacity duration-1000 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
           style={{ filter: 'saturate(0.5) brightness(0.85) contrast(1.2)', animation: 'slow-zoom 30s alternate infinite ease-in-out' }}
         />
-
-        {/* Frame border */}
         <div className="absolute inset-0 z-30 rounded-xl sm:rounded-2xl md:rounded-3xl ring-1 ring-inset ring-white/[0.08] pointer-events-none" />
-
-        {/* Cinematic overlays inside frame */}
         <div className="absolute inset-0 z-[1]">
           <div className="absolute inset-0 bg-gradient-to-b from-stone-950/35 via-transparent to-stone-950/60" />
           <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 80% 70% at 50% 40%, transparent 20%, rgba(12,10,9,0.55) 100%)' }} />
         </div>
-
-        {/* Living color wash — crossfading teal/blue gradients */}
         <motion.div
           className="absolute inset-0 z-[2]"
           style={{ background: 'linear-gradient(135deg, rgba(15,70,90,0.2), transparent 55%, rgba(10,40,70,0.12))', mixBlendMode: 'overlay' }}
@@ -164,13 +296,12 @@ export const Hero = () => {
           animate={{ opacity: [0.25, 0.7, 0.25] }}
           transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
         />
-
-        {/* Cinematic scan lines */}
         <div
           className="absolute inset-0 z-[3] pointer-events-none opacity-[0.035]"
           style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.5) 2px, rgba(0,0,0,0.5) 4px)' }}
         />
       </motion.div>
+      ═══ END OLD VIDEO BACKGROUND ═══ */}
 
       {/* Decorative geometric elements */}
       <div className="absolute inset-0 z-[2] pointer-events-none overflow-hidden">
