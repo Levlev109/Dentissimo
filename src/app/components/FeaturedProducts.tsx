@@ -8,15 +8,6 @@ import { productService } from '../../services/productService';
 const baseProducts = [
   // Limited Edition Series
   {
-    id: 'gentle-care',
-    name: 'Gentle Care',
-    categoryKey: 'limitedEdition',
-    price: 175.00,
-    descriptionKey: 'products.gentleCareDesc',
-    image: '/images/DENTISSIMO_box_Gentle_Care.webp',
-    isNew: true
-  },
-  {
     id: 'diamond',
     name: 'Diamond',
     categoryKey: 'limitedEdition',
@@ -41,6 +32,15 @@ const baseProducts = [
     price: 189.00,
     descriptionKey: 'products.blackDesc',
     image: '/images/DENTISSIMO_box_EXTRA_whitening (1).webp',
+    isNew: true
+  },
+  {
+    id: 'gentle-care',
+    name: 'Gentle Care',
+    categoryKey: 'limitedEdition',
+    price: 175.00,
+    descriptionKey: 'products.gentleCareDesc',
+    image: '/images/DENTISSIMO_box_Gentle_Care.webp',
     isNew: true
   }
 ];

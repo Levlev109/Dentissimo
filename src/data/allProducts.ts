@@ -16,17 +16,6 @@ export interface ProductEntry {
 export const allProducts: ProductEntry[] = [
   // Limited Edition Series (Premium Line)
   {
-    id: 'gentle-care',
-    name: 'Gentle Care',
-    categoryKey: 'limitedEdition',
-    price: 175.00,
-    descriptionKey: 'products.gentleCareDesc',
-    image: '/images/DENTISSIMO_box_Gentle_Care.webp',
-    isNew: true,
-    careMethod: ['sensitive', 'natural'],
-    ingredients: ['liatris', 'hydratedSilica', 'xylitol', 'geranium', 'vitaminE', 'hexetidine', 'panthenol', 'eugenol']
-  },
-  {
     id: 'diamond',
     name: 'Diamond',
     categoryKey: 'limitedEdition',
@@ -37,6 +26,17 @@ export const allProducts: ProductEntry[] = [
     badge: 'topSales' as const,
     careMethod: ['whitening', 'premium', 'sensitive'],
     ingredients: ['diamondPowder', 'hydratedSilica', 'xylitol', 'geranium']
+  },
+  {
+    id: 'gentle-care',
+    name: 'Gentle Care',
+    categoryKey: 'limitedEdition',
+    price: 175.00,
+    descriptionKey: 'products.gentleCareDesc',
+    image: '/images/DENTISSIMO_box_Gentle_Care.webp',
+    isNew: true,
+    careMethod: ['sensitive', 'natural'],
+    ingredients: ['liatris', 'hydratedSilica', 'xylitol', 'geranium', 'vitaminE', 'hexetidine', 'panthenol', 'eugenol']
   },
   {
     id: 'whitening-gold',
