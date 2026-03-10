@@ -238,7 +238,7 @@ export const GoldShowcase = () => {
                   <img
                     src={product.image}
                     alt={product.name}
-                    className="relative w-56 md:w-72 h-auto object-contain group-hover:scale-105 transition-transform duration-500"
+                    className="relative w-56 md:w-72 max-h-[340px] md:max-h-[420px] h-auto object-contain group-hover:scale-105 transition-transform duration-500"
                     style={{ filter: `drop-shadow(0 0 40px ${theme.glow})` }}
                   />
                 </div>
