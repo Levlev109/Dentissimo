@@ -133,7 +133,7 @@ export const GoldShowcase = () => {
 
   return (
     <>
-      <section className={`py-16 md:py-24 bg-gradient-to-br ${theme.gradient} overflow-x-clip relative`}>
+      <section className={`py-10 md:py-14 bg-gradient-to-br ${theme.gradient} overflow-x-clip relative`}>
         {/* Animated mesh background */}
         <div className="absolute inset-0 overflow-hidden">
           <div
@@ -153,7 +153,7 @@ export const GoldShowcase = () => {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           {/* Category tabs — pill style with glass effect */}
-          <div className="flex justify-center mb-14">
+          <div className="flex justify-center mb-8">
             <div className="inline-flex flex-wrap justify-center gap-1.5 p-1.5 rounded-2xl bg-white/[0.04] backdrop-blur-sm border border-white/[0.06]">
               {categoryOrder.map((cat) => (
                 <button
@@ -184,10 +184,10 @@ export const GoldShowcase = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="grid lg:grid-cols-[1fr,1fr] gap-8 lg:gap-16 items-center"
+              className="grid lg:grid-cols-[1fr,1fr] gap-6 lg:gap-12 items-center"
             >
               {/* Left — Text & CTA */}
-              <div className="order-2 lg:order-1 space-y-6">
+              <div className="order-2 lg:order-1 space-y-4">
                 {/* Category + badge row */}
                 <div className="flex items-center gap-3">
                   <span
@@ -216,7 +216,7 @@ export const GoldShowcase = () => {
                 </div>
 
                 {/* Product name — big and bold */}
-                <h2 className="font-serif text-4xl md:text-6xl leading-[1.05] tracking-tight">
+                <h2 className="font-serif text-3xl md:text-5xl leading-[1.05] tracking-tight">
                   <span
                     className="bg-clip-text text-transparent"
                     style={{
@@ -262,7 +262,7 @@ export const GoldShowcase = () => {
                 </div>
 
                 {/* CTAs */}
-                <div className="flex flex-wrap items-center gap-3 pt-2">
+                <div className="flex flex-wrap items-center gap-3">
                   <motion.button
                     onClick={handleBuy}
                     whileHover={{ scale: 1.02 }}
@@ -295,7 +295,7 @@ export const GoldShowcase = () => {
               </div>
 
               {/* Right — Product Image with effects */}
-              <div className="order-1 lg:order-2 flex justify-center relative min-h-[300px] md:min-h-[400px]">
+              <div className="order-1 lg:order-2 flex justify-center relative min-h-[260px] md:min-h-[340px]">
                 {/* Pulsing ring */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <motion.div
@@ -342,7 +342,7 @@ export const GoldShowcase = () => {
                     transition={{ duration: 0.5, ease: 'easeOut' }}
                     src={product.image}
                     alt={product.name}
-                    className="relative w-52 md:w-64 max-h-[320px] md:max-h-[400px] h-auto object-contain group-hover:scale-[1.06] transition-transform duration-500"
+                    className="relative w-48 md:w-56 max-h-[280px] md:max-h-[340px] h-auto object-contain group-hover:scale-[1.06] transition-transform duration-500"
                     style={{ filter: `drop-shadow(0 20px 60px ${theme.glow})` }}
                   />
                 </div>
@@ -351,7 +351,7 @@ export const GoldShowcase = () => {
           </AnimatePresence>
 
           {/* Product selector — cards with name labels */}
-          <div className="mt-16">
+          <div className="mt-10">
             {/* Counter */}
             <div className="flex items-center justify-center gap-2 mb-5">
               {categoryProducts.map((_, i) => (
