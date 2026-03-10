@@ -12,8 +12,8 @@ export const Hero = () => {
   const [splashPhase, setSplashPhase] = useState(0); // 0=ring, 1=text, 2=done
 
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start start', 'end start'] });
-  const videoScale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
-  const videoOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.3]);
+  const videoScale = useTransform(scrollYProgress, [0, 1], [1, 0.92]);
+  const videoOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.2]);
   const contentY = useTransform(scrollYProgress, [0, 0.5], [0, -60]);
 
   useEffect(() => {
@@ -130,42 +130,68 @@ export const Hero = () => {
         )}
       </AnimatePresence>
 
-      {/* Video background with parallax */}
-      <motion.div className="absolute inset-0 z-0" style={{ scale: videoScale, opacity: videoOpacity }}>
+      {/* Video in premium "glacier window" frame */}
+      <motion.div
+        className="absolute inset-3 sm:inset-4 md:inset-6 lg:inset-8 z-0 overflow-hidden rounded-xl sm:rounded-2xl md:rounded-3xl"
+        style={{ scale: videoScale, opacity: videoOpacity }}
+      >
         <video
           ref={videoRef}
           autoPlay muted loop playsInline preload="auto"
           className={`w-full h-full object-cover transition-opacity duration-1000 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
+          style={{ filter: 'saturate(0.5) brightness(0.85) contrast(1.2)', animation: 'slow-zoom 30s alternate infinite ease-in-out' }}
+        />
+
+        {/* Frame border */}
+        <div className="absolute inset-0 z-30 rounded-xl sm:rounded-2xl md:rounded-3xl ring-1 ring-inset ring-white/[0.08] pointer-events-none" />
+
+        {/* Cinematic overlays inside frame */}
+        <div className="absolute inset-0 z-[1]">
+          <div className="absolute inset-0 bg-gradient-to-b from-stone-950/35 via-transparent to-stone-950/60" />
+          <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 80% 70% at 50% 40%, transparent 20%, rgba(12,10,9,0.55) 100%)' }} />
+        </div>
+
+        {/* Living color wash — crossfading teal/blue gradients */}
+        <motion.div
+          className="absolute inset-0 z-[2]"
+          style={{ background: 'linear-gradient(135deg, rgba(15,70,90,0.2), transparent 55%, rgba(10,40,70,0.12))', mixBlendMode: 'overlay' }}
+          animate={{ opacity: [0.7, 0.25, 0.7] }}
+          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        <motion.div
+          className="absolute inset-0 z-[2]"
+          style={{ background: 'linear-gradient(315deg, rgba(10,55,85,0.15), transparent 55%, rgba(20,65,80,0.12))', mixBlendMode: 'overlay' }}
+          animate={{ opacity: [0.25, 0.7, 0.25] }}
+          transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
+        />
+
+        {/* Cinematic scan lines */}
+        <div
+          className="absolute inset-0 z-[3] pointer-events-none opacity-[0.035]"
+          style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.5) 2px, rgba(0,0,0,0.5) 4px)' }}
         />
       </motion.div>
 
-      {/* Cinematic overlays */}
-      <div className="absolute inset-0 z-[1]">
-        <div className="absolute inset-0 bg-gradient-to-r from-stone-950/80 via-stone-950/40 to-stone-950/60" />
-        <div className="absolute inset-0 bg-gradient-to-b from-stone-950/40 via-transparent to-stone-950/90" />
-        <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse 70% 70% at 50% 40%, transparent 30%, rgba(12,10,9,0.6) 100%)' }} />
-      </div>
-
       {/* Decorative geometric elements */}
       <div className="absolute inset-0 z-[2] pointer-events-none overflow-hidden">
-        {/* Corner brackets */}
+        {/* Corner brackets — aligned to video frame edges */}
         <motion.div
-          className="absolute top-24 left-8 md:left-16 w-16 h-16 md:w-24 md:h-24"
+          className="absolute top-[72px] left-5 md:top-[88px] md:left-9 lg:left-11 w-10 h-10 md:w-16 md:h-16"
           initial={{ opacity: 0 }}
           animate={splashDone ? { opacity: 0.15 } : {}}
           transition={{ delay: 0.8, duration: 1 }}
         >
-          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-white to-transparent" />
-          <div className="absolute top-0 left-0 w-px h-full bg-gradient-to-b from-white to-transparent" />
+          <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-white/80 to-transparent" />
+          <div className="absolute top-0 left-0 w-px h-full bg-gradient-to-b from-white/80 to-transparent" />
         </motion.div>
         <motion.div
-          className="absolute bottom-32 right-8 md:right-16 w-16 h-16 md:w-24 md:h-24"
+          className="absolute bottom-56 right-5 md:bottom-20 md:right-9 lg:right-11 w-10 h-10 md:w-16 md:h-16"
           initial={{ opacity: 0 }}
           animate={splashDone ? { opacity: 0.15 } : {}}
           transition={{ delay: 1, duration: 1 }}
         >
-          <div className="absolute bottom-0 right-0 w-full h-px bg-gradient-to-l from-white to-transparent" />
-          <div className="absolute bottom-0 right-0 w-px h-full bg-gradient-to-t from-white to-transparent" />
+          <div className="absolute bottom-0 right-0 w-full h-px bg-gradient-to-l from-white/80 to-transparent" />
+          <div className="absolute bottom-0 right-0 w-px h-full bg-gradient-to-t from-white/80 to-transparent" />
         </motion.div>
 
         {/* Rotating arc */}
