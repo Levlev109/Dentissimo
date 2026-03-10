@@ -14,7 +14,7 @@ import { CheckoutPage } from "@/app/pages/CheckoutPage";
 import { ProfilePage } from "@/app/pages/ProfilePage";
 import { AdminPage } from "@/app/pages/AdminPage";
 import { GoldShowcase } from "@/app/components/GoldShowcase";
-import { AIChat } from "@/app/components/AIChat";
+// import { AIChat } from '@/app/components/AIChat';
 import { ScrollToTop } from "@/app/components/ScrollToTop";
 import { ToastContainer } from "@/app/components/Toast";
 
@@ -74,7 +74,7 @@ export default function App() {
         <Route path="/admin" element={<AdminPage />} />
       </Routes>
       {!isAdmin && <Footer />}
-      {!isAdmin && <AIChat />}
+      {/* {!isAdmin && <AIChat />} */}
       {!isAdmin && <DecorativeEffects />}
     </div>
   );

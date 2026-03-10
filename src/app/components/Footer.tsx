@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Twitter } from 'lucide-react';
+import { Instagram } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { DentissimoLogo } from './DentissimoLogo';
 
@@ -19,9 +19,7 @@ export const Footer = () => {
               {t('footer.tagline')}
             </p>
             <div className="flex space-x-3">
-              <a href="https://www.instagram.com/dentissimo_official/" target="_blank" rel="noopener noreferrer" className="p-2.5 bg-white/5 border border-white/10 text-stone-400 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-300"><Instagram size={18} /></a>
-              <a href="https://www.facebook.com/dentissimo.toothpaste/" target="_blank" rel="noopener noreferrer" className="p-2.5 bg-white/5 border border-white/10 text-stone-400 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-300"><Facebook size={18} /></a>
-              <a href="https://twitter.com/dentissimo" target="_blank" rel="noopener noreferrer" className="p-2.5 bg-white/5 border border-white/10 text-stone-400 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-300"><Twitter size={18} /></a>
+              <a href="https://www.instagram.com/dentissimo__ua" target="_blank" rel="noopener noreferrer" className="p-2.5 bg-white/5 border border-white/10 text-stone-400 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-300"><Instagram size={18} /></a>
             </div>
           </div>
           
