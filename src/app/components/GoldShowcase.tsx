@@ -222,10 +222,10 @@ export const GoldShowcase = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="grid lg:grid-cols-[1fr,1fr] gap-6 lg:gap-12 items-center"
+              className="grid lg:grid-cols-[1fr,1fr] gap-4 lg:gap-10 items-center"
             >
               {/* Left — Text & CTA */}
-              <div className="order-2 lg:order-1 space-y-4">
+              <div className="order-2 lg:order-1 space-y-3">
                 {/* Category + badge row */}
                 <div className="flex items-center gap-3">
                   <span
@@ -254,7 +254,7 @@ export const GoldShowcase = () => {
                 </div>
 
                 {/* Product name — big and bold */}
-                <h2 className="font-serif text-3xl md:text-5xl leading-[1.05] tracking-tight">
+                <h2 className="font-serif text-2xl md:text-4xl leading-[1.05] tracking-tight">
                   <span
                     className="bg-clip-text text-transparent"
                     style={{
@@ -266,8 +266,8 @@ export const GoldShowcase = () => {
                 </h2>
 
                 {/* Description in a glass card */}
-                <div className="p-4 rounded-xl bg-white/[0.04] backdrop-blur-sm border border-white/[0.06] max-w-lg">
-                  <p className="text-stone-400 text-sm md:text-base leading-relaxed">
+                <div className="p-3 rounded-xl bg-white/[0.04] backdrop-blur-sm border border-white/[0.06] max-w-lg">
+                  <p className="text-stone-400 text-xs md:text-sm leading-relaxed">
                     {desc}
                   </p>
                 </div>
@@ -293,7 +293,7 @@ export const GoldShowcase = () => {
 
                 {/* Price tag */}
                 <div className="flex items-baseline gap-2">
-                  <span className="text-3xl md:text-4xl font-bold text-white tracking-tight">
+                  <span className="text-2xl md:text-3xl font-bold text-white tracking-tight">
                     {t('products.currency')}{price.toFixed(0)}
                   </span>
                   <span className="text-stone-500 text-sm">/ шт</span>
@@ -305,7 +305,7 @@ export const GoldShowcase = () => {
                     onClick={handleBuy}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="flex items-center gap-3 px-8 py-3.5 text-stone-900 font-bold rounded-xl transition-all duration-300 text-sm tracking-wide"
+                    className="flex items-center gap-2 px-6 py-3 text-stone-900 font-bold rounded-xl transition-all duration-300 text-sm tracking-wide"
                     style={{
                       background: `linear-gradient(135deg, ${theme.color}, ${theme.color}cc)`,
                       boxShadow: `0 8px 32px ${theme.glow}, inset 0 1px 0 rgba(255,255,255,0.2)`,
@@ -319,7 +319,7 @@ export const GoldShowcase = () => {
                     onClick={() => setIsModalOpen(true)}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="flex items-center gap-2 px-6 py-3.5 font-semibold text-sm rounded-xl transition-all duration-300 backdrop-blur-sm"
+                    className="flex items-center gap-2 px-5 py-3 font-semibold text-sm rounded-xl transition-all duration-300 backdrop-blur-sm"
                     style={{
                       color: theme.color,
                       border: `1px solid ${theme.color}30`,
@@ -333,20 +333,20 @@ export const GoldShowcase = () => {
               </div>
 
               {/* Right — Product Image with effects */}
-              <div className="order-1 lg:order-2 flex justify-center relative min-h-[260px] md:min-h-[340px]">
+              <div className="order-1 lg:order-2 flex justify-center relative min-h-[200px] md:min-h-[280px]">
                 {/* Pulsing ring */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <motion.div
                     animate={{ scale: [1, 1.05, 1], opacity: [0.3, 0.15, 0.3] }}
                     transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                    className="w-64 h-64 md:w-80 md:h-80 rounded-full transition-colors duration-700"
+                    className="w-48 h-48 md:w-64 md:h-64 rounded-full transition-colors duration-700"
                     style={{ border: `2px solid ${theme.color}30` }}
                   />
                 </div>
                 {/* Glow orb */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div
-                    className="w-56 h-56 md:w-72 md:h-72 rounded-full blur-[80px] transition-all duration-700"
+                    className="w-40 h-40 md:w-56 md:h-56 rounded-full blur-[80px] transition-all duration-700"
                     style={{ background: theme.glow.replace(/[\d.]+\)$/, '0.3)') }}
                   />
                 </div>
@@ -380,7 +380,7 @@ export const GoldShowcase = () => {
                     transition={{ duration: 0.5, ease: 'easeOut' }}
                     src={product.image}
                     alt={product.name}
-                    className="relative w-48 md:w-56 max-h-[280px] md:max-h-[340px] h-auto object-contain group-hover:scale-[1.06] transition-transform duration-500"
+                    className="relative w-40 md:w-48 max-h-[220px] md:max-h-[280px] h-auto object-contain group-hover:scale-[1.06] transition-transform duration-500"
                     style={{ filter: `drop-shadow(0 20px 60px ${theme.glow})` }}
                   />
                 </div>
