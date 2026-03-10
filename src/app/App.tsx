@@ -5,7 +5,6 @@ import { TrustBadges } from "@/app/components/TrustBadges";
 import { FeaturedProducts } from "@/app/components/FeaturedProducts";
 import { AllProducts } from "@/app/components/AllProducts";
 import { Testimonials } from "@/app/components/Testimonials";
-import { FAQ } from "@/app/components/FAQ";
 import { AboutSection } from "@/app/components/AboutSection";
 import { Footer } from "@/app/components/Footer";
 import { DecorativeEffects } from "@/app/components/DecorativeEffects";
@@ -54,7 +53,6 @@ export default function App() {
           <div className="w-12 md:w-20 h-px bg-gradient-to-l from-transparent to-white/[0.08]" />
         </div>
       </div>
-      <FAQ />
       <AboutSection />
     </>
   );
