@@ -2,7 +2,6 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { Navbar } from "@/app/components/Navbar";
 import { Hero } from "@/app/components/Hero";
 import { TrustBadges } from "@/app/components/TrustBadges";
-import { CategorySection } from "@/app/components/CategorySection";
 import { FeaturedProducts } from "@/app/components/FeaturedProducts";
 import { AllProducts } from "@/app/components/AllProducts";
 import { Benefits } from "@/app/components/Benefits";
@@ -26,7 +25,6 @@ export default function App() {
   const HomePage = () => (
     <>
       <Hero />
-      <CategorySection />
       <GoldShowcase />
       <ProductLines />
       <AllProducts />
