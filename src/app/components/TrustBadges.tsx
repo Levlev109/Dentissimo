@@ -29,7 +29,7 @@ export const TrustBadges = () => {
   ];
 
   return (
-    <section className="py-10 bg-white dark:bg-stone-950 border-b border-stone-100 dark:border-stone-800/30 transition-colors duration-500">
+    <section className="py-10 bg-stone-950 border-b border-stone-800/30 transition-colors duration-500">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
           {badges.map((badge, index) => (
@@ -41,12 +41,12 @@ export const TrustBadges = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
             >
-              <div className="p-3.5 rounded-2xl bg-sky-50 dark:bg-sky-900/20 border border-sky-100 dark:border-sky-800/30 text-sky-600 dark:text-sky-400 group-hover:bg-sky-100 dark:group-hover:bg-sky-800/30 group-hover:scale-110 transition-all duration-300 shadow-sm">
+              <div className="p-3.5 rounded-2xl bg-sky-900/20 border border-sky-800/30 text-sky-400 group-hover:bg-sky-800/30 group-hover:scale-110 transition-all duration-300 shadow-sm">
                 <badge.icon size={22} strokeWidth={1.5} />
               </div>
               <div>
-                <h3 className="text-sm font-bold text-stone-900 dark:text-stone-100 leading-tight mb-0.5">{t(badge.titleKey)}</h3>
-                <p className="text-xs text-stone-500 dark:text-stone-400 leading-tight">{t(badge.descKey)}</p>
+                <h3 className="text-sm font-bold text-stone-100 leading-tight mb-0.5">{t(badge.titleKey)}</h3>
+                <p className="text-xs text-stone-400 leading-tight">{t(badge.descKey)}</p>
               </div>
             </motion.div>
           ))}

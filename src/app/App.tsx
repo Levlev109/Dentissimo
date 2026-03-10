@@ -4,8 +4,6 @@ import { Hero } from "@/app/components/Hero";
 import { TrustBadges } from "@/app/components/TrustBadges";
 import { FeaturedProducts } from "@/app/components/FeaturedProducts";
 import { AllProducts } from "@/app/components/AllProducts";
-import { Benefits } from "@/app/components/Benefits";
-import { ProductLines } from "@/app/components/ProductLines";
 import { Testimonials } from "@/app/components/Testimonials";
 import { FAQ } from "@/app/components/FAQ";
 import { AboutSection } from "@/app/components/AboutSection";
@@ -26,16 +24,14 @@ export default function App() {
     <>
       <Hero />
       <GoldShowcase />
-      <ProductLines />
       <AllProducts />
-      <Benefits />
       <Testimonials />
       <AboutSection />
     </>
   );
 
   return (
-    <div className="min-h-screen bg-white dark:bg-stone-950 text-stone-900 dark:text-white selection:bg-sky-200 selection:text-stone-900 dark:selection:bg-sky-800 dark:selection:text-white transition-colors duration-500">
+    <div className="min-h-screen bg-stone-950 text-white selection:bg-sky-800 selection:text-white transition-colors duration-500">
       <style>{`
         body, h1, h2, h3, h4, h5, h6, .font-serif { font-family: 'Cormorant Garamond', serif; }
       `}</style>

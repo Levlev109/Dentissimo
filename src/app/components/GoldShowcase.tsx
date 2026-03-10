@@ -154,12 +154,12 @@ export const GoldShowcase = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           {/* Category tabs — pill style with glass effect */}
           <div className="flex justify-center mb-5">
-            <div className="inline-flex flex-wrap justify-center gap-1.5 p-1.5 rounded-2xl bg-white/[0.04] backdrop-blur-sm border border-white/[0.06]">
+            <div className="inline-flex flex-wrap justify-center gap-1 p-1 rounded-2xl bg-white/[0.04] backdrop-blur-sm border border-white/[0.06]">
               {categoryOrder.map((cat) => (
                 <button
                   key={cat}
                   onClick={() => handleCategoryChange(cat)}
-                  className={`relative px-5 py-2.5 rounded-xl text-xs font-bold tracking-[0.1em] uppercase transition-all duration-300 ${
+                  className={`relative px-3 py-2 md:px-5 md:py-2.5 rounded-lg md:rounded-xl text-[10px] md:text-xs font-bold tracking-[0.05em] md:tracking-[0.1em] uppercase transition-all duration-300 ${
                     selectedCategory === cat
                       ? 'text-stone-900 shadow-lg'
                       : 'text-stone-500 hover:text-stone-300 hover:bg-white/[0.04]'
@@ -178,14 +178,14 @@ export const GoldShowcase = () => {
 
           {/* Product selector — moved up so user can see & pick products immediately */}
           {categoryProducts.length > 1 && (
-            <div className="mb-8">
+            <div className="mb-6">
               <div className="flex justify-center">
-                <div className="flex items-stretch gap-2 md:gap-3 overflow-x-auto py-2 px-2 max-w-full">
+                <div className="flex items-stretch gap-1.5 md:gap-3 overflow-x-auto py-2 px-2 max-w-full">
                   {categoryProducts.map((p, i) => (
                     <button
                       key={p.id}
                       onClick={() => setSelectedIndex(i)}
-                      className={`flex-shrink-0 flex flex-col items-center gap-1.5 w-20 sm:w-24 md:w-28 rounded-xl p-2 transition-all duration-300 ${
+                      className={`flex-shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20 md:w-28 rounded-lg md:rounded-xl p-1.5 md:p-2 transition-all duration-300 ${
                         i === selectedIndex
                           ? 'bg-white/[0.08] scale-[1.05]'
                           : 'bg-white/[0.03] hover:bg-white/[0.06]'
@@ -195,7 +195,7 @@ export const GoldShowcase = () => {
                         boxShadow: i === selectedIndex ? `0 4px 24px ${theme.glow}` : undefined,
                       }}
                     >
-                      <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 flex items-center justify-center">
+                      <div className="w-10 h-10 sm:w-14 sm:h-14 md:w-20 md:h-20 flex items-center justify-center">
                         <img
                           src={p.image}
                           alt={p.name}

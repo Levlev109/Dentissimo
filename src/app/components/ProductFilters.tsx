@@ -63,16 +63,16 @@ export const ProductFilters = ({
   const hasActiveFilters = selectedCareMethods.length > 0 || selectedIngredients.length > 0;
 
   return (
-    <div className="mb-8 bg-white dark:bg-stone-900 rounded-2xl border border-stone-200/60 dark:border-stone-800/40 p-6 shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-sm">
+    <div className="mb-8 bg-stone-900 rounded-2xl border border-stone-800/40 p-6 shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-sm">
       <div className="flex items-center justify-between mb-6">
-        <h3 className="text-xl font-bold text-stone-900 dark:text-white flex items-center gap-2">
+        <h3 className="text-xl font-bold text-white flex items-center gap-2">
           <span className="w-1 h-6 bg-gradient-to-b from-sky-400 to-sky-500 rounded-full"></span>
           {t('filters.title')}
         </h3>
         {hasActiveFilters && (
           <button
             onClick={clearAll}
-            className="text-sm text-stone-500 hover:text-white transition-all duration-300 flex items-center gap-1.5 bg-stone-100 hover:bg-stone-900 px-3 py-1.5 rounded-full font-medium shadow-sm hover:shadow-md"
+            className="text-sm text-stone-500 hover:text-white transition-all duration-300 flex items-center gap-1.5 bg-stone-800 hover:bg-stone-700 px-3 py-1.5 rounded-full font-medium shadow-sm hover:shadow-md"
           >
             <X size={16} />
             {t('filters.clearAll')}
@@ -85,10 +85,10 @@ export const ProductFilters = ({
         <div>
           <button
             onClick={() => setCareMethodsOpen(!careMethodsOpen)}
-            className="w-full flex items-center justify-between p-4 rounded-xl bg-stone-50/50 dark:bg-stone-900 hover:bg-stone-100/60 dark:hover:bg-stone-800 transition-all duration-300 shadow-sm hover:shadow-md border border-stone-200/50 dark:border-stone-800/30"
+            className="w-full flex items-center justify-between p-4 rounded-xl bg-stone-900 hover:bg-stone-800 transition-all duration-300 shadow-sm hover:shadow-md border border-stone-800/30"
           >
-            <span className="font-semibold text-stone-900 dark:text-white flex items-center gap-2.5">
-              <Sparkles size={20} className="text-stone-700 dark:text-stone-300 drop-shadow-sm" />
+            <span className="font-semibold text-white flex items-center gap-2.5">
+              <Sparkles size={20} className="text-stone-300 drop-shadow-sm" />
               {t('filters.careMethods')}
               {selectedCareMethods.length > 0 && (
                 <span className="ml-2 px-2.5 py-1 bg-stone-900 text-white text-xs rounded-full font-bold shadow-md">
@@ -100,7 +100,7 @@ export const ProductFilters = ({
               animate={{ rotate: careMethodsOpen ? 180 : 0 }}
               transition={{ duration: 0.2 }}
             >
-              <ChevronDown size={20} className="text-stone-500 dark:text-stone-400" />
+              <ChevronDown size={20} className="text-stone-400" />
             </motion.div>
           </button>
           
@@ -120,8 +120,8 @@ export const ProductFilters = ({
                       onClick={() => toggleCareMethod(value)}
                       className={`px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 flex items-center justify-center gap-2 transform hover:scale-105 ${
                         selectedCareMethods.includes(value)
-                          ? 'bg-stone-900 text-white shadow-lg border-2 border-stone-900'
-                          : 'bg-white text-stone-700 border-2 border-stone-200 hover:border-stone-500 hover:shadow-md'
+                          ? 'bg-white text-stone-900 shadow-lg border-2 border-white'
+                          : 'bg-stone-800 text-stone-300 border-2 border-stone-700 hover:border-stone-500 hover:shadow-md'
                       }`}
                     >
                       <Icon size={16} />
@@ -138,10 +138,10 @@ export const ProductFilters = ({
         <div>
           <button
             onClick={() => setIngredientsOpen(!ingredientsOpen)}
-            className="w-full flex items-center justify-between p-4 rounded-xl bg-stone-50/50 dark:bg-stone-900 hover:bg-stone-100/60 dark:hover:bg-stone-800 transition-all duration-300 shadow-sm hover:shadow-md border border-stone-200/50 dark:border-stone-800/30"
+            className="w-full flex items-center justify-between p-4 rounded-xl bg-stone-900 hover:bg-stone-800 transition-all duration-300 shadow-sm hover:shadow-md border border-stone-800/30"
           >
-            <span className="font-semibold text-stone-900 dark:text-white flex items-center gap-2.5">
-              <Leaf size={20} className="text-stone-700 dark:text-stone-300 drop-shadow-sm" />
+            <span className="font-semibold text-white flex items-center gap-2.5">
+              <Leaf size={20} className="text-stone-300 drop-shadow-sm" />
               {t('filters.ingredients')}
               {selectedIngredients.length > 0 && (
                 <span className="ml-2 px-2.5 py-1 bg-stone-900 text-white text-xs rounded-full font-bold shadow-md">
@@ -153,7 +153,7 @@ export const ProductFilters = ({
               animate={{ rotate: ingredientsOpen ? 180 : 0 }}
               transition={{ duration: 0.2 }}
             >
-              <ChevronDown size={20} className="text-stone-500 dark:text-stone-400" />
+              <ChevronDown size={20} className="text-stone-400" />
             </motion.div>
           </button>
           
@@ -173,8 +173,8 @@ export const ProductFilters = ({
                       onClick={() => toggleIngredient(ingredient)}
                       className={`px-4 py-2 rounded-full text-xs font-semibold transition-all duration-300 transform hover:scale-110 ${
                         selectedIngredients.includes(ingredient)
-                          ? 'bg-stone-900 text-white shadow-lg border-2 border-stone-900'
-                          : 'bg-white text-stone-600 border-2 border-stone-200 hover:border-stone-500 hover:shadow-md hover:text-stone-900'
+                          ? 'bg-white text-stone-900 shadow-lg border-2 border-white'
+                          : 'bg-stone-800 text-stone-400 border-2 border-stone-700 hover:border-stone-500 hover:shadow-md hover:text-white'
                       }`}
                     >
                       {t(`ingredients.${ingredient}`)}

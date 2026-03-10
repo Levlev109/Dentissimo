@@ -34,7 +34,7 @@ export const Newsletter = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-stone-900 via-stone-800 to-stone-900 dark:from-stone-950 dark:via-stone-900 dark:to-stone-950 relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-br from-stone-950 via-stone-900 to-stone-950 relative overflow-hidden">
       {/* Decorative background */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_80%_at_50%_-20%,rgba(56,189,248,0.12),transparent)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_40%_60%_at_80%_100%,rgba(56,189,248,0.06),transparent)]" />

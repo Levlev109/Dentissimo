@@ -5,7 +5,7 @@ import { DentissimoLogo } from './DentissimoLogo';
 export const Footer = () => {
   const { t } = useTranslation();
   return (
-    <footer id="contacts" className="bg-stone-900 dark:bg-stone-950 text-white pt-20 pb-10 relative overflow-hidden">
+    <footer id="contacts" className="bg-stone-950 text-white pt-20 pb-10 relative overflow-hidden">
       {/* Subtle top gradient border */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-sky-400/40 to-transparent" />
       

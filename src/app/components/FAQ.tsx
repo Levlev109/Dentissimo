@@ -17,7 +17,7 @@ export const FAQ = () => {
   ];
 
   return (
-    <section className="py-24 bg-gradient-to-b from-white to-stone-50/50 dark:from-stone-950 dark:to-stone-900/50 transition-colors duration-500 relative">
+    <section className="py-24 bg-gradient-to-b from-stone-950 to-stone-900/50 transition-colors duration-500 relative">
       {/* Decorative pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(56,189,248,0.04),transparent_60%)]" />
 
@@ -30,7 +30,7 @@ export const FAQ = () => {
           transition={{ duration: 0.6 }}
         >
           <p className="text-sky-600 uppercase tracking-[0.3em] text-xs font-bold mb-4">{t('faq.subtitle')}</p>
-          <h2 className="font-serif text-3xl md:text-5xl text-stone-900 dark:text-white mb-4">
+          <h2 className="font-serif text-3xl md:text-5xl text-white mb-4">
             {t('faq.title')}
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-transparent via-sky-400 to-transparent mx-auto mt-6" />
@@ -40,7 +40,7 @@ export const FAQ = () => {
           {faqs.map((faq, index) => (
             <motion.div
               key={index}
-              className="border border-stone-200 dark:border-stone-700 rounded-xl overflow-hidden bg-white dark:bg-stone-900 shadow-sm hover:shadow-md transition-all duration-300"
+              className="border border-stone-700 rounded-xl overflow-hidden bg-stone-900 shadow-sm hover:shadow-md transition-all duration-300"
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -48,9 +48,9 @@ export const FAQ = () => {
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors"
+                className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-stone-800 transition-colors"
               >
-                <span className="font-semibold text-stone-900 dark:text-white pr-4">
+                <span className="font-semibold text-white pr-4">
                   {t(faq.questionKey)}
                 </span>
                 <motion.div
@@ -58,7 +58,7 @@ export const FAQ = () => {
                   transition={{ duration: 0.2 }}
                   className="flex-shrink-0"
                 >
-                  <ChevronDown className="text-stone-700 dark:text-stone-300" size={20} />
+                  <ChevronDown className="text-stone-300" size={20} />
                 </motion.div>
               </button>
 
@@ -71,7 +71,7 @@ export const FAQ = () => {
                     transition={{ duration: 0.2 }}
                     className="overflow-hidden"
                   >
-                    <div className="px-6 pb-4 pt-2 text-stone-600 dark:text-stone-400 leading-relaxed border-t border-stone-100 dark:border-stone-800">
+                    <div className="px-6 pb-4 pt-2 text-stone-400 leading-relaxed border-t border-stone-800">
                       {t(faq.answerKey)}
                     </div>
                   </motion.div>
@@ -88,12 +88,12 @@ export const FAQ = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-          <p className="text-stone-600 dark:text-stone-400 mb-4">
+          <p className="text-stone-400 mb-4">
             {t('faq.stillHaveQuestions')}
           </p>
           <a
             href="mailto:info@blasspharma.com"
-            className="inline-block px-8 py-3.5 bg-stone-900 dark:bg-white text-white dark:text-stone-900 font-semibold rounded-xl hover:bg-stone-800 dark:hover:bg-stone-100 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 transform"
+            className="inline-block px-8 py-3.5 bg-white text-stone-900 font-semibold rounded-xl hover:bg-stone-100 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 transform"
           >
             {t('faq.contactUs')}
           </a>

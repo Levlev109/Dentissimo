@@ -101,7 +101,7 @@ export const AIChat = () => {
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="fixed bottom-6 right-6 z-50 w-[380px] max-w-[calc(100vw-2rem)] h-[600px] max-h-[calc(100vh-6rem)] bg-white dark:bg-stone-900 rounded-2xl shadow-2xl flex flex-col overflow-hidden"
+            className="fixed bottom-6 right-6 z-50 w-[380px] max-w-[calc(100vw-2rem)] h-[600px] max-h-[calc(100vh-6rem)] bg-stone-900 rounded-2xl shadow-2xl flex flex-col overflow-hidden"
           >
             {/* Header */}
             <div className="bg-stone-900 text-white p-4 flex items-center justify-between">
@@ -128,7 +128,7 @@ export const AIChat = () => {
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-stone-50 dark:bg-stone-950">
+            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-stone-950">
               {messages.map((message) => (
                 <div
                   key={message.id}
@@ -137,8 +137,8 @@ export const AIChat = () => {
                   <div
                     className={`max-w-[80%] rounded-2xl p-3 ${
                       message.isBot
-                        ? 'bg-white dark:bg-stone-800 text-stone-900 dark:text-stone-100 shadow-sm'
-                        : 'bg-stone-900 dark:bg-sky-700 text-white'
+                        ? 'bg-stone-800 text-stone-100 shadow-sm'
+                        : 'bg-sky-700 text-white'
                     }`}
                   >
                     <p className="text-sm whitespace-pre-line leading-relaxed">
@@ -158,7 +158,7 @@ export const AIChat = () => {
 
               {isTyping && (
                 <div className="flex justify-start">
-                  <div className="bg-white dark:bg-stone-800 text-stone-900 dark:text-stone-100 rounded-2xl p-3 shadow-sm">
+                  <div className="bg-stone-800 text-stone-100 rounded-2xl p-3 shadow-sm">
                     <div className="flex gap-1">
                       <div className="w-2 h-2 bg-stone-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
                       <div className="w-2 h-2 bg-stone-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
@@ -172,7 +172,7 @@ export const AIChat = () => {
             </div>
 
             {/* Input */}
-            <div className="p-4 bg-white dark:bg-stone-900 border-t border-stone-200 dark:border-stone-700">
+            <div className="p-4 bg-stone-900 border-t border-stone-700">
               <div className="flex gap-2">
                 <input
                   type="text"
@@ -180,7 +180,7 @@ export const AIChat = () => {
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder={t('aiChat.placeholder')}
-                  className="flex-1 px-4 py-3 border border-stone-300 dark:border-stone-600 bg-white dark:bg-stone-800 text-stone-900 dark:text-white placeholder-stone-400 dark:placeholder-stone-500 rounded-full focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none text-sm"
+                  className="flex-1 px-4 py-3 border border-stone-600 bg-stone-800 text-white placeholder-stone-500 rounded-full focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none text-sm"
                 />
                 <button
                   onClick={handleSend}
@@ -190,7 +190,7 @@ export const AIChat = () => {
                   <Send size={20} />
                 </button>
               </div>
-              <p className="text-[10px] text-stone-400 dark:text-stone-500 mt-2 text-center">
+              <p className="text-[10px] text-stone-500 mt-2 text-center">
                 {t('aiChat.helper')}
               </p>
             </div>

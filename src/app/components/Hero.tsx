@@ -52,10 +52,10 @@ export const Hero = () => {
           className={`w-full h-full object-cover transition-opacity duration-1000 ${videoLoaded ? 'opacity-100' : 'opacity-0'}`}
         />
         {/* Light overlays — let blue water shine through but keep text readable */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-white/40 to-transparent dark:from-stone-950/80 dark:via-stone-950/40"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-white/20 via-transparent to-white/30 dark:from-stone-950/20 dark:to-stone-950/30"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-stone-950/85 via-stone-950/50 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-stone-950/20 via-transparent to-stone-950/40"></div>
         {/* Bottom fade into next section */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent dark:from-stone-950"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-stone-950 to-transparent"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
@@ -65,12 +65,12 @@ export const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <span className="inline-block py-2 px-4 border border-stone-900/40 dark:border-white/30 rounded-full text-xs font-bold tracking-widest text-stone-900 dark:text-white uppercase mb-6 backdrop-blur-md bg-white/60 dark:bg-stone-900/60 shadow-lg hover:bg-white/80 dark:hover:bg-stone-900/80 transition-all duration-300">
+            <span className="inline-block py-2 px-4 border border-white/30 rounded-full text-xs font-bold tracking-widest text-white uppercase mb-6 backdrop-blur-md bg-stone-900/60 shadow-lg hover:bg-stone-900/80 transition-all duration-300">
               {t('hero.tagline')}
             </span>
-            <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl leading-tight text-stone-900 dark:text-white drop-shadow-md font-bold">
+            <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl leading-tight text-white drop-shadow-md font-bold">
               {t('hero.title').split(' ').slice(0, 2).join(' ')} <br />
-              <span className="italic text-stone-800 dark:text-stone-200 font-semibold">{t('hero.title').split(' ').slice(2).join(' ')}</span>
+              <span className="italic text-stone-200 font-semibold">{t('hero.title').split(' ').slice(2).join(' ')}</span>
             </h1>
           </motion.div>
 
@@ -78,7 +78,7 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-lg text-stone-800 dark:text-stone-200 max-w-md leading-relaxed font-medium mt-8 drop-shadow-sm"
+            className="text-lg text-stone-200 max-w-md leading-relaxed font-medium mt-8 drop-shadow-sm"
           >
             {t('hero.description')}
           </motion.p>
@@ -89,11 +89,11 @@ export const Hero = () => {
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
             className="flex flex-wrap gap-3 mt-8"
           >
-            <a href="#products" className="px-6 py-3.5 bg-stone-900 text-white font-semibold tracking-wide hover:bg-stone-800 transition-all duration-300 flex items-center justify-center gap-2 group rounded-xl shadow-xl hover:shadow-2xl hover:scale-105 transform text-sm md:text-base md:px-8 md:py-4">
+            <a href="#products" className="px-6 py-3.5 bg-white text-stone-900 font-semibold tracking-wide hover:bg-stone-100 transition-all duration-300 flex items-center justify-center gap-2 group rounded-xl shadow-xl hover:shadow-2xl hover:scale-105 transform text-sm md:text-base md:px-8 md:py-4">
               {t('hero.buyNow')}
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </a>
-            <a href="#about" className="px-6 py-3.5 border-2 border-stone-900/30 dark:border-white/30 text-stone-900 dark:text-white font-semibold tracking-wide hover:bg-white/60 dark:hover:bg-white/10 hover:border-stone-900/50 dark:hover:border-white/50 transition-all duration-300 flex items-center justify-center backdrop-blur-md rounded-xl shadow-lg hover:scale-105 transform text-sm md:text-base md:px-8 md:py-4">
+            <a href="#about" className="px-6 py-3.5 border-2 border-white/30 text-white font-semibold tracking-wide hover:bg-white/10 hover:border-white/50 transition-all duration-300 flex items-center justify-center backdrop-blur-md rounded-xl shadow-lg hover:scale-105 transform text-sm md:text-base md:px-8 md:py-4">
               {t('hero.learnMore')}
             </a>
           </motion.div>
@@ -102,8 +102,8 @@ export const Hero = () => {
       
       {/* Decorative scroll indicator */}
       <div className="absolute bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce opacity-60 md:left-10 md:translate-x-0 md:items-start z-10">
-         <span className="text-[10px] uppercase tracking-widest text-stone-600 dark:text-stone-400 font-semibold drop-shadow-sm">{t('common.scroll')}</span>
-         <div className="w-[1px] h-10 bg-stone-500/50 dark:bg-stone-400/50"></div>
+         <span className="text-[10px] uppercase tracking-widest text-stone-400 font-semibold drop-shadow-sm">{t('common.scroll')}</span>
+         <div className="w-[1px] h-10 bg-stone-400/50"></div>
       </div>
     </section>
   );

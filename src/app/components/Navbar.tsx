@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
-import { Menu, X, Globe, Search, User, Moon, Sun } from 'lucide-react';
+import { Menu, X, Globe, Search, User } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
-import { useTheme } from '../../contexts/ThemeContext';
+
 import { CartDrawer } from './CartDrawer';
 import { AuthModal } from './AuthModal';
 import { DentissimoLogo } from './DentissimoLogo';
@@ -15,7 +15,7 @@ export const Navbar = () => {
   const [showLangMenu, setShowLangMenu] = useState(false);
   const { t, i18n } = useTranslation();
   const { user, logout } = useAuth();
-  const { isDark, toggle: toggleTheme } = useTheme();
+
   const navigate = useNavigate();
   const langRef = useRef<HTMLDivElement>(null);
 
@@ -56,7 +56,7 @@ export const Navbar = () => {
 
   return (
     <>
-    <nav className="fixed w-full z-50 bg-white/95 dark:bg-stone-950/95 backdrop-blur-xl border-b border-stone-200/50 dark:border-stone-800/50 transition-all duration-300 shadow-lg shadow-stone-900/5 dark:shadow-stone-950/20">
+    <nav className="fixed w-full z-50 bg-stone-950/95 backdrop-blur-xl border-b border-stone-800/50 transition-all duration-300 shadow-lg shadow-stone-950/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 md:h-20">
 
@@ -64,7 +64,7 @@ export const Navbar = () => {
           <div className="flex items-center md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="p-2 text-stone-800 dark:text-stone-200 hover:text-stone-900 dark:hover:text-white focus:outline-none transition-colors duration-300"
+              className="p-2 text-stone-200 hover:text-white focus:outline-none transition-colors duration-300"
             >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -87,10 +87,10 @@ export const Navbar = () => {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-sm font-semibold text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white transition-all duration-300 tracking-wide uppercase relative group"
+                className="text-sm font-semibold text-stone-300 hover:text-white transition-all duration-300 tracking-wide uppercase relative group"
               >
                 {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-stone-900 dark:bg-white group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-white group-hover:w-full transition-all duration-300"></span>
               </a>
             ))}
           </div>
@@ -98,37 +98,28 @@ export const Navbar = () => {
           {/* Right Icons */}
           <div className="flex items-center gap-2 md:gap-4">
             {/* Desktop only: Search */}
-            <a href="#products" className="hidden md:block text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white transition-all duration-300 hover:scale-110 transform">
+            <a href="#products" className="hidden md:block text-stone-300 hover:text-white transition-all duration-300 hover:scale-110 transform">
               <Search size={20} />
             </a>
-
-            {/* Desktop only: Theme Toggle */}
-            <button
-              onClick={toggleTheme}
-              className="hidden md:block text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white transition-all duration-300 hover:scale-110 transform"
-              aria-label="Toggle dark mode"
-            >
-              {isDark ? <Sun size={18} /> : <Moon size={18} />}
-            </button>
 
             {/* Desktop only: Language Selector */}
             <div className="relative hidden md:block" ref={langRef}>
               <button
                 onClick={() => setShowLangMenu(!showLangMenu)}
-                className="flex items-center space-x-1 text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white transition-all duration-300 hover:scale-110 transform"
+                className="flex items-center space-x-1 text-stone-300 hover:text-white transition-all duration-300 hover:scale-110 transform"
               >
                 <Globe size={18} />
                 <span className="text-sm font-medium">{currentLang.flag}</span>
               </button>
 
               {showLangMenu && (
-                <div className="absolute right-0 top-full mt-3 bg-white/95 dark:bg-stone-900/95 backdrop-blur-xl rounded-xl shadow-2xl border border-stone-200/50 dark:border-stone-700/50 py-2 w-52 z-50">
+                <div className="absolute right-0 top-full mt-3 bg-stone-900/95 backdrop-blur-xl rounded-xl shadow-2xl border border-stone-700/50 py-2 w-52 z-50">
                   {languages.map(lang => (
                     <button
                       key={lang.code}
                       onClick={() => changeLang(lang.code)}
-                      className={`w-full px-4 py-2.5 text-left hover:bg-stone-100 dark:hover:bg-stone-800 flex items-center gap-3 transition-all duration-300 ${
-                        i18n.language === lang.code ? 'bg-stone-100 dark:bg-stone-800 font-semibold border-l-4 border-stone-900 dark:border-white' : ''
+                      className={`w-full px-4 py-2.5 text-left hover:bg-stone-800 flex items-center gap-3 transition-all duration-300 ${
+                        i18n.language === lang.code ? 'bg-stone-800 font-semibold border-l-4 border-white' : ''
                       }`}
                     >
                       <span className="text-lg">{lang.flag}</span>
@@ -142,11 +133,11 @@ export const Navbar = () => {
             {/* Desktop only: User */}
             <div className="hidden md:block">
               {user ? (
-                <button onClick={() => navigate('/profile')} className="text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white transition-colors" title={t('profile.title')}>
+                <button onClick={() => navigate('/profile')} className="text-stone-300 hover:text-white transition-colors" title={t('profile.title')}>
                   <User size={20} />
                 </button>
               ) : (
-                <button onClick={() => setShowAuthModal(true)} className="text-stone-600 dark:text-stone-300 hover:text-stone-900 dark:hover:text-white transition-colors">
+                <button onClick={() => setShowAuthModal(true)} className="text-stone-300 hover:text-white transition-colors">
                   <User size={20} />
                 </button>
               )}
@@ -165,7 +156,7 @@ export const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white dark:bg-stone-950 border-t border-stone-100 dark:border-stone-800 overflow-hidden"
+            className="md:hidden bg-stone-950 border-t border-stone-800 overflow-hidden"
           >
             <div className="px-4 pt-2 pb-6 space-y-1">
               {/* Nav links */}
@@ -174,45 +165,31 @@ export const Navbar = () => {
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="block px-3 py-4 text-base font-medium text-stone-800 dark:text-stone-200 hover:bg-stone-50 dark:hover:bg-stone-800 border-b border-stone-100 dark:border-stone-800"
+                  className="block px-3 py-4 text-base font-medium text-stone-200 hover:bg-stone-800 border-b border-stone-800"
                 >
                   {link.name}
                 </a>
               ))}
 
               {/* User / Profile */}
-              <div className="px-3 py-4 border-b border-stone-100 dark:border-stone-800">
+              <div className="px-3 py-4 border-b border-stone-800">
                 {user ? (
                   <button
                     onClick={() => { navigate('/profile'); setIsOpen(false); }}
-                    className="flex items-center gap-3 text-base font-medium text-stone-800 dark:text-stone-200 w-full"
+                    className="flex items-center gap-3 text-base font-medium text-stone-200 w-full"
                   >
-                    <User size={18} className="text-stone-700 dark:text-stone-300" />
+                    <User size={18} className="text-stone-300" />
                     {t('profile.title')}
                   </button>
                 ) : (
                   <button
                     onClick={() => { setShowAuthModal(true); setIsOpen(false); }}
-                    className="flex items-center gap-3 text-base font-medium text-stone-800 dark:text-stone-200 w-full"
+                    className="flex items-center gap-3 text-base font-medium text-stone-200 w-full"
                   >
-                    <User size={18} className="text-stone-700 dark:text-stone-300" />
+                    <User size={18} className="text-stone-300" />
                     {t('auth.login')}
                   </button>
                 )}
-              </div>
-
-              {/* Theme toggle */}
-              <div className="flex items-center justify-between px-3 py-4 border-b border-stone-100 dark:border-stone-800">
-                <span className="text-base font-medium text-stone-800 dark:text-stone-200">
-                  {isDark ? 'Світла тема' : 'Темна тема'}
-                </span>
-                <button
-                  onClick={() => { toggleTheme(); setIsOpen(false); }}
-                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-200 font-medium text-sm transition-all duration-300"
-                >
-                  {isDark ? <Sun size={18} className="text-stone-700 dark:text-stone-300" /> : <Moon size={18} />}
-                  {isDark ? 'Світла' : 'Темна'}
-                </button>
               </div>
 
               {/* Language selector */}
@@ -225,8 +202,8 @@ export const Navbar = () => {
                       onClick={() => { changeLang(lang.code); setIsOpen(false); }}
                       className={`py-2 px-1 rounded-lg text-center text-xs font-medium transition-all ${
                         i18n.language === lang.code
-                          ? 'bg-stone-900 text-white'
-                          : 'bg-stone-100 dark:bg-stone-800 text-stone-700 dark:text-stone-300'
+                          ? 'bg-white text-stone-900'
+                          : 'bg-stone-800 text-stone-300'
                       }`}
                     >
                       <div className="text-lg">{lang.flag}</div>

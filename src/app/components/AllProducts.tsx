@@ -63,18 +63,18 @@ export const AllProducts = () => {
   });
 
   return (
-    <section id="products" className="py-24 bg-gradient-to-b from-stone-50/30 to-white dark:from-stone-900/30 dark:to-stone-950 transition-colors duration-500 relative">
+    <section id="products" className="py-24 bg-gradient-to-b from-stone-900/30 to-stone-950 transition-colors duration-500 relative">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_50%_at_50%_0%,rgba(56,189,248,0.04),transparent)]" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-12">
           <p className="text-sky-600 uppercase tracking-[0.3em] text-xs font-bold mb-3">{t('allProductsSection.subtitle')}</p>
-          <h2 className="font-serif text-3xl md:text-5xl text-stone-900 dark:text-white mb-2">{t('allProductsSection.title')}</h2>
+          <h2 className="font-serif text-3xl md:text-5xl text-white mb-2">{t('allProductsSection.title')}</h2>
           <div className="w-24 h-1 bg-gradient-to-r from-transparent via-sky-400 to-transparent mx-auto mt-6" />
         </div>
         <div className="flex flex-wrap justify-center gap-3 mb-14">
           {categories.map(cat => (
             <button key={cat.id} onClick={() => setSelectedCategory(cat.id)}
-              className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 border ${selectedCategory === cat.id ? 'bg-stone-900 dark:bg-white text-white dark:text-stone-900 border-stone-900 dark:border-white shadow-md' : 'bg-white dark:bg-stone-800/60 text-stone-600 dark:text-stone-300 border-stone-200 dark:border-stone-700 hover:border-stone-500 hover:text-stone-900 dark:hover:text-white'}`}>
+              className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 border ${selectedCategory === cat.id ? 'bg-white text-stone-900 border-white shadow-md' : 'bg-stone-800/60 text-stone-300 border-stone-700 hover:border-stone-500 hover:text-white'}`}>
               {t(cat.nameKey)}
             </button>
           ))}
@@ -92,7 +92,7 @@ export const AllProducts = () => {
         </motion.div>
         {filteredProducts.length === 0 && (
           <div className="text-center py-16">
-            <p className="text-stone-500 dark:text-stone-400">{t('allProductsSection.notFound')}</p>
+            <p className="text-stone-400">{t('allProductsSection.notFound')}</p>
           </div>
         )}
       </div>

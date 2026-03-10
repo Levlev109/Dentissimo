@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { db, Order, ProductOverride, CustomProduct } from '../../services/database';
 import { orderService, checkSupabaseSetup } from '../../services/orderService';
 import { productService } from '../../services/productService';
@@ -17,11 +17,11 @@ const fmt = (iso: string) =>
   new Date(iso).toLocaleString('uk-UA', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
 
 const statusColors: Record<string, string> = {
-  pending:   'bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-300',
-  confirmed: 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300',
-  shipped:   'bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300',
-  delivered: 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300',
-  cancelled: 'bg-red-100 text-red-800 dark:bg-red-900/30 dark:text-red-300',
+  pending:   'bg-amber-900/30 text-amber-300',
+  confirmed: 'bg-blue-900/30 text-blue-300',
+  shipped:   'bg-purple-900/30 text-purple-300',
+  delivered: 'bg-green-900/30 text-green-300',
+  cancelled: 'bg-red-900/30 text-red-300',
 };
 
 const statusLabels: Record<string, string> = {
@@ -34,8 +34,8 @@ const BadgeStyle = 'inline-flex items-center px-2 py-0.5 rounded text-xs font-me
 // в”Ђв”Ђв”Ђ COMPONENTS в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ
 
 interface StatCardProps { label: string; value: string | number; sub?: string; color?: string; }
-const StatCard = ({ label, value, sub, color = 'text-stone-900 dark:text-white' }: StatCardProps) => (
-  <div className="bg-white dark:bg-stone-900 rounded-xl border border-stone-200 dark:border-stone-800 p-6">
+const StatCard = ({ label, value, sub, color = 'text-white' }: StatCardProps) => (
+  <div className="bg-stone-900 rounded-xl border border-stone-800 p-6">
     <p className="text-xs text-stone-500 uppercase tracking-widest mb-1">{label}</p>
     <p className={`text-3xl font-bold ${color}`}>{value}</p>
     {sub && <p className="text-xs text-stone-400 mt-1">{sub}</p>}
@@ -113,15 +113,15 @@ export const AdminPage = () => {
   ] as const;
 
   return (
-    <div className="min-h-screen bg-stone-100 dark:bg-stone-950 flex flex-col">
+    <div className="min-h-screen bg-stone-950 flex flex-col">
       {/* Top nav */}
-      <header className="bg-white dark:bg-stone-900 border-b border-stone-200 dark:border-stone-800 px-6 py-3 flex items-center justify-between sticky top-0 z-40">
-        <span className="font-serif text-xl text-stone-900 dark:text-white tracking-wide">Dentissimo <span className="text-stone-500 text-sm font-medium">Admin</span></span>
+      <header className="bg-stone-900 border-b border-stone-800 px-6 py-3 flex items-center justify-between sticky top-0 z-40">
+        <span className="font-serif text-xl text-white tracking-wide">Dentissimo <span className="text-stone-500 text-sm font-medium">Admin</span></span>
         <div className="flex items-center gap-4">
           <div className="hidden md:flex gap-1">
             {tabs.map(tab => (
               <button key={tab.id} onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${activeTab === tab.id ? 'bg-stone-200 dark:bg-stone-800 text-stone-900 dark:text-white' : 'text-stone-500 dark:text-stone-400 hover:text-stone-800 dark:hover:text-white'}`}>
+                className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition-colors ${activeTab === tab.id ? 'bg-stone-800 text-white' : 'text-stone-400 hover:text-white'}`}>
                 <tab.icon size={15} /> {tab.label}
               </button>
             ))}
@@ -133,10 +133,10 @@ export const AdminPage = () => {
       </header>
 
       {/* Mobile tabs */}
-      <div className="md:hidden flex gap-1 p-3 bg-white dark:bg-stone-900 border-b border-stone-200 dark:border-stone-800 overflow-x-auto">
+      <div className="md:hidden flex gap-1 p-3 bg-stone-900 border-b border-stone-800 overflow-x-auto">
         {tabs.map(tab => (
           <button key={tab.id} onClick={() => setActiveTab(tab.id)}
-            className={`flex items-center gap-1 px-3 py-2 rounded-lg text-xs font-medium whitespace-nowrap transition-colors ${activeTab === tab.id ? 'bg-stone-200 dark:bg-stone-800 text-stone-900 dark:text-white' : 'text-stone-500'}`}>
+            className={`flex items-center gap-1 px-3 py-2 rounded-lg text-xs font-medium whitespace-nowrap transition-colors ${activeTab === tab.id ? 'bg-stone-800 text-white' : 'text-stone-500'}`}>
             <tab.icon size={13} /> {tab.label}
           </button>
         ))}
@@ -144,14 +144,14 @@ export const AdminPage = () => {
 
       <main className="flex-1 p-4 md:p-6 max-w-7xl mx-auto w-full">
         {supabaseError && (
-          <div className="mb-6 p-4 bg-red-50 dark:bg-red-950 border border-red-300 dark:border-red-800 rounded-xl">
+          <div className="mb-6 p-4 bg-red-950 border border-red-800 rounded-xl">
             <div className="flex items-start gap-3">
               <AlertTriangle size={20} className="text-red-500 mt-0.5 shrink-0" />
               <div className="flex-1 min-w-0">
-                <p className="font-semibold text-red-700 dark:text-red-400">Supabase РЅРµ РїС–РґРєР»СЋС‡РµРЅРёР№ вЂ” Р·Р°РјРѕРІР»РµРЅРЅСЏ РЅРµ Р·Р±РµСЂС–РіР°СЋС‚СЊСЃСЏ РІ Р±Р°Р·С–!</p>
-                <p className="text-red-600 dark:text-red-500 text-sm mt-1 break-all">РџРѕРјРёР»РєР°: {supabaseError}</p>
+                <p className="font-semibold text-red-400">Supabase РЅРµ РїС–РґРєР»СЋС‡РµРЅРёР№ вЂ” Р·Р°РјРѕРІР»РµРЅРЅСЏ РЅРµ Р·Р±РµСЂС–РіР°СЋС‚СЊСЃСЏ РІ Р±Р°Р·С–!</p>
+                <p className="text-red-500 text-sm mt-1 break-all">РџРѕРјРёР»РєР°: {supabaseError}</p>
                 <details className="mt-3">
-                  <summary className="text-sm text-red-600 dark:text-red-400 cursor-pointer font-medium">РЇРє РІРёРїСЂР°РІРёС‚Рё вЂ” Р·Р°РїСѓСЃС‚Рё С†РµР№ SQL РІ Supabase</summary>
+                  <summary className="text-sm text-red-400 cursor-pointer font-medium">РЇРє РІРёРїСЂР°РІРёС‚Рё вЂ” Р·Р°РїСѓСЃС‚Рё С†РµР№ SQL РІ Supabase</summary>
                   <pre className="mt-2 p-3 bg-stone-900 text-green-400 text-xs rounded-lg overflow-x-auto whitespace-pre-wrap">{`-- 1. Відкрий app.supabase.com → твій проєкт → SQL Editor
 -- 2. Встав цей код і натисни Run:
 
@@ -236,8 +236,8 @@ const DashboardTab = () => {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-semibold text-stone-900 dark:text-white">РћРіР»СЏРґ</h2>
-        <button onClick={refresh} className="flex items-center gap-1.5 text-sm text-stone-500 hover:text-stone-900 dark:hover:text-white transition-colors">
+        <h2 className="text-xl font-semibold text-white">РћРіР»СЏРґ</h2>
+        <button onClick={refresh} className="flex items-center gap-1.5 text-sm text-stone-500 hover:text-white transition-colors">
           <RefreshCw size={14} className={loading ? 'animate-spin' : ''} /> РћРЅРѕРІРёС‚Рё
         </button>
       </div>
@@ -249,19 +249,19 @@ const DashboardTab = () => {
       </div>
 
       {/* Recent orders */}
-      <div className="bg-white dark:bg-stone-900 rounded-xl border border-stone-200 dark:border-stone-800">
-        <div className="px-6 py-4 border-b border-stone-100 dark:border-stone-800">
-          <h3 className="font-semibold text-stone-900 dark:text-white">РћСЃС‚Р°РЅРЅС– Р·Р°РјРѕРІР»РµРЅРЅСЏ</h3>
+      <div className="bg-stone-900 rounded-xl border border-stone-800">
+        <div className="px-6 py-4 border-b border-stone-800">
+          <h3 className="font-semibold text-white">РћСЃС‚Р°РЅРЅС– Р·Р°РјРѕРІР»РµРЅРЅСЏ</h3>
         </div>
-        <div className="divide-y divide-stone-100 dark:divide-stone-800">
+        <div className="divide-y divide-stone-800">
           {orders.slice(0, 8).map(order => (
             <div key={order.id} className="px-6 py-3 flex items-center justify-between gap-4">
               <div>
-                <p className="text-sm font-medium text-stone-900 dark:text-white">{order.customerInfo.firstName} {order.customerInfo.lastName}</p>
+                <p className="text-sm font-medium text-white">{order.customerInfo.firstName} {order.customerInfo.lastName}</p>
                 <p className="text-xs text-stone-400">{fmt(order.createdAt)}</p>
               </div>
               <div className="flex items-center gap-3">
-                <span className="font-semibold text-stone-900 dark:text-white text-sm">в‚ґ{order.total.toFixed(0)}</span>
+                <span className="font-semibold text-white text-sm">в‚ґ{order.total.toFixed(0)}</span>
                 <span className={`${BadgeStyle} ${statusColors[order.status]}`}>{statusLabels[order.status]}</span>
               </div>
             </div>
@@ -320,10 +320,10 @@ const OrdersTab = () => {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-semibold text-stone-900 dark:text-white">Р—Р°РјРѕРІР»РµРЅРЅСЏ</h2>
+        <h2 className="text-xl font-semibold text-white">Р—Р°РјРѕРІР»РµРЅРЅСЏ</h2>
         <div className="flex items-center gap-3">
           <span className="text-sm text-stone-400">{shown.length} Р·Р°РїРёСЃС–РІ</span>
-          <button onClick={refresh} className="flex items-center gap-1.5 text-sm text-stone-500 hover:text-stone-900 dark:hover:text-white transition-colors">
+          <button onClick={refresh} className="flex items-center gap-1.5 text-sm text-stone-500 hover:text-white transition-colors">
             <RefreshCw size={14} className={loading ? 'animate-spin' : ''} /> РћРЅРѕРІРёС‚Рё
           </button>
         </div>
@@ -333,7 +333,7 @@ const OrdersTab = () => {
       <div className="flex flex-wrap gap-2">
         {filterTabs.map(ft => (
           <button key={ft.id} onClick={() => setFilter(ft.id)}
-            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${filter === ft.id ? 'bg-stone-900 text-white' : 'bg-white dark:bg-stone-900 text-stone-600 dark:text-stone-300 border border-stone-200 dark:border-stone-700 hover:border-stone-500'}`}>
+            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${filter === ft.id ? 'bg-stone-900 text-white' : 'bg-stone-900 text-stone-300 border border-stone-700 hover:border-stone-500'}`}>
             {ft.label} {ft.id !== 'all' && <span className="ml-1 opacity-70">{orders.filter(o => o.status === ft.id).length}</span>}
           </button>
         ))}
@@ -341,7 +341,7 @@ const OrdersTab = () => {
 
       <div className="space-y-3">
         {shown.map(order => (
-          <div key={order.id} className="bg-white dark:bg-stone-900 rounded-xl border border-stone-200 dark:border-stone-800 overflow-hidden">
+          <div key={order.id} className="bg-stone-900 rounded-xl border border-stone-800 overflow-hidden">
             {/* Order row */}
             <div className="px-5 py-4 flex flex-wrap items-center gap-3 cursor-pointer" onClick={() => setExpandedId(expandedId === order.id ? null : order.id)}>
               <div className="flex-1 min-w-0">
@@ -349,32 +349,32 @@ const OrdersTab = () => {
                   <span className="font-mono text-xs text-stone-400">{order.id.slice(0, 8)}</span>
                   <span className={`${BadgeStyle} ${statusColors[order.status]}`}>{statusLabels[order.status]}</span>
                 </div>
-                <p className="font-medium text-stone-900 dark:text-white mt-0.5">{order.customerInfo.firstName} {order.customerInfo.lastName}</p>
+                <p className="font-medium text-white mt-0.5">{order.customerInfo.firstName} {order.customerInfo.lastName}</p>
                 <p className="text-xs text-stone-400">{fmt(order.createdAt)} В· {order.items.length} С‚РѕРІР°СЂС–РІ</p>
               </div>
               <div className="flex items-center gap-3">
-                <span className="font-bold text-stone-900 dark:text-white">в‚ґ{order.total.toFixed(0)}</span>
+                <span className="font-bold text-white">в‚ґ{order.total.toFixed(0)}</span>
                 {expandedId === order.id ? <ChevronUp size={16} className="text-stone-400" /> : <ChevronDown size={16} className="text-stone-400" />}
               </div>
             </div>
 
             {/* Expanded details */}
             {expandedId === order.id && (
-              <div className="border-t border-stone-100 dark:border-stone-800 px-5 py-4 space-y-4">
+              <div className="border-t border-stone-800 px-5 py-4 space-y-4">
                 {/* Customer info */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                   <div className="space-y-1">
                     <p className="text-xs text-stone-400 uppercase tracking-wide font-medium">РљР»С–С”РЅС‚</p>
-                    <p className="text-stone-900 dark:text-white">{order.customerInfo.firstName} {order.customerInfo.lastName}</p>
-                    {order.customerInfo.email && <p className="text-stone-600 dark:text-stone-300">{order.customerInfo.email}</p>}
-                    <p className="text-stone-600 dark:text-stone-300">{order.customerInfo.phone}</p>
+                    <p className="text-white">{order.customerInfo.firstName} {order.customerInfo.lastName}</p>
+                    {order.customerInfo.email && <p className="text-stone-300">{order.customerInfo.email}</p>}
+                    <p className="text-stone-300">{order.customerInfo.phone}</p>
                   </div>
                   <div className="space-y-1">
                     <p className="text-xs text-stone-400 uppercase tracking-wide font-medium">Р”РѕСЃС‚Р°РІРєР°</p>
-                    <p className="text-stone-900 dark:text-white">{order.customerInfo.country}</p>
-                    <p className="text-stone-600 dark:text-stone-300">{order.customerInfo.address}</p>
-                    {order.customerInfo.city && <p className="text-stone-600 dark:text-stone-300">{order.customerInfo.city}</p>}
-                    {order.customerInfo.warehouse && <p className="text-stone-600 dark:text-stone-300">{order.customerInfo.warehouse}</p>}
+                    <p className="text-white">{order.customerInfo.country}</p>
+                    <p className="text-stone-300">{order.customerInfo.address}</p>
+                    {order.customerInfo.city && <p className="text-stone-300">{order.customerInfo.city}</p>}
+                    {order.customerInfo.warehouse && <p className="text-stone-300">{order.customerInfo.warehouse}</p>}
                   </div>
                 </div>
 
@@ -383,18 +383,18 @@ const OrdersTab = () => {
                   <p className="text-xs text-stone-400 uppercase tracking-wide font-medium mb-2">РўРѕРІР°СЂРё</p>
                   <div className="space-y-2">
                     {order.items.map((item, idx) => (
-                      <div key={idx} className="flex items-center gap-3 p-2 bg-stone-50 dark:bg-stone-800/50 rounded-lg">
+                      <div key={idx} className="flex items-center gap-3 p-2 bg-stone-800/50 rounded-lg">
                         <img src={item.product.image} alt={item.product.name} className="w-10 h-10 object-contain rounded" />
                         <div className="flex-1 min-w-0">
-                          <p className="text-sm font-medium text-stone-900 dark:text-white truncate">{item.product.name}</p>
+                          <p className="text-sm font-medium text-white truncate">{item.product.name}</p>
                           <p className="text-xs text-stone-400">Г—{item.quantity}</p>
                         </div>
-                        <span className="text-sm font-semibold text-stone-900 dark:text-white">в‚ґ{(item.product.price * item.quantity).toFixed(0)}</span>
+                        <span className="text-sm font-semibold text-white">в‚ґ{(item.product.price * item.quantity).toFixed(0)}</span>
                       </div>
                     ))}
                   </div>
-                  <div className="flex justify-end mt-2 pt-2 border-t border-stone-100 dark:border-stone-800">
-                    <span className="font-bold text-stone-900 dark:text-white">Р Р°Р·РѕРј: в‚ґ{order.total.toFixed(2)}</span>
+                  <div className="flex justify-end mt-2 pt-2 border-t border-stone-800">
+                    <span className="font-bold text-white">Р Р°Р·РѕРј: в‚ґ{order.total.toFixed(2)}</span>
                   </div>
                 </div>
 
@@ -404,12 +404,12 @@ const OrdersTab = () => {
                   <div className="flex flex-wrap gap-2">
                     {(['pending', 'confirmed', 'shipped', 'delivered', 'cancelled'] as const).map(s => (
                       <button key={s} onClick={() => setStatus(order.id, s)} disabled={order.status === s}
-                        className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${order.status === s ? `${statusColors[s]} border-transparent cursor-default` : 'bg-white dark:bg-stone-800 border-stone-200 dark:border-stone-700 text-stone-600 dark:text-stone-300 hover:border-stone-500 hover:text-stone-900 dark:hover:text-white'}`}>
+                        className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition-colors ${order.status === s ? `${statusColors[s]} border-transparent cursor-default` : 'bg-stone-800 border-stone-700 text-stone-300 hover:border-stone-500 hover:text-white'}`}>
                         {order.status === s && <Check size={11} className="inline mr-1" />}
                         {statusLabels[s]}
                       </button>
                     ))}
-                    <button onClick={() => deleteOrder(order.id)} className="px-3 py-1.5 rounded-lg text-xs font-medium border border-red-200 text-red-500 hover:bg-red-50 dark:hover:bg-red-950/20 transition-colors ml-auto">
+                    <button onClick={() => deleteOrder(order.id)} className="px-3 py-1.5 rounded-lg text-xs font-medium border border-red-200 text-red-500 hover:bg-red-950/20 transition-colors ml-auto">
                       <Trash2 size={11} className="inline mr-1" /> Р’РёРґР°Р»РёС‚Рё
                     </button>
                   </div>
@@ -419,7 +419,7 @@ const OrdersTab = () => {
           </div>
         ))}
         {shown.length === 0 && (
-          <div className="text-center py-16 text-stone-400 text-sm bg-white dark:bg-stone-900 rounded-xl border border-stone-200 dark:border-stone-800">
+          <div className="text-center py-16 text-stone-400 text-sm bg-stone-900 rounded-xl border border-stone-800">
             {loading ? (
               <div className="flex items-center justify-center gap-2">
                 <RefreshCw size={16} className="animate-spin" /> Р—Р°РІР°РЅС‚Р°Р¶РµРЅРЅСЏвЂ¦
@@ -493,7 +493,7 @@ const ProductsTab = () => {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-semibold text-stone-900 dark:text-white">РџСЂРѕРґСѓРєС‚Рё</h2>
+        <h2 className="text-xl font-semibold text-white">РџСЂРѕРґСѓРєС‚Рё</h2>
         <button onClick={() => setShowAddForm(!showAddForm)}
           className="flex items-center gap-1.5 px-4 py-2 bg-stone-900 hover:bg-stone-800 text-white rounded-lg text-sm font-medium transition-colors">
           <PlusCircle size={15} /> Р”РѕРґР°С‚Рё РїСЂРѕРґСѓРєС‚
@@ -502,49 +502,49 @@ const ProductsTab = () => {
 
       {/* Add product form */}
       {showAddForm && (
-        <div className="bg-white dark:bg-stone-900 rounded-xl border border-stone-300 p-6">
-          <h3 className="font-semibold text-stone-900 dark:text-white mb-4">РќРѕРІРёР№ РїСЂРѕРґСѓРєС‚</h3>
+        <div className="bg-stone-900 rounded-xl border border-stone-300 p-6">
+          <h3 className="font-semibold text-white mb-4">РќРѕРІРёР№ РїСЂРѕРґСѓРєС‚</h3>
           <form onSubmit={addCustomProduct} className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label className="text-xs text-stone-500 block mb-1">РќР°Р·РІР° *</label>
               <input value={newProduct.name} onChange={e => setNewProduct(p => ({ ...p, name: e.target.value }))} required
-                className="w-full px-3 py-2 border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-900 dark:text-white rounded-lg text-sm focus:outline-none focus:border-sky-400" />
+                className="w-full px-3 py-2 border border-stone-700 bg-stone-800 text-white rounded-lg text-sm focus:outline-none focus:border-sky-400" />
             </div>
             <div>
               <label className="text-xs text-stone-500 block mb-1">Р¦С–РЅР° (в‚ґ) *</label>
               <input type="number" value={newProduct.price} onChange={e => setNewProduct(p => ({ ...p, price: e.target.value }))} required
-                className="w-full px-3 py-2 border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-900 dark:text-white rounded-lg text-sm focus:outline-none focus:border-sky-400" />
+                className="w-full px-3 py-2 border border-stone-700 bg-stone-800 text-white rounded-lg text-sm focus:outline-none focus:border-sky-400" />
             </div>
             <div>
               <label className="text-xs text-stone-500 block mb-1">РљР°С‚РµРіРѕСЂС–СЏ</label>
               <select value={newProduct.categoryKey} onChange={e => setNewProduct(p => ({ ...p, categoryKey: e.target.value }))}
-                className="w-full px-3 py-2 border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-900 dark:text-white rounded-lg text-sm focus:outline-none focus:border-sky-400">
+                className="w-full px-3 py-2 border border-stone-700 bg-stone-800 text-white rounded-lg text-sm focus:outline-none focus:border-sky-400">
                 {CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}
               </select>
             </div>
             <div>
               <label className="text-xs text-stone-500 block mb-1">Р‘РµР№РґР¶</label>
               <select value={newProduct.badge} onChange={e => setNewProduct(p => ({ ...p, badge: e.target.value }))}
-                className="w-full px-3 py-2 border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-900 dark:text-white rounded-lg text-sm focus:outline-none focus:border-sky-400">
+                className="w-full px-3 py-2 border border-stone-700 bg-stone-800 text-white rounded-lg text-sm focus:outline-none focus:border-sky-400">
                 {BADGES.map(b => <option key={b} value={b}>{b || '(Р±РµР· Р±РµР№РґР¶Сѓ)'}</option>)}
               </select>
             </div>
             <div className="md:col-span-2">
               <label className="text-xs text-stone-500 block mb-1">URL Р·РѕР±СЂР°Р¶РµРЅРЅСЏ</label>
               <input value={newProduct.image} onChange={e => setNewProduct(p => ({ ...p, image: e.target.value }))} placeholder="/images/..."
-                className="w-full px-3 py-2 border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-900 dark:text-white rounded-lg text-sm focus:outline-none focus:border-sky-400" />
+                className="w-full px-3 py-2 border border-stone-700 bg-stone-800 text-white rounded-lg text-sm focus:outline-none focus:border-sky-400" />
             </div>
             <div className="md:col-span-2">
               <label className="text-xs text-stone-500 block mb-1">РћРїРёСЃ</label>
               <textarea value={newProduct.description} onChange={e => setNewProduct(p => ({ ...p, description: e.target.value }))} rows={3}
-                className="w-full px-3 py-2 border border-stone-200 dark:border-stone-700 bg-white dark:bg-stone-800 text-stone-900 dark:text-white rounded-lg text-sm focus:outline-none focus:border-sky-400 resize-none" />
+                className="w-full px-3 py-2 border border-stone-700 bg-stone-800 text-white rounded-lg text-sm focus:outline-none focus:border-sky-400 resize-none" />
             </div>
             <div className="flex items-center gap-2">
               <input type="checkbox" id="isNew" checked={newProduct.isNew} onChange={e => setNewProduct(p => ({ ...p, isNew: e.target.checked }))} className="accent-stone-900" />
-              <label htmlFor="isNew" className="text-sm text-stone-700 dark:text-stone-300">РџРѕР·РЅР°С‡РёС‚Рё СЏРє "РќРѕРІРёРЅРєР°"</label>
+              <label htmlFor="isNew" className="text-sm text-stone-300">РџРѕР·РЅР°С‡РёС‚Рё СЏРє "РќРѕРІРёРЅРєР°"</label>
             </div>
             <div className="md:col-span-2 flex gap-3 justify-end pt-2">
-              <button type="button" onClick={() => setShowAddForm(false)} className="px-4 py-2 text-sm border border-stone-200 dark:border-stone-700 rounded-lg hover:bg-stone-50 dark:hover:bg-stone-800 transition-colors">РЎРєР°СЃСѓРІР°С‚Рё</button>
+              <button type="button" onClick={() => setShowAddForm(false)} className="px-4 py-2 text-sm border border-stone-700 rounded-lg hover:bg-stone-800 transition-colors">РЎРєР°СЃСѓРІР°С‚Рё</button>
               <button type="submit" className="px-4 py-2 text-sm bg-stone-900 hover:bg-stone-800 text-white rounded-lg transition-colors font-medium">Р”РѕРґР°С‚Рё</button>
             </div>
           </form>
@@ -553,18 +553,18 @@ const ProductsTab = () => {
 
       {/* Section tabs */}
       <div className="flex gap-2">
-        <button onClick={() => setActiveSection('base')} className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${activeSection === 'base' ? 'bg-stone-200 dark:bg-stone-800 text-stone-900 dark:text-white' : 'text-stone-500 dark:text-stone-400 hover:text-stone-800'}`}>
+        <button onClick={() => setActiveSection('base')} className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${activeSection === 'base' ? 'bg-stone-800 text-white' : 'text-stone-400 hover:text-stone-800'}`}>
           РљР°С‚Р°Р»РѕРі ({baseProducts.length})
         </button>
-        <button onClick={() => setActiveSection('custom')} className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${activeSection === 'custom' ? 'bg-stone-200 dark:bg-stone-800 text-stone-900 dark:text-white' : 'text-stone-500 dark:text-stone-400 hover:text-stone-800'}`}>
+        <button onClick={() => setActiveSection('custom')} className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${activeSection === 'custom' ? 'bg-stone-800 text-white' : 'text-stone-400 hover:text-stone-800'}`}>
           Р”РѕРґР°РЅС– ({customs.length})
         </button>
       </div>
 
       {/* Base products */}
       {activeSection === 'base' && (
-        <div className="bg-white dark:bg-stone-900 rounded-xl border border-stone-200 dark:border-stone-800 overflow-hidden">
-          <div className="divide-y divide-stone-100 dark:divide-stone-800">
+        <div className="bg-stone-900 rounded-xl border border-stone-800 overflow-hidden">
+          <div className="divide-y divide-stone-800">
             {baseProducts.map(p => {
               const ov = overrides.find(o => o.id === p.id);
               const isHidden = ov?.hidden;
@@ -580,21 +580,21 @@ const ProductsTab = () => {
                   <div className="flex-1 min-w-0">
                     {isEditing ? (
                       <div className="flex flex-wrap gap-2 items-center">
-                        <input value={editValues.name} onChange={e => setEditValues(v => ({ ...v, name: e.target.value }))} placeholder="РќР°Р·РІР°" className="w-36 px-2 py-1 text-xs border border-stone-300 dark:border-stone-600 rounded bg-white dark:bg-stone-800 text-stone-900 dark:text-white focus:outline-none focus:border-sky-400" />
-                        <input type="number" value={editValues.price} onChange={e => setEditValues(v => ({ ...v, price: e.target.value }))} placeholder="Р¦С–РЅР° в‚ґ" className="w-24 px-2 py-1 text-xs border border-stone-300 dark:border-stone-600 rounded bg-white dark:bg-stone-800 text-stone-900 dark:text-white focus:outline-none focus:border-sky-400" />
-                        <select value={editValues.badge} onChange={e => setEditValues(v => ({ ...v, badge: e.target.value }))} className="px-2 py-1 text-xs border border-stone-300 dark:border-stone-600 rounded bg-white dark:bg-stone-800 text-stone-900 dark:text-white focus:outline-none focus:border-sky-400">
+                        <input value={editValues.name} onChange={e => setEditValues(v => ({ ...v, name: e.target.value }))} placeholder="РќР°Р·РІР°" className="w-36 px-2 py-1 text-xs border border-stone-600 rounded bg-stone-800 text-white focus:outline-none focus:border-sky-400" />
+                        <input type="number" value={editValues.price} onChange={e => setEditValues(v => ({ ...v, price: e.target.value }))} placeholder="Р¦С–РЅР° в‚ґ" className="w-24 px-2 py-1 text-xs border border-stone-600 rounded bg-stone-800 text-white focus:outline-none focus:border-sky-400" />
+                        <select value={editValues.badge} onChange={e => setEditValues(v => ({ ...v, badge: e.target.value }))} className="px-2 py-1 text-xs border border-stone-600 rounded bg-stone-800 text-white focus:outline-none focus:border-sky-400">
                           {BADGES.map(b => <option key={b} value={b}>{b || 'Р±РµР· Р±РµР№РґР¶Сѓ'}</option>)}
                         </select>
-                        <button onClick={() => saveEdit(p.id)} className="p-1.5 bg-green-100 text-green-700 rounded hover:bg-green-200 transition-colors"><Save size={13} /></button>
-                        <button onClick={() => setEditingId(null)} className="p-1.5 bg-stone-100 text-stone-600 rounded hover:bg-stone-200 transition-colors"><X size={13} /></button>
+                        <button onClick={() => saveEdit(p.id)} className="p-1.5 bg-green-900/30 text-green-400 rounded hover:bg-green-200 transition-colors"><Save size={13} /></button>
+                        <button onClick={() => setEditingId(null)} className="p-1.5 bg-stone-800 text-stone-400 rounded hover:bg-stone-200 transition-colors"><X size={13} /></button>
                       </div>
                     ) : (
                       <div>
-                        <p className="text-sm font-medium text-stone-900 dark:text-white truncate">{displayName}</p>
+                        <p className="text-sm font-medium text-white truncate">{displayName}</p>
                         <div className="flex items-center gap-2 flex-wrap">
                           <span className="text-xs text-stone-500">в‚ґ{displayPrice} В· {p.categoryKey}</span>
-                          {displayBadge && <span className="text-xs bg-stone-200 dark:bg-stone-700 text-stone-700 dark:text-stone-300 px-1.5 py-0.5 rounded">{displayBadge}</span>}
-                          {hasOverride && <span className="text-xs bg-blue-100 text-blue-600 dark:bg-blue-900/20 dark:text-blue-400 px-1.5 py-0.5 rounded">Р·РјС–РЅРµРЅРѕ</span>}
+                          {displayBadge && <span className="text-xs bg-stone-700 text-stone-300 px-1.5 py-0.5 rounded">{displayBadge}</span>}
+                          {hasOverride && <span className="text-xs bg-blue-900/20 text-blue-400 px-1.5 py-0.5 rounded">Р·РјС–РЅРµРЅРѕ</span>}
                         </div>
                       </div>
                     )}
@@ -602,11 +602,11 @@ const ProductsTab = () => {
                   <div className="flex items-center gap-1 flex-shrink-0">
                     {!isEditing && (
                       <>
-                        <button onClick={() => startEdit({ id: p.id, name: displayName, price: displayPrice, badge: displayBadge })} title="Р РµРґР°РіСѓРІР°С‚Рё" className="p-1.5 text-stone-400 hover:text-stone-700 hover:bg-stone-100 dark:hover:bg-stone-800 rounded transition-colors"><Pencil size={14} /></button>
-                        <button onClick={() => toggleHide(p.id)} title={isHidden ? 'РџРѕРєР°Р·Р°С‚Рё' : 'РЎС…РѕРІР°С‚Рё'} className="p-1.5 text-stone-400 hover:text-stone-600 hover:bg-stone-100 dark:hover:bg-stone-800 rounded transition-colors">
+                        <button onClick={() => startEdit({ id: p.id, name: displayName, price: displayPrice, badge: displayBadge })} title="Р РµРґР°РіСѓРІР°С‚Рё" className="p-1.5 text-stone-400 hover:text-stone-700 hover:bg-stone-800 rounded transition-colors"><Pencil size={14} /></button>
+                        <button onClick={() => toggleHide(p.id)} title={isHidden ? 'РџРѕРєР°Р·Р°С‚Рё' : 'РЎС…РѕРІР°С‚Рё'} className="p-1.5 text-stone-400 hover:text-stone-600 hover:bg-stone-800 rounded transition-colors">
                           {isHidden ? <Eye size={14} /> : <EyeOff size={14} />}
                         </button>
-                        {hasOverride && <button onClick={() => resetOverride(p.id)} title="РЎРєРёРЅСѓС‚Рё Р·РјС–РЅРё" className="p-1.5 text-stone-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/20 rounded transition-colors"><XCircle size={14} /></button>}
+                        {hasOverride && <button onClick={() => resetOverride(p.id)} title="РЎРєРёРЅСѓС‚Рё Р·РјС–РЅРё" className="p-1.5 text-stone-400 hover:text-red-500 hover:bg-red-950/20 rounded transition-colors"><XCircle size={14} /></button>}
                       </>
                     )}
                   </div>
@@ -619,19 +619,19 @@ const ProductsTab = () => {
 
       {/* Custom products */}
       {activeSection === 'custom' && (
-        <div className="bg-white dark:bg-stone-900 rounded-xl border border-stone-200 dark:border-stone-800 overflow-hidden">
+        <div className="bg-stone-900 rounded-xl border border-stone-800 overflow-hidden">
           {customs.length === 0 ? (
             <p className="text-center py-12 text-stone-400 text-sm">Р”РѕРґР°С‚РєРѕРІРёС… РїСЂРѕРґСѓРєС‚С–РІ РЅРµРјР°С”. РќР°С‚РёСЃРЅС–С‚СЊ "Р”РѕРґР°С‚Рё РїСЂРѕРґСѓРєС‚".</p>
           ) : (
-            <div className="divide-y divide-stone-100 dark:divide-stone-800">
+            <div className="divide-y divide-stone-800">
               {customs.map(p => (
                 <div key={p.id} className="px-4 py-3 flex items-center gap-3">
                   <img src={p.image} alt={p.name} className="w-10 h-10 object-contain rounded flex-shrink-0" />
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-stone-900 dark:text-white truncate">{p.name}</p>
+                    <p className="text-sm font-medium text-white truncate">{p.name}</p>
                     <p className="text-xs text-stone-500">в‚ґ{p.price} В· {p.categoryKey} В· {fmt(p.createdAt)}</p>
                   </div>
-                  <button onClick={() => deleteCustom(p.id)} className="p-1.5 text-stone-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-950/20 rounded transition-colors"><Trash2 size={14} /></button>
+                  <button onClick={() => deleteCustom(p.id)} className="p-1.5 text-stone-400 hover:text-red-500 hover:bg-red-950/20 rounded transition-colors"><Trash2 size={14} /></button>
                 </div>
               ))}
             </div>
@@ -652,30 +652,30 @@ const CustomersTab = () => {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-semibold text-stone-900 dark:text-white">РљР»С–С”РЅС‚Рё</h2>
+        <h2 className="text-xl font-semibold text-white">РљР»С–С”РЅС‚Рё</h2>
         <span className="text-sm text-stone-400">{customers.length} РєР»С–С”РЅС‚С–РІ</span>
       </div>
-      <div className="bg-white dark:bg-stone-900 rounded-xl border border-stone-200 dark:border-stone-800 overflow-hidden">
+      <div className="bg-stone-900 rounded-xl border border-stone-800 overflow-hidden">
         {customers.length === 0 ? (
           <p className="text-center py-12 text-stone-400 text-sm">Р—Р°СЂРµС”СЃС‚СЂРѕРІР°РЅРёС… РєР»С–С”РЅС‚С–РІ С‰Рµ РЅРµРјР°С”</p>
         ) : (
-          <div className="divide-y divide-stone-100 dark:divide-stone-800">
+          <div className="divide-y divide-stone-800">
             {customers.map(c => {
               const userOrders = orders.filter(o => o.userId === c.id);
               const spent = userOrders.filter(o => o.status !== 'cancelled').reduce((s, o) => s + o.total, 0);
               return (
                 <div key={c.id} className="px-5 py-4 flex items-center gap-4">
-                  <div className="w-9 h-9 bg-stone-200 dark:bg-stone-800 border border-stone-300 dark:border-stone-700 rounded-full flex items-center justify-center flex-shrink-0">
-                    <span className="text-stone-700 dark:text-stone-300 text-sm font-medium">{c.firstName[0]}{c.lastName[0]}</span>
+                  <div className="w-9 h-9 bg-stone-800 border border-stone-700 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-stone-300 text-sm font-medium">{c.firstName[0]}{c.lastName[0]}</span>
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="font-medium text-stone-900 dark:text-white">{c.firstName} {c.lastName}</p>
+                    <p className="font-medium text-white">{c.firstName} {c.lastName}</p>
                     <p className="text-xs text-stone-400">
                       {c.email || c.phone} В· СЂРµС”СЃС‚СЂР°С†С–СЏ {fmt(c.createdAt)}
                     </p>
                   </div>
                   <div className="text-right flex-shrink-0">
-                    <p className="text-sm font-semibold text-stone-900 dark:text-white">в‚ґ{spent.toFixed(0)}</p>
+                    <p className="text-sm font-semibold text-white">в‚ґ{spent.toFixed(0)}</p>
                     <p className="text-xs text-stone-400">{userOrders.length} Р·Р°РјРѕРІР».</p>
                   </div>
                 </div>

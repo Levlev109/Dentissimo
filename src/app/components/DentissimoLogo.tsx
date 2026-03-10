@@ -20,7 +20,7 @@ export const DentissimoLogo = ({ size = 'md', light = false, className = '' }: L
     <img
       src="/images/dentissimo-logo.png"
       alt="Dentissimo"
-      className={`${heights[size]} w-auto object-contain ${light ? 'brightness-0 invert' : 'dark:brightness-0 dark:invert'} ${className}`}
+      className={`${heights[size]} w-auto object-contain ${light ? 'brightness-0 invert' : 'brightness-0 invert'} ${className}`}
     />
   );
 };
