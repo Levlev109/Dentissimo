@@ -133,7 +133,7 @@ export const GoldShowcase = () => {
 
   return (
     <>
-      <section className={`py-10 md:py-14 bg-gradient-to-br ${theme.gradient} overflow-x-clip relative`}>
+      <section className={`py-10 md:py-20 bg-gradient-to-br ${theme.gradient} overflow-x-clip relative`}>
         {/* Animated mesh background */}
         <div className="absolute inset-0 overflow-hidden">
           <div
@@ -159,7 +159,7 @@ export const GoldShowcase = () => {
                 <button
                   key={cat}
                   onClick={() => handleCategoryChange(cat)}
-                  className={`relative px-3 py-2 md:px-5 md:py-2.5 rounded-lg md:rounded-xl text-[10px] md:text-xs font-bold tracking-[0.05em] md:tracking-[0.1em] uppercase transition-all duration-300 ${
+                  className={`relative px-3 py-2 md:px-6 md:py-3 rounded-lg md:rounded-xl text-[10px] md:text-sm font-bold tracking-[0.05em] md:tracking-[0.1em] uppercase transition-all duration-300 ${
                     selectedCategory === cat
                       ? 'text-stone-900 shadow-lg'
                       : 'text-stone-500 hover:text-stone-300 hover:bg-white/[0.04]'
@@ -202,7 +202,7 @@ export const GoldShowcase = () => {
                           className="max-w-full max-h-full object-contain"
                         />
                       </div>
-                      <span className={`text-[9px] sm:text-[10px] font-medium text-center leading-tight line-clamp-2 ${
+                      <span className={`text-[9px] sm:text-[10px] md:text-xs font-medium text-center leading-tight line-clamp-2 ${
                         i === selectedIndex ? 'text-white' : 'text-stone-500'
                       }`}>
                         {p.name}
@@ -222,14 +222,14 @@ export const GoldShowcase = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="grid lg:grid-cols-[1fr,1fr] gap-4 lg:gap-10 items-start"
+              className="grid lg:grid-cols-[1fr,1fr] gap-4 lg:gap-16 items-center"
             >
               {/* Left — Text & CTA */}
-              <div className="order-2 lg:order-1 space-y-3">
+              <div className="order-2 lg:order-1 space-y-3 lg:space-y-5">
                 {/* Category + badge row */}
                 <div className="flex items-center gap-3">
                   <span
-                    className="px-4 py-1.5 rounded-lg text-[10px] font-bold tracking-[0.2em] uppercase backdrop-blur-sm"
+                    className="px-4 py-1.5 rounded-lg text-[10px] lg:text-xs font-bold tracking-[0.2em] uppercase backdrop-blur-sm"
                     style={{
                       backgroundColor: `${theme.color}18`,
                       color: theme.color,
@@ -254,7 +254,7 @@ export const GoldShowcase = () => {
                 </div>
 
                 {/* Product name — big and bold */}
-                <h2 className="font-serif text-2xl md:text-4xl leading-[1.05] tracking-tight">
+                <h2 className="font-serif text-2xl md:text-4xl lg:text-5xl leading-[1.05] tracking-tight">
                   <span
                     className="bg-clip-text text-transparent"
                     style={{
@@ -266,8 +266,8 @@ export const GoldShowcase = () => {
                 </h2>
 
                 {/* Description in a glass card */}
-                <div className="p-3 rounded-xl bg-white/[0.04] backdrop-blur-sm border border-white/[0.06] max-w-lg">
-                  <p className="text-stone-300 text-sm md:text-base leading-relaxed">
+                <div className="p-4 lg:p-5 rounded-xl bg-white/[0.04] backdrop-blur-sm border border-white/[0.06]">
+                  <p className="text-stone-300 text-sm md:text-base lg:text-lg leading-relaxed">
                     {desc}
                   </p>
                 </div>
@@ -278,7 +278,7 @@ export const GoldShowcase = () => {
                     {details.ingredients.slice(0, 4).map((ing) => (
                       <span
                         key={ing}
-                        className="px-3 py-1.5 rounded-lg text-xs font-medium backdrop-blur-sm"
+                        className="px-3 py-1.5 lg:px-4 lg:py-2 rounded-lg text-xs lg:text-sm font-medium backdrop-blur-sm"
                         style={{
                           backgroundColor: `${theme.color}10`,
                           color: theme.color,
@@ -293,7 +293,7 @@ export const GoldShowcase = () => {
 
                 {/* Price tag */}
                 <div className="flex items-baseline gap-2">
-                  <span className="text-2xl md:text-3xl font-bold text-white tracking-tight">
+                  <span className="text-2xl md:text-3xl lg:text-4xl font-bold text-white tracking-tight">
                     {t('products.currency')}{price.toFixed(0)}
                   </span>
                   <span className="text-stone-400 text-sm">/ шт</span>
@@ -305,7 +305,7 @@ export const GoldShowcase = () => {
                     onClick={handleBuy}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="flex items-center gap-2 px-6 py-3 text-stone-900 font-bold rounded-xl transition-all duration-300 text-sm tracking-wide"
+                    className="flex items-center gap-2 px-6 py-3 lg:px-8 lg:py-4 text-stone-900 font-bold rounded-xl transition-all duration-300 text-sm lg:text-base tracking-wide"
                     style={{
                       background: `linear-gradient(135deg, ${theme.color}, ${theme.color}cc)`,
                       boxShadow: `0 8px 32px ${theme.glow}, inset 0 1px 0 rgba(255,255,255,0.2)`,
@@ -319,7 +319,7 @@ export const GoldShowcase = () => {
                     onClick={() => setIsModalOpen(true)}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="flex items-center gap-2 px-5 py-3 font-semibold text-sm rounded-xl transition-all duration-300 backdrop-blur-sm"
+                    className="flex items-center gap-2 px-5 py-3 lg:px-7 lg:py-4 font-semibold text-sm lg:text-base rounded-xl transition-all duration-300 backdrop-blur-sm"
                     style={{
                       color: theme.color,
                       border: `1px solid ${theme.color}30`,
@@ -339,14 +339,14 @@ export const GoldShowcase = () => {
                   <motion.div
                     animate={{ scale: [1, 1.05, 1], opacity: [0.3, 0.15, 0.3] }}
                     transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                    className="w-48 h-48 md:w-64 md:h-64 rounded-full transition-colors duration-700"
+                    className="w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-full transition-colors duration-700"
                     style={{ border: `2px solid ${theme.color}30` }}
                   />
                 </div>
                 {/* Glow orb */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div
-                    className="w-40 h-40 md:w-56 md:h-56 rounded-full blur-[80px] transition-all duration-700"
+                    className="w-40 h-40 md:w-56 md:h-56 lg:w-72 lg:h-72 rounded-full blur-[80px] transition-all duration-700"
                     style={{ background: theme.glow.replace(/[\d.]+\)$/, '0.3)') }}
                   />
                 </div>
@@ -380,7 +380,7 @@ export const GoldShowcase = () => {
                     transition={{ duration: 0.5, ease: 'easeOut' }}
                     src={product.image}
                     alt={product.name}
-                    className="relative w-40 md:w-48 max-h-[220px] md:max-h-[280px] h-auto object-contain group-hover:scale-[1.06] transition-transform duration-500"
+                    className="relative w-40 md:w-48 lg:w-72 max-h-[220px] md:max-h-[280px] lg:max-h-[420px] h-auto object-contain group-hover:scale-[1.06] transition-transform duration-500"
                     style={{ filter: `drop-shadow(0 20px 60px ${theme.glow})` }}
                   />
                 </div>
@@ -390,11 +390,11 @@ export const GoldShowcase = () => {
 
           {/* Bottom badges — glass style */}
           {details && (
-            <div className="flex flex-wrap justify-center gap-2 mt-8">
+            <div className="flex flex-wrap justify-center gap-2 lg:gap-3 mt-8 lg:mt-12">
               {details.badges.map((badge) => (
                 <span
                   key={badge}
-                  className="px-3.5 py-1.5 rounded-lg text-[11px] font-medium backdrop-blur-sm"
+                  className="px-3.5 py-1.5 lg:px-5 lg:py-2 rounded-lg text-[11px] lg:text-sm font-medium backdrop-blur-sm"
                   style={{
                     backgroundColor: `${theme.color}08`,
                     color: `${theme.color}cc`,
