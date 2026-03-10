@@ -24,7 +24,7 @@ export const allProducts: ProductEntry[] = [
     image: '/images/DENTISSIMO_box_Gentle_Care.webp',
     isNew: true,
     careMethod: ['sensitive', 'natural'],
-    ingredients: ['liatris', 'xylitol', 'geranium', 'vitaminE', 'hexetidine']
+    ingredients: ['liatris', 'hydratedSilica', 'xylitol', 'geranium', 'vitaminE', 'hexetidine', 'panthenol', 'eugenol']
   },
   {
     id: 'diamond',
@@ -35,8 +35,8 @@ export const allProducts: ProductEntry[] = [
     image: '/images/7640162326834_DENTISSIMO_DIAMOND (1).webp',
     isNew: true,
     badge: 'topSales' as const,
-    careMethod: ['whitening', 'premium'],
-    ingredients: ['diamondPowder', 'fluoride', 'hydroxyapatite', 'colloidalSilver']
+    careMethod: ['whitening', 'premium', 'sensitive'],
+    ingredients: ['diamondPowder', 'hydratedSilica', 'xylitol', 'geranium']
   },
   {
     id: 'whitening-gold',
@@ -59,7 +59,7 @@ export const allProducts: ProductEntry[] = [
     image: '/images/DENTISSIMO_box_EXTRA_whitening (1).webp',
     isNew: true,
     careMethod: ['whitening'],
-    ingredients: ['activatedCharcoal', 'fluoride', 'xylitol']
+    ingredients: ['activatedCharcoal', 'hydratedSilica', 'xylitol', 'vitaminE', 'fluoride', 'geranium', 'biosol']
   },
   // Professional Care Series (Pro Line)
   {
@@ -71,7 +71,7 @@ export const allProducts: ProductEntry[] = [
     image: '/images/DENTISSIMO_box_Complete_care (1).webp',
     badge: 'recommended' as const,
     careMethod: ['complete', 'gums'],
-    ingredients: ['fluoride', 'hydroxyapatite', 'calcium', 'geranium', 'eucalyptus']
+    ingredients: ['fluoride', 'calcium', 'hydroxyapatite', 'xylitol', 'hydratedSilica', 'geranium', 'eucalyptus']
   },
   {
     id: 'pro-care',
@@ -81,7 +81,7 @@ export const allProducts: ProductEntry[] = [
     descriptionKey: 'products.proCareDesc',
     image: '/images/DENTISSIMO_box_PRO_care.webp',
     careMethod: ['gums', 'sensitive'],
-    ingredients: ['fluoride', 'krameria', 'geranium', 'biosol']
+    ingredients: ['geranium', 'krameria', 'chamomile', 'commiphoraMyrrh', 'panthenol', 'eucalyptus', 'sage', 'hexetidine', 'vitaminE']
   },
   // Niche Line
   {
@@ -93,7 +93,7 @@ export const allProducts: ProductEntry[] = [
     image: '/images/DENTISSIMO_box_Vegan.webp',
     badge: 'eco' as const,
     careMethod: ['natural'],
-    ingredients: ['vitaminB12', 'xylitol', 'geranium', 'sage', 'commiphoraMyrrh']
+    ingredients: ['vitaminB12', 'hydratedSilica', 'xylitol', 'geranium', 'sage', 'commiphoraMyrrh']
   },
   {
     id: 'pregnant',
@@ -103,7 +103,7 @@ export const allProducts: ProductEntry[] = [
     descriptionKey: 'products.pregnantDesc',
     image: '/images/DENTISSIMO_box_Pregnant.webp',
     careMethod: ['pregnant', 'natural'],
-    ingredients: ['folicAcid', 'calcium', 'hydroxyapatite', 'calendula', 'geranium', 'xylitol']
+    ingredients: ['folicAcid', 'calcium', 'hydroxyapatite', 'xylitol', 'calendula', 'geranium', 'vitaminB5']
   },
   // Kids Series
   {
@@ -124,7 +124,7 @@ export const allProducts: ProductEntry[] = [
     descriptionKey: 'products.juniorDesc',
     image: '/images/DENTISSIMO_box_Junior.webp',
     careMethod: ['kids'],
-    ingredients: ['fluoride', 'calcium', 'vitaminE', 'chamomile', 'geranium']
+    ingredients: ['calciumGlycerophosphate', 'vitaminE', 'chamomile', 'geranium', 'vitaminB5', 'sodiumMonofluorophosphate']
   },
   {
     id: 'brush-kids',
@@ -204,7 +204,7 @@ export const allProducts: ProductEntry[] = [
     image: '/images/7640162327428_Dentissimo_mouthwash_Advanced_Whitening_704x2953.webp',
     isNew: true,
     careMethod: ['whitening', 'premium'],
-    ingredients: ['gold24k', 'fluoride', 'cetrariaIslandica']
+    ingredients: ['gold24k', 'xylitol', 'leuconostoc', 'cetrariaIslandica', 'mica', 'geranium']
   },
   {
     id: 'mouthwash-fresh',
@@ -214,7 +214,7 @@ export const allProducts: ProductEntry[] = [
     descriptionKey: 'products.freshBreathDesc',
     image: '/images/7640162322416_Dentissimo_mouthwash_Fresh_Breath_704x2953.webp',
     careMethod: ['fresh'],
-    ingredients: ['cardamomOil', 'peppermintOil', 'zincChloride']
+    ingredients: ['geranium', 'cardamomOil', 'peppermintOil', 'hexetidine', 'zincChloride']
   },
   {
     id: 'mouthwash-gum',
@@ -224,6 +224,6 @@ export const allProducts: ProductEntry[] = [
     descriptionKey: 'products.gumProtectionDesc',
     image: '/images/7640162322423_Dentissimo_mouthwash_Gum_Protection_704x2953.webp',
     careMethod: ['gums'],
-    ingredients: ['ratania', 'chamomile', 'fluoride']
+    ingredients: ['chamomile', 'geranium', 'vitaminE', 'hexetidine', 'sage', 'commiphoraMyrrh', 'ratania', 'zincChloride']
   }
 ];

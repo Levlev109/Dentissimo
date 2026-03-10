@@ -45,6 +45,20 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
   const details = productDetailsMap[product.id];
   const accent = productAccents[product.id] || '#d4a934';
 
+  // Determine product type for context-specific extra tab
+  const productType: 'toothbrush' | 'mouthwash' | 'kids' | 'toothpaste' =
+    product.id.startsWith('brush-') ? 'toothbrush' :
+    product.id.startsWith('mouthwash-') ? 'mouthwash' :
+    (product.id === 'kids-caramel' || product.id === 'junior-apple') ? 'kids' :
+    'toothpaste';
+
+  const extraKeys = {
+    toothpaste: { noHarmful: 'goldShowcase.noHarmfulPaste', howToUse: 'goldShowcase.howToUsePaste', dailyUse: 'goldShowcase.dailyUsePaste' },
+    toothbrush: { noHarmful: 'goldShowcase.noHarmfulBrush', howToUse: 'goldShowcase.howToUseBrush', dailyUse: 'goldShowcase.dailyUseBrush' },
+    mouthwash:  { noHarmful: 'goldShowcase.noHarmfulMouthwash', howToUse: 'goldShowcase.howToUseMouthwash', dailyUse: 'goldShowcase.dailyUseMouthwash' },
+    kids:       { noHarmful: 'goldShowcase.noHarmfulKids', howToUse: 'goldShowcase.howToUseKids', dailyUse: 'goldShowcase.dailyUseKids' },
+  }[productType];
+
   const tabs: { key: ModalTab; label: string }[] = [
     { key: 'product', label: t('goldShowcase.tabProduct') },
     { key: 'benefits', label: t('goldShowcase.tabBenefits') },
@@ -242,13 +256,13 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                 {/* ── Extra tab ── */}
                 {activeTab === 'extra' && (
                   <motion.div key="extra" initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }} className="space-y-5">
-                    <h2 className="font-serif text-2xl font-bold text-white">{t('goldShowcase.dailyUseTitle')}</h2>
+                    <h2 className="font-serif text-2xl font-bold text-white">{t(extraKeys.dailyUse)}</h2>
 
-                    <p className="text-sm text-stone-400 leading-relaxed">{t('goldShowcase.noHarmful')}</p>
+                    <p className="text-sm text-stone-400 leading-relaxed">{t(extraKeys.noHarmful)}</p>
 
                     <div className="p-4 bg-white/[0.03] rounded-xl border border-white/[0.06]" style={{ borderLeftColor: accent + '40', borderLeftWidth: '3px' }}>
                       <h3 className="font-bold text-white text-sm mb-1">{t('goldShowcase.howToUseTitle')}</h3>
-                      <p className="text-stone-400 text-sm leading-relaxed">{t('goldShowcase.howToUse')}</p>
+                      <p className="text-stone-400 text-sm leading-relaxed">{t(extraKeys.howToUse)}</p>
                     </div>
 
                     <div>
