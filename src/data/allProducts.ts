@@ -33,7 +33,7 @@ export const allProducts: ProductEntry[] = [
     categoryKey: 'limitedEdition',
     price: 175.00,
     descriptionKey: 'products.gentleCareDesc',
-    image: '/images/DENTISSIMO_box_Gentle_Care.webp',
+    image: '/images/DENTISSIMO_box_Gentle_Care (1).webp',
     isNew: true,
     careMethod: ['sensitive', 'natural'],
     ingredients: ['liatris', 'hydratedSilica', 'xylitol', 'geranium', 'vitaminE', 'hexetidine', 'panthenol', 'eugenol']
@@ -44,7 +44,7 @@ export const allProducts: ProductEntry[] = [
     categoryKey: 'limitedEdition',
     price: 219.00,
     descriptionKey: 'products.goldDesc',
-    image: '/images/DENTISSIMO_box_Gold_Italy.webp',
+    image: '/images/DENTISSIMO_box_Gold_Italy (1).webp',
     isNew: true,
     badge: 'bestseller' as const,
     careMethod: ['whitening', 'premium'],
@@ -112,7 +112,7 @@ export const allProducts: ProductEntry[] = [
     categoryKey: 'kids',
     price: 139.00,
     descriptionKey: 'products.kidsDesc',
-    image: '/images/DENTISSIMO_box_Kids.webp',
+    image: '/images/DENTISSIMO_box_Kids (1).webp',
     careMethod: ['kids'],
     ingredients: ['calciumGlycerophosphate', 'vitaminE', 'chamomile', 'geranium', 'vitaminB5']
   },
@@ -122,7 +122,7 @@ export const allProducts: ProductEntry[] = [
     categoryKey: 'kids',
     price: 139.00,
     descriptionKey: 'products.juniorDesc',
-    image: '/images/DENTISSIMO_box_Junior.webp',
+    image: '/images/DENTISSIMO_box_Junior (1).webp',
     careMethod: ['kids'],
     ingredients: ['calciumGlycerophosphate', 'vitaminE', 'chamomile', 'geranium', 'vitaminB5', 'sodiumMonofluorophosphate']
   },
