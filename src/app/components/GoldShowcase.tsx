@@ -135,9 +135,9 @@ export const GoldShowcase = () => {
     <>
       <section className={`py-10 md:py-20 bg-gradient-to-b from-stone-950 via-stone-950 to-stone-950 overflow-x-clip relative`}>
         {/* Top gradient fade from Hero */}
-        <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-stone-950 to-transparent z-[1]" />
+        <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-stone-950 to-transparent z-[1] pointer-events-none" />
         {/* Animated mesh background */}
-        <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div
             className="absolute w-[800px] h-[800px] -top-64 -left-64 rounded-full blur-[160px] opacity-20 transition-all duration-[1500ms]"
             style={{ background: theme.color }}
@@ -158,9 +158,9 @@ export const GoldShowcase = () => {
           }} />
         </div>
         {/* Bottom gradient fade into next section */}
-        <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-stone-950 to-transparent z-[1]" />
+        <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-stone-950 to-transparent z-[1] pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-[2]">
           {/* Category tabs — pill style with glass effect */}
           <div className="flex justify-center mb-5">
             <div className="inline-flex flex-wrap justify-center gap-1 p-1.5 bg-white/[0.03] backdrop-blur-sm border border-white/[0.05]">

@@ -177,9 +177,9 @@ button, a, input, textarea, select {
 .dark .loading-skeleton {
   background: linear-gradient(
     90deg,
-    #292524 25%,
-    #1c1917 50%,
-    #292524 75%
+    #111f35 25%,
+    #0d1829 50%,
+    #111f35 75%
   );
   background-size: 200% 100%;
 }

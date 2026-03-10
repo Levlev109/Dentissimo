@@ -449,7 +449,7 @@ export const Hero = () => {
       </motion.div>
 
       {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-stone-950 via-stone-950/80 to-transparent z-[3]" />
+      <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-stone-950 via-stone-950/80 to-transparent z-[3] pointer-events-none" />
 
       {/* Scroll indicator — minimal line */}
       <motion.div
