@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Menu, X, Globe, Search, User } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useScroll, useSpring } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
@@ -8,6 +8,17 @@ import { useAuth } from '../../contexts/AuthContext';
 import { CartDrawer } from './CartDrawer';
 import { AuthModal } from './AuthModal';
 import { DentissimoLogo } from './DentissimoLogo';
+
+const ScrollProgress = () => {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30, restDelta: 0.001 });
+  return (
+    <motion.div
+      className="absolute bottom-0 left-0 right-0 h-px origin-left"
+      style={{ scaleX, background: 'linear-gradient(90deg, rgba(56,189,248,0.3), rgba(56,189,248,0.6), rgba(56,189,248,0.3))' }}
+    />
+  );
+};
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -51,7 +62,9 @@ export const Navbar = () => {
 
   return (
     <>
-    <nav className="fixed w-full z-50 bg-stone-950/95 backdrop-blur-xl border-b border-stone-800/50 transition-all duration-300 shadow-lg shadow-stone-950/20">
+    <nav className="fixed w-full z-50 bg-stone-950/95 backdrop-blur-xl border-b border-white/[0.06] transition-all duration-300">
+      {/* Scroll progress bar */}
+      <ScrollProgress />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16 md:h-20">
 

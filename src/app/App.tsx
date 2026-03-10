@@ -25,20 +25,34 @@ export default function App() {
     <>
       <Hero />
       <GoldShowcase />
-      {/* Smooth transition into products */}
-      <div className="relative h-16" aria-hidden="true">
-        <div className="absolute inset-0 bg-gradient-to-b from-stone-950 to-stone-950" />
-        <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-px bg-gradient-to-r from-transparent via-white/[0.03] to-transparent" />
+      {/* Geometric divider */}
+      <div className="relative h-20 flex items-center justify-center" aria-hidden="true">
+        <div className="absolute inset-0 bg-stone-950" />
+        <div className="relative flex items-center gap-4">
+          <div className="w-16 md:w-24 h-px bg-gradient-to-r from-transparent to-white/10" />
+          <div className="w-1 h-1 bg-white/15 rotate-45" />
+          <div className="w-16 md:w-24 h-px bg-gradient-to-l from-transparent to-white/10" />
+        </div>
       </div>
       <AllProducts />
-      {/* Transition into testimonials */}
-      <div className="relative h-8" aria-hidden="true">
+      {/* Geometric divider */}
+      <div className="relative h-16 flex items-center justify-center" aria-hidden="true">
         <div className="absolute inset-0 bg-stone-950" />
+        <div className="relative flex items-center gap-4">
+          <div className="w-12 md:w-20 h-px bg-gradient-to-r from-transparent to-white/8" />
+          <div className="w-1 h-1 bg-white/10 rotate-45" />
+          <div className="w-12 md:w-20 h-px bg-gradient-to-l from-transparent to-white/8" />
+        </div>
       </div>
       <Testimonials />
-      {/* Transition into about */}
-      <div className="relative h-8" aria-hidden="true">
+      {/* Geometric divider */}
+      <div className="relative h-16 flex items-center justify-center" aria-hidden="true">
         <div className="absolute inset-0 bg-stone-950" />
+        <div className="relative flex items-center gap-4">
+          <div className="w-12 md:w-20 h-px bg-gradient-to-r from-transparent to-white/8" />
+          <div className="w-1 h-1 bg-white/10 rotate-45" />
+          <div className="w-12 md:w-20 h-px bg-gradient-to-l from-transparent to-white/8" />
+        </div>
       </div>
       <AboutSection />
     </>

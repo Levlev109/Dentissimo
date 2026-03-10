@@ -68,15 +68,17 @@ export const AllProducts = () => {
       {/* Top transition glow */}
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/[0.04] to-transparent" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="text-center mb-12">
-          <p className="text-sky-600/80 uppercase tracking-[0.3em] text-xs font-bold mb-3">{t('allProductsSection.subtitle')}</p>
-          <h2 className="font-serif text-3xl md:text-5xl text-white mb-2">{t('allProductsSection.title')}</h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-transparent via-sky-400 to-transparent mx-auto mt-6" />
+        <div className="mb-14 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+          <div>
+            <p className="text-sky-600/80 uppercase tracking-[0.3em] text-xs font-bold mb-3">{t('allProductsSection.subtitle')}</p>
+            <h2 className="font-serif text-3xl md:text-5xl text-white">{t('allProductsSection.title')}</h2>
+          </div>
+          <div className="w-32 h-px bg-gradient-to-r from-white/20 to-transparent hidden md:block" />
         </div>
         <div className="flex flex-wrap justify-center gap-3 mb-14">
           {categories.map(cat => (
             <button key={cat.id} onClick={() => setSelectedCategory(cat.id)}
-              className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 border ${selectedCategory === cat.id ? 'bg-white text-stone-900 border-white/80 shadow-md' : 'bg-white/[0.04] text-stone-400 border-white/[0.06] hover:border-white/[0.12] hover:text-white hover:bg-white/[0.06]'}`}>
+              className={`px-6 py-2.5 text-sm font-medium transition-all duration-300 border ${selectedCategory === cat.id ? 'bg-white text-stone-900 border-white shadow-md' : 'bg-transparent text-stone-500 border-white/[0.08] hover:border-white/[0.2] hover:text-white'}`}>
               {t(cat.nameKey)}
             </button>
           ))}

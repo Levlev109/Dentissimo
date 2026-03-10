@@ -89,8 +89,8 @@ footer[id] {
 
 /* Selection styling */
 ::selection {
-  background-color: rgba(56, 153, 220, 0.2);
-  color: inherit;
+  background-color: rgba(56, 153, 220, 0.25);
+  color: white;
 }
 
 /* Smooth transitions for all interactive elements */
@@ -100,21 +100,20 @@ button, a, input, textarea, select {
 
 /* Enhanced focus states */
 *:focus-visible {
-  outline: 2px solid rgba(91, 163, 217, 0.5);
+  outline: 1px solid rgba(91, 163, 217, 0.4);
   outline-offset: 2px;
-  border-radius: 4px;
 }
 
 /* Glass morphism utility class */
 .glass {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.03);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .dark .glass {
   background: rgba(12, 10, 9, 0.4);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 /* Premium gradient text */

@@ -343,15 +343,31 @@ export const GoldShowcase = () => {
 
               {/* Right — Product Image with effects */}
               <div className="order-1 lg:order-2 lg:w-1/2 flex justify-center items-center relative min-h-[220px] lg:min-h-[500px]">
-                {/* Pulsing ring */}
+                {/* Rotating halo rings */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <motion.div
-                    animate={{ scale: [1, 1.05, 1], opacity: [0.3, 0.15, 0.3] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                    className="w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-full transition-colors duration-700"
-                    style={{ border: `2px solid ${theme.color}30` }}
-                  />
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+                    className="w-52 h-52 md:w-72 md:h-72 lg:w-96 lg:h-96"
+                  >
+                    <svg viewBox="0 0 200 200" className="w-full h-full transition-colors duration-700">
+                      <circle cx="100" cy="100" r="95" fill="none" stroke={theme.color} strokeWidth="0.5" strokeDasharray="40 160" opacity="0.25" />
+                      <circle cx="100" cy="100" r="85" fill="none" stroke={theme.color} strokeWidth="0.3" strokeDasharray="20 180" opacity="0.15" />
+                    </svg>
+                  </motion.div>
                 </div>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <motion.div
+                    animate={{ rotate: -360 }}
+                    transition={{ duration: 45, repeat: Infinity, ease: 'linear' }}
+                    className="w-60 h-60 md:w-80 md:h-80 lg:w-[440px] lg:h-[440px]"
+                  >
+                    <svg viewBox="0 0 200 200" className="w-full h-full transition-colors duration-700">
+                      <circle cx="100" cy="100" r="95" fill="none" stroke={theme.color} strokeWidth="0.3" strokeDasharray="15 185" opacity="0.12" />
+                    </svg>
+                  </motion.div>
+                </div>
+
                 {/* Glow orb */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div
@@ -359,6 +375,20 @@ export const GoldShowcase = () => {
                     style={{ background: theme.glow.replace(/[\d.]+\)$/, '0.3)') }}
                   />
                 </div>
+
+                {/* Geometric accent dots */}
+                <motion.div
+                  className="absolute w-1.5 h-1.5 rounded-full transition-colors duration-700"
+                  style={{ background: theme.color, top: '15%', right: '20%', opacity: 0.3 }}
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+                />
+                <motion.div
+                  className="absolute w-1 h-1 rounded-full transition-colors duration-700"
+                  style={{ background: theme.color, bottom: '20%', left: '15%', opacity: 0.2 }}
+                  animate={{ y: [0, 6, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
+                />
 
                 {/* Nav arrows */}
                 {categoryProducts.length > 1 && (
@@ -384,12 +414,12 @@ export const GoldShowcase = () => {
                 >
                   <motion.img
                     key={product.image}
-                    initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
-                    animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                    transition={{ duration: 0.5, ease: 'easeOut' }}
+                    initial={{ opacity: 0, scale: 0.92, y: 20 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
                     src={product.image}
                     alt={product.name}
-                    className="relative w-40 md:w-48 lg:w-auto max-h-[220px] md:max-h-[280px] lg:max-h-none lg:h-[450px] object-contain group-hover:scale-[1.06] transition-transform duration-500"
+                    className="relative w-40 md:w-48 lg:w-auto max-h-[220px] md:max-h-[280px] lg:max-h-none lg:h-[450px] object-contain group-hover:scale-[1.04] transition-transform duration-700"
                     style={{ filter: `drop-shadow(0 20px 60px ${theme.glow})` }}
                   />
                 </div>

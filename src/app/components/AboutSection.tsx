@@ -23,10 +23,8 @@ export const AboutSection = () => {
 
   return (
     <section id="about" className="bg-stone-950 text-white overflow-visible relative">
-      {/* Top transition glow */}
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/[0.03] to-transparent" />
       {/* Part 1: Glacier Water Story */}
-      <div className="py-24">
+      <div className="py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center gap-16">
             <motion.div
@@ -84,23 +82,26 @@ export const AboutSection = () => {
       </div>
 
       {/* Part 2: Regera-PRO Complex */}
-      <div className="py-20 relative">
+      <div className="py-24 relative">
         {/* Subtle section separator */}
         <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-sky-400/10 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-b from-stone-900/30 via-stone-900/20 to-transparent" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            className="text-center mb-16"
+            className="mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <span className="text-sky-600 text-xs font-bold tracking-[0.2em] uppercase mb-3 block">{t('about.complexLabel')}</span>
-            <h3 className="font-serif text-3xl md:text-4xl mb-4 text-white">{t('about.complexTitle')}</h3>
-            <p className="text-stone-300 max-w-2xl mx-auto leading-relaxed">
-              {t('about.complexDesc')}
-            </p>
+            <div>
+              <span className="text-sky-600 text-xs font-bold tracking-[0.2em] uppercase mb-3 block">{t('about.complexLabel')}</span>
+              <h3 className="font-serif text-3xl md:text-4xl text-white">{t('about.complexTitle')}</h3>
+              <p className="text-stone-400 max-w-xl mt-4 leading-relaxed">
+                {t('about.complexDesc')}
+              </p>
+            </div>
+            <div className="w-24 h-px bg-gradient-to-r from-white/15 to-transparent hidden md:block" />
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -109,19 +110,23 @@ export const AboutSection = () => {
               return (
                 <motion.div
                   key={index}
-                  className="bg-white/[0.03] backdrop-blur-sm rounded-xl p-8 border border-white/[0.06] text-center hover:border-sky-500/30 transition-colors duration-500"
+                  className="relative p-8 border-l border-white/[0.06] hover:border-sky-500/20 transition-colors duration-500"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: index * 0.15 }}
                 >
-                  <div className="w-14 h-14 rounded-full bg-sky-900/30 flex items-center justify-center mx-auto mb-5">
-                    <Icon size={24} className="text-sky-600" />
+                  {/* Editorial number */}
+                  <span className="absolute -top-2 -left-3 font-serif text-6xl text-white/[0.04] font-bold leading-none select-none">
+                    0{index + 1}
+                  </span>
+                  <div className="w-12 h-12 rounded-full bg-sky-900/20 flex items-center justify-center mb-5">
+                    <Icon size={22} className="text-sky-600" />
                   </div>
                   <h4 className="font-serif text-xl mb-3 text-white">
                     <span className="text-sky-600 font-bold">Re</span>{(t(item.titleKey) as string).substring(2)}
                   </h4>
-                  <p className="text-stone-300 text-sm leading-relaxed">{t(item.descKey)}</p>
+                  <p className="text-stone-400 text-sm leading-relaxed">{t(item.descKey)}</p>
                 </motion.div>
               );
             })}
