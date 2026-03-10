@@ -1,4 +1,4 @@
-import { X, Plus, Minus, ShoppingCart, Sparkles, Droplets, Shield, FlaskConical, Atom, Leaf, Heart, Gem } from 'lucide-react';
+import { X, Plus, Minus, ShoppingCart, Sparkles, Droplets, Shield, FlaskConical, Atom, Leaf, Heart, Gem, Star } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useState, useEffect } from 'react';
 import { Product } from '../../services/database';
@@ -17,6 +17,8 @@ interface ProductModalProps {
 type ModalTab = 'product' | 'benefits' | 'ingredients' | 'extra';
 
 const ingredientIcons = [Sparkles, Droplets, Shield, FlaskConical, Atom, Leaf, Heart, Gem] as const;
+const highlightIcons = [Sparkles, Heart] as const;
+const benefitIcons = [Shield, Leaf, Atom] as const;
 
 const productAccents: Record<string, string> = {
   'whitening-gold': '#d4a934', 'whitening-black': '#9ca3af', 'diamond': '#2dd4bf',
@@ -38,8 +40,11 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
     if (isOpen) {
       setActiveTab('product');
       setQuantity(1);
+      const handleEsc = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose(); };
+      window.addEventListener('keydown', handleEsc);
+      return () => window.removeEventListener('keydown', handleEsc);
     }
-  }, [isOpen]);
+  }, [isOpen, onClose]);
 
   if (!product) return null;
 
@@ -59,6 +64,18 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
     mouthwash:  { noHarmful: 'goldShowcase.noHarmfulMouthwash', howToUse: 'goldShowcase.howToUseMouthwash', dailyUse: 'goldShowcase.dailyUseMouthwash' },
     kids:       { noHarmful: 'goldShowcase.noHarmfulKids', howToUse: 'goldShowcase.howToUseKids', dailyUse: 'goldShowcase.dailyUseKids' },
   }[productType];
+
+  const isGelProduct = ['whitening-gold', 'diamond'].includes(product.id);
+  const typeLabel = productType === 'toothbrush' ? t('modal.typeToothbrush') :
+    productType === 'mouthwash' ? t('modal.typeMouthwash') :
+    productType === 'kids' ? t('modal.typeKids') :
+    isGelProduct ? t('productLines.toothpasteGel') :
+    t('productLines.toothpaste');
+
+  const formulaLabel = productType === 'toothbrush' ? t('modal.formulaBrush') :
+    productType === 'mouthwash' ? t('modal.formulaMouthwash') :
+    productType === 'kids' ? t('modal.formulaKids') :
+    t('modal.formulaPaste');
 
   const tabs: { key: ModalTab; label: string }[] = [
     { key: 'product', label: t('goldShowcase.tabProduct') },
@@ -179,17 +196,26 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                 {activeTab === 'product' && (
                   <motion.div key="product" initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }} className="space-y-5">
                     <div>
-                      <p className="text-[10px] uppercase tracking-[0.2em] font-semibold mb-1" style={{ color: accent }}>{product.category}</p>
+                      <p className="text-[10px] uppercase tracking-[0.2em] font-semibold mb-1" style={{ color: accent }}>{typeLabel}</p>
                       <h2 className="font-serif text-3xl font-bold text-white">{product.name}</h2>
                     </div>
 
-                    {product.description && (
-                      <div className="p-4 bg-white/[0.04] border border-white/[0.06]" style={{ borderLeftColor: accent + '40', borderLeftWidth: '3px' }}>
-                        <p className="text-stone-300 text-sm leading-relaxed">{product.description}</p>
-                      </div>
-                    )}
+                    {/* Highlight cards */}
+                    <div className="space-y-3">
+                      {[1, 2].map(i => {
+                        const Icon = highlightIcons[(i - 1) % highlightIcons.length];
+                        return (
+                          <div key={i} className="flex items-start gap-3 p-4 bg-white/[0.04] border border-white/[0.06]" style={{ borderLeftColor: accent + '60', borderLeftWidth: '3px' }}>
+                            <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: accent + '15' }}>
+                              <Icon size={14} style={{ color: accent }} />
+                            </div>
+                            <p className="text-sm text-stone-200 leading-relaxed pt-1">{t(`modal.${product.id}.h${i}`)}</p>
+                          </div>
+                        );
+                      })}
+                    </div>
 
-                    {/* Badges as small pills */}
+                    {/* Badges */}
                     {details?.badges && details.badges.length > 0 && (
                       <div className="flex flex-wrap gap-1.5">
                         {details.badges.map((badge) => (
@@ -199,28 +225,52 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                         ))}
                       </div>
                     )}
+
+                    {/* Tagline */}
+                    <div className="flex items-center gap-3 pt-2 border-t border-white/[0.06]">
+                      <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: accent + '15' }}>
+                        <Star size={14} style={{ color: accent }} />
+                      </div>
+                      <p className="text-sm text-stone-400 italic leading-relaxed">{t(`modal.${product.id}.tagline`)}</p>
+                    </div>
+
+                    {/* Footer bar */}
+                    {details?.volume && (
+                      <div className="flex items-center justify-between px-4 py-2.5 bg-white/[0.03] border border-white/[0.06]">
+                        <span className="text-xs text-stone-400 font-medium">{formulaLabel}</span>
+                        <span className="text-xs font-bold" style={{ color: accent }}>{details.volume} {t('modal.ml')}</span>
+                      </div>
+                    )}
                   </motion.div>
                 )}
 
                 {/* ── Benefits tab ── */}
                 {activeTab === 'benefits' && (
                   <motion.div key="benefits" initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }} className="space-y-5">
-                    <h2 className="font-serif text-2xl font-bold text-white">
-                      {product.name}
-                    </h2>
+                    <h2 className="font-serif text-2xl font-bold text-white">{product.name}</h2>
 
-                    {product.description && (
-                      <p className="text-sm text-stone-400 leading-relaxed">{product.description}</p>
-                    )}
-
-                    {/* Badges as benefit items */}
-                    {details?.badges && details.badges.length > 0 && (
-                      <div className="space-y-2">
-                        {details.badges.map((badge) => (
-                          <div key={badge} className="flex items-center gap-3 p-3 bg-white/[0.03] border border-white/[0.06]">
-                            <span className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: accent }} />
-                            <p className="text-sm font-medium text-stone-200">{t(`badges.${badge}`)}</p>
+                    <div className="space-y-3">
+                      {[1, 2, 3].map(i => {
+                        const Icon = benefitIcons[(i - 1) % benefitIcons.length];
+                        return (
+                          <div key={i} className="p-4 bg-white/[0.03] border border-white/[0.06]" style={{ borderLeftColor: accent + '50', borderLeftWidth: '3px' }}>
+                            <div className="flex items-start gap-3">
+                              <div className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style={{ backgroundColor: accent + '15' }}>
+                                <Icon size={13} style={{ color: accent }} />
+                              </div>
+                              <p className="text-sm text-stone-200 leading-relaxed">{t(`modal.${product.id}.b${i}`)}</p>
+                            </div>
                           </div>
+                        );
+                      })}
+                    </div>
+
+                    {details?.badges && details.badges.length > 0 && (
+                      <div className="flex flex-wrap gap-1.5 pt-2">
+                        {details.badges.map((badge) => (
+                          <span key={badge} className="px-3 py-1 text-[10px] font-semibold bg-white/[0.06] text-stone-300 border border-white/[0.08]">
+                            {t(`badges.${badge}`)}
+                          </span>
                         ))}
                       </div>
                     )}
@@ -238,7 +288,9 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                           return (
                             <div key={ingredient} className="p-3.5 bg-white/[0.03] border border-white/[0.06]" style={{ borderLeftColor: accent + '50', borderLeftWidth: '3px' }}>
                               <div className="flex items-start gap-3">
-                                <Icon size={15} className="mt-0.5 flex-shrink-0" style={{ color: accent }} />
+                                <div className="w-7 h-7 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: accent + '15' }}>
+                                  <Icon size={13} style={{ color: accent }} />
+                                </div>
                                 <div>
                                   <p className="text-sm font-bold text-white">{t(`ingredients.${ingredient}`)}</p>
                                   <p className="text-xs text-stone-500 leading-relaxed mt-0.5">{t(`ingredientDesc.${ingredient}`)}</p>
@@ -259,12 +311,21 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                   <motion.div key="extra" initial={{ opacity: 0, x: 10 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.3 }} className="space-y-5">
                     <h2 className="font-serif text-2xl font-bold text-white">{t(extraKeys.dailyUse)}</h2>
 
-                    <p className="text-sm text-stone-400 leading-relaxed">{t(extraKeys.noHarmful)}</p>
+                    <div className="p-3 bg-white/[0.03] border border-white/[0.06]">
+                      <p className="text-sm text-stone-400 leading-relaxed">{t(extraKeys.noHarmful)}</p>
+                    </div>
 
                     <div className="p-4 bg-white/[0.03] border border-white/[0.06]" style={{ borderLeftColor: accent + '40', borderLeftWidth: '3px' }}>
                       <h3 className="font-bold text-white text-sm mb-1">{t('goldShowcase.howToUseTitle')}</h3>
                       <p className="text-stone-400 text-sm leading-relaxed">{t(extraKeys.howToUse)}</p>
                     </div>
+
+                    {details?.composition && (
+                      <div className="p-4 bg-white/[0.03] border border-white/[0.06]">
+                        <h3 className="font-bold text-white text-sm mb-1">{t('goldShowcase.compositionTitle')}</h3>
+                        <p className="text-xs text-stone-500 leading-relaxed">{details.composition}</p>
+                      </div>
+                    )}
 
                     <div>
                       <h3 className="font-bold text-white text-sm mb-1">{t('goldShowcase.storageTitle')}</h3>

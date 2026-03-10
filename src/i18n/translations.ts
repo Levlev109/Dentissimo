@@ -570,6 +570,184 @@
         composition: 'Aqua, Sorbitol, Hydrated Silica, Glycerin, PEG-32, Sodium Monofluorophosphate, Cellulose Gum, Aroma, Sodium Methyl Cocoyl Taurate, Titanium Dioxide, Sodium Saccharin, Gold, Sodium Hyaluronate, Leuconostoc/Radish Root Ferment Filtrate, Colloidal Silver, Limonene.',
         storageTitle: 'Умови зберігання',
         storage: 'Зберігати при температурі від +5°C до +25°C. Уникати прямих сонячних променів.'
+      },
+      modal: {
+        typeToothbrush: 'Зубна щітка',
+        typeMouthwash: 'Ополіскувач',
+        typeKids: 'Дитяча зубна паста',
+        ml: 'мл',
+        formulaPaste: 'Інноваційна формула догляду за зубами',
+        formulaBrush: 'Швейцарська якість та інновації',
+        formulaMouthwash: 'Інноваційна формула для порожнини рота',
+        formulaKids: 'Безпечна формула для дітей',
+        'whitening-gold': {
+          h1: 'Ексклюзивний блиск з частинками золота для бездоганної посмішки',
+          h2: 'Сприяє естетиці та здоров\'ю ясен — краса кожного дня',
+          b1: 'Бережно очищає і полірує емаль завдяки інноваційній формулі',
+          b2: 'Стимулює регенерацію м\'яких тканин та природне загоєння ясен',
+          b3: 'Містить фтор 950ppm — зміцнює емаль та захищає від карієсу при щоденному використанні',
+          tagline: '«Фантастична посмішка» без жорстких абразивних та відбілюючих засобів'
+        },
+        'diamond': {
+          h1: 'Швейцарська алмазна пудра для природного блиску емалі',
+          h2: 'Низький рівень абразивності — безпечно для чутливих зубів',
+          b1: 'Діамантова пудра м\'яко полірує емаль та надає природний блиск',
+          b2: 'Ксилітол захищає від бактерій та зміцнює зовнішній шар емалі',
+          b3: 'Герань стимулює регенерацію клітин та запобігає запаленню ясен',
+          tagline: 'Блискуча посмішка з алмазною пудрою швейцарської якості'
+        },
+        'gentle-care': {
+          h1: 'Унікальний екстракт Ліатріс для бережного догляду за яснами',
+          h2: '100% натуральна формула, зареєстрована Vegan Society',
+          b1: 'Ліатріс Одоратіссіма запобігає роздратуванню та заспокоює ясна',
+          b2: 'Ксилітол і гексетидин забезпечують потрійний антибактеріальний захист',
+          b3: 'Герань стимулює регенерацію клітин та природне загоєння ясен',
+          tagline: 'Ніжний догляд за здоров\'ям вашої посмішки щодня'
+        },
+        'whitening-black': {
+          h1: '100% натуральне активоване вугілля для ідеальної білизни',
+          h2: 'Лідер серед відбілюючих паст за ефективністю',
+          b1: 'Активоване вугілля поглинає запах та перешкоджає збільшенню бактерій',
+          b2: 'Захищає емаль від утворення зубного каменю та нормалізує рН слини',
+          b3: 'Вітамін Е підтримує тонус ясенних тканин, діоксид кремнію полірує поверхню',
+          tagline: 'Професійне відбілювання з силою натурального вугілля'
+        },
+        'complete-care': {
+          h1: 'Унікальний комплекс Regera-Pro для комплексної гігієни',
+          h2: 'Регенерація, відновлення та ремінералізація в одній формулі',
+          b1: 'Кальцій і гідроксіапатит забезпечують інтенсивну ремінералізацію емалі',
+          b2: 'Фторид з м\'якими очищуючими компонентами запобігає карієсу',
+          b3: 'Масло м\'яти та евкаліпту освіжають подих та мають протизапальну дію',
+          tagline: 'Комплексний догляд з інноваційною швейцарською формулою'
+        },
+        'pro-care': {
+          h1: '9 біологічно активних інгредієнтів для захисту зубів та ясен',
+          h2: 'Запобігає пародонтиту, гінгівіту, стоматиту',
+          b1: 'Ефективно зупиняє кровоточивість ясен та сприяє відновленню тканин',
+          b2: 'Комплекс герані, крамерії, ромашки та коммифора мирра для глибокого захисту',
+          b3: 'Ідеальна для післяопераційної гігієни, імплантатів і брекет-систем',
+          tagline: 'Професійний захист від природи для здоров\'я зубів і ясен'
+        },
+        'vegan-b12': {
+          h1: 'Інноваційна 100% веганська формула з вітаміном B12',
+          h2: 'Без фториду — зареєстровано Vegan Society',
+          b1: 'Вітамін B12 підтримує метаболізм та зменшує кількість бактерій',
+          b2: 'Екстракт шавлії запобігає кровоточивості ясен',
+          b3: 'Натуральна антибактеріальна формула без компромісів',
+          tagline: 'Етичний догляд за посмішкою з турботою про планету'
+        },
+        'pregnant': {
+          h1: 'Безпечна формула для вагітних та молодих мам',
+          h2: 'Фолієва кислота B9 та кальцій для зміцнення емалі',
+          b1: 'Фолієва кислота підтримує імунну систему та безпечна під час вагітності',
+          b2: 'Кальцій і гідроксіапатит забезпечують ремінералізацію емалі',
+          b3: 'Календула та герань дезінфікують та зберігають здоров\'я ясен',
+          tagline: 'Безпечний догляд для мами та малюка'
+        },
+        'kids-caramel': {
+          h1: 'Приємний смак карамелі привчає до щоденної гігієни',
+          h2: 'Кальцій зміцнює молочні та перші постійні зуби',
+          b1: 'Гліцерофосфат кальцію м\'яко зміцнює дитячу емаль',
+          b2: 'Ромашка має протизапальну дію та живить тканини ясен',
+          b3: 'Без фториду, парабенів, SLS та алергенів — абсолютно безпечна',
+          tagline: 'Солодкий догляд для маленьких посмішок'
+        },
+        'junior-apple': {
+          h1: 'Яблучний смак робить чистку зубів приємною пригодою',
+          h2: 'Безпечна доза фтору для зміцнення зростаючої емалі',
+          b1: 'Фтор 240 ppm у безпечній концентрації запобігає карієсу',
+          b2: 'Кальцій та вітаміни зміцнюють емаль та сприяють здоров\'ю зубів',
+          b3: 'Без парабенів, SLS та алергенів — безпечна при випадковому ковтанні',
+          tagline: 'Зростай із здоровими зубами'
+        },
+        'brush-gold': {
+          h1: 'Покриття золотом 24К з антибактеріальними властивостями',
+          h2: 'Преміальні щетинки DuPont Tynex® середньої жорсткості',
+          b1: 'Золоте покриття має природні антибактеріальні властивості',
+          b2: 'Щетинки середньої жорсткості ефективно видаляють зубний наліт',
+          b3: 'Закруглені кінці щетинок безпечні для емалі та ясен',
+          tagline: 'Преміальна щітка з золотом для щоденної розкоші'
+        },
+        'brush-silver': {
+          h1: 'Срібне покриття з антимікробним ефектом',
+          h2: 'Жорсткі щетинки DuPont Tynex® для контролю зубного каменю',
+          b1: 'Срібне покриття забезпечує антимікробний захист',
+          b2: 'Жорсткі щетинки ефективно борються з зубним каменем',
+          b3: 'Закруглені кінці не дряпають емаль зубів',
+          tagline: 'Преміальний захист зі сріблом'
+        },
+        'brush-medium': {
+          h1: 'Куполоподібні щетинки для ефективної дії проти нальоту',
+          h2: 'Захист зубної емалі та ясен при щоденному чищенні',
+          b1: 'Щетинки середньої жорсткості для ефективного очищення',
+          b2: 'Куполоподібна форма забезпечує видалення зубного нальоту',
+          b3: 'Безпечна для щоденного використання — захищає емаль та ясна',
+          tagline: 'Щоденний захист зі швейцарською якістю'
+        },
+        'brush-hard': {
+          h1: 'Жорсткі куполоподібні щетинки для контролю каменю',
+          h2: 'Без пошкодження зубної емалі та ясен',
+          b1: 'Жорсткі щетинки ефективно борються з зубним каменем',
+          b2: 'Куполоподібна форма для глибокого очищення',
+          b3: 'Безпечний дизайн захищає емаль та ясна від пошкоджень',
+          tagline: 'Потужне очищення без шкоди для зубів'
+        },
+        'brush-sensitive': {
+          h1: 'Мікротонкі щетинки для міжзубного очищення',
+          h2: 'Ніжний масаж по лінії ясен',
+          b1: 'Ефективне очищення міжзубних поверхонь',
+          b2: 'Ніжний масаж ясен для здоров\'я порожнини рота',
+          b3: 'Ідеальна для чутливих зубів та ясен',
+          tagline: 'Ніжний догляд для чутливих зубів'
+        },
+        'brush-parodontal': {
+          h1: 'Мікротонкі щетинки для запалених ясен',
+          h2: 'Ідеальна для післяопераційного догляду',
+          b1: 'Дбайливий догляд за запаленими яснами',
+          b2: 'Ретельне та м\'яке очищення ясен',
+          b3: 'Підходить для імплантатів та брекет-систем',
+          tagline: 'Відновлення починається з дбайливого догляду'
+        },
+        'brush-kids': {
+          h1: 'М\'які щетинки спеціально для дитячих зубів',
+          h2: 'Забавна присоска для стійкості та зручності',
+          b1: 'Ергономічна нековзна ручка для дитячої руки',
+          b2: 'Забавний дизайн мотивує дитину до чищення зубів',
+          b3: 'М\'які щетинки безпечні для молочних зубів та ясен',
+          tagline: 'Веселе чищення для маленьких'
+        },
+        'brush-junior': {
+          h1: 'Компактна голівка з м\'якими закругленими щетинками',
+          h2: 'М\'яка гумова ручка для надійного хвату',
+          b1: 'Рівномірно закруглені щетинки для ефективного очищення',
+          b2: 'М\'яка гумова ручка зручна для дітей від 6 років',
+          b3: 'Компактний розмір ідеальний для дитячої порожнини рота',
+          tagline: 'Зростай з правильним доглядом'
+        },
+        'mouthwash-gold': {
+          h1: 'Частинки золота 24К для природного відбілювання зубів',
+          h2: 'Без спирту — сяюча формула для щоденного використання',
+          b1: 'Золото підтримує здоров\'я зубів та ясен з антибактеріальними властивостями',
+          b2: 'Ксилітол захищає від бактерій, лейконосток — природний антисептик',
+          b3: 'Міка надає зубам сяючий блиск та преміальний ефект',
+          tagline: 'Сяюча посмішка кожного дня'
+        },
+        'mouthwash-fresh': {
+          h1: 'Спеціальна технологія нейтралізації неприємного запаху',
+          h2: 'Антибактеріальна та протикарієсна дія',
+          b1: 'Масло кардамону та м\'яти забезпечують стійке свіже дихання',
+          b2: 'Гексетидин контролює запах з рота та бактерії',
+          b3: 'Хлорид цинку протидіє накопиченню нальоту — ідеально для курців та кавоманів',
+          tagline: 'Впевнене свіже дихання протягом усього дня'
+        },
+        'mouthwash-gum': {
+          h1: 'Щоденний захист від пародонтиту, гінгівіту, стоматиту',
+          h2: 'Ефективно зупиняє кровоточивість ясен',
+          b1: 'Мирра, ратанія та ромашка запобігають розмноженню бактерій',
+          b2: 'Шавлія дезінфікує та зміцнює ясна',
+          b3: 'Без спирту — безпечний для чутливих ясен при щоденному використанні',
+          tagline: 'Сильні та здорові ясна кожного дня'
+        }
       }
     }
   },
@@ -1169,6 +1347,184 @@
         composition: 'Aqua, Sorbitol, Hydrated Silica, Glycerin, PEG-32, Sodium Monofluorophosphate, Cellulose Gum, Aroma, Sodium Methyl Cocoyl Taurate, Titanium Dioxide, Sodium Saccharin, Gold, Sodium Hyaluronate, Leuconostoc/Radish Root Ferment Filtrate, Colloidal Silver, Limonene.',
         storageTitle: 'Storage',
         storage: 'Store at +5°C to +25°C. Avoid direct sunlight.'
+      },
+      modal: {
+        typeToothbrush: 'Toothbrush',
+        typeMouthwash: 'Mouthwash',
+        typeKids: 'Children\'s Toothpaste',
+        ml: 'ml',
+        formulaPaste: 'Innovative dental care formula',
+        formulaBrush: 'Swiss quality and innovation',
+        formulaMouthwash: 'Innovative oral care formula',
+        formulaKids: 'Safe formula for children',
+        'whitening-gold': {
+          h1: 'Exclusive shine with gold particles for a flawless smile',
+          h2: 'Promotes aesthetics and gum health — beauty every day',
+          b1: 'Gently cleanses and polishes enamel with innovative formula',
+          b2: 'Stimulates soft tissue regeneration and natural gum healing',
+          b3: 'Contains fluoride 950ppm — strengthens enamel and protects against cavities with daily use',
+          tagline: 'Fantastic smile without harsh abrasives and bleaching agents'
+        },
+        'diamond': {
+          h1: 'Swiss diamond powder for natural enamel brilliance',
+          h2: 'Low abrasivity level — safe for sensitive teeth',
+          b1: 'Diamond powder gently polishes enamel and provides natural shine',
+          b2: 'Xylitol protects against bacteria and strengthens outer enamel layer',
+          b3: 'Geranium stimulates cell regeneration and prevents gum inflammation',
+          tagline: 'Brilliant smile with Swiss diamond powder quality'
+        },
+        'gentle-care': {
+          h1: 'Unique Liatris extract for gentle gum care',
+          h2: '100% natural formula registered by Vegan Society',
+          b1: 'Liatris Odoratissima prevents irritation and soothes gums',
+          b2: 'Xylitol and hexetidine provide triple antibacterial protection',
+          b3: 'Geranium stimulates cell regeneration and natural gum healing',
+          tagline: 'Gentle care for your smile health every day'
+        },
+        'whitening-black': {
+          h1: '100% natural activated charcoal for perfect whitening',
+          h2: 'Leader among whitening toothpastes in effectiveness',
+          b1: 'Activated charcoal absorbs odor and prevents bacterial growth',
+          b2: 'Protects enamel from tartar buildup and normalizes saliva pH',
+          b3: 'Vitamin E supports gum tissue tone, silica polishes enamel surface',
+          tagline: 'Professional whitening with the power of natural charcoal'
+        },
+        'complete-care': {
+          h1: 'Unique Regera-Pro complex for comprehensive hygiene',
+          h2: 'Regeneration, restoration and remineralization in one formula',
+          b1: 'Calcium and hydroxyapatite provide intensive enamel remineralization',
+          b2: 'Fluoride with gentle cleansing components prevents cavities',
+          b3: 'Peppermint and eucalyptus oils freshen breath with anti-inflammatory action',
+          tagline: 'Comprehensive care with innovative Swiss formula'
+        },
+        'pro-care': {
+          h1: '9 bioactive ingredients for teeth and gum protection',
+          h2: 'Prevents periodontitis, gingivitis, stomatitis',
+          b1: 'Effectively stops gum bleeding and promotes tissue restoration',
+          b2: 'Complex of geranium, krameria, chamomile and commiphora myrrh for deep protection',
+          b3: 'Ideal for post-operative hygiene, implants and braces',
+          tagline: 'Professional nature-powered protection for teeth and gums'
+        },
+        'vegan-b12': {
+          h1: 'Innovative 100% vegan formula with vitamin B12',
+          h2: 'Fluoride-free — registered by Vegan Society',
+          b1: 'Vitamin B12 supports metabolism and reduces bacterial count',
+          b2: 'Sage extract prevents gum bleeding',
+          b3: 'Natural antibacterial formula without compromise',
+          tagline: 'Ethical smile care with love for the planet'
+        },
+        'pregnant': {
+          h1: 'Safe formula for pregnant women and young mothers',
+          h2: 'Folic acid B9 and calcium for enamel strengthening',
+          b1: 'Folic acid supports immune system and is safe during pregnancy',
+          b2: 'Calcium and hydroxyapatite provide enamel remineralization',
+          b3: 'Calendula and geranium disinfect and maintain gum health',
+          tagline: 'Safe care for mother and baby'
+        },
+        'kids-caramel': {
+          h1: 'Pleasant caramel flavor teaches daily hygiene habits',
+          h2: 'Calcium strengthens milk and first permanent teeth',
+          b1: 'Calcium glycerophosphate gently strengthens children\'s enamel',
+          b2: 'Chamomile has anti-inflammatory action and nourishes gum tissue',
+          b3: 'Free of fluoride, parabens, SLS and allergens — completely safe',
+          tagline: 'Sweet care for little smiles'
+        },
+        'junior-apple': {
+          h1: 'Apple flavor makes brushing a pleasant adventure',
+          h2: 'Safe fluoride dose for growing enamel protection',
+          b1: 'Fluoride 240 ppm in safe concentration prevents cavities',
+          b2: 'Calcium and vitamins strengthen enamel and promote dental health',
+          b3: 'Free of parabens, SLS and allergens — safe if accidentally swallowed',
+          tagline: 'Growing up with healthy teeth'
+        },
+        'brush-gold': {
+          h1: '24K gold coating with antibacterial properties',
+          h2: 'Premium DuPont Tynex® medium bristles',
+          b1: 'Gold coating has natural antibacterial properties',
+          b2: 'Medium bristles effectively remove dental plaque',
+          b3: 'Rounded bristle tips are safe for enamel and gums',
+          tagline: 'Premium gold brush for daily luxury'
+        },
+        'brush-silver': {
+          h1: 'Silver coating with antimicrobial effect',
+          h2: 'Hard DuPont Tynex® bristles for tartar control',
+          b1: 'Silver coating provides antimicrobial protection',
+          b2: 'Hard bristles effectively fight tartar buildup',
+          b3: 'Rounded tips don\'t scratch tooth enamel',
+          tagline: 'Premium protection with silver'
+        },
+        'brush-medium': {
+          h1: 'Dome-shaped bristles for effective anti-plaque action',
+          h2: 'Protects tooth enamel and gums with daily brushing',
+          b1: 'Medium bristles for effective cleaning',
+          b2: 'Dome shape ensures dental plaque removal',
+          b3: 'Safe for daily use — protects enamel and gums',
+          tagline: 'Daily protection with Swiss quality'
+        },
+        'brush-hard': {
+          h1: 'Hard dome-shaped bristles for tartar control',
+          h2: 'Without damaging tooth enamel and gums',
+          b1: 'Hard bristles effectively fight tartar buildup',
+          b2: 'Dome shape for deep cleaning',
+          b3: 'Safe design protects enamel and gums from damage',
+          tagline: 'Powerful cleaning without harm to teeth'
+        },
+        'brush-sensitive': {
+          h1: 'Micro-thin bristles for interdental cleaning',
+          h2: 'Gentle massage along the gum line',
+          b1: 'Effective interdental surface cleaning',
+          b2: 'Gentle gum massage for oral health',
+          b3: 'Perfect for sensitive teeth and gums',
+          tagline: 'Gentle care for sensitive teeth'
+        },
+        'brush-parodontal': {
+          h1: 'Micro-thin bristles for inflamed gums',
+          h2: 'Ideal for post-operative care',
+          b1: 'Gentle care for inflamed gums',
+          b2: 'Thorough and gentle gum cleaning',
+          b3: 'Suitable for implants and braces',
+          tagline: 'Recovery starts with gentle care'
+        },
+        'brush-kids': {
+          h1: 'Soft bristles specially designed for children\'s teeth',
+          h2: 'Fun suction cup for stability and convenience',
+          b1: 'Ergonomic non-slip handle for children\'s hands',
+          b2: 'Fun design motivates children to brush teeth',
+          b3: 'Soft bristles safe for baby teeth and gums',
+          tagline: 'Fun brushing for little ones'
+        },
+        'brush-junior': {
+          h1: 'Compact head with soft rounded bristles',
+          h2: 'Soft rubber handle for secure grip',
+          b1: 'Evenly rounded bristles for effective cleaning',
+          b2: 'Soft rubber handle comfortable for children 6+',
+          b3: 'Compact size ideal for children\'s oral cavity',
+          tagline: 'Growing up with proper care'
+        },
+        'mouthwash-gold': {
+          h1: '24K gold particles for natural teeth whitening',
+          h2: 'Alcohol-free — brilliant formula for daily use',
+          b1: 'Gold supports teeth and gum health with antibacterial properties',
+          b2: 'Xylitol protects from bacteria, leuconostoc — natural antiseptic',
+          b3: 'Mica gives teeth a radiant shine and premium effect',
+          tagline: 'Radiant smile every day'
+        },
+        'mouthwash-fresh': {
+          h1: 'Special technology for neutralizing bad breath',
+          h2: 'Antibacterial and anti-caries action',
+          b1: 'Cardamom and peppermint oils provide lasting fresh breath',
+          b2: 'Hexetidine controls bad breath and bacteria',
+          b3: 'Zinc chloride prevents plaque buildup — perfect for smokers and coffee lovers',
+          tagline: 'Confident fresh breath all day long'
+        },
+        'mouthwash-gum': {
+          h1: 'Daily protection against periodontitis, gingivitis, stomatitis',
+          h2: 'Effectively stops gum bleeding',
+          b1: 'Myrrh, ratania and chamomile prevent bacterial growth',
+          b2: 'Sage disinfects and strengthens gums',
+          b3: 'Alcohol-free — safe for sensitive gums with daily use',
+          tagline: 'Strong and healthy gums every day'
+        }
       }
     }
   }
