@@ -222,7 +222,7 @@ export const GoldShowcase = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="grid lg:grid-cols-[1fr,1fr] gap-4 lg:gap-16 items-center"
+              className="grid lg:grid-cols-[5fr,6fr] gap-4 lg:gap-12 items-center"
             >
               {/* Left — Text & CTA */}
               <div className="order-2 lg:order-1 space-y-3 lg:space-y-5">
@@ -266,8 +266,8 @@ export const GoldShowcase = () => {
                 </h2>
 
                 {/* Description in a glass card */}
-                <div className="p-4 lg:p-5 rounded-xl bg-white/[0.04] backdrop-blur-sm border border-white/[0.06]">
-                  <p className="text-stone-300 text-sm md:text-base lg:text-lg leading-relaxed">
+                <div className="p-4 rounded-xl bg-white/[0.04] backdrop-blur-sm border border-white/[0.06]">
+                  <p className="text-stone-200 text-sm md:text-base leading-relaxed">
                     {desc}
                   </p>
                 </div>
@@ -333,7 +333,7 @@ export const GoldShowcase = () => {
               </div>
 
               {/* Right — Product Image with effects */}
-              <div className="order-1 lg:order-2 flex justify-center relative pt-4">
+              <div className="order-1 lg:order-2 flex justify-center relative pt-4 lg:min-h-[480px]">
                 {/* Pulsing ring */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <motion.div
@@ -380,7 +380,7 @@ export const GoldShowcase = () => {
                     transition={{ duration: 0.5, ease: 'easeOut' }}
                     src={product.image}
                     alt={product.name}
-                    className="relative w-40 md:w-48 lg:w-72 max-h-[220px] md:max-h-[280px] lg:max-h-[420px] h-auto object-contain group-hover:scale-[1.06] transition-transform duration-500"
+                    className="relative w-40 md:w-48 lg:w-auto lg:h-[420px] max-h-[220px] md:max-h-[280px] lg:max-h-[480px] object-contain group-hover:scale-[1.06] transition-transform duration-500"
                     style={{ filter: `drop-shadow(0 20px 60px ${theme.glow})` }}
                   />
                 </div>
