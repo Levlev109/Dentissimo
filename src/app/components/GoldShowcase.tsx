@@ -92,7 +92,7 @@ export const GoldShowcase = () => {
 
   return (
     <>
-      <section className="py-16 md:py-24 bg-gradient-to-br from-stone-950 via-stone-900 to-stone-950 overflow-hidden relative">
+      <section className="py-16 md:py-24 bg-gradient-to-br from-stone-950 via-stone-900 to-stone-950 overflow-x-clip relative">
         {/* Dynamic ambient glow */}
         <div
           className="absolute inset-0 transition-all duration-700"
@@ -247,19 +247,20 @@ export const GoldShowcase = () => {
           </AnimatePresence>
 
           {/* Product selector thumbnails */}
-          <div className="mt-12 flex justify-center">
-            <div className="flex items-center gap-3 md:gap-4 overflow-x-auto pb-3 max-w-full px-4 scrollbar-thin">
+          <div className="mt-14 flex justify-center">
+            <div className="flex items-center gap-4 md:gap-5 overflow-x-auto py-4 px-4 max-w-full scrollbar-thin">
               {categoryProducts.map((p, i) => (
                 <button
                   key={p.id}
                   onClick={() => setSelectedIndex(i)}
-                  className={`flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-2xl p-2.5 md:p-3 transition-all duration-300 ${
+                  className={`flex-shrink-0 w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 rounded-2xl p-3 md:p-4 transition-all duration-300 ${
                     i === selectedIndex
-                      ? 'bg-white/10 scale-105'
-                      : 'bg-white/5 hover:bg-white/[0.08] hover:scale-[1.03]'
+                      ? 'bg-white/10 scale-[1.08] shadow-lg'
+                      : 'bg-white/5 hover:bg-white/[0.08] hover:scale-[1.04]'
                   }`}
                   style={{
                     border: `2px solid ${i === selectedIndex ? theme.color : 'rgba(255,255,255,0.1)'}`,
+                    boxShadow: i === selectedIndex ? `0 4px 20px ${theme.glow}` : undefined,
                   }}
                   title={p.name}
                 >

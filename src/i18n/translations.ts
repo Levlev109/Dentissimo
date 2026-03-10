@@ -1077,7 +1077,7 @@
         tabProduct: 'Product',
         tabBenefits: 'Benefits',
         tabIngredients: 'Ingredients',
-        tabExtra: 'Extra',
+        tabExtra: 'Details',
         gentleClean: 'Gently cleanses and polishes enamel',
         fluorideNote: 'Contains fluoride 950ppm — strengthens enamel and protects against cavities with daily use.',
         toothpasteGel: 'Toothpaste Gel',
