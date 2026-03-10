@@ -15,7 +15,7 @@ const useGlacierCanvas = (canvasRef: React.RefObject<HTMLCanvasElement | null>, 
     ctx.clearRect(0, 0, W, H);
 
     // Dark base
-    ctx.fillStyle = '#0c0a09';
+    ctx.fillStyle = '#08101e';
     ctx.fillRect(0, 0, W, H);
 
     // Aurora / glacier light waves

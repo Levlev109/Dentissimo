@@ -117,6 +117,21 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
+  /* ═══ DARK NAVY-BLUE STONE OVERRIDE (glacier aurora theme) ═══ */
+  /* Original stone palette backed up — to revert, delete this block */
+  --color-stone-950: #08101e;
+  --color-stone-900: #0d1829;
+  --color-stone-850: #111f35;
+  --color-stone-800: #162842;
+  --color-stone-700: #1e3558;
+  --color-stone-600: #2a456e;
+  --color-stone-500: #5e7d9a;
+  --color-stone-400: #8ba3b8;
+  --color-stone-300: #b0c4d6;
+  --color-stone-200: #cfdce8;
+  --color-stone-100: #e4ecf3;
+  --color-stone-50: #f2f5f9;
 }
 
 @layer base {

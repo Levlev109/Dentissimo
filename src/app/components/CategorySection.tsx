@@ -49,7 +49,7 @@ export const CategorySection = () => {
   ];
 
   return (
-    <section className="py-24 bg-white dark:bg-stone-950 transition-colors duration-500">
+    <section className="py-24 bg-stone-950 transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-20">
           <motion.div
@@ -58,8 +58,8 @@ export const CategorySection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <p className="text-stone-700 dark:text-stone-400 uppercase tracking-[0.3em] text-xs font-bold mb-4">{t('categorySection.subtitle')}</p>
-            <h2 className="font-serif text-4xl md:text-5xl text-stone-900 dark:text-white mb-4">{t('categorySection.title')}</h2>
+            <p className="text-stone-400 uppercase tracking-[0.3em] text-xs font-bold mb-4">{t('categorySection.subtitle')}</p>
+            <h2 className="font-serif text-4xl md:text-5xl text-white mb-4">{t('categorySection.title')}</h2>
             <div className="w-24 h-1 bg-gradient-to-r from-transparent via-teal-400 to-transparent mx-auto mt-6" />
           </motion.div>
         </div>
@@ -73,7 +73,7 @@ export const CategorySection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.6 }}
-              className={`group block relative overflow-hidden aspect-[3/4] bg-gradient-to-b ${cat.gradientLight} dark:${cat.gradient} rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-stone-200/50 dark:border-stone-800/50`}
+              className={`group block relative overflow-hidden aspect-[3/4] bg-gradient-to-b ${cat.gradient} rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-stone-800/50`}
             >
               <div className={`absolute top-0 left-0 w-full h-1 ${cat.accent} opacity-80 group-hover:h-1.5 transition-all duration-300`} />
               <img

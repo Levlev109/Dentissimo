@@ -2,6 +2,20 @@
 @import './tailwind.css';
 @import './theme.css';
 
+/* ═══ GLACIER AURORA AMBIENT BACKGROUND ═══ */
+/* Adds subtle blue-teal radial glows behind all content to match hero aesthetic */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 80% 50% at 20% 30%, rgba(15, 80, 130, 0.07), transparent 70%),
+    radial-gradient(ellipse 60% 60% at 80% 60%, rgba(20, 120, 160, 0.05), transparent 70%),
+    radial-gradient(ellipse 90% 40% at 50% 80%, rgba(10, 60, 100, 0.06), transparent 60%);
+}
+
 /* Smooth scrolling for anchor links */
 html {
   scroll-behavior: smooth;
@@ -79,11 +93,11 @@ footer[id] {
 }
 
 ::-webkit-scrollbar-track {
-  background: #0c0a09;
+  background: #08101e;
 }
 
 .dark ::-webkit-scrollbar-track {
-  background: #0c0a09;
+  background: #08101e;
 }
 
 ::-webkit-scrollbar-thumb {
