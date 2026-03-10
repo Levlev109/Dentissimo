@@ -249,7 +249,7 @@ export const GoldShowcase = () => {
                   </span>
                   {product.isNew && (
                     <span className="px-3 py-1 text-[10px] font-bold tracking-widest uppercase bg-white/10 text-white border border-white/10">
-                      NEW
+                      {t('products.new')}
                     </span>
                   )}
                   {product.badge && (
@@ -305,7 +305,7 @@ export const GoldShowcase = () => {
                   <span className="text-2xl md:text-3xl lg:text-4xl font-bold text-white tracking-tight">
                     {t('products.currency')}{price.toFixed(0)}
                   </span>
-                  <span className="text-stone-400 text-sm">/ шт</span>
+                  <span className="text-stone-400 text-sm">{t('products.perUnit')}</span>
                 </div>
 
                 {/* CTAs */}

@@ -24,9 +24,9 @@ export const AboutSection = () => {
   return (
     <section id="about" className="bg-stone-950 text-white overflow-visible relative">
       {/* Part 1: Glacier Water Story */}
-      <div className="py-28">
+      <div className="py-16 md:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center gap-16">
+          <div className="flex flex-col md:flex-row items-center gap-8 md:gap-16">
             <motion.div
               className="w-full md:w-1/2 order-2 md:order-1"
               initial={{ opacity: 0, x: -30 }}
@@ -73,7 +73,7 @@ export const AboutSection = () => {
                   {t('about.doctorQuote')}
                 </blockquote>
                 <p className="text-stone-400 text-sm mt-3 font-medium">
-                  вЂ” Dr. Michael Meier, Perfect Smile Swiss Dental Care
+                  — Dr. Michael Meier, Perfect Smile Swiss Dental Care
                 </p>
               </div>
             </motion.div>
@@ -82,13 +82,13 @@ export const AboutSection = () => {
       </div>
 
       {/* Part 2: Regera-PRO Complex */}
-      <div className="py-24 relative">
+      <div className="py-14 md:py-24 relative">
         {/* Subtle section separator */}
         <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-teal-400/10 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-b from-stone-900/30 via-stone-900/20 to-transparent" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            className="mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-6"
+            className="mb-8 md:mb-16 flex flex-col md:flex-row md:items-end md:justify-between gap-4 md:gap-6"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -135,9 +135,9 @@ export const AboutSection = () => {
       </div>
 
       {/* Part 3: Manufacturing & Bad Ragaz */}
-      <div className="py-20">
+      <div className="py-12 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-start gap-12">
+          <div className="flex flex-col md:flex-row items-start gap-8 md:gap-12">
             <motion.div
               className="w-full md:w-1/2"
               initial={{ opacity: 0, x: -30 }}

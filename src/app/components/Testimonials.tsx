@@ -30,14 +30,14 @@ export const Testimonials = () => {
   ];
 
   return (
-    <section className="py-28 bg-stone-950 relative overflow-hidden">
+    <section className="py-16 md:py-28 bg-stone-950 relative overflow-hidden">
       {/* Subtle ambient glow */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_20%_50%,rgba(20,184,166,0.02),transparent)]" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_40%_40%_at_80%_50%,rgba(20,184,166,0.015),transparent)]" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <motion.div
-          className="mb-20 flex flex-col md:flex-row md:items-end md:justify-between gap-6"
+          className="mb-10 md:mb-20 flex flex-col md:flex-row md:items-end md:justify-between gap-4 md:gap-6"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -54,7 +54,7 @@ export const Testimonials = () => {
           {reviews.map((review, index) => (
             <motion.div
               key={review.id}
-              className={`relative p-8 md:p-10 group transition-all duration-500 ${
+              className={`relative p-5 md:p-10 group transition-all duration-500 border-l border-white/[0.04] md:border-l-0 ${
                 index === 1 ? 'md:-translate-y-6' : ''
               }`}
               initial={{ opacity: 0, y: 40 }}
@@ -76,7 +76,7 @@ export const Testimonials = () => {
                     <Star key={i} size={14} className="text-amber-400 fill-amber-400" />
                   ))}
                 </div>
-                <p className="text-stone-200 mb-8 italic leading-relaxed text-[15px] md:text-base">
+                <p className="text-stone-200 mb-5 md:mb-8 italic leading-relaxed text-[15px] md:text-base">
                   "{t(review.textKey)}"
                 </p>
                 <div className="flex items-center gap-3 pt-5 border-t border-white/[0.06]">
