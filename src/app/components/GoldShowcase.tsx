@@ -222,7 +222,7 @@ export const GoldShowcase = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="grid lg:grid-cols-[1fr,1fr] gap-4 lg:gap-10 items-center"
+              className="grid lg:grid-cols-[1fr,1fr] gap-4 lg:gap-10 items-start"
             >
               {/* Left — Text & CTA */}
               <div className="order-2 lg:order-1 space-y-3">
@@ -333,7 +333,7 @@ export const GoldShowcase = () => {
               </div>
 
               {/* Right — Product Image with effects */}
-              <div className="order-1 lg:order-2 flex justify-center relative min-h-[200px] md:min-h-[280px]">
+              <div className="order-1 lg:order-2 flex justify-center relative pt-4">
                 {/* Pulsing ring */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <motion.div
