@@ -222,10 +222,10 @@ export const GoldShowcase = () => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] }}
-              className="grid lg:grid-cols-[5fr,6fr] gap-4 lg:gap-12 items-center"
+              className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-12"
             >
               {/* Left — Text & CTA */}
-              <div className="order-2 lg:order-1 space-y-3 lg:space-y-5">
+              <div className="order-2 lg:order-1 lg:w-1/2 space-y-3 lg:space-y-5 lg:flex-shrink-0">
                 {/* Category + badge row */}
                 <div className="flex items-center gap-3">
                   <span
@@ -333,7 +333,7 @@ export const GoldShowcase = () => {
               </div>
 
               {/* Right — Product Image with effects */}
-              <div className="order-1 lg:order-2 flex justify-center relative pt-4 lg:min-h-[480px]">
+              <div className="order-1 lg:order-2 lg:w-1/2 flex justify-center items-center relative min-h-[220px] lg:min-h-[500px]">
                 {/* Pulsing ring */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <motion.div
@@ -380,7 +380,7 @@ export const GoldShowcase = () => {
                     transition={{ duration: 0.5, ease: 'easeOut' }}
                     src={product.image}
                     alt={product.name}
-                    className="relative w-40 md:w-48 lg:w-auto lg:h-[420px] max-h-[220px] md:max-h-[280px] lg:max-h-[480px] object-contain group-hover:scale-[1.06] transition-transform duration-500"
+                    className="relative w-40 md:w-48 lg:w-auto max-h-[220px] md:max-h-[280px] lg:max-h-none lg:h-[450px] object-contain group-hover:scale-[1.06] transition-transform duration-500"
                     style={{ filter: `drop-shadow(0 20px 60px ${theme.glow})` }}
                   />
                 </div>
