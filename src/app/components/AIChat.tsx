@@ -101,7 +101,7 @@ export const AIChat = () => {
             initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="fixed bottom-6 right-6 z-50 w-[380px] max-w-[calc(100vw-2rem)] h-[600px] max-h-[calc(100vh-6rem)] bg-stone-900 rounded-2xl shadow-2xl flex flex-col overflow-hidden"
+            className="fixed bottom-6 right-6 z-50 w-[380px] max-w-[calc(100vw-2rem)] h-[600px] max-h-[calc(100vh-6rem)] bg-stone-900 shadow-2xl flex flex-col overflow-hidden"
           >
             {/* Header */}
             <div className="bg-stone-900 text-white p-4 flex items-center justify-between">
@@ -135,7 +135,7 @@ export const AIChat = () => {
                   className={`flex ${message.isBot ? 'justify-start' : 'justify-end'}`}
                 >
                   <div
-                    className={`max-w-[80%] rounded-2xl p-3 ${
+                    className={`max-w-[80%] p-3 ${
                       message.isBot
                         ? 'bg-stone-800 text-stone-100 shadow-sm'
                         : 'bg-teal-700 text-white'
@@ -158,7 +158,7 @@ export const AIChat = () => {
 
               {isTyping && (
                 <div className="flex justify-start">
-                  <div className="bg-stone-800 text-stone-100 rounded-2xl p-3 shadow-sm">
+                  <div className="bg-stone-800 text-stone-100 p-3 shadow-sm">
                     <div className="flex gap-1">
                       <div className="w-2 h-2 bg-stone-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
                       <div className="w-2 h-2 bg-stone-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
@@ -180,12 +180,12 @@ export const AIChat = () => {
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder={t('aiChat.placeholder')}
-                  className="flex-1 px-4 py-3 border border-stone-600 bg-stone-800 text-white placeholder-stone-500 rounded-full focus:ring-2 focus:ring-teal-400 focus:border-transparent outline-none text-sm"
+                  className="flex-1 px-4 py-3 border border-stone-600 bg-stone-800 text-white placeholder-stone-500 focus:ring-2 focus:ring-teal-400 focus:border-transparent outline-none text-sm"
                 />
                 <button
                   onClick={handleSend}
                   disabled={!inputValue.trim()}
-                  className="bg-stone-900 text-white p-3 rounded-full hover:bg-stone-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="bg-stone-900 text-white p-3 hover:bg-stone-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Send size={20} />
                 </button>

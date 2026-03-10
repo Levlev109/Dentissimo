@@ -153,7 +153,7 @@ export const CheckoutPage = () => {
   if (orderPlaced) {
     return (
       <div className="min-h-screen bg-stone-950 flex items-center justify-center px-4">
-        <div className="max-w-md w-full bg-stone-900 rounded-2xl shadow-lg p-8 text-center">
+        <div className="max-w-md w-full bg-stone-900 shadow-lg p-8 text-center">
           <div className="w-20 h-20 bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-6">
             <CheckCircle size={40} className="text-green-600" />
           </div>
@@ -165,7 +165,7 @@ export const CheckoutPage = () => {
           </p>
           <button
             onClick={() => navigate('/')}
-            className="px-8 py-3.5 bg-stone-900 text-white font-semibold rounded-xl hover:bg-stone-800 transition-all shadow-lg"
+            className="px-8 py-3.5 bg-stone-900 text-white font-semibold hover:bg-stone-800 transition-all shadow-lg"
           >
             {t('cart.continueShopping')}
           </button>
@@ -184,7 +184,7 @@ export const CheckoutPage = () => {
           </h2>
           <button
             onClick={() => navigate('/')}
-            className="px-8 py-3.5 bg-stone-900 text-white font-semibold rounded-xl hover:bg-stone-800 transition-all shadow-lg"
+            className="px-8 py-3.5 bg-stone-900 text-white font-semibold hover:bg-stone-800 transition-all shadow-lg"
           >
             {t('cart.continueShopping')}
           </button>
@@ -209,7 +209,7 @@ export const CheckoutPage = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Form */}
-          <div className="bg-stone-900 rounded-xl shadow-sm p-4 sm:p-8">
+          <div className="bg-stone-900 shadow-sm p-4 sm:p-8">
             <h2 className="font-serif text-2xl text-white mb-6">
               {t('checkout.personalInfo')}
             </h2>
@@ -224,7 +224,7 @@ export const CheckoutPage = () => {
                     type="text"
                     value={formData.firstName}
                     onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                    className={`w-full px-4 py-3 border ${errors.firstName ? 'border-red-500' : 'border-stone-700'} rounded-lg bg-stone-800 text-white placeholder-stone-500 focus:ring-2 focus:ring-teal-400 focus:border-transparent outline-none`}
+                    className={`w-full px-4 py-3 border ${errors.firstName ? 'border-red-500' : 'border-stone-700'} bg-stone-800 text-white placeholder-stone-500 focus:ring-2 focus:ring-teal-400 focus:border-transparent outline-none`}
                   />
                   {errors.firstName && (
                     <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>
@@ -239,7 +239,7 @@ export const CheckoutPage = () => {
                     type="text"
                     value={formData.lastName}
                     onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                    className={`w-full px-4 py-3 border ${errors.lastName ? 'border-red-500' : 'border-stone-700'} rounded-lg bg-stone-800 text-white placeholder-stone-500 focus:ring-2 focus:ring-teal-400 focus:border-transparent outline-none`}
+                    className={`w-full px-4 py-3 border ${errors.lastName ? 'border-red-500' : 'border-stone-700'} bg-stone-800 text-white placeholder-stone-500 focus:ring-2 focus:ring-teal-400 focus:border-transparent outline-none`}
                   />
                   {errors.lastName && (
                     <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>
@@ -257,7 +257,7 @@ export const CheckoutPage = () => {
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="example@mail.com"
-                  className={`w-full px-4 py-3 border ${errors.email ? 'border-red-500' : 'border-stone-700'} rounded-lg bg-stone-800 text-white placeholder-stone-500 focus:ring-2 focus:ring-teal-400 focus:border-transparent outline-none`}
+                  className={`w-full px-4 py-3 border ${errors.email ? 'border-red-500' : 'border-stone-700'} bg-stone-800 text-white placeholder-stone-500 focus:ring-2 focus:ring-teal-400 focus:border-transparent outline-none`}
                 />
                 {errors.email && (
                   <p className="text-red-500 text-sm mt-1">{errors.email}</p>
@@ -276,7 +276,7 @@ export const CheckoutPage = () => {
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   placeholder={t('checkout.phonePlaceholder')}
-                  className={`w-full px-4 py-3 border ${errors.phone ? 'border-red-500' : 'border-stone-700'} rounded-lg bg-stone-800 text-white placeholder-stone-500 focus:ring-2 focus:ring-teal-400 focus:border-transparent outline-none`}
+                  className={`w-full px-4 py-3 border ${errors.phone ? 'border-red-500' : 'border-stone-700'} bg-stone-800 text-white placeholder-stone-500 focus:ring-2 focus:ring-teal-400 focus:border-transparent outline-none`}
                 />
                 {errors.phone && (
                   <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
@@ -304,7 +304,7 @@ export const CheckoutPage = () => {
               <button
                 type="submit"
                 disabled={sending}
-                className="group relative w-full py-4 text-white font-semibold tracking-widest uppercase rounded-xl disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-3 text-base overflow-hidden bg-gradient-to-r from-stone-900 via-stone-800 to-stone-900 shadow-[0_6px_30px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.35)] border border-white/10 hover:border-white/20 transition-all duration-500 hover:scale-[1.01]"
+                className="group relative w-full py-4 text-white font-semibold tracking-widest uppercase disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-3 text-base overflow-hidden bg-gradient-to-r from-stone-900 via-stone-800 to-stone-900 shadow-[0_6px_30px_rgba(0,0,0,0.25)] hover:shadow-[0_8px_40px_rgba(0,0,0,0.35)] border border-white/10 hover:border-white/20 transition-all duration-500 hover:scale-[1.01]"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                 <span className="relative z-10 flex items-center gap-2">
@@ -316,7 +316,7 @@ export const CheckoutPage = () => {
           </div>
 
           {/* Order Summary */}
-          <div className="bg-stone-900 rounded-xl shadow-sm p-4 sm:p-8 h-fit sticky top-24">
+          <div className="bg-stone-900 shadow-sm p-4 sm:p-8 h-fit sticky top-24">
             <h2 className="font-serif text-2xl text-white mb-6">
               {t('checkout.orderSummary')}
             </h2>

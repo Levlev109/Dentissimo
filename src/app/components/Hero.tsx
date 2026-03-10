@@ -249,7 +249,7 @@ export const Hero = () => {
 
       {/* ═══ Glacier Aurora Canvas Background ═══ */}
       <motion.div
-        className="absolute inset-3 sm:inset-4 md:inset-6 lg:inset-8 z-0 overflow-hidden rounded-xl sm:rounded-2xl md:rounded-3xl"
+        className="absolute inset-3 sm:inset-4 md:inset-6 lg:inset-8 z-0 overflow-hidden"
         style={{ scale: bgScale, opacity: bgOpacity }}
       >
         <canvas
@@ -259,7 +259,7 @@ export const Hero = () => {
         />
 
         {/* Frame border */}
-        <div className="absolute inset-0 z-30 rounded-xl sm:rounded-2xl md:rounded-3xl ring-1 ring-inset ring-white/[0.08] pointer-events-none" />
+        <div className="absolute inset-0 z-30 ring-1 ring-inset ring-white/[0.08] pointer-events-none" />
 
         {/* Subtle noise texture over canvas */}
         <div

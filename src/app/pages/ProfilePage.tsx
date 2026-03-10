@@ -72,7 +72,7 @@ export const ProfilePage = () => {
             animate={{ opacity: 1, y: 0 }}
             className="lg:col-span-1"
           >
-            <div className="bg-stone-900 rounded-lg shadow-sm p-6 sticky top-24">
+            <div className="bg-stone-900 shadow-sm p-6 sticky top-24">
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-16 h-16 rounded-full bg-stone-700 flex items-center justify-center">
                   <User size={32} className="text-white" />
@@ -104,7 +104,7 @@ export const ProfilePage = () => {
 
               <div className="border-t border-stone-800 pt-6">
                 <div className="grid grid-cols-2 gap-4 mb-6">
-                  <div className="text-center p-4 bg-stone-800 rounded-lg">
+                  <div className="text-center p-4 bg-stone-800">
                     <div className="text-2xl font-bold text-white">
                       {orders.length}
                     </div>
@@ -112,7 +112,7 @@ export const ProfilePage = () => {
                       {t('profile.totalOrders')}
                     </div>
                   </div>
-                  <div className="text-center p-4 bg-stone-800 rounded-lg">
+                  <div className="text-center p-4 bg-stone-800">
                     <div className="text-2xl font-bold text-white">
                       {t('products.currency')}{orders.reduce((sum, order) => sum + order.total, 0).toFixed(2)}
                     </div>
@@ -124,7 +124,7 @@ export const ProfilePage = () => {
 
                 <button
                   onClick={handleLogout}
-                  className="w-full bg-white hover:bg-stone-100 text-stone-900 py-3 rounded-lg transition-colors flex items-center justify-center gap-2"
+                  className="w-full bg-white hover:bg-stone-100 text-stone-900 py-3 transition-colors flex items-center justify-center gap-2"
                 >
                   <LogOut size={18} />
                   {t('profile.logout')}
@@ -135,7 +135,7 @@ export const ProfilePage = () => {
 
           {/* Orders History */}
           <div className="lg:col-span-2">
-            <div className="bg-stone-900 rounded-lg shadow-sm p-6">
+            <div className="bg-stone-900 shadow-sm p-6">
               <h2 className="font-serif text-2xl text-white mb-6 flex items-center gap-2">
                 <Package size={24} className="text-stone-400" />
                 {t('profile.orderHistory')}
@@ -152,7 +152,7 @@ export const ProfilePage = () => {
                   </p>
                   <button
                     onClick={() => navigate('/')}
-                    className="bg-white hover:bg-stone-100 text-stone-900 px-6 py-3 rounded-lg transition-colors"
+                    className="bg-white hover:bg-stone-100 text-stone-900 px-6 py-3 transition-colors"
                   >
                     {t('profile.startShopping')}
                   </button>
@@ -165,7 +165,7 @@ export const ProfilePage = () => {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.1 }}
-                      className="border border-stone-800 rounded-lg p-6 hover:shadow-md transition-shadow"
+                      className="border border-stone-800 p-6 hover:shadow-md transition-shadow"
                     >
                       <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
                         <div>
@@ -200,7 +200,7 @@ export const ProfilePage = () => {
                           {order.items.map((item) => (
                             <div
                               key={item.product.id}
-                              className="flex items-center gap-3 bg-stone-800 p-3 rounded-lg"
+                              className="flex items-center gap-3 bg-stone-800 p-3"
                             >
                               <img
                                 src={item.product.image}

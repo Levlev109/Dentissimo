@@ -13,9 +13,9 @@ interface ProductProps {
 
 const badgeConfig = {
   bestseller: { icon: TrendingUp, labelKey: 'badges.bestseller', color: 'bg-stone-900' },
-  recommended: { icon: Star, labelKey: 'badges.recommended', color: 'bg-gradient-to-r from-blue-500 to-indigo-500' },
-  topSales: { icon: Flame, labelKey: 'badges.topSales', color: 'bg-gradient-to-r from-red-500 to-rose-500' },
-  eco: { icon: Leaf, labelKey: 'badges.eco', color: 'bg-gradient-to-r from-green-500 to-emerald-500' },
+  recommended: { icon: Star, labelKey: 'badges.recommended', color: 'bg-teal-600' },
+  topSales: { icon: Flame, labelKey: 'badges.topSales', color: 'bg-teal-700' },
+  eco: { icon: Leaf, labelKey: 'badges.eco', color: 'bg-teal-600' },
 };
 
 export const ProductCard = ({ product }: ProductProps) => {

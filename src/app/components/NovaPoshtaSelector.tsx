@@ -199,7 +199,7 @@ export const NovaPoshtaSelector = ({ onSelect, cartTotal }: NovaPoshtaSelectorPr
           <button
             type="button"
             onClick={() => setDeliveryType('branch')}
-            className={`p-4 border-2 rounded-xl transition-all ${
+            className={`p-4 border-2 transition-all ${
               deliveryType === 'branch'
                 ? 'border-white bg-stone-800'
                 : 'border-stone-700 hover:border-stone-500'
@@ -213,7 +213,7 @@ export const NovaPoshtaSelector = ({ onSelect, cartTotal }: NovaPoshtaSelectorPr
           <button
             type="button"
             onClick={() => setDeliveryType('locker')}
-            className={`p-4 border-2 rounded-xl transition-all ${
+            className={`p-4 border-2 transition-all ${
               deliveryType === 'locker'
                 ? 'border-white bg-stone-800'
                 : 'border-stone-700 hover:border-stone-500'
@@ -227,7 +227,7 @@ export const NovaPoshtaSelector = ({ onSelect, cartTotal }: NovaPoshtaSelectorPr
           <button
             type="button"
             onClick={() => setDeliveryType('courier')}
-            className={`p-4 border-2 rounded-xl transition-all ${
+            className={`p-4 border-2 transition-all ${
               deliveryType === 'courier'
                 ? 'border-white bg-stone-800'
                 : 'border-stone-700 hover:border-stone-500'
@@ -260,13 +260,13 @@ export const NovaPoshtaSelector = ({ onSelect, cartTotal }: NovaPoshtaSelectorPr
             onFocus={() => setCityFocused(true)}
             onBlur={() => setTimeout(() => setCityFocused(false), 200)}
             placeholder={t('novaPoshta.cityPlaceholder')}
-            className="w-full pl-10 pr-4 py-3 border border-stone-700 rounded-lg bg-stone-800 text-white placeholder-stone-500 focus:ring-2 focus:ring-teal-400 focus:border-transparent outline-none"
+            className="w-full pl-10 pr-4 py-3 border border-stone-700 bg-stone-800 text-white placeholder-stone-500 focus:ring-2 focus:ring-teal-400 focus:border-transparent outline-none"
           />
         </div>
 
         {/* Cities Dropdown */}
         {cityFocused && cities.length > 0 && (
-          <div className="mt-2 max-h-60 overflow-y-auto border border-stone-700 rounded-lg bg-stone-800 shadow-lg">
+          <div className="mt-2 max-h-60 overflow-y-auto border border-stone-700 bg-stone-800 shadow-lg">
             {loadingCities ? (
               <div className="p-4 text-center text-stone-500">
                 <Loader2 className="animate-spin mx-auto mb-2" size={20} />
@@ -303,7 +303,7 @@ export const NovaPoshtaSelector = ({ onSelect, cartTotal }: NovaPoshtaSelectorPr
           <input
             type="text"
             placeholder={t('novaPoshta.courierAddressPlaceholder')}
-            className="w-full px-4 py-3 border border-stone-700 rounded-lg bg-stone-800 text-white placeholder-stone-500 focus:ring-2 focus:ring-teal-400 focus:border-transparent outline-none"
+            className="w-full px-4 py-3 border border-stone-700 bg-stone-800 text-white placeholder-stone-500 focus:ring-2 focus:ring-teal-400 focus:border-transparent outline-none"
           />
         </div>
       )}
@@ -316,12 +316,12 @@ export const NovaPoshtaSelector = ({ onSelect, cartTotal }: NovaPoshtaSelectorPr
           </label>
           
           {loadingWarehouses ? (
-              <div className="p-4 text-center text-stone-400 border border-stone-700 rounded-lg">
+              <div className="p-4 text-center text-stone-400 border border-stone-700">
               <Loader2 className="animate-spin mx-auto mb-2" size={20} />
               {t('common.loading')}...
             </div>
           ) : (
-            <div className="max-h-60 overflow-y-auto border border-stone-700 rounded-lg bg-stone-800">
+            <div className="max-h-60 overflow-y-auto border border-stone-700 bg-stone-800">
               {warehouses.map((warehouse) => (
                 <button
                   key={warehouse.ref}
@@ -346,7 +346,7 @@ export const NovaPoshtaSelector = ({ onSelect, cartTotal }: NovaPoshtaSelectorPr
 
       {/* Delivery Cost Summary */}
       {deliveryCost && (
-        <div className="bg-teal-900/20 border-l-4 border-teal-400 rounded-lg p-4">
+        <div className="bg-teal-900/20 border-l-4 border-teal-400 p-4">
           <div className="flex items-start gap-3">
             <TruckIcon className="text-stone-300 flex-shrink-0" size={20} />
             <div className="flex-1">

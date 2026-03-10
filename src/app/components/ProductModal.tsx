@@ -18,11 +18,11 @@ type ModalTab = 'product' | 'benefits' | 'ingredients' | 'extra';
 const ingredientIcons = [Sparkles, Droplets, Shield, FlaskConical, Atom, Leaf, Heart, Gem] as const;
 
 const productAccents: Record<string, string> = {
-  'whitening-gold': '#d4a934', 'whitening-black': '#9ca3af', 'diamond': '#60a5fa',
-  'gentle-care': '#34d399', 'complete-care': '#38bdf8', 'pro-care': '#2dd4bf',
+  'whitening-gold': '#d4a934', 'whitening-black': '#9ca3af', 'diamond': '#2dd4bf',
+  'gentle-care': '#34d399', 'complete-care': '#2dd4bf', 'pro-care': '#2dd4bf',
   'vegan-b12': '#4ade80', 'pregnant': '#f472b6', 'kids-caramel': '#fb923c',
   'junior-apple': '#a3e635', 'brush-gold': '#d4a934', 'brush-silver': '#94a3b8',
-  'brush-medium': '#60a5fa', 'brush-hard': '#64748b', 'brush-sensitive': '#38bdf8',
+  'brush-medium': '#2dd4bf', 'brush-hard': '#64748b', 'brush-sensitive': '#2dd4bf',
   'brush-parodontal': '#4ade80', 'brush-kids': '#f472b6', 'brush-junior': '#4ade80',
   'mouthwash-gold': '#d4a934', 'mouthwash-fresh': '#2dd4bf', 'mouthwash-gum': '#34d399',
 };
