@@ -22,7 +22,9 @@ export const AboutSection = () => {
   ];
 
   return (
-    <section id="about" className="bg-stone-950 text-white overflow-visible">
+    <section id="about" className="bg-stone-950 text-white overflow-visible relative">
+      {/* Top transition glow */}
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/[0.03] to-transparent" />
       {/* Part 1: Glacier Water Story */}
       <div className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -61,7 +63,7 @@ export const AboutSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <div className="bg-stone-800/80 rounded-2xl p-8 border border-stone-700">
+              <div className="bg-white/[0.03] backdrop-blur-sm rounded-2xl p-8 border border-white/[0.06]">
                 <h3 className="font-serif text-2xl text-white mb-6">{t('about.storyTitle')}</h3>
                 <p className="text-stone-200 mb-4 leading-relaxed font-normal">
                   {t('about.storyText1')}
@@ -69,7 +71,7 @@ export const AboutSection = () => {
                 <p className="text-stone-200 mb-6 leading-relaxed font-normal">
                   {t('about.storyText2')}
                 </p>
-                <blockquote className="border-l-2 border-sky-400 pl-4 italic text-stone-300 leading-relaxed">
+                <blockquote className="border-l-2 border-sky-400/40 pl-4 italic text-stone-300 leading-relaxed">
                   {t('about.doctorQuote')}
                 </blockquote>
                 <p className="text-stone-400 text-sm mt-3 font-medium">
@@ -82,7 +84,10 @@ export const AboutSection = () => {
       </div>
 
       {/* Part 2: Regera-PRO Complex */}
-      <div className="py-20 bg-stone-900/60 border-y border-stone-800">
+      <div className="py-20 relative">
+        {/* Subtle section separator */}
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-sky-400/10 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-stone-900/30 via-stone-900/20 to-transparent" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="text-center mb-16"
@@ -104,7 +109,7 @@ export const AboutSection = () => {
               return (
                 <motion.div
                   key={index}
-                  className="bg-stone-800/80 rounded-xl p-8 border border-stone-700 text-center hover:border-sky-500 transition-colors duration-500"
+                  className="bg-white/[0.03] backdrop-blur-sm rounded-xl p-8 border border-white/[0.06] text-center hover:border-sky-500/30 transition-colors duration-500"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -164,7 +169,7 @@ export const AboutSection = () => {
 
           {/* Certifications row */}
           <motion.div
-            className="mt-16 pt-12 border-t border-stone-700"
+            className="mt-16 pt-12 border-t border-white/[0.05]"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -177,7 +182,7 @@ export const AboutSection = () => {
                   className="text-center cursor-pointer group"
                   onClick={() => setActiveCert(activeCert === cert.id ? null : cert.id)}
                 >
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border border-stone-700 flex items-center justify-center mx-auto mb-2 group-hover:border-sky-400 group-hover:bg-sky-900/30 transition-all duration-300">
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border border-white/[0.08] flex items-center justify-center mx-auto mb-2 group-hover:border-sky-400/30 group-hover:bg-sky-900/20 transition-all duration-300">
                     <cert.icon size={22} className="text-stone-500 group-hover:text-sky-600 transition-colors" />
                   </div>
                   <span className="text-xs sm:text-sm text-stone-300 font-medium tracking-wide group-hover:text-stone-200 transition-colors leading-tight block">{t(cert.titleKey)}</span>
@@ -199,7 +204,7 @@ export const AboutSection = () => {
                     transition={{ duration: 0.25 }}
                     className="overflow-hidden"
                   >
-                    <div className="bg-stone-800 border border-stone-700 rounded-xl p-5 sm:p-6 max-w-lg mx-auto relative mb-4">
+                    <div className="bg-white/[0.04] backdrop-blur-sm border border-white/[0.06] rounded-xl p-5 sm:p-6 max-w-lg mx-auto relative mb-4">
                       <button
                         onClick={(e) => { e.stopPropagation(); setActiveCert(null); }}
                         className="absolute top-3 right-3 text-stone-500 hover:text-stone-200 transition-colors p-1"

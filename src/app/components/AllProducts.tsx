@@ -63,18 +63,20 @@ export const AllProducts = () => {
   });
 
   return (
-    <section id="products" className="py-24 bg-gradient-to-b from-stone-900/30 to-stone-950 transition-colors duration-500 relative">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_50%_at_50%_0%,rgba(56,189,248,0.04),transparent)]" />
+    <section id="products" className="py-24 bg-stone-950 relative">
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_40%_at_50%_20%,rgba(56,189,248,0.03),transparent)]" />
+      {/* Top transition glow */}
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/[0.04] to-transparent" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-12">
-          <p className="text-sky-600 uppercase tracking-[0.3em] text-xs font-bold mb-3">{t('allProductsSection.subtitle')}</p>
+          <p className="text-sky-600/80 uppercase tracking-[0.3em] text-xs font-bold mb-3">{t('allProductsSection.subtitle')}</p>
           <h2 className="font-serif text-3xl md:text-5xl text-white mb-2">{t('allProductsSection.title')}</h2>
           <div className="w-24 h-1 bg-gradient-to-r from-transparent via-sky-400 to-transparent mx-auto mt-6" />
         </div>
         <div className="flex flex-wrap justify-center gap-3 mb-14">
           {categories.map(cat => (
             <button key={cat.id} onClick={() => setSelectedCategory(cat.id)}
-              className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 border ${selectedCategory === cat.id ? 'bg-white text-stone-900 border-white shadow-md' : 'bg-stone-800/60 text-stone-300 border-stone-700 hover:border-stone-500 hover:text-white'}`}>
+              className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 border ${selectedCategory === cat.id ? 'bg-white text-stone-900 border-white/80 shadow-md' : 'bg-white/[0.04] text-stone-400 border-white/[0.06] hover:border-white/[0.12] hover:text-white hover:bg-white/[0.06]'}`}>
               {t(cat.nameKey)}
             </button>
           ))}

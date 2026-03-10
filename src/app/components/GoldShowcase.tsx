@@ -133,28 +133,37 @@ export const GoldShowcase = () => {
 
   return (
     <>
-      <section className={`py-10 md:py-20 bg-gradient-to-br ${theme.gradient} overflow-x-clip relative`}>
+      <section className={`py-10 md:py-20 bg-gradient-to-b from-stone-950 via-stone-950 to-stone-950 overflow-x-clip relative`}>
+        {/* Top gradient fade from Hero */}
+        <div className="absolute top-0 inset-x-0 h-32 bg-gradient-to-b from-stone-950 to-transparent z-[1]" />
         {/* Animated mesh background */}
         <div className="absolute inset-0 overflow-hidden">
           <div
-            className="absolute w-[600px] h-[600px] -top-48 -left-48 rounded-full blur-[120px] opacity-30 transition-all duration-1000"
+            className="absolute w-[800px] h-[800px] -top-64 -left-64 rounded-full blur-[160px] opacity-20 transition-all duration-[1500ms]"
             style={{ background: theme.color }}
           />
           <div
-            className="absolute w-[400px] h-[400px] -bottom-32 -right-32 rounded-full blur-[100px] opacity-20 transition-all duration-1000"
+            className="absolute w-[500px] h-[500px] -bottom-48 -right-48 rounded-full blur-[130px] opacity-15 transition-all duration-[1500ms]"
+            style={{ background: theme.color }}
+          />
+          {/* Center ambient glow */}
+          <div
+            className="absolute w-[600px] h-[400px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full blur-[200px] opacity-[0.06] transition-all duration-[1500ms]"
             style={{ background: theme.color }}
           />
           {/* Subtle grid pattern */}
-          <div className="absolute inset-0 opacity-[0.03]" style={{
+          <div className="absolute inset-0 opacity-[0.02]" style={{
             backgroundImage: `linear-gradient(${theme.color} 1px, transparent 1px), linear-gradient(90deg, ${theme.color} 1px, transparent 1px)`,
-            backgroundSize: '60px 60px'
+            backgroundSize: '80px 80px'
           }} />
         </div>
+        {/* Bottom gradient fade into next section */}
+        <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-stone-950 to-transparent z-[1]" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           {/* Category tabs — pill style with glass effect */}
           <div className="flex justify-center mb-5">
-            <div className="inline-flex flex-wrap justify-center gap-1 p-1 rounded-2xl bg-white/[0.04] backdrop-blur-sm border border-white/[0.06]">
+            <div className="inline-flex flex-wrap justify-center gap-1 p-1.5 rounded-2xl bg-white/[0.03] backdrop-blur-sm border border-white/[0.05]">
               {categoryOrder.map((cat) => (
                 <button
                   key={cat}
@@ -266,8 +275,8 @@ export const GoldShowcase = () => {
                 </h2>
 
                 {/* Description in a glass card */}
-                <div className="p-4 rounded-xl bg-white/[0.04] backdrop-blur-sm border border-white/[0.06]">
-                  <p className="text-stone-200 text-sm md:text-base leading-relaxed">
+                <div className="p-5 rounded-xl bg-white/[0.03] backdrop-blur-sm border border-white/[0.06]">
+                  <p className="text-stone-300 text-sm md:text-base leading-relaxed">
                     {desc}
                   </p>
                 </div>
