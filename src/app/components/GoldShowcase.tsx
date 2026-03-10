@@ -153,7 +153,7 @@ export const GoldShowcase = () => {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           {/* Category tabs — pill style with glass effect */}
-          <div className="flex justify-center mb-8">
+          <div className="flex justify-center mb-5">
             <div className="inline-flex flex-wrap justify-center gap-1.5 p-1.5 rounded-2xl bg-white/[0.04] backdrop-blur-sm border border-white/[0.06]">
               {categoryOrder.map((cat) => (
                 <button
@@ -175,6 +175,44 @@ export const GoldShowcase = () => {
               ))}
             </div>
           </div>
+
+          {/* Product selector — moved up so user can see & pick products immediately */}
+          {categoryProducts.length > 1 && (
+            <div className="mb-8">
+              <div className="flex justify-center">
+                <div className="flex items-stretch gap-2 md:gap-3 overflow-x-auto py-2 px-2 max-w-full">
+                  {categoryProducts.map((p, i) => (
+                    <button
+                      key={p.id}
+                      onClick={() => setSelectedIndex(i)}
+                      className={`flex-shrink-0 flex flex-col items-center gap-1.5 w-20 sm:w-24 md:w-28 rounded-xl p-2 transition-all duration-300 ${
+                        i === selectedIndex
+                          ? 'bg-white/[0.08] scale-[1.05]'
+                          : 'bg-white/[0.03] hover:bg-white/[0.06]'
+                      }`}
+                      style={{
+                        border: `1.5px solid ${i === selectedIndex ? theme.color + '60' : 'rgba(255,255,255,0.06)'}`,
+                        boxShadow: i === selectedIndex ? `0 4px 24px ${theme.glow}` : undefined,
+                      }}
+                    >
+                      <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 flex items-center justify-center">
+                        <img
+                          src={p.image}
+                          alt={p.name}
+                          className="max-w-full max-h-full object-contain"
+                        />
+                      </div>
+                      <span className={`text-[9px] sm:text-[10px] font-medium text-center leading-tight line-clamp-2 ${
+                        i === selectedIndex ? 'text-white' : 'text-stone-500'
+                      }`}>
+                        {p.name}
+                      </span>
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
 
           {/* Main content */}
           <AnimatePresence mode="wait">
@@ -349,57 +387,6 @@ export const GoldShowcase = () => {
               </div>
             </motion.div>
           </AnimatePresence>
-
-          {/* Product selector — cards with name labels */}
-          <div className="mt-10">
-            {/* Counter */}
-            <div className="flex items-center justify-center gap-2 mb-5">
-              {categoryProducts.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setSelectedIndex(i)}
-                  className="h-1 rounded-full transition-all duration-300"
-                  style={{
-                    width: i === selectedIndex ? '32px' : '12px',
-                    backgroundColor: i === selectedIndex ? theme.color : 'rgba(255,255,255,0.15)',
-                  }}
-                />
-              ))}
-            </div>
-
-            <div className="flex justify-center">
-              <div className="flex items-stretch gap-3 md:gap-4 overflow-x-auto py-3 px-2 max-w-full">
-                {categoryProducts.map((p, i) => (
-                  <button
-                    key={p.id}
-                    onClick={() => setSelectedIndex(i)}
-                    className={`flex-shrink-0 flex flex-col items-center gap-2 w-24 sm:w-28 md:w-32 rounded-2xl p-3 transition-all duration-300 ${
-                      i === selectedIndex
-                        ? 'bg-white/[0.08] scale-[1.05]'
-                        : 'bg-white/[0.03] hover:bg-white/[0.06]'
-                    }`}
-                    style={{
-                      border: `1.5px solid ${i === selectedIndex ? theme.color + '60' : 'rgba(255,255,255,0.06)'}`,
-                      boxShadow: i === selectedIndex ? `0 4px 24px ${theme.glow}` : undefined,
-                    }}
-                  >
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 flex items-center justify-center">
-                      <img
-                        src={p.image}
-                        alt={p.name}
-                        className="max-w-full max-h-full object-contain"
-                      />
-                    </div>
-                    <span className={`text-[10px] sm:text-xs font-medium text-center leading-tight line-clamp-2 ${
-                      i === selectedIndex ? 'text-white' : 'text-stone-500'
-                    }`}>
-                      {p.name}
-                    </span>
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
 
           {/* Bottom badges — glass style */}
           {details && (
