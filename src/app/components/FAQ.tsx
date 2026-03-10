@@ -29,11 +29,11 @@ export const FAQ = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-sky-600 uppercase tracking-[0.3em] text-xs font-bold mb-4">{t('faq.subtitle')}</p>
+          <p className="text-teal-500 uppercase tracking-[0.3em] text-xs font-bold mb-4">{t('faq.subtitle')}</p>
           <h2 className="font-serif text-3xl md:text-5xl text-white mb-4">
             {t('faq.title')}
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-transparent via-sky-400 to-transparent mx-auto mt-6" />
+          <div className="w-24 h-1 bg-gradient-to-r from-transparent via-teal-400 to-transparent mx-auto mt-6" />
         </motion.div>
 
         <div className="space-y-3">

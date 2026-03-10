@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+﻿import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
@@ -61,19 +61,19 @@ const premiumLineProducts: LineProduct[] = [
 const ProductCard = ({ product, index, accent }: { product: LineProduct; index: number; accent: 'pro' | 'premium' }) => {
   const { t } = useTranslation();
   const gradients = {
-    pro: 'from-sky-50 via-white to-sky-50/30 dark:from-stone-800/60 dark:via-stone-800 dark:to-stone-800/60',
+    pro: 'from-teal-50 via-white to-teal-50/30 dark:from-stone-800/60 dark:via-stone-800 dark:to-stone-800/60',
     premium: 'from-amber-50/50 via-white to-amber-50/30 dark:from-stone-800/60 dark:via-stone-800 dark:to-stone-800/60',
   };
   const borderColors = {
-    pro: 'border-sky-200/50 dark:border-sky-800/30 hover:border-sky-300 dark:hover:border-sky-700',
+    pro: 'border-teal-200/50 dark:border-teal-800/30 hover:border-teal-300 dark:hover:border-teal-700',
     premium: 'border-amber-200/50 dark:border-amber-800/30 hover:border-amber-300 dark:hover:border-amber-700',
   };
   const badgeBg = {
-    pro: 'bg-sky-100 dark:bg-sky-900/30 text-sky-700 dark:text-sky-300 border-sky-200 dark:border-sky-800/40',
+    pro: 'bg-teal-100 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 border-teal-200 dark:border-teal-800/40',
     premium: 'bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 border-amber-200 dark:border-amber-800/40',
   };
   const bulletColor = {
-    pro: 'bg-sky-500',
+    pro: 'bg-teal-500',
     premium: 'bg-amber-500',
   };
 
@@ -155,7 +155,7 @@ export const ProductLines = () => {
             transition={{ duration: 0.6 }}
           >
             <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-1 bg-gradient-to-r from-sky-400 to-sky-500 rounded-full" />
+              <div className="w-10 h-1 bg-gradient-to-r from-teal-400 to-teal-500 rounded-full" />
               <h3 className="font-serif text-2xl md:text-3xl font-bold text-stone-900 dark:text-white">
                 {t('productLines.proLine')}
               </h3>

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+﻿import { useEffect, useState } from 'react';
 import { useAuth } from '../../contexts/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { db, Order } from '../../services/database';
@@ -212,7 +212,7 @@ export const ProfilePage = () => {
                                   {item.product.name}
                                 </p>
                                 <p className="text-xs text-stone-400">
-                                  {item.quantity} × {t('products.currency')}{item.product.price.toFixed(2)}
+                                  {item.quantity} Г— {t('products.currency')}{item.product.price.toFixed(2)}
                                 </p>
                               </div>
                             </div>

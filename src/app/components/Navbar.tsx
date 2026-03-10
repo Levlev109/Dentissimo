@@ -15,7 +15,7 @@ const ScrollProgress = () => {
   return (
     <motion.div
       className="absolute bottom-0 left-0 right-0 h-px origin-left"
-      style={{ scaleX, background: 'linear-gradient(90deg, rgba(56,189,248,0.3), rgba(56,189,248,0.6), rgba(56,189,248,0.3))' }}
+      style={{ scaleX, background: 'linear-gradient(90deg, rgba(20,184,166,0.3), rgba(20,184,166,0.6), rgba(20,184,166,0.3))' }}
     />
   );
 };
@@ -121,7 +121,7 @@ export const Navbar = () => {
               </button>
 
               {showLangMenu && (
-                <div className="absolute right-0 top-full mt-3 bg-stone-900/95 backdrop-blur-xl rounded-xl shadow-2xl border border-stone-700/50 py-2 w-52 z-50">
+                <div className="absolute right-0 top-full mt-3 bg-stone-900/95 backdrop-blur-xl shadow-2xl border border-stone-700/50 py-2 w-52 z-50">
                   {languages.map(lang => (
                     <button
                       key={lang.code}
@@ -208,7 +208,7 @@ export const Navbar = () => {
                     <button
                       key={lang.code}
                       onClick={() => { changeLang(lang.code); setIsOpen(false); }}
-                      className={`py-2 px-1 rounded-lg text-center text-xs font-medium transition-all ${
+                      className={`py-2 px-1 text-center text-xs font-medium transition-all ${
                         i18n.language === lang.code
                           ? 'bg-white text-stone-900'
                           : 'bg-stone-800 text-stone-300'

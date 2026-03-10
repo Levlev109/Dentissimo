@@ -138,7 +138,7 @@ export const AIChat = () => {
                     className={`max-w-[80%] rounded-2xl p-3 ${
                       message.isBot
                         ? 'bg-stone-800 text-stone-100 shadow-sm'
-                        : 'bg-sky-700 text-white'
+                        : 'bg-teal-700 text-white'
                     }`}
                   >
                     <p className="text-sm whitespace-pre-line leading-relaxed">
@@ -180,7 +180,7 @@ export const AIChat = () => {
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder={t('aiChat.placeholder')}
-                  className="flex-1 px-4 py-3 border border-stone-600 bg-stone-800 text-white placeholder-stone-500 rounded-full focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none text-sm"
+                  className="flex-1 px-4 py-3 border border-stone-600 bg-stone-800 text-white placeholder-stone-500 rounded-full focus:ring-2 focus:ring-teal-400 focus:border-transparent outline-none text-sm"
                 />
                 <button
                   onClick={handleSend}

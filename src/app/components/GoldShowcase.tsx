@@ -163,12 +163,12 @@ export const GoldShowcase = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           {/* Category tabs — pill style with glass effect */}
           <div className="flex justify-center mb-5">
-            <div className="inline-flex flex-wrap justify-center gap-1 p-1.5 rounded-2xl bg-white/[0.03] backdrop-blur-sm border border-white/[0.05]">
+            <div className="inline-flex flex-wrap justify-center gap-1 p-1.5 bg-white/[0.03] backdrop-blur-sm border border-white/[0.05]">
               {categoryOrder.map((cat) => (
                 <button
                   key={cat}
                   onClick={() => handleCategoryChange(cat)}
-                  className={`relative px-3 py-2 md:px-6 md:py-3 rounded-lg md:rounded-xl text-[10px] md:text-sm font-bold tracking-[0.05em] md:tracking-[0.1em] uppercase transition-all duration-300 ${
+                  className={`relative px-3 py-2 md:px-6 md:py-3 text-[10px] md:text-sm font-bold tracking-[0.05em] md:tracking-[0.1em] uppercase transition-all duration-300 ${
                     selectedCategory === cat
                       ? 'text-stone-900 shadow-lg'
                       : 'text-stone-500 hover:text-stone-300 hover:bg-white/[0.04]'
@@ -194,7 +194,7 @@ export const GoldShowcase = () => {
                     <button
                       key={p.id}
                       onClick={() => setSelectedIndex(i)}
-                      className={`flex-shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20 md:w-28 rounded-lg md:rounded-xl p-1.5 md:p-2 transition-all duration-300 ${
+                      className={`flex-shrink-0 flex flex-col items-center gap-1 w-16 sm:w-20 md:w-28 p-1.5 md:p-2 transition-all duration-300 ${
                         i === selectedIndex
                           ? 'bg-white/[0.08] scale-[1.05]'
                           : 'bg-white/[0.03] hover:bg-white/[0.06]'
@@ -238,7 +238,7 @@ export const GoldShowcase = () => {
                 {/* Category + badge row */}
                 <div className="flex items-center gap-3">
                   <span
-                    className="px-4 py-1.5 rounded-lg text-[10px] lg:text-xs font-bold tracking-[0.2em] uppercase backdrop-blur-sm"
+                    className="px-4 py-1.5 text-[10px] lg:text-xs font-bold tracking-[0.2em] uppercase backdrop-blur-sm"
                     style={{
                       backgroundColor: `${theme.color}18`,
                       color: theme.color,
@@ -248,13 +248,13 @@ export const GoldShowcase = () => {
                     {t(`categories.${product.categoryKey}`)}
                   </span>
                   {product.isNew && (
-                    <span className="px-3 py-1 rounded-lg text-[10px] font-bold tracking-widest uppercase bg-white/10 text-white border border-white/10">
+                    <span className="px-3 py-1 text-[10px] font-bold tracking-widest uppercase bg-white/10 text-white border border-white/10">
                       NEW
                     </span>
                   )}
                   {product.badge && (
                     <span
-                      className="px-3 py-1 rounded-lg text-[10px] font-bold tracking-widest uppercase"
+                      className="px-3 py-1 text-[10px] font-bold tracking-widest uppercase"
                       style={{ backgroundColor: `${theme.color}20`, color: theme.color }}
                     >
                       {t(`badges.${product.badge}`)}
@@ -275,7 +275,7 @@ export const GoldShowcase = () => {
                 </h2>
 
                 {/* Description in a glass card */}
-                <div className="p-5 rounded-xl bg-white/[0.03] backdrop-blur-sm border border-white/[0.06]">
+                <div className="p-5 bg-white/[0.03] backdrop-blur-sm border border-white/[0.06]">
                   <p className="text-stone-300 text-sm md:text-base leading-relaxed">
                     {desc}
                   </p>
@@ -287,7 +287,7 @@ export const GoldShowcase = () => {
                     {details.ingredients.slice(0, 4).map((ing) => (
                       <span
                         key={ing}
-                        className="px-3 py-1.5 lg:px-4 lg:py-2 rounded-lg text-xs lg:text-sm font-medium backdrop-blur-sm"
+                        className="px-3 py-1.5 lg:px-4 lg:py-2 text-xs lg:text-sm font-medium backdrop-blur-sm"
                         style={{
                           backgroundColor: `${theme.color}10`,
                           color: theme.color,
@@ -314,7 +314,7 @@ export const GoldShowcase = () => {
                     onClick={handleBuy}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="flex items-center gap-2 px-6 py-3 lg:px-8 lg:py-4 text-stone-900 font-bold rounded-xl transition-all duration-300 text-sm lg:text-base tracking-wide"
+                    className="flex items-center gap-2 px-6 py-3 lg:px-8 lg:py-4 text-stone-900 font-bold transition-all duration-300 text-sm lg:text-base tracking-wide"
                     style={{
                       background: `linear-gradient(135deg, ${theme.color}, ${theme.color}cc)`,
                       boxShadow: `0 8px 32px ${theme.glow}, inset 0 1px 0 rgba(255,255,255,0.2)`,
@@ -328,7 +328,7 @@ export const GoldShowcase = () => {
                     onClick={() => setIsModalOpen(true)}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="flex items-center gap-2 px-5 py-3 lg:px-7 lg:py-4 font-semibold text-sm lg:text-base rounded-xl transition-all duration-300 backdrop-blur-sm"
+                    className="flex items-center gap-2 px-5 py-3 lg:px-7 lg:py-4 font-semibold text-sm lg:text-base transition-all duration-300 backdrop-blur-sm"
                     style={{
                       color: theme.color,
                       border: `1px solid ${theme.color}30`,
@@ -433,7 +433,7 @@ export const GoldShowcase = () => {
               {details.badges.map((badge) => (
                 <span
                   key={badge}
-                  className="px-3.5 py-1.5 lg:px-5 lg:py-2 rounded-lg text-[11px] lg:text-sm font-medium backdrop-blur-sm"
+                  className="px-3.5 py-1.5 lg:px-5 lg:py-2 text-[11px] lg:text-sm font-medium backdrop-blur-sm"
                   style={{
                     backgroundColor: `${theme.color}08`,
                     color: `${theme.color}cc`,

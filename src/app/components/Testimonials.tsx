@@ -32,8 +32,8 @@ export const Testimonials = () => {
   return (
     <section className="py-28 bg-stone-950 relative overflow-hidden">
       {/* Subtle ambient glow */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_20%_50%,rgba(56,189,248,0.02),transparent)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_40%_40%_at_80%_50%,rgba(56,189,248,0.015),transparent)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_20%_50%,rgba(20,184,166,0.02),transparent)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_40%_40%_at_80%_50%,rgba(20,184,166,0.015),transparent)]" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <motion.div
@@ -44,7 +44,7 @@ export const Testimonials = () => {
           transition={{ duration: 0.6 }}
         >
           <div>
-            <p className="text-sky-600/70 uppercase tracking-[0.3em] text-xs font-bold mb-4">{t('testimonials.subtitle')}</p>
+            <p className="text-teal-500/70 uppercase tracking-[0.3em] text-xs font-bold mb-4">{t('testimonials.subtitle')}</p>
             <h2 className="font-serif text-3xl md:text-5xl text-white">{t('testimonials.title')}</h2>
           </div>
           <div className="w-32 h-px bg-gradient-to-r from-white/20 to-transparent hidden md:block" />
@@ -68,7 +68,7 @@ export const Testimonials = () => {
               </span>
 
               {/* Vertical accent line */}
-              <div className="absolute top-0 left-0 w-px h-12 bg-gradient-to-b from-sky-400/40 to-transparent" />
+              <div className="absolute top-0 left-0 w-px h-12 bg-gradient-to-b from-teal-400/40 to-transparent" />
 
               <div className="relative">
                 <div className="flex gap-0.5 mb-5">
@@ -81,7 +81,7 @@ export const Testimonials = () => {
                 </p>
                 <div className="flex items-center gap-3 pt-5 border-t border-white/[0.06]">
                   <div className="w-10 h-10 rounded-full bg-white/[0.04] flex items-center justify-center flex-shrink-0 border border-white/[0.08]">
-                    <span className="text-sky-300 font-bold text-sm">
+                    <span className="text-teal-300 font-bold text-sm">
                       {(t(review.nameKey) as string).charAt(0)}
                     </span>
                   </div>

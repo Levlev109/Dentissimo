@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { ProductCard } from '@/app/components/ProductCard';
 import { useTranslation } from 'react-i18next';
 import { convertPrice } from '../../services/currency';
@@ -72,15 +72,15 @@ export const FeaturedProducts = () => {
         <div className="flex justify-between items-end mb-16">
           <div className="max-w-xl">
             <p className="text-stone-700 dark:text-stone-400 uppercase tracking-[0.3em] text-xs font-bold mb-3 flex items-center gap-2">
-              <span className="w-8 h-[2px] bg-gradient-to-r from-sky-400 to-transparent"></span>
+              <span className="w-8 h-[2px] bg-gradient-to-r from-teal-400 to-transparent"></span>
               {t('featuredProducts.subtitle')}
             </p>
             <h2 className="font-serif text-4xl md:text-5xl text-stone-900 dark:text-white mb-3 leading-tight">{t('featuredProducts.title')}</h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-sky-400 via-sky-300 to-transparent mt-4 rounded-full" />
+            <div className="w-20 h-1 bg-gradient-to-r from-teal-400 via-teal-300 to-transparent mt-4 rounded-full" />
           </div>
           <a href="#products" className="hidden md:inline-flex items-center gap-2 text-stone-800 dark:text-stone-200 font-semibold hover:text-stone-600 dark:hover:text-stone-400 transition-all duration-300 pb-2 border-b-2 border-stone-400/40 hover:border-stone-800 dark:hover:border-white group hover:gap-3">
             {t('featuredProducts.viewAll')}
-            <span className="text-stone-800 dark:text-stone-200">→</span>
+            <span className="text-stone-800 dark:text-stone-200">в†’</span>
           </a>
         </div>
 
@@ -98,7 +98,7 @@ export const FeaturedProducts = () => {
         <div className="mt-16 text-center md:hidden">
           <a href="#products" className="inline-flex items-center gap-2 px-8 py-4 bg-stone-900 text-white font-bold rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
             {t('featuredProducts.viewAll')}
-            <span className="text-lg">→</span>
+            <span className="text-lg">в†’</span>
           </a>
         </div>
       </div>

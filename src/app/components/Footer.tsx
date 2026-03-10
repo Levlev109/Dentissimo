@@ -19,40 +19,40 @@ export const Footer = () => {
               {t('footer.tagline')}
             </p>
             <div className="flex space-x-3">
-              <a href="https://www.instagram.com/dentissimo_official/" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-xl bg-white/5 border border-white/10 text-stone-400 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-300"><Instagram size={18} /></a>
-              <a href="https://www.facebook.com/dentissimo.toothpaste/" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-xl bg-white/5 border border-white/10 text-stone-400 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-300"><Facebook size={18} /></a>
-              <a href="https://twitter.com/dentissimo" target="_blank" rel="noopener noreferrer" className="p-2.5 rounded-xl bg-white/5 border border-white/10 text-stone-400 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-300"><Twitter size={18} /></a>
+              <a href="https://www.instagram.com/dentissimo_official/" target="_blank" rel="noopener noreferrer" className="p-2.5 bg-white/5 border border-white/10 text-stone-400 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-300"><Instagram size={18} /></a>
+              <a href="https://www.facebook.com/dentissimo.toothpaste/" target="_blank" rel="noopener noreferrer" className="p-2.5 bg-white/5 border border-white/10 text-stone-400 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-300"><Facebook size={18} /></a>
+              <a href="https://twitter.com/dentissimo" target="_blank" rel="noopener noreferrer" className="p-2.5 bg-white/5 border border-white/10 text-stone-400 hover:text-white hover:bg-white/10 hover:border-white/20 transition-all duration-300"><Twitter size={18} /></a>
             </div>
           </div>
           
           <div>
             <h4 className="text-sm font-bold uppercase tracking-widest mb-6 text-white">{t('footer.products')}</h4>
             <ul className="space-y-4 text-sm text-stone-400">
-              <li><a href="#limited" className="hover:text-sky-400 transition-colors duration-200">{t('footer.limitedEdition')}</a></li>
-              <li><a href="#products" className="hover:text-sky-400 transition-colors duration-200">{t('footer.spaExpert')}</a></li>
-              <li><a href="#products" className="hover:text-sky-400 transition-colors duration-200">{t('footer.diamondSeries')}</a></li>
-              <li><a href="#products" className="hover:text-sky-400 transition-colors duration-200">{t('footer.bioNatural')}</a></li>
-              <li><a href="#products" className="hover:text-sky-400 transition-colors duration-200">{t('footer.forKids')}</a></li>
+              <li><a href="#limited" className="hover:text-teal-400 transition-colors duration-200">{t('footer.limitedEdition')}</a></li>
+              <li><a href="#products" className="hover:text-teal-400 transition-colors duration-200">{t('footer.spaExpert')}</a></li>
+              <li><a href="#products" className="hover:text-teal-400 transition-colors duration-200">{t('footer.diamondSeries')}</a></li>
+              <li><a href="#products" className="hover:text-teal-400 transition-colors duration-200">{t('footer.bioNatural')}</a></li>
+              <li><a href="#products" className="hover:text-teal-400 transition-colors duration-200">{t('footer.forKids')}</a></li>
             </ul>
           </div>
           
           <div>
             <h4 className="text-sm font-bold uppercase tracking-widest mb-6 text-white">{t('footer.aboutBrand')}</h4>
             <ul className="space-y-4 text-sm text-stone-400">
-              <li><a href="#about" className="hover:text-sky-400 transition-colors duration-200">{t('footer.ourStory')}</a></li>
-              <li><a href="#about" className="hover:text-sky-400 transition-colors duration-200">{t('footer.glacierWater')}</a></li>
-              <li><a href="#about" className="hover:text-sky-400 transition-colors duration-200">{t('footer.swissQuality')}</a></li>
-              <li><a href="https://dentissimo.ua/certificates/" target="_blank" rel="noopener noreferrer" className="hover:text-sky-400 transition-colors duration-200">{t('footer.clinicalStudies')}</a></li>
+              <li><a href="#about" className="hover:text-teal-400 transition-colors duration-200">{t('footer.ourStory')}</a></li>
+              <li><a href="#about" className="hover:text-teal-400 transition-colors duration-200">{t('footer.glacierWater')}</a></li>
+              <li><a href="#about" className="hover:text-teal-400 transition-colors duration-200">{t('footer.swissQuality')}</a></li>
+              <li><a href="https://dentissimo.ua/certificates/" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 transition-colors duration-200">{t('footer.clinicalStudies')}</a></li>
             </ul>
           </div>
           
           <div>
             <h4 className="text-sm font-bold uppercase tracking-widest mb-6 text-white">{t('footer.support')}</h4>
             <ul className="space-y-4 text-sm text-stone-400">
-              <li><a href="mailto:info@blasspharma.com" className="hover:text-sky-400 transition-colors duration-200">{t('footer.contacts')}</a></li>
-              <li><a href="#contacts" className="hover:text-sky-400 transition-colors duration-200">{t('footer.delivery')}</a></li>
-              <li><a href="#contacts" className="hover:text-sky-400 transition-colors duration-200">{t('footer.faq')}</a></li>
-              <li><a href="https://dentissimo.ua/" target="_blank" rel="noopener noreferrer" className="hover:text-sky-400 transition-colors duration-200">{t('footer.stores')}</a></li>
+              <li><a href="mailto:info@blasspharma.com" className="hover:text-teal-400 transition-colors duration-200">{t('footer.contacts')}</a></li>
+              <li><a href="#contacts" className="hover:text-teal-400 transition-colors duration-200">{t('footer.delivery')}</a></li>
+              <li><a href="#contacts" className="hover:text-teal-400 transition-colors duration-200">{t('footer.faq')}</a></li>
+              <li><a href="https://dentissimo.ua/" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 transition-colors duration-200">{t('footer.stores')}</a></li>
             </ul>
           </div>
         </div>

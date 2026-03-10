@@ -1,4 +1,4 @@
-import { Check, Droplets, Shield, Sparkles } from 'lucide-react';
+﻿import { Check, Droplets, Shield, Sparkles } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'motion/react';
 
@@ -28,13 +28,13 @@ export const Benefits = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <span className="inline-block text-sky-600 text-xs font-bold tracking-[0.2em] uppercase mb-4">
+            <span className="inline-block text-teal-500 text-xs font-bold tracking-[0.2em] uppercase mb-4">
               {t('benefits.subtitle', 'Swiss Quality')}
             </span>
             <h2 className="font-serif text-3xl md:text-5xl text-stone-900 dark:text-white mb-6 leading-tight">
               {t('benefits.title')}<br/> <span className="text-stone-800 dark:text-stone-200 italic">{t('benefits.titleHighlight')}</span>
             </h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-sky-400 to-transparent mb-8" />
+            <div className="w-20 h-1 bg-gradient-to-r from-teal-400 to-transparent mb-8" />
             <p className="text-lg text-stone-600 dark:text-stone-300 mb-8 leading-relaxed">
               {t('benefits.description')}
             </p>
@@ -49,7 +49,7 @@ export const Benefits = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.08 }}
                 >
-                  <div className="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-sky-100 dark:bg-sky-900/30 flex items-center justify-center text-sky-600 dark:text-sky-400 group-hover:bg-sky-200 dark:group-hover:bg-sky-800/40 transition-colors duration-300 shadow-sm">
+                  <div className="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-teal-100 dark:bg-teal-900/30 flex items-center justify-center text-teal-500 dark:text-teal-400 group-hover:bg-teal-200 dark:group-hover:bg-teal-800/40 transition-colors duration-300 shadow-sm">
                     <Check size={13} strokeWidth={3} />
                   </div>
                   <span className="text-stone-700 dark:text-stone-300 font-medium">{t(key)}</span>
@@ -69,7 +69,7 @@ export const Benefits = () => {
             </motion.a>
           </motion.div>
 
-          {/* Right side — decorative premium visual */}
+          {/* Right side вЂ” decorative premium visual */}
           <motion.div
             className="w-full md:w-1/2 flex justify-center"
             initial={{ opacity: 0, x: 30 }}
@@ -80,11 +80,11 @@ export const Benefits = () => {
             <div className="relative w-full max-w-md">
               {/* Decorative floating icons */}
               <motion.div
-                className="absolute -top-4 -right-4 w-16 h-16 rounded-2xl bg-sky-50 dark:bg-sky-900/20 border border-sky-200/50 dark:border-sky-700/30 flex items-center justify-center shadow-lg"
+                className="absolute -top-4 -right-4 w-16 h-16 rounded-2xl bg-teal-50 dark:bg-teal-900/20 border border-teal-200/50 dark:border-teal-700/30 flex items-center justify-center shadow-lg"
                 animate={{ y: [0, -8, 0] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               >
-                <Droplets size={24} className="text-sky-500" />
+                <Droplets size={24} className="text-teal-500" />
               </motion.div>
               <motion.div
                 className="absolute -bottom-4 -left-4 w-14 h-14 rounded-2xl bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200/50 dark:border-emerald-700/30 flex items-center justify-center shadow-lg"
@@ -102,7 +102,7 @@ export const Benefits = () => {
               </motion.div>
 
               {/* Main card with product image */}
-              <div className="bg-gradient-to-br from-sky-50 via-white to-sky-50/50 dark:from-stone-800 dark:via-stone-850 dark:to-stone-800 rounded-3xl p-8 border border-sky-200/40 dark:border-stone-700 shadow-xl">
+              <div className="bg-gradient-to-br from-teal-50 via-white to-teal-50/50 dark:from-stone-800 dark:via-stone-850 dark:to-stone-800 rounded-3xl p-8 border border-teal-200/40 dark:border-stone-700 shadow-xl">
                 <img
                   src="/images/DENTISSIMO_box_Gold_Italy.webp"
                   alt="Dentissimo Premium"

@@ -1,4 +1,4 @@
-import { Truck, Users, Lock, RotateCcw } from 'lucide-react';
+﻿import { Truck, Users, Lock, RotateCcw } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'motion/react';
 
@@ -41,7 +41,7 @@ export const TrustBadges = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
             >
-              <div className="p-3.5 rounded-2xl bg-sky-900/20 border border-sky-800/30 text-sky-400 group-hover:bg-sky-800/30 group-hover:scale-110 transition-all duration-300 shadow-sm">
+              <div className="p-3.5 rounded-2xl bg-teal-900/20 border border-teal-800/30 text-teal-400 group-hover:bg-teal-800/30 group-hover:scale-110 transition-all duration-300 shadow-sm">
                 <badge.icon size={22} strokeWidth={1.5} />
               </div>
               <div>

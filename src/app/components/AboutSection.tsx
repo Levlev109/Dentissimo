@@ -34,7 +34,7 @@ export const AboutSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <span className="block text-sky-600 text-xs font-bold tracking-[0.2em] uppercase mb-4">{t('about.tagline')}</span>
+              <span className="block text-teal-500 text-xs font-bold tracking-[0.2em] uppercase mb-4">{t('about.tagline')}</span>
               <h2 className="font-serif text-3xl md:text-5xl mb-6 leading-tight text-white">
                 {t('about.glacierTitle')}
               </h2>
@@ -61,7 +61,7 @@ export const AboutSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <div className="bg-white/[0.03] backdrop-blur-sm rounded-2xl p-8 border border-white/[0.06]">
+              <div className="bg-white/[0.03] backdrop-blur-sm p-8 border border-white/[0.06]">
                 <h3 className="font-serif text-2xl text-white mb-6">{t('about.storyTitle')}</h3>
                 <p className="text-stone-200 mb-4 leading-relaxed font-normal">
                   {t('about.storyText1')}
@@ -69,7 +69,7 @@ export const AboutSection = () => {
                 <p className="text-stone-200 mb-6 leading-relaxed font-normal">
                   {t('about.storyText2')}
                 </p>
-                <blockquote className="border-l-2 border-sky-400/40 pl-4 italic text-stone-300 leading-relaxed">
+                <blockquote className="border-l-2 border-teal-400/40 pl-4 italic text-stone-300 leading-relaxed">
                   {t('about.doctorQuote')}
                 </blockquote>
                 <p className="text-stone-400 text-sm mt-3 font-medium">
@@ -84,7 +84,7 @@ export const AboutSection = () => {
       {/* Part 2: Regera-PRO Complex */}
       <div className="py-24 relative">
         {/* Subtle section separator */}
-        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-sky-400/10 to-transparent" />
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-teal-400/10 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-b from-stone-900/30 via-stone-900/20 to-transparent" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -95,7 +95,7 @@ export const AboutSection = () => {
             transition={{ duration: 0.6 }}
           >
             <div>
-              <span className="text-sky-600 text-xs font-bold tracking-[0.2em] uppercase mb-3 block">{t('about.complexLabel')}</span>
+              <span className="text-teal-500 text-xs font-bold tracking-[0.2em] uppercase mb-3 block">{t('about.complexLabel')}</span>
               <h3 className="font-serif text-3xl md:text-4xl text-white">{t('about.complexTitle')}</h3>
               <p className="text-stone-400 max-w-xl mt-4 leading-relaxed">
                 {t('about.complexDesc')}
@@ -110,7 +110,7 @@ export const AboutSection = () => {
               return (
                 <motion.div
                   key={index}
-                  className="relative p-8 border-l border-white/[0.06] hover:border-sky-500/20 transition-colors duration-500"
+                  className="relative p-8 border-l border-white/[0.06] hover:border-teal-500/20 transition-colors duration-500"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -120,11 +120,11 @@ export const AboutSection = () => {
                   <span className="absolute -top-2 -left-3 font-serif text-6xl text-white/[0.04] font-bold leading-none select-none">
                     0{index + 1}
                   </span>
-                  <div className="w-12 h-12 rounded-full bg-sky-900/20 flex items-center justify-center mb-5">
-                    <Icon size={22} className="text-sky-600" />
+                  <div className="w-12 h-12 rounded-full bg-teal-900/20 flex items-center justify-center mb-5">
+                    <Icon size={22} className="text-teal-500" />
                   </div>
                   <h4 className="font-serif text-xl mb-3 text-white">
-                    <span className="text-sky-600 font-bold">Re</span>{(t(item.titleKey) as string).substring(2)}
+                    <span className="text-teal-500 font-bold">Re</span>{(t(item.titleKey) as string).substring(2)}
                   </h4>
                   <p className="text-stone-400 text-sm leading-relaxed">{t(item.descKey)}</p>
                 </motion.div>
@@ -145,7 +145,7 @@ export const AboutSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <span className="text-sky-600 text-xs font-bold tracking-[0.2em] uppercase mb-3 block">{t('about.badRagazLabel')}</span>
+              <span className="text-teal-500 text-xs font-bold tracking-[0.2em] uppercase mb-3 block">{t('about.badRagazLabel')}</span>
               <h3 className="font-serif text-2xl md:text-3xl mb-6 text-white">{t('about.badRagazTitle')}</h3>
               <p className="text-stone-200 mb-5 leading-relaxed font-normal">
                 {t('about.badRagazText1')}
@@ -161,7 +161,7 @@ export const AboutSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <span className="text-sky-600 text-xs font-bold tracking-[0.2em] uppercase mb-3 block">{t('about.manufactureLabel')}</span>
+              <span className="text-teal-500 text-xs font-bold tracking-[0.2em] uppercase mb-3 block">{t('about.manufactureLabel')}</span>
               <h3 className="font-serif text-2xl md:text-3xl mb-6 text-white">{t('about.manufactureTitle')}</h3>
               <p className="text-stone-200 mb-5 leading-relaxed font-normal">
                 {t('about.manufactureText1')}
@@ -187,8 +187,8 @@ export const AboutSection = () => {
                   className="text-center cursor-pointer group"
                   onClick={() => setActiveCert(activeCert === cert.id ? null : cert.id)}
                 >
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border border-white/[0.08] flex items-center justify-center mx-auto mb-2 group-hover:border-sky-400/30 group-hover:bg-sky-900/20 transition-all duration-300">
-                    <cert.icon size={22} className="text-stone-500 group-hover:text-sky-600 transition-colors" />
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border border-white/[0.08] flex items-center justify-center mx-auto mb-2 group-hover:border-teal-400/30 group-hover:bg-teal-900/20 transition-all duration-300">
+                    <cert.icon size={22} className="text-stone-500 group-hover:text-teal-500 transition-colors" />
                   </div>
                   <span className="text-xs sm:text-sm text-stone-300 font-medium tracking-wide group-hover:text-stone-200 transition-colors leading-tight block">{t(cert.titleKey)}</span>
                 </div>
@@ -209,7 +209,7 @@ export const AboutSection = () => {
                     transition={{ duration: 0.25 }}
                     className="overflow-hidden"
                   >
-                    <div className="bg-white/[0.04] backdrop-blur-sm border border-white/[0.06] rounded-xl p-5 sm:p-6 max-w-lg mx-auto relative mb-4">
+                    <div className="bg-white/[0.04] backdrop-blur-sm border border-white/[0.06] p-5 sm:p-6 max-w-lg mx-auto relative mb-4">
                       <button
                         onClick={(e) => { e.stopPropagation(); setActiveCert(null); }}
                         className="absolute top-3 right-3 text-stone-500 hover:text-stone-200 transition-colors p-1"

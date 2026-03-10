@@ -1,4 +1,4 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { Mail, Check, Sparkles } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'motion/react';
@@ -48,8 +48,8 @@ export const Newsletter = () => {
           transition={{ duration: 0.6 }}
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/10 mb-6">
-            <Sparkles size={14} className="text-sky-400" />
-            <span className="text-sky-300 text-xs font-bold tracking-wider uppercase">
+            <Sparkles size={14} className="text-teal-400" />
+            <span className="text-teal-300 text-xs font-bold tracking-wider uppercase">
               {t('newsletter.discount', '10% off your first order')}
             </span>
           </div>
@@ -66,13 +66,13 @@ export const Newsletter = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder={t('newsletter.placeholder')}
-              className="flex-1 px-5 py-4 border border-white/10 bg-white/5 backdrop-blur-sm text-white placeholder-stone-500 rounded-xl focus:ring-2 focus:ring-sky-400 focus:border-transparent outline-none transition-all duration-300"
+              className="flex-1 px-5 py-4 border border-white/10 bg-white/5 backdrop-blur-sm text-white placeholder-stone-500 rounded-xl focus:ring-2 focus:ring-teal-400 focus:border-transparent outline-none transition-all duration-300"
               disabled={loading || subscribed}
             />
             <button
               type="submit"
               disabled={loading || subscribed}
-              className="px-8 py-4 bg-sky-500 text-white font-bold rounded-xl hover:bg-sky-400 transition-all disabled:opacity-60 disabled:cursor-not-allowed shadow-lg shadow-sky-500/25 hover:shadow-xl hover:shadow-sky-400/30 hover:scale-105 transform flex items-center justify-center gap-2 whitespace-nowrap"
+              className="px-8 py-4 bg-teal-500 text-white font-bold rounded-xl hover:bg-teal-400 transition-all disabled:opacity-60 disabled:cursor-not-allowed shadow-lg shadow-teal-500/25 hover:shadow-xl hover:shadow-teal-400/30 hover:scale-105 transform flex items-center justify-center gap-2 whitespace-nowrap"
             >
               <AnimatePresence mode="wait">
                 {subscribed ? (
