@@ -2,17 +2,12 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import { translations } from './translations';
 
-const SUPPORTED_LANGS = ['uk', 'en', 'de', 'fr', 'es', 'it', 'pl'];
+const SUPPORTED_LANGS = ['uk', 'en'];
 
 // Map country codes to our supported languages
 const countryToLang: Record<string, string> = {
-  UA: 'uk', // Ukraine
-  DE: 'de', AT: 'de', CH: 'de', LI: 'de', // German-speaking
-  FR: 'fr', MC: 'fr', BE: 'fr', LU: 'fr', // French-speaking (BE/LU could be fr or de — default fr)
-  ES: 'es', MX: 'es', AR: 'es', CO: 'es', CL: 'es', PE: 'es', VE: 'es', EC: 'es', // Spanish-speaking
-  IT: 'it', SM: 'it', VA: 'it', // Italian-speaking
-  PL: 'pl', // Poland
-  GB: 'en', US: 'en', CA: 'en', AU: 'en', NZ: 'en', IE: 'en', // English-speaking
+  UA: 'uk',
+  GB: 'en', US: 'en', CA: 'en', AU: 'en', NZ: 'en', IE: 'en',
 };
 
 // Detect language from browser settings (immediate, synchronous)

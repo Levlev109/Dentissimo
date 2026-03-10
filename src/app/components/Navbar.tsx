@@ -32,12 +32,7 @@ export const Navbar = () => {
 
   const languages = [
     { code: 'uk', name: 'Українська', flag: '🇺🇦' },
-    { code: 'en', name: 'English', flag: '🇬🇧' },
-    { code: 'de', name: 'Deutsch', flag: '🇩🇪' },
-    { code: 'fr', name: 'Français', flag: '🇫🇷' },
-    { code: 'es', name: 'Español', flag: '🇪🇸' },
-    { code: 'it', name: 'Italiano', flag: '🇮🇹' },
-    { code: 'pl', name: 'Polski', flag: '🇵🇱' }
+    { code: 'en', name: 'English', flag: '🇬🇧' }
   ];
 
   const currentLang = languages.find(l => l.code === i18n.language) || languages[0];
