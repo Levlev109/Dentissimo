@@ -1,5 +1,5 @@
 ﻿import { useState } from 'react';
-import { Mail, Check, Sparkles } from 'lucide-react';
+import { Mail, Check } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -47,12 +47,6 @@ export const Newsletter = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/10 mb-6">
-            <Sparkles size={14} className="text-teal-400" />
-            <span className="text-teal-300 text-xs font-bold tracking-wider uppercase">
-              {t('newsletter.discount', '10% off your first order')}
-            </span>
-          </div>
           <h3 className="text-3xl md:text-4xl font-serif font-bold text-white mb-3">
             {t('newsletter.title')}
           </h3>

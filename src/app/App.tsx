@@ -7,7 +7,6 @@ import { AllProducts } from "@/app/components/AllProducts";
 import { Testimonials } from "@/app/components/Testimonials";
 import { FAQ } from "@/app/components/FAQ";
 import { AboutSection } from "@/app/components/AboutSection";
-import { Newsletter } from "@/app/components/Newsletter";
 import { Footer } from "@/app/components/Footer";
 import { DecorativeEffects } from "@/app/components/DecorativeEffects";
 import { CheckoutPage } from "@/app/pages/CheckoutPage";
@@ -57,7 +56,6 @@ export default function App() {
       </div>
       <FAQ />
       <AboutSection />
-      <Newsletter />
     </>
   );
 
