@@ -98,7 +98,7 @@ export const FeaturedProducts = () => {
         <div className="mt-16 text-center md:hidden">
           <a href="#products" className="inline-flex items-center gap-2 px-8 py-4 bg-stone-900 text-white font-bold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
             {t('featuredProducts.viewAll')}
-            <span className="text-lg">в†’</span>
+            <span className="text-lg">→</span>
           </a>
         </div>
       </div>

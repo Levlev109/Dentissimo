@@ -6,7 +6,8 @@
         limitedEdition: 'Limited Edition',
         about: 'Про бренд',
         contacts: 'Контакти',
-        cart: 'Кошик'
+        cart: 'Кошик',
+        language: 'Мова'
       },
       hero: {
         tagline: 'Швейцарський догляд',
@@ -254,7 +255,8 @@
           pending: 'Очікує підтвердження',
           confirmed: 'Підтверджено',
           shipped: 'Відправлено',
-          delivered: 'Доставлено'
+          delivered: 'Доставлено',
+          cancelled: 'Скасовано'
         }
       },
       categorySection: {
@@ -555,7 +557,7 @@
         noHarmfulBrush: 'Щетинки виготовлені з високоякісного волокна DuPont Tynex®. Не містить BPA, фталатів та шкідливих барвників.',
         howToUseBrush: 'Замінюйте щітку кожні 2–3 місяці або раніше при зношуванні щетинок. Чистити зуби м\'якими круговими рухами протягом 2–3 хвилин.',
         dailyUseMouthwash: 'Додатковий захист ротової порожнини',
-        noHarmfulMouthwash: 'Не містить спирту, хлоргексидину, пероксидів, парабенів та трикалозану. Безпечний для щоденного використання.',
+        noHarmfulMouthwash: 'Не містить спирту, хлоргексидину, пероксидів, парабенів та триклозану. Безпечний для щоденного використання.',
         howToUseMouthwash: 'Полоскати ротову порожнину 10–15 мл засобу протягом 30–60 секунд двічі на день після чищення зубів. Не ковтати. Не розбавляти водою.',
         dailyUseKids: 'Безпечний для дітей',
         noHarmfulKids: 'Не містить SLS, парабенів, фтору (2-6 років) або містить безпечну дозу фтору (6+ років). Без штучних барвників. Безпечний при випадковому ковтанні.',
@@ -574,7 +576,8 @@
         limitedEdition: 'Limited Edition',
         about: 'About',
         contacts: 'Contacts',
-        cart: 'Cart'
+        cart: 'Cart',
+        language: 'Language'
       },
       hero: {
         tagline: 'Swiss Care',
@@ -822,7 +825,8 @@
           pending: 'Pending',
           confirmed: 'Confirmed',
           shipped: 'Shipped',
-          delivered: 'Delivered'
+          delivered: 'Delivered',
+          cancelled: 'Cancelled'
         }
       },
       categorySection: {
@@ -1000,6 +1004,32 @@
         terms: 'Terms of Use',
         cookies: 'Cookie Policy',
         disclaimer: 'Complies with EU regulation 1223/2009 on cosmetic products. Certified according to technical regulations. Distributor: Dentissimo International AG, Zurich, Switzerland.'
+      },
+      faq: {
+        subtitle: 'Answers',
+        title: 'Frequently Asked Questions',
+        q1: 'What makes Dentissimo different from other toothpastes?',
+        a1: 'Dentissimo is a Swiss premium brand using unique ingredients: 24K gold, diamond powder, colloidal silver, and sodium hyaluronate. Our products are free from SLS, parabens, and microplastics.',
+        q2: 'Are your toothpastes suitable for sensitive teeth?',
+        a2: 'Yes, we have special products for sensitive teeth, including Diamond with low abrasivity (RDA) and Gentle Care with natural soothing ingredients.',
+        q3: 'How is delivery handled?',
+        a3: 'We deliver across Ukraine via Nova Poshta. Free delivery on orders over 2500 UAH. Standard delivery takes 1–3 business days.',
+        q4: 'Can I return a product?',
+        a4: 'Yes, you can return a product within 14 days of receipt, provided it has not been used and the original packaging is intact.',
+        q5: 'Are Dentissimo toothpastes suitable for children?',
+        a5: 'Yes, we have a special kids range: Kids Caramel (from 2 years) and Junior Apple (from 6 years). They are safe if accidentally swallowed and contain no harmful dyes.',
+        q6: 'Where can I buy Dentissimo?',
+        a6: 'You can order products directly on our website dentissimo.sale with Nova Poshta delivery across Ukraine.',
+        stillHaveQuestions: 'Still have questions?',
+        contactUs: 'Contact Us'
+      },
+      newsletter: {
+        discount: '10% off your first order',
+        title: 'Subscribe to our newsletter',
+        subtitle: 'Get exclusive offers, news, and oral care tips',
+        placeholder: 'Your email',
+        subscribe: 'Subscribe',
+        success: 'Thank you for subscribing!'
       },
       productShowcase: {
         title: 'Active Ingredients',

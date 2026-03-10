@@ -24,6 +24,7 @@ export default function App() {
   const HomePage = () => (
     <>
       <Hero />
+      <TrustBadges />
       <GoldShowcase />
       {/* Geometric divider */}
       <div className="relative h-20 flex items-center justify-center" aria-hidden="true">
@@ -39,9 +40,9 @@ export default function App() {
       <div className="relative h-16 flex items-center justify-center" aria-hidden="true">
         <div className="absolute inset-0 bg-stone-950" />
         <div className="relative flex items-center gap-4">
-          <div className="w-12 md:w-20 h-px bg-gradient-to-r from-transparent to-white/8" />
+          <div className="w-12 md:w-20 h-px bg-gradient-to-r from-transparent to-white/[0.08]" />
           <div className="w-1 h-1 bg-white/10 rotate-45" />
-          <div className="w-12 md:w-20 h-px bg-gradient-to-l from-transparent to-white/8" />
+          <div className="w-12 md:w-20 h-px bg-gradient-to-l from-transparent to-white/[0.08]" />
         </div>
       </div>
       <Testimonials />
@@ -49,12 +50,14 @@ export default function App() {
       <div className="relative h-16 flex items-center justify-center" aria-hidden="true">
         <div className="absolute inset-0 bg-stone-950" />
         <div className="relative flex items-center gap-4">
-          <div className="w-12 md:w-20 h-px bg-gradient-to-r from-transparent to-white/8" />
+          <div className="w-12 md:w-20 h-px bg-gradient-to-r from-transparent to-white/[0.08]" />
           <div className="w-1 h-1 bg-white/10 rotate-45" />
-          <div className="w-12 md:w-20 h-px bg-gradient-to-l from-transparent to-white/8" />
+          <div className="w-12 md:w-20 h-px bg-gradient-to-l from-transparent to-white/[0.08]" />
         </div>
       </div>
+      <FAQ />
       <AboutSection />
+      <Newsletter />
     </>
   );
 
