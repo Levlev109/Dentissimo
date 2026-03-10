@@ -248,17 +248,20 @@ export const GoldShowcase = () => {
 
           {/* Product selector thumbnails */}
           <div className="mt-12 flex justify-center">
-            <div className="flex items-center gap-3 overflow-x-auto pb-2 max-w-full px-4">
+            <div className="flex items-center gap-3 md:gap-4 overflow-x-auto pb-3 max-w-full px-4 scrollbar-thin">
               {categoryProducts.map((p, i) => (
                 <button
                   key={p.id}
                   onClick={() => setSelectedIndex(i)}
-                  className={`flex-shrink-0 w-16 h-16 md:w-20 md:h-20 rounded-xl p-2 transition-all duration-300 ${
-                    i === selectedIndex ? 'bg-white/10' : 'bg-white/5 hover:bg-white/[0.08]'
+                  className={`flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-2xl p-2.5 md:p-3 transition-all duration-300 ${
+                    i === selectedIndex
+                      ? 'bg-white/10 scale-105'
+                      : 'bg-white/5 hover:bg-white/[0.08] hover:scale-[1.03]'
                   }`}
                   style={{
                     border: `2px solid ${i === selectedIndex ? theme.color : 'rgba(255,255,255,0.1)'}`,
                   }}
+                  title={p.name}
                 >
                   <img
                     src={p.image}
