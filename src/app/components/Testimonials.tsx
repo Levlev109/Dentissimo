@@ -71,7 +71,7 @@ export const Testimonials = () => {
                   <Star key={i} size={16} className="text-amber-400 fill-amber-400" />
                 ))}
               </div>
-              <p className="text-stone-300 mb-6 italic leading-relaxed">"{t(review.textKey)}"</p>
+              <p className="text-stone-200 mb-6 italic leading-relaxed text-[15px]">"{t(review.textKey)}"</p>
               <div className="flex items-center gap-3 pt-4 border-t border-stone-700">
                 <div className="w-10 h-10 rounded-full bg-gradient-to-br from-sky-800 to-sky-900 flex items-center justify-center flex-shrink-0">
                   <span className="text-sky-300 font-bold text-sm">
@@ -80,7 +80,7 @@ export const Testimonials = () => {
                 </div>
                 <div>
                   <p className="font-bold text-white text-sm">{t(review.nameKey)}</p>
-                  <p className="text-xs text-stone-400 uppercase tracking-wide">{t(review.locationKey)}</p>
+                  <p className="text-xs text-stone-300 uppercase tracking-wide">{t(review.locationKey)}</p>
                 </div>
               </div>
             </motion.div>

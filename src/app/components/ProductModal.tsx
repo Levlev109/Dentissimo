@@ -255,10 +255,6 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                       <h3 className="font-bold text-white text-sm mb-1">{t('goldShowcase.storageTitle')}</h3>
                       <p className="text-xs text-stone-500">{t('goldShowcase.storage')}</p>
                     </div>
-
-                    <p className="text-xs text-stone-500 text-center mt-6">
-                      {t('products.freeDelivery')} {t('products.currency')}1000
-                    </p>
                   </motion.div>
                 )}
               </div>

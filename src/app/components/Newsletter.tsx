@@ -56,7 +56,7 @@ export const Newsletter = () => {
           <h3 className="text-3xl md:text-4xl font-serif font-bold text-white mb-3">
             {t('newsletter.title')}
           </h3>
-          <p className="text-stone-400 mb-8 text-lg">
+          <p className="text-stone-300 mb-8 text-lg">
             {t('newsletter.subtitle')}
           </p>
 

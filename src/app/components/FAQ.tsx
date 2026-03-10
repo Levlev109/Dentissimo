@@ -71,7 +71,7 @@ export const FAQ = () => {
                     transition={{ duration: 0.2 }}
                     className="overflow-hidden"
                   >
-                    <div className="px-6 pb-4 pt-2 text-stone-400 leading-relaxed border-t border-stone-800">
+                    <div className="px-6 pb-4 pt-2 text-stone-300 text-[15px] leading-relaxed border-t border-stone-800">
                       {t(faq.answerKey)}
                     </div>
                   </motion.div>
@@ -88,7 +88,7 @@ export const FAQ = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
           >
-          <p className="text-stone-400 mb-4">
+          <p className="text-stone-300 mb-4">
             {t('faq.stillHaveQuestions')}
           </p>
           <a

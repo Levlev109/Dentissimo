@@ -133,7 +133,7 @@ export const ProductShowcase = () => {
                     </p>
                     <ul className="space-y-2">
                       {keyBenefits.map((benefitKey, i) => (
-                        <li key={i} className="flex items-center gap-2.5 text-sm text-stone-400">
+                        <li key={i} className="flex items-center gap-2.5 text-sm text-stone-300">
                           <div className="flex-shrink-0 w-5 h-5 rounded-full bg-sky-900/30 flex items-center justify-center">
                             <Check size={11} strokeWidth={3} className="text-sky-400" />
                           </div>
@@ -150,7 +150,7 @@ export const ProductShowcase = () => {
                     {details.badges.map((badge, i) => (
                       <span
                         key={i}
-                        className="px-3 py-1 rounded-full bg-stone-800 text-stone-400 text-xs font-semibold border border-stone-700"
+                        className="px-3 py-1 rounded-full bg-stone-800 text-stone-300 text-xs font-semibold border border-stone-700"
                       >
                         {t(`badges.${badge}`)}
                       </span>
@@ -162,7 +162,7 @@ export const ProductShowcase = () => {
 
             {/* Right — Ingredients list */}
             <div className="w-full lg:w-7/12">
-              <p className="text-sm font-bold text-stone-400 uppercase tracking-widest mb-5">
+              <p className="text-sm font-bold text-stone-300 uppercase tracking-widest mb-5">
                 {t('products.activeIngredients')} ({ingredients.length})
               </p>
               <div className="space-y-3">
@@ -194,7 +194,7 @@ export const ProductShowcase = () => {
                           </h4>
                           <p className={`text-sm leading-relaxed transition-all duration-300 overflow-hidden ${
                             isActive
-                              ? 'text-stone-300 max-h-40 opacity-100 mt-1'
+                              ? 'text-stone-200 max-h-40 opacity-100 mt-1'
                               : 'text-stone-400 max-h-0 opacity-0 md:max-h-40 md:opacity-100 md:mt-1'
                           }`}>
                             {t(`ingredientDesc.${ingredientKey}`)}

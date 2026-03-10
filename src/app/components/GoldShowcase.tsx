@@ -267,7 +267,7 @@ export const GoldShowcase = () => {
 
                 {/* Description in a glass card */}
                 <div className="p-3 rounded-xl bg-white/[0.04] backdrop-blur-sm border border-white/[0.06] max-w-lg">
-                  <p className="text-stone-400 text-xs md:text-sm leading-relaxed">
+                  <p className="text-stone-300 text-sm md:text-base leading-relaxed">
                     {desc}
                   </p>
                 </div>
@@ -296,7 +296,7 @@ export const GoldShowcase = () => {
                   <span className="text-2xl md:text-3xl font-bold text-white tracking-tight">
                     {t('products.currency')}{price.toFixed(0)}
                   </span>
-                  <span className="text-stone-500 text-sm">/ шт</span>
+                  <span className="text-stone-400 text-sm">/ шт</span>
                 </div>
 
                 {/* CTAs */}

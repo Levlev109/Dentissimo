@@ -15,7 +15,7 @@ export const Footer = () => {
             <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
               <DentissimoLogo size="lg" light />
             </a>
-            <p className="text-stone-400 text-sm leading-relaxed max-w-xs">
+            <p className="text-stone-300 text-sm leading-relaxed max-w-xs">
               {t('footer.tagline')}
             </p>
             <div className="flex space-x-3">
@@ -57,7 +57,7 @@ export const Footer = () => {
           </div>
         </div>
         
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-stone-500">
+        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-stone-400">
           <p>{t('footer.copyright')}</p>
           <div className="flex flex-wrap justify-center gap-4">
             <a href="#contacts" className="hover:text-stone-300 transition-colors">{t('footer.privacy')}</a>
@@ -66,7 +66,7 @@ export const Footer = () => {
           </div>
         </div>
         
-        <div className="mt-8 text-[10px] text-stone-600 text-center max-w-3xl mx-auto leading-relaxed">
+        <div className="mt-8 text-xs text-stone-500 text-center max-w-3xl mx-auto leading-relaxed">
           {t('footer.disclaimer')}
         </div>
       </div>

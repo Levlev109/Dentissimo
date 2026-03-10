@@ -8,8 +8,8 @@ export const TrustBadges = () => {
   const badges = [
     {
       icon: Truck,
-      titleKey: "trustBadges.freeDelivery",
-      descKey: "trustBadges.freeDeliveryDesc"
+      titleKey: "trustBadges.swissMade",
+      descKey: "trustBadges.swissMadeDesc"
     },
     {
       icon: Lock,
@@ -46,7 +46,7 @@ export const TrustBadges = () => {
               </div>
               <div>
                 <h3 className="text-sm font-bold text-stone-100 leading-tight mb-0.5">{t(badge.titleKey)}</h3>
-                <p className="text-xs text-stone-400 leading-tight">{t(badge.descKey)}</p>
+                <p className="text-xs text-stone-300 leading-tight">{t(badge.descKey)}</p>
               </div>
             </motion.div>
           ))}

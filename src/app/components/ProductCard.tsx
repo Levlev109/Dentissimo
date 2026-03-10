@@ -84,7 +84,7 @@ export const ProductCard = ({ product }: ProductProps) => {
                 {product.name}
               </h3>
               {product.description && (
-                <p className="hidden md:block text-xs text-stone-400 mb-3 line-clamp-2 leading-relaxed">{product.description}</p>
+                <p className="hidden md:block text-sm text-stone-300 mb-3 line-clamp-2 leading-relaxed">{product.description}</p>
               )}
             </div>
             <p className="text-white font-bold text-sm md:text-lg mt-1 md:mt-0">{t('products.currency')}{product.price.toFixed(2)}</p>
