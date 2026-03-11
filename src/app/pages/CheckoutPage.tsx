@@ -6,8 +6,9 @@ import { useTranslation } from 'react-i18next';
 import { formatPrice } from '../../services/currency';
 import { db } from '../../services/database';
 import { orderService } from '../../services/orderService';
+import { openPayment } from '../../services/wayforpay';
 import { useNavigate } from 'react-router-dom';
-import { CheckCircle, Loader2, ArrowLeft, ShoppingBag } from 'lucide-react';
+import { CheckCircle, Loader2, ArrowLeft, ShoppingBag, CreditCard, AlertTriangle } from 'lucide-react';
 
 // в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ
 //  EmailJS configuration
@@ -45,6 +46,7 @@ export const CheckoutPage = () => {
   const navigate = useNavigate();
   const [orderPlaced, setOrderPlaced] = useState(false);
   const [sending, setSending] = useState(false);
+  const [paymentError, setPaymentError] = useState<string | null>(null);
 
   const [formData, setFormData] = useState({
     firstName: user?.firstName || '',
@@ -279,9 +281,17 @@ export const CheckoutPage = () => {
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                 <span className="relative z-10 flex items-center gap-2">
                   {sending && <Loader2 size={18} className="animate-spin" />}
-                  {sending ? '...' : t('checkout.placeOrder')}
+                  {!sending && <CreditCard size={18} />}
+                  {sending ? '...' : t('checkout.payNow')}
                 </span>
               </button>
+
+              {paymentError && (
+                <div className="flex items-center gap-2 p-3 bg-red-900/30 border border-red-700/50 text-red-400 text-sm">
+                  <AlertTriangle size={16} />
+                  {paymentError}
+                </div>
+              )}
             </form>
           </div>
 
