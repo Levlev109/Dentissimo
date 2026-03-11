@@ -79,6 +79,7 @@ export const CheckoutPage = () => {
     if (!validateForm()) return;
 
     setSending(true);
+    setPaymentError(null);
     try {
       const orderId = typeof crypto !== 'undefined' && crypto.randomUUID
         ? `ORD-${crypto.randomUUID().slice(0, 8).toUpperCase()}`
@@ -97,7 +98,7 @@ export const CheckoutPage = () => {
         phone:     sanitize(formData.phone, 30),
       };
 
-      // Save order to Supabase (+ localStorage fallback)
+      // Save order to Supabase (+ localStorage fallback) with pending status
       await orderService.createOrder({
         userId: user?.id ?? 'guest',
         items,
@@ -112,29 +113,50 @@ export const CheckoutPage = () => {
         status: 'pending',
       });
 
-      // Send email notification to owner
-      await emailjs.send(
-        EMAILJS_SERVICE_ID,
-        EMAILJS_TEMPLATE_ID,
-        {
-          order_id:         orderId,
-          customer_name:    `${safe.firstName} ${safe.lastName}`,
-          customer_email:   safe.email,
-          customer_phone:   safe.phone,
-          customer_country: countryLabel,
-          order_items:      itemsText,
-          order_total:      `${t('products.currency')}${formatPrice(total, i18n.language)}`,
-          to_email:         OWNER_EMAIL,
-        },
-        EMAILJS_PUBLIC_KEY
-      );
+      // Open WayForPay payment widget
+      const paymentResult = await openPayment({
+        orderId,
+        amount: total,
+        items: items.map(i => ({
+          name: i.product.name,
+          price: i.product.price,
+          count: i.quantity,
+        })),
+        clientName: `${safe.firstName} ${safe.lastName}`,
+        clientEmail: safe.email,
+        clientPhone: safe.phone,
+      });
 
-      clearCart();
-      setOrderPlaced(true);
-    } catch {
-      // Email may fail but order is saved — still show success
-      clearCart();
-      setOrderPlaced(true);
+      if (paymentResult === 'approved') {
+        // Payment successful â€” send email notification
+        try {
+          await emailjs.send(
+            EMAILJS_SERVICE_ID,
+            EMAILJS_TEMPLATE_ID,
+            {
+              order_id:         orderId,
+              customer_name:    `${safe.firstName} ${safe.lastName}`,
+              customer_email:   safe.email,
+              customer_phone:   safe.phone,
+              customer_country: countryLabel,
+              order_items:      itemsText,
+              order_total:      `${t('products.currency')}${formatPrice(total, i18n.language)}`,
+              to_email:         OWNER_EMAIL,
+            },
+            EMAILJS_PUBLIC_KEY
+          );
+        } catch {
+          // Email may fail but payment was successful
+        }
+        clearCart();
+        setOrderPlaced(true);
+      } else if (paymentResult === 'pending') {
+        setPaymentError(t('checkout.paymentPending'));
+      } else {
+        setPaymentError(t('checkout.paymentDeclined'));
+      }
+    } catch (err) {
+      setPaymentError(err instanceof Error ? err.message : t('checkout.paymentError'));
     } finally {
       setSending(false);
     }
