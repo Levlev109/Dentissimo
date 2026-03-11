@@ -1,4 +1,4 @@
-import { Plus, TrendingUp, Star, Flame, Leaf } from 'lucide-react';
+import { Plus, TrendingUp, Star, Flame, Leaf, ShieldCheck } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useState } from 'react';
 import { useCart } from '../../contexts/CartContext';
@@ -19,6 +19,16 @@ const badgeConfig = {
   eco: { icon: Leaf, labelKey: 'badges.eco', color: 'bg-teal-600' },
 };
 
+const cardAccents: Record<string, string> = {
+  'whitening-gold': '#b8942b', 'whitening-black': '#444', 'diamond': '#1a8a7a',
+  'gentle-care': '#1a8a5a', 'complete-care': '#1a8a7a', 'pro-care': '#1a8a7a',
+  'vegan-b12': '#2a7a40', 'pregnant': '#c0508a', 'kids-caramel': '#c07030',
+  'junior-apple': '#6a9020', 'brush-gold': '#b8942b', 'brush-silver': '#6a7585',
+  'brush-medium': '#1a8a7a', 'brush-hard': '#4a5565', 'brush-sensitive': '#1a8a7a',
+  'brush-parodontal': '#2a7a40', 'brush-kids': '#c0508a', 'brush-junior': '#2a7a40',
+  'mouthwash-gold': '#b8942b', 'mouthwash-fresh': '#1a8a7a', 'mouthwash-gum': '#1a8a5a',
+};
+
 export const ProductCard = ({ product }: ProductProps) => {
   const { addToCart } = useCart();
   const { t, i18n } = useTranslation();
@@ -34,6 +44,8 @@ export const ProductCard = ({ product }: ProductProps) => {
   const handleCardClick = () => {
     setIsModalOpen(true);
   };
+
+  const accent = cardAccents[product.id] || '#1a8a7a';
 
   return (
     <>
@@ -75,6 +87,16 @@ export const ProductCard = ({ product }: ProductProps) => {
             >
               <Plus size={20} strokeWidth={2.5} />
             </motion.button>
+
+            {/* Trust badge */}
+            <div className="absolute bottom-3 left-3 md:bottom-4 md:left-4 flex items-center gap-1.5 px-2 py-1 rounded-full"
+              style={{ backgroundColor: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(6px)' }}>
+              <div className="w-5 h-5 rounded-full flex items-center justify-center shrink-0"
+                style={{ backgroundColor: accent }}>
+                <ShieldCheck size={11} color="#fff" strokeWidth={2.2} />
+              </div>
+              <span className="text-[9px] font-semibold text-white tracking-wide uppercase whitespace-nowrap">Swiss Quality</span>
+            </div>
           </div>
 
           {/* Product info */}
