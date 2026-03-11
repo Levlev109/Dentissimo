@@ -3,7 +3,7 @@
 @import './theme.css';
 
 /* ═══ PEARL NOIR AMBIENT BACKGROUND ═══ */
-/* Adds subtle emerald-gold radial glows behind all content */
+/* Adds subtle pearl-gold radial glows behind all content */
 body::before {
   content: '';
   position: fixed;
@@ -11,9 +11,9 @@ body::before {
   z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 80% 50% at 20% 30%, rgba(16, 185, 129, 0.05), transparent 70%),
-    radial-gradient(ellipse 60% 60% at 80% 60%, rgba(201, 169, 110, 0.04), transparent 70%),
-    radial-gradient(ellipse 90% 40% at 50% 80%, rgba(16, 185, 129, 0.03), transparent 60%);
+    radial-gradient(ellipse 80% 50% at 20% 30%, rgba(220, 215, 200, 0.04), transparent 70%),
+    radial-gradient(ellipse 60% 60% at 80% 60%, rgba(201, 175, 125, 0.04), transparent 70%),
+    radial-gradient(ellipse 90% 40% at 50% 80%, rgba(230, 225, 210, 0.03), transparent 60%);
 }
 
 /* Smooth scrolling for anchor links */
@@ -38,10 +38,10 @@ footer[id] {
 
 @keyframes pulse-glow {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+    box-shadow: 0 0 20px rgba(201, 175, 125, 0.3);
   }
   50% {
-    box-shadow: 0 0 40px rgba(16, 185, 129, 0.6);
+    box-shadow: 0 0 40px rgba(201, 175, 125, 0.5);
   }
 }
 
@@ -80,7 +80,7 @@ footer[id] {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(16, 185, 129, 0.1) 50%,
+    rgba(220, 215, 200, 0.1) 50%,
     transparent 100%
   );
   background-size: 2000px 100%;
@@ -112,7 +112,7 @@ footer[id] {
 
 /* Selection styling */
 ::selection {
-  background-color: rgba(16, 185, 129, 0.25);
+  background-color: rgba(201, 175, 125, 0.30);
   color: white;
 }
 
@@ -123,7 +123,7 @@ button, a, input, textarea, select {
 
 /* Enhanced focus states */
 *:focus-visible {
-  outline: 1px solid rgba(16, 185, 129, 0.4);
+  outline: 1px solid rgba(201, 175, 125, 0.4);
   outline-offset: 2px;
 }
 

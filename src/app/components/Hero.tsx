@@ -18,14 +18,14 @@ const useGlacierCanvas = (canvasRef: React.RefObject<HTMLCanvasElement | null>, 
     ctx.fillStyle = '#0a0a08';
     ctx.fillRect(0, 0, W, H);
 
-    // Emerald / gold light waves
+    // Pearl / champagne / gold light waves — premium dental aesthetic
     const waves = [
-      { yBase: 0.32, amp: 0.06, freq: 0.8, speed: 0.7, color: [16, 185, 129], alpha: 0.18, width: 0.45 },
-      { yBase: 0.42, amp: 0.08, freq: 0.5, speed: -0.5, color: [20, 160, 110], alpha: 0.14, width: 0.6 },
-      { yBase: 0.50, amp: 0.05, freq: 1.1, speed: 0.9, color: [201, 169, 110], alpha: 0.10, width: 0.35 },
-      { yBase: 0.55, amp: 0.10, freq: 0.35, speed: -0.3, color: [16, 140, 100], alpha: 0.16, width: 0.7 },
-      { yBase: 0.65, amp: 0.04, freq: 1.4, speed: 1.1, color: [180, 155, 90], alpha: 0.08, width: 0.3 },
-      { yBase: 0.38, amp: 0.07, freq: 0.6, speed: 0.4, color: [10, 120, 85], alpha: 0.15, width: 0.55 },
+      { yBase: 0.30, amp: 0.07, freq: 0.65, speed: 0.45, color: [235, 228, 215], alpha: 0.10, width: 0.55 },
+      { yBase: 0.42, amp: 0.09, freq: 0.40, speed: -0.35, color: [225, 218, 200], alpha: 0.08, width: 0.70 },
+      { yBase: 0.48, amp: 0.05, freq: 1.00, speed: 0.75, color: [201, 175, 125], alpha: 0.07, width: 0.40 },
+      { yBase: 0.55, amp: 0.11, freq: 0.28, speed: -0.22, color: [240, 235, 222], alpha: 0.09, width: 0.80 },
+      { yBase: 0.63, amp: 0.04, freq: 1.20, speed: 0.90, color: [195, 170, 120], alpha: 0.05, width: 0.35 },
+      { yBase: 0.36, amp: 0.08, freq: 0.50, speed: 0.30, color: [230, 222, 208], alpha: 0.07, width: 0.60 },
     ];
 
     for (const wave of waves) {
@@ -60,22 +60,23 @@ const useGlacierCanvas = (canvasRef: React.RefObject<HTMLCanvasElement | null>, 
       }
     }
 
-    // Bright focal glow (center-upper area, like light through ice)
-    const glowX = W * (0.5 + Math.sin(t * 0.4) * 0.1);
-    const glowY = H * (0.38 + Math.sin(t * 0.25) * 0.04);
-    const glowR = Math.min(W, H) * 0.45;
+    // Central pearl radiance — bright, warm, luxurious
+    const glowX = W * (0.5 + Math.sin(t * 0.35) * 0.08);
+    const glowY = H * (0.40 + Math.sin(t * 0.20) * 0.03);
+    const glowR = Math.min(W, H) * 0.55;
     const glow = ctx.createRadialGradient(glowX, glowY, 0, glowX, glowY, glowR);
-    glow.addColorStop(0, 'rgba(16, 185, 129, 0.06)');
-    glow.addColorStop(0.4, 'rgba(16, 140, 100, 0.03)');
+    glow.addColorStop(0, 'rgba(245, 240, 228, 0.10)');
+    glow.addColorStop(0.25, 'rgba(230, 222, 205, 0.06)');
+    glow.addColorStop(0.5, 'rgba(201, 180, 135, 0.03)');
     glow.addColorStop(1, 'rgba(0, 0, 0, 0)');
     ctx.fillStyle = glow;
     ctx.fillRect(0, 0, W, H);
 
-    // Secondary warm accent (very subtle)
-    const glow2X = W * (0.35 + Math.sin(t * 0.3 + 2) * 0.15);
-    const glow2Y = H * (0.55 + Math.sin(t * 0.2 + 1) * 0.05);
-    const glow2 = ctx.createRadialGradient(glow2X, glow2Y, 0, glow2X, glow2Y, glowR * 0.6);
-    glow2.addColorStop(0, 'rgba(201, 169, 110, 0.04)');
+    // Secondary gold undertone
+    const glow2X = W * (0.38 + Math.sin(t * 0.25 + 2) * 0.12);
+    const glow2Y = H * (0.52 + Math.sin(t * 0.15 + 1) * 0.04);
+    const glow2 = ctx.createRadialGradient(glow2X, glow2Y, 0, glow2X, glow2Y, glowR * 0.5);
+    glow2.addColorStop(0, 'rgba(201, 175, 120, 0.06)');
     glow2.addColorStop(1, 'rgba(0, 0, 0, 0)');
     ctx.fillStyle = glow2;
     ctx.fillRect(0, 0, W, H);
@@ -165,7 +166,7 @@ export const Hero = () => {
             {/* Inner ring */}
             <motion.div
               className="absolute rounded-full"
-              style={{ border: '1px solid rgba(16,185,129,0.15)' }}
+              style={{ border: '1px solid rgba(201,175,120,0.20)' }}
               initial={{ width: 0, height: 0 }}
               animate={{ width: 160, height: 160, opacity: splashPhase >= 2 ? 0 : 0.4 }}
               transition={{ duration: 0.8, delay: 0.1, ease: 'easeOut' }}
@@ -188,7 +189,7 @@ export const Hero = () => {
             {/* Radial pulse */}
             <motion.div
               className="absolute w-[300px] h-[300px] rounded-full"
-              style={{ background: 'radial-gradient(circle, rgba(16,185,129,0.06) 0%, transparent 70%)' }}
+              style={{ background: 'radial-gradient(circle, rgba(230,222,205,0.08) 0%, transparent 70%)' }}
               animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0, 0.3] }}
               transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
             />

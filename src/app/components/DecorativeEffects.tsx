@@ -137,7 +137,7 @@ export const DecorativeEffects = () => {
             const lineAlpha = (1 - dist / CONNECT_DIST) * 0.04 * Math.min(visible[i].alpha, visible[j].alpha);
             ctx.save();
             ctx.globalAlpha = lineAlpha;
-            ctx.strokeStyle = 'rgba(220, 235, 215, 1)';
+            ctx.strokeStyle = 'rgba(230, 225, 210, 1)';
             ctx.lineWidth = 0.5;
             ctx.beginPath();
             ctx.moveTo(visible[i].x, visible[i].sy);
