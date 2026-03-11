@@ -1,4 +1,4 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { useCart } from '../../contexts/CartContext';
 import { useAuth } from '../../contexts/AuthContext';
@@ -10,12 +10,12 @@ import { openPayment } from '../../services/wayforpay';
 import { useNavigate } from 'react-router-dom';
 import { CheckCircle, Loader2, ArrowLeft, ShoppingBag, CreditCard, AlertTriangle } from 'lucide-react';
 
-// в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ
+// ─────────────────────────────────────────────────────────────────────────────
 //  EmailJS configuration
-//  1. Register at https://www.emailjs.com  (free plan вЂ” 200 emails/month)
-//  2. Add Email Service  в†’  copy Service ID  в†’ paste below
+//  1. Register at https://www.emailjs.com  (free plan — 200 emails/month)
+//  2. Add Email Service  →  copy Service ID  → paste below
 //  3. Create Email Template with variables listed in the comment below
-//     Subject:  New order #{{order_id}} вЂ” Dentissimo
+//     Subject:  New order #{{order_id}} — Dentissimo
 //     Body (example):
 //       Order: {{order_id}}
 //       Customer: {{customer_name}}
@@ -25,15 +25,15 @@ import { CheckCircle, Loader2, ArrowLeft, ShoppingBag, CreditCard, AlertTriangle
 //       Address: {{customer_address}}
 //       Items: {{order_items}}
 //       Total: {{order_total}}
-//  4. Copy Template ID в†’ paste below
-//  5. Go to Account в†’ API Keys в†’ copy Public Key в†’ paste below
-// в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ
+//  4. Copy Template ID → paste below
+//  5. Go to Account → API Keys → copy Public Key → paste below
+// ─────────────────────────────────────────────────────────────────────────────
 const EMAILJS_SERVICE_ID  = 'service_w9vtqcr';
 const EMAILJS_TEMPLATE_ID = 'template_gi3wb9g';
 const EMAILJS_PUBLIC_KEY  = 'D7hfuMgGWEizH_23r';
 const OWNER_EMAIL         = 'starovlev11@gmail.com';
 
-// Input sanitization вЂ” strip HTML tags and limit length
+// Input sanitization — strip HTML tags and limit length
 const sanitize = (str: string, maxLen = 200): string =>
   str.replace(/<[^>]*>/g, '').trim().slice(0, maxLen);
 
@@ -86,7 +86,7 @@ export const CheckoutPage = () => {
 
       const countryLabel = `\uD83C\uDDFA\uD83C\uDDE6 ${t('countries.ukraine')}`;
       const itemsText = items
-        .map(i => `${i.product.name} × ${i.quantity} = ${t('products.currency')}${formatPrice(i.product.price * i.quantity, i18n.language)}`)
+        .map(i => `${i.product.name} ? ${i.quantity} = ${t('products.currency')}${formatPrice(i.product.price * i.quantity, i18n.language)}`)
         .join('\n');
 
       // Sanitize inputs before storage
@@ -132,7 +132,7 @@ export const CheckoutPage = () => {
       clearCart();
       setOrderPlaced(true);
     } catch {
-      // Email may fail but order is saved — still show success
+      // Email may fail but order is saved � still show success
       clearCart();
       setOrderPlaced(true);
     } finally {
@@ -214,7 +214,7 @@ export const CheckoutPage = () => {
                     type="text"
                     value={formData.firstName}
                     onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                    className={`w-full px-4 py-3 border ${errors.firstName ? 'border-red-500' : 'border-stone-700'} bg-stone-800 text-white placeholder-stone-500 focus:ring-2 focus:ring-teal-400 focus:border-transparent outline-none`}
+                    className={`w-full px-4 py-3 border ${errors.firstName ? 'border-red-500' : 'border-stone-700'} bg-stone-800 text-white placeholder-stone-500 focus:ring-2 focus:ring-emerald-400 focus:border-transparent outline-none`}
                   />
                   {errors.firstName && (
                     <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>
@@ -229,7 +229,7 @@ export const CheckoutPage = () => {
                     type="text"
                     value={formData.lastName}
                     onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                    className={`w-full px-4 py-3 border ${errors.lastName ? 'border-red-500' : 'border-stone-700'} bg-stone-800 text-white placeholder-stone-500 focus:ring-2 focus:ring-teal-400 focus:border-transparent outline-none`}
+                    className={`w-full px-4 py-3 border ${errors.lastName ? 'border-red-500' : 'border-stone-700'} bg-stone-800 text-white placeholder-stone-500 focus:ring-2 focus:ring-emerald-400 focus:border-transparent outline-none`}
                   />
                   {errors.lastName && (
                     <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>
@@ -247,7 +247,7 @@ export const CheckoutPage = () => {
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="example@mail.com"
-                  className={`w-full px-4 py-3 border ${errors.email ? 'border-red-500' : 'border-stone-700'} bg-stone-800 text-white placeholder-stone-500 focus:ring-2 focus:ring-teal-400 focus:border-transparent outline-none`}
+                  className={`w-full px-4 py-3 border ${errors.email ? 'border-red-500' : 'border-stone-700'} bg-stone-800 text-white placeholder-stone-500 focus:ring-2 focus:ring-emerald-400 focus:border-transparent outline-none`}
                 />
                 {errors.email && (
                   <p className="text-red-500 text-sm mt-1">{errors.email}</p>
@@ -266,7 +266,7 @@ export const CheckoutPage = () => {
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   placeholder={t('checkout.phonePlaceholder')}
-                  className={`w-full px-4 py-3 border ${errors.phone ? 'border-red-500' : 'border-stone-700'} bg-stone-800 text-white placeholder-stone-500 focus:ring-2 focus:ring-teal-400 focus:border-transparent outline-none`}
+                  className={`w-full px-4 py-3 border ${errors.phone ? 'border-red-500' : 'border-stone-700'} bg-stone-800 text-white placeholder-stone-500 focus:ring-2 focus:ring-emerald-400 focus:border-transparent outline-none`}
                 />
                 {errors.phone && (
                   <p className="text-red-500 text-sm mt-1">{errors.phone}</p>

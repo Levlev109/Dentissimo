@@ -26,31 +26,31 @@ export const Footer = () => {
           <div>
             <h4 className="text-sm font-bold uppercase tracking-widest mb-6 text-white">{t('footer.products')}</h4>
             <ul className="space-y-4 text-sm text-stone-400">
-              <li><a href="#products" className="hover:text-emerald-400 transition-colors duration-200">{t('footer.limitedEdition')}</a></li>
-              <li><a href="#products" className="hover:text-emerald-400 transition-colors duration-200">{t('footer.spaExpert')}</a></li>
-              <li><a href="#products" className="hover:text-emerald-400 transition-colors duration-200">{t('footer.diamondSeries')}</a></li>
-              <li><a href="#products" className="hover:text-emerald-400 transition-colors duration-200">{t('footer.bioNatural')}</a></li>
-              <li><a href="#products" className="hover:text-emerald-400 transition-colors duration-200">{t('footer.forKids')}</a></li>
+              <li><a href="#products" className="hover:text-teal-400 transition-colors duration-200">{t('footer.limitedEdition')}</a></li>
+              <li><a href="#products" className="hover:text-teal-400 transition-colors duration-200">{t('footer.spaExpert')}</a></li>
+              <li><a href="#products" className="hover:text-teal-400 transition-colors duration-200">{t('footer.diamondSeries')}</a></li>
+              <li><a href="#products" className="hover:text-teal-400 transition-colors duration-200">{t('footer.bioNatural')}</a></li>
+              <li><a href="#products" className="hover:text-teal-400 transition-colors duration-200">{t('footer.forKids')}</a></li>
             </ul>
           </div>
           
           <div>
             <h4 className="text-sm font-bold uppercase tracking-widest mb-6 text-white">{t('footer.aboutBrand')}</h4>
             <ul className="space-y-4 text-sm text-stone-400">
-              <li><a href="#about" className="hover:text-emerald-400 transition-colors duration-200">{t('footer.ourStory')}</a></li>
-              <li><a href="#about" className="hover:text-emerald-400 transition-colors duration-200">{t('footer.glacierWater')}</a></li>
-              <li><a href="#about" className="hover:text-emerald-400 transition-colors duration-200">{t('footer.swissQuality')}</a></li>
-              <li><a href="https://dentissimo.ua/certificates/" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors duration-200">{t('footer.clinicalStudies')}</a></li>
+              <li><a href="#about" className="hover:text-teal-400 transition-colors duration-200">{t('footer.ourStory')}</a></li>
+              <li><a href="#about" className="hover:text-teal-400 transition-colors duration-200">{t('footer.glacierWater')}</a></li>
+              <li><a href="#about" className="hover:text-teal-400 transition-colors duration-200">{t('footer.swissQuality')}</a></li>
+              <li><a href="https://dentissimo.ua/certificates/" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 transition-colors duration-200">{t('footer.clinicalStudies')}</a></li>
             </ul>
           </div>
           
           <div>
             <h4 className="text-sm font-bold uppercase tracking-widest mb-6 text-white">{t('footer.support')}</h4>
             <ul className="space-y-4 text-sm text-stone-400">
-              <li><a href="mailto:info@blasspharma.com" className="hover:text-emerald-400 transition-colors duration-200">{t('footer.contacts')}</a></li>
-              <li><a href="#contacts" className="hover:text-emerald-400 transition-colors duration-200">{t('footer.delivery')}</a></li>
-              <li><a href="#contacts" className="hover:text-emerald-400 transition-colors duration-200">{t('footer.faq')}</a></li>
-              <li><a href="https://dentissimo.ua/" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors duration-200">{t('footer.stores')}</a></li>
+              <li><a href="mailto:info@blasspharma.com" className="hover:text-teal-400 transition-colors duration-200">{t('footer.contacts')}</a></li>
+              <li><a href="#contacts" className="hover:text-teal-400 transition-colors duration-200">{t('footer.delivery')}</a></li>
+              <li><a href="#contacts" className="hover:text-teal-400 transition-colors duration-200">{t('footer.faq')}</a></li>
+              <li><a href="https://dentissimo.ua/" target="_blank" rel="noopener noreferrer" className="hover:text-teal-400 transition-colors duration-200">{t('footer.stores')}</a></li>
             </ul>
           </div>
         </div>

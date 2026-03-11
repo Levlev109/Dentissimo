@@ -15,17 +15,17 @@ const useGlacierCanvas = (canvasRef: React.RefObject<HTMLCanvasElement | null>, 
     ctx.clearRect(0, 0, W, H);
 
     // Dark base
-    ctx.fillStyle = '#0a0a08';
+    ctx.fillStyle = '#08101e';
     ctx.fillRect(0, 0, W, H);
 
-    // Emerald / gold light waves
+    // Aurora / glacier light waves
     const waves = [
-      { yBase: 0.32, amp: 0.06, freq: 0.8, speed: 0.7, color: [16, 185, 129], alpha: 0.18, width: 0.45 },
-      { yBase: 0.42, amp: 0.08, freq: 0.5, speed: -0.5, color: [20, 160, 110], alpha: 0.14, width: 0.6 },
-      { yBase: 0.50, amp: 0.05, freq: 1.1, speed: 0.9, color: [201, 169, 110], alpha: 0.10, width: 0.35 },
-      { yBase: 0.55, amp: 0.10, freq: 0.35, speed: -0.3, color: [16, 140, 100], alpha: 0.16, width: 0.7 },
-      { yBase: 0.65, amp: 0.04, freq: 1.4, speed: 1.1, color: [180, 155, 90], alpha: 0.08, width: 0.3 },
-      { yBase: 0.38, amp: 0.07, freq: 0.6, speed: 0.4, color: [10, 120, 85], alpha: 0.15, width: 0.55 },
+      { yBase: 0.32, amp: 0.06, freq: 0.8, speed: 0.7, color: [15, 80, 120], alpha: 0.25, width: 0.45 },
+      { yBase: 0.42, amp: 0.08, freq: 0.5, speed: -0.5, color: [20, 110, 140], alpha: 0.18, width: 0.6 },
+      { yBase: 0.50, amp: 0.05, freq: 1.1, speed: 0.9, color: [40, 160, 180], alpha: 0.12, width: 0.35 },
+      { yBase: 0.55, amp: 0.10, freq: 0.35, speed: -0.3, color: [10, 60, 100], alpha: 0.22, width: 0.7 },
+      { yBase: 0.65, amp: 0.04, freq: 1.4, speed: 1.1, color: [30, 140, 160], alpha: 0.10, width: 0.3 },
+      { yBase: 0.38, amp: 0.07, freq: 0.6, speed: 0.4, color: [8, 50, 90], alpha: 0.20, width: 0.55 },
     ];
 
     for (const wave of waves) {
@@ -65,8 +65,8 @@ const useGlacierCanvas = (canvasRef: React.RefObject<HTMLCanvasElement | null>, 
     const glowY = H * (0.38 + Math.sin(t * 0.25) * 0.04);
     const glowR = Math.min(W, H) * 0.45;
     const glow = ctx.createRadialGradient(glowX, glowY, 0, glowX, glowY, glowR);
-    glow.addColorStop(0, 'rgba(16, 185, 129, 0.06)');
-    glow.addColorStop(0.4, 'rgba(16, 140, 100, 0.03)');
+    glow.addColorStop(0, 'rgba(40, 160, 200, 0.06)');
+    glow.addColorStop(0.4, 'rgba(20, 100, 140, 0.03)');
     glow.addColorStop(1, 'rgba(0, 0, 0, 0)');
     ctx.fillStyle = glow;
     ctx.fillRect(0, 0, W, H);
@@ -75,7 +75,7 @@ const useGlacierCanvas = (canvasRef: React.RefObject<HTMLCanvasElement | null>, 
     const glow2X = W * (0.35 + Math.sin(t * 0.3 + 2) * 0.15);
     const glow2Y = H * (0.55 + Math.sin(t * 0.2 + 1) * 0.05);
     const glow2 = ctx.createRadialGradient(glow2X, glow2Y, 0, glow2X, glow2Y, glowR * 0.6);
-    glow2.addColorStop(0, 'rgba(201, 169, 110, 0.04)');
+    glow2.addColorStop(0, 'rgba(60, 180, 160, 0.04)');
     glow2.addColorStop(1, 'rgba(0, 0, 0, 0)');
     ctx.fillStyle = glow2;
     ctx.fillRect(0, 0, W, H);
@@ -165,7 +165,7 @@ export const Hero = () => {
             {/* Inner ring */}
             <motion.div
               className="absolute rounded-full"
-              style={{ border: '1px solid rgba(16,185,129,0.15)' }}
+              style={{ border: '1px solid rgba(20,184,166,0.15)' }}
               initial={{ width: 0, height: 0 }}
               animate={{ width: 160, height: 160, opacity: splashPhase >= 2 ? 0 : 0.4 }}
               transition={{ duration: 0.8, delay: 0.1, ease: 'easeOut' }}
@@ -188,7 +188,7 @@ export const Hero = () => {
             {/* Radial pulse */}
             <motion.div
               className="absolute w-[300px] h-[300px] rounded-full"
-              style={{ background: 'radial-gradient(circle, rgba(16,185,129,0.06) 0%, transparent 70%)' }}
+              style={{ background: 'radial-gradient(circle, rgba(20,184,166,0.06) 0%, transparent 70%)' }}
               animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0, 0.3] }}
               transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
             />

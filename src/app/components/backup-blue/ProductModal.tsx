@@ -123,17 +123,17 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
             exit={{ scale: 0.94, opacity: 0 }}
             transition={{ type: "spring", duration: 0.4, bounce: 0.1 }}
             className="w-full max-h-[92vh] overflow-hidden flex flex-col relative"
-            style={{ maxWidth: 960, backgroundColor: '#141412', borderRadius: 0 }}
+            style={{ maxWidth: 960, backgroundColor: '#f0ece5', borderRadius: 0 }}
             onClick={(e) => e.stopPropagation()}
           >
             {/* ═══ TOP BAR ═══ */}
-            <div className="flex items-center h-[52px] px-4 md:px-6 shrink-0" style={{ borderBottom: '1px solid #2a2a25', ...sans }}>
+            <div className="flex items-center h-[52px] px-4 md:px-6 shrink-0" style={{ borderBottom: '1px solid #d6d1c8', ...sans }}>
               {/* Logo */}
               <span className="text-[17px] md:text-[19px] tracking-[-0.02em] shrink-0"
                 style={{ color: accent, fontFamily: "'Cormorant Garamond', serif", fontWeight: 700, fontStyle: 'italic' }}>
                 dentissimo<sup style={{ fontSize: 8, fontStyle: 'normal' }}>®</sup>
               </span>
-              <span className="ml-1.5 text-[8px] tracking-[0.18em] uppercase hidden md:inline" style={{ color: '#78786e' }}>
+              <span className="ml-1.5 text-[8px] tracking-[0.18em] uppercase hidden md:inline" style={{ color: '#777' }}>
                 Premium Oral Care
               </span>
 
@@ -146,10 +146,10 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                       className="px-3 md:px-4 py-[6px] text-[11px] md:text-[12px] tracking-[0.04em] transition-all whitespace-nowrap"
                       style={{
                         fontWeight: active ? 600 : 500,
-                        backgroundColor: active ? '#1c1c19' : 'transparent',
-                        border: active ? '1px solid #3a3a34' : '1px solid transparent',
+                        backgroundColor: active ? '#fff' : 'transparent',
+                        border: active ? '1px solid #c5c0b6' : '1px solid transparent',
                         borderRadius: 5,
-                        color: active ? '#e8e8e4' : '#78786e',
+                        color: active ? '#222' : '#777',
                         ...sans,
                       }}>
                       {tab.label}
@@ -167,8 +167,8 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
 
               {/* Close */}
               <button onClick={onClose}
-                className="ml-2 w-[30px] h-[30px] flex items-center justify-center rounded-full hover:bg-white/10 shrink-0"
-                style={{ color: '#9e9e92' }}>
+                className="ml-2 w-[30px] h-[30px] flex items-center justify-center rounded-full hover:bg-black/5 shrink-0"
+                style={{ color: '#888' }}>
                 <X size={14} />
               </button>
             </div>
@@ -182,10 +182,10 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                   <div className="flex flex-col md:flex-row" style={{ minHeight: 520 }}>
                     {/* LEFT — image panel with badge */}
                     <div className="md:w-[45%] flex flex-col items-center justify-center p-10 md:p-12 relative"
-                      style={{ backgroundColor: '#1c1c19' }}>
+                      style={{ backgroundColor: '#e7e3db' }}>
                       {/* "INNOVATIVE DENTAL FORMULA" badge */}
                       <div className="absolute top-5 left-5 right-5 flex items-center justify-between">
-                        <span className="text-[8px] tracking-[0.22em] uppercase font-semibold" style={{ color: '#78786e', ...sans }}>
+                        <span className="text-[8px] tracking-[0.22em] uppercase font-semibold" style={{ color: '#777', ...sans }}>
                           Innovative Dental Formula
                         </span>
                         {product.isNew && (
@@ -203,30 +203,30 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                     {/* RIGHT — product info */}
                     <div className="md:w-[55%] p-7 md:p-10 flex flex-col">
                       {/* Type label */}
-                      <p className="text-[9px] tracking-[0.25em] uppercase mb-2" style={{ color: '#9e9e92', ...sans, fontWeight: 600 }}>
+                      <p className="text-[9px] tracking-[0.25em] uppercase mb-2" style={{ color: '#7a7268', ...sans, fontWeight: 600 }}>
                         {typeLabel}
                       </p>
 
                       {/* Product name — large Cormorant Garamond */}
-                      <h2 className="font-serif mb-6" style={{ fontSize: 38, fontWeight: 700, lineHeight: 1.08, color: '#f5f5f2', letterSpacing: '-0.01em' }}>
+                      <h2 className="font-serif mb-6" style={{ fontSize: 38, fontWeight: 700, lineHeight: 1.08, color: '#111', letterSpacing: '-0.01em' }}>
                         {product.name}
                       </h2>
 
                       {/* h1 card with product thumbnail */}
                       <div className="flex items-start gap-3.5 p-4 mb-3"
-                        style={{ backgroundColor: '#1c1c19', borderRadius: 14 }}>
+                        style={{ backgroundColor: '#e7e3db', borderRadius: 14 }}>
                         <div className="w-[52px] h-[52px] rounded-xl flex items-center justify-center shrink-0 overflow-hidden"
-                          style={{ backgroundColor: '#262622' }}>
+                          style={{ backgroundColor: '#dcd8cf' }}>
                           <img src={product.image} alt="" className="w-10 h-10 object-contain" />
                         </div>
-                        <p className="text-[14px] leading-[1.45] pt-0.5" style={{ color: '#e8e8e4', fontWeight: 700, ...sans }}>
+                        <p className="text-[14px] leading-[1.45] pt-0.5" style={{ color: '#1a1a1a', fontWeight: 700, ...sans }}>
                           {t(`modal.${product.id}.h1`)}
                         </p>
                       </div>
 
                       {/* h2 card */}
-                      <div className="p-4 mb-5" style={{ backgroundColor: '#1c1c19', borderRadius: 14 }}>
-                        <p className="text-[13px] leading-[1.6]" style={{ color: '#c2c2b8', ...sans }}>
+                      <div className="p-4 mb-5" style={{ backgroundColor: '#e7e3db', borderRadius: 14 }}>
+                        <p className="text-[13px] leading-[1.6]" style={{ color: '#555', ...sans }}>
                           {t(`modal.${product.id}.h2`)}
                         </p>
                       </div>
@@ -250,11 +250,11 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                       {/* Tagline with tooth */}
                       <div className="flex items-center gap-3 mb-4">
                         <div className="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
-                          style={{ backgroundColor: '#262622' }}>
+                          style={{ backgroundColor: '#dcd8cf' }}>
                           <span style={{ fontSize: 17 }}>🦷</span>
                         </div>
                         <p className="text-[12px] leading-[1.5]"
-                          style={{ color: '#9e9e92', fontStyle: 'italic', ...sans }}>
+                          style={{ color: '#666', fontStyle: 'italic', ...sans }}>
                           {t(`modal.${product.id}.tagline`)}
                         </p>
                       </div>
@@ -264,21 +264,21 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                       {/* Buy section */}
                       <div className="pt-3 space-y-2.5">
                         <div className="flex items-center justify-between">
-                          <span className="font-serif" style={{ fontSize: 28, fontWeight: 700, color: '#f5f5f2' }}>
+                          <span className="font-serif" style={{ fontSize: 28, fontWeight: 700, color: '#111' }}>
                             {t('products.currency')}{formatPrice(product.price, i18n.language)}
                           </span>
                           <div className="flex items-center gap-1" style={sans}>
                             <button onClick={() => setQuantity(q => Math.max(1, q - 1))}
                               className="w-8 h-8 flex items-center justify-center rounded-lg"
-                              style={{ border: '1px solid #3a3a34', color: '#9e9e92' }}>
+                              style={{ border: '1px solid #c8c2b8', color: '#666' }}>
                               <Minus size={13} />
                             </button>
-                            <span className="w-8 text-center text-[13px]" style={{ fontWeight: 700, color: '#e8e8e4' }}>
+                            <span className="w-8 text-center text-[13px]" style={{ fontWeight: 700, color: '#222' }}>
                               {quantity}
                             </span>
                             <button onClick={() => setQuantity(q => q + 1)}
                               className="w-8 h-8 flex items-center justify-center rounded-lg"
-                              style={{ border: '1px solid #3a3a34', color: '#9e9e92' }}>
+                              style={{ border: '1px solid #c8c2b8', color: '#666' }}>
                               <Plus size={13} />
                             </button>
                           </div>
@@ -293,11 +293,11 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
 
                       {/* Footer bar */}
                       {details?.volume && (
-                        <div className="flex items-center justify-between mt-4 pt-3" style={{ borderTop: '1px solid #2a2a25' }}>
-                          <span className="text-[11px]" style={{ color: '#78786e', fontStyle: 'italic', ...sans }}>
+                        <div className="flex items-center justify-between mt-4 pt-3" style={{ borderTop: '1px solid #d8d3ca' }}>
+                          <span className="text-[11px]" style={{ color: '#777', fontStyle: 'italic', ...sans }}>
                             {formulaLabel}
                           </span>
-                          <span className="font-serif" style={{ fontSize: 20, fontWeight: 700, color: '#e8e8e4' }}>
+                          <span className="font-serif" style={{ fontSize: 20, fontWeight: 700, color: '#222' }}>
                             {details.volume}{t('modal.ml')}
                           </span>
                         </div>
@@ -313,7 +313,7 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                   <div className="flex flex-col md:flex-row" style={{ minHeight: 520 }}>
                     {/* LEFT — image */}
                     <div className="md:w-[42%] flex items-center justify-center p-10 md:p-12 relative"
-                      style={{ backgroundColor: '#1c1c19' }}>
+                      style={{ backgroundColor: '#e7e3db' }}>
                       <img src={product.image} alt={product.name}
                         className="w-full max-w-[210px] h-auto object-contain"
                         style={{ maxHeight: 360, filter: 'drop-shadow(0 12px 32px rgba(0,0,0,0.18))' }} />
@@ -322,7 +322,7 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                     {/* RIGHT — benefits content */}
                     <div className="md:w-[58%] p-7 md:p-10 flex flex-col">
                       {/* Product name */}
-                      <h2 className="font-serif mb-7" style={{ fontSize: 38, fontWeight: 700, lineHeight: 1.08, color: '#f5f5f2' }}>
+                      <h2 className="font-serif mb-7" style={{ fontSize: 38, fontWeight: 700, lineHeight: 1.08, color: '#111' }}>
                         {product.name}
                       </h2>
 
@@ -332,7 +332,7 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                         border: `2px solid ${accent}28`,
                         borderRadius: 14,
                       }}>
-                        <p className="text-[14px] leading-[1.55]" style={{ color: '#e8e8e4', fontWeight: 700, ...sans }}>
+                        <p className="text-[14px] leading-[1.55]" style={{ color: '#1a1a1a', fontWeight: 700, ...sans }}>
                           {t(`modal.${product.id}.b1`)}
                         </p>
                       </div>
@@ -340,22 +340,22 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                       {/* bt2 — large heading with dot, then tree branches for b2, b3 */}
                       <div className="mb-7">
                         <div className="flex items-center gap-3 mb-4">
-                          <div className="w-[10px] h-[10px] rounded-full shrink-0" style={{ backgroundColor: '#e8e8e4' }} />
-                          <h3 className="font-serif" style={{ fontSize: 30, fontWeight: 700, color: '#f5f5f2', lineHeight: 1.1 }}>
+                          <div className="w-[10px] h-[10px] rounded-full shrink-0" style={{ backgroundColor: '#222' }} />
+                          <h3 className="font-serif" style={{ fontSize: 30, fontWeight: 700, color: '#111', lineHeight: 1.1 }}>
                             {t(`modal.${product.id}.bt2`)}
                           </h3>
                         </div>
                         {/* Tree branch items */}
-                        <div className="ml-[5px]" style={{ borderLeft: '2px solid #3a3a34', paddingLeft: 20 }}>
+                        <div className="ml-[5px]" style={{ borderLeft: '2px solid #c5c0b6', paddingLeft: 20 }}>
                           <div className="relative py-1.5">
-                            <div className="absolute -left-[21px] top-[13px]" style={{ width: 16, height: 0, borderTop: '2px solid #3a3a34' }} />
-                            <p className="text-[13px] leading-[1.6]" style={{ color: '#c2c2b8', ...sans }}>
+                            <div className="absolute -left-[21px] top-[13px]" style={{ width: 16, height: 0, borderTop: '2px solid #c5c0b6' }} />
+                            <p className="text-[13px] leading-[1.6]" style={{ color: '#444', ...sans }}>
                               {t(`modal.${product.id}.b2`)}
                             </p>
                           </div>
                           <div className="relative py-1.5">
-                            <div className="absolute -left-[21px] top-[13px]" style={{ width: 16, height: 0, borderTop: '2px solid #3a3a34' }} />
-                            <p className="text-[13px] leading-[1.6]" style={{ color: '#c2c2b8', ...sans }}>
+                            <div className="absolute -left-[21px] top-[13px]" style={{ width: 16, height: 0, borderTop: '2px solid #c5c0b6' }} />
+                            <p className="text-[13px] leading-[1.6]" style={{ color: '#444', ...sans }}>
                               {t(`modal.${product.id}.b3`)}
                             </p>
                           </div>
@@ -376,18 +376,18 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                           <ShieldCheck size={26} style={{ color: accent }} strokeWidth={1.8} />
                         </div>
                         <div>
-                          <p className="text-[13px] leading-[1.2] mb-1" style={{ fontWeight: 700, color: '#e8e8e4', ...sans }}>
+                          <p className="text-[13px] leading-[1.2] mb-1" style={{ fontWeight: 700, color: '#222', ...sans }}>
                             {t(`modal.${product.id}.bt3`)}
                           </p>
-                          <p className="text-[12px] leading-[1.5]" style={{ color: '#c2c2b8', ...sans }}>
+                          <p className="text-[12px] leading-[1.5]" style={{ color: '#555', ...sans }}>
                             {t(`modal.${product.id}.b3`)}
                           </p>
                         </div>
                       </div>
 
                       {/* Global Swiss GROUP logo text */}
-                      <div className="mt-6 pt-4" style={{ borderTop: '1px solid #2a2a25' }}>
-                        <span className="text-[9px] tracking-[0.2em] uppercase" style={{ color: '#78786e', ...sans, fontWeight: 600 }}>
+                      <div className="mt-6 pt-4" style={{ borderTop: '1px solid #d8d3ca' }}>
+                        <span className="text-[9px] tracking-[0.2em] uppercase" style={{ color: '#888', ...sans, fontWeight: 600 }}>
                           Global Swiss Group
                         </span>
                       </div>
@@ -402,7 +402,7 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                   <div className="flex flex-col md:flex-row" style={{ minHeight: 520 }}>
                     {/* LEFT — image */}
                     <div className="md:w-[38%] flex items-center justify-center p-10 md:p-12"
-                      style={{ backgroundColor: '#1c1c19' }}>
+                      style={{ backgroundColor: '#e7e3db' }}>
                       <img src={product.image} alt={product.name}
                         className="w-full max-w-[190px] h-auto object-contain"
                         style={{ maxHeight: 340, filter: 'drop-shadow(0 12px 32px rgba(0,0,0,0.18))' }} />
@@ -410,14 +410,14 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
 
                     {/* RIGHT — ingredients timeline */}
                     <div className="md:w-[62%] p-7 md:p-10">
-                      <h2 className="font-serif mb-8" style={{ fontSize: 38, fontWeight: 700, lineHeight: 1.08, color: '#f5f5f2' }}>
+                      <h2 className="font-serif mb-8" style={{ fontSize: 38, fontWeight: 700, lineHeight: 1.08, color: '#111' }}>
                         {t('products.activeIngredients')}
                       </h2>
 
                       {details?.ingredients && details.ingredients.length > 0 ? (
                         <div className="relative" style={{ paddingLeft: 2 }}>
                           {/* Vertical connecting line */}
-                          <div className="absolute" style={{ left: 9, top: 12, bottom: 12, width: 2, backgroundColor: '#3a3a34' }} />
+                          <div className="absolute" style={{ left: 9, top: 12, bottom: 12, width: 2, backgroundColor: '#cdc8bf' }} />
 
                           <div style={{ display: 'flex', flexDirection: 'column', gap: 28 }}>
                             {details.ingredients.map((ingredient) => (
@@ -425,15 +425,15 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                                 {/* Large dot */}
                                 <div className="shrink-0 relative z-10" style={{
                                   width: 20, height: 20, borderRadius: '50%',
-                                  backgroundColor: '#e8e8e4', marginTop: 3,
-                                  border: '4px solid #141412',
-                                  boxShadow: '0 0 0 1px #3a3a34',
+                                  backgroundColor: '#2a2a2a', marginTop: 3,
+                                  border: '4px solid #f0ece5',
+                                  boxShadow: '0 0 0 1px #cdc8bf',
                                 }} />
                                 <div style={{ flex: 1 }}>
-                                  <p className="font-serif" style={{ fontSize: 22, fontWeight: 700, color: '#f5f5f2', lineHeight: 1.15, marginBottom: 4 }}>
+                                  <p className="font-serif" style={{ fontSize: 22, fontWeight: 700, color: '#111', lineHeight: 1.15, marginBottom: 4 }}>
                                     {t(`ingredients.${ingredient}`)}
                                   </p>
-                                  <p className="text-[12px] leading-[1.65]" style={{ color: '#c2c2b8', ...sans }}>
+                                  <p className="text-[12px] leading-[1.65]" style={{ color: '#555', ...sans }}>
                                     {t(`ingredientDesc.${ingredient}`)}
                                   </p>
                                 </div>
@@ -442,7 +442,7 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                           </div>
                         </div>
                       ) : (
-                        <p className="text-[13px]" style={{ color: '#c2c2b8', ...sans }}>{product.description}</p>
+                        <p className="text-[13px]" style={{ color: '#555', ...sans }}>{product.description}</p>
                       )}
                     </div>
                   </div>
@@ -456,26 +456,26 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                     {/* LEFT — text content */}
                     <div className="md:w-[58%] p-7 md:p-10">
                       {/* Title */}
-                      <h2 className="font-serif mb-4" style={{ fontSize: 36, fontWeight: 700, lineHeight: 1.08, color: '#f5f5f2' }}>
+                      <h2 className="font-serif mb-4" style={{ fontSize: 36, fontWeight: 700, lineHeight: 1.08, color: '#111' }}>
                         {t(extraKeys.dailyUse)}
                       </h2>
 
                       {/* Не содержит: flowing comma list */}
-                      <p className="text-[13px] leading-[1.65] mb-7" style={{ color: '#c2c2b8', ...sans }}>
-                        <span style={{ fontWeight: 700, color: '#e8e8e4' }}>{t('modal.noContainsTitle')}:</span>{' '}
+                      <p className="text-[13px] leading-[1.65] mb-7" style={{ color: '#555', ...sans }}>
+                        <span style={{ fontWeight: 700, color: '#333' }}>{t('modal.noContainsTitle')}:</span>{' '}
                         {noContainsItems.map(key => t(`modal.${key}`)).join(', ')}
                       </p>
 
                       {/* Способ применения — oval/pill shape */}
                       <div className="p-6 mb-7" style={{
-                        backgroundColor: '#1c1c19',
+                        backgroundColor: '#e7e3db',
                         borderRadius: 32,
-                        border: '1px solid #2a2a25',
+                        border: '1px solid #d4cfC5',
                       }}>
                         <h3 className="font-serif mb-2" style={{ fontSize: 22, fontWeight: 700, fontStyle: 'italic', color: accent }}>
                           {t('goldShowcase.howToUseTitle')}
                         </h3>
-                        <p className="text-[13px] leading-[1.65]" style={{ color: '#c2c2b8', ...sans }}>
+                        <p className="text-[13px] leading-[1.65]" style={{ color: '#444', ...sans }}>
                           {t(extraKeys.howToUse)}
                         </p>
                       </div>
@@ -483,10 +483,10 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                       {/* Composition */}
                       {details?.composition && (
                         <div className="mb-5">
-                          <h3 className="mb-1.5" style={{ fontSize: 14, fontWeight: 700, color: '#e8e8e4', ...sans }}>
+                          <h3 className="mb-1.5" style={{ fontSize: 14, fontWeight: 700, color: '#222', ...sans }}>
                             {t('goldShowcase.compositionTitle')}
                           </h3>
-                          <p className="text-[11px] leading-[1.7]" style={{ color: '#9e9e92', ...sans }}>
+                          <p className="text-[11px] leading-[1.7]" style={{ color: '#666', ...sans }}>
                             {details.composition}
                           </p>
                         </div>
@@ -494,10 +494,10 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
 
                       {/* Storage */}
                       <div>
-                        <h3 className="mb-1" style={{ fontSize: 14, fontWeight: 700, color: '#e8e8e4', ...sans }}>
+                        <h3 className="mb-1" style={{ fontSize: 14, fontWeight: 700, color: '#222', ...sans }}>
                           {t('goldShowcase.storageTitle')}
                         </h3>
-                        <p className="text-[11px] leading-[1.6]" style={{ color: '#9e9e92', ...sans }}>
+                        <p className="text-[11px] leading-[1.6]" style={{ color: '#666', ...sans }}>
                           {t('goldShowcase.storage')}
                         </p>
                       </div>
@@ -505,7 +505,7 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
 
                     {/* RIGHT — product image */}
                     <div className="md:w-[42%] flex items-center justify-center p-10 md:p-12"
-                      style={{ backgroundColor: '#1c1c19' }}>
+                      style={{ backgroundColor: '#e7e3db' }}>
                       <img src={product.image} alt={product.name}
                         className="w-full max-w-[190px] h-auto object-contain"
                         style={{ maxHeight: 340, filter: 'drop-shadow(0 12px 32px rgba(0,0,0,0.18))' }} />

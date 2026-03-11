@@ -1,4 +1,4 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
 import { ChevronDown, X, Sparkles, Leaf } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'motion/react';
@@ -66,7 +66,7 @@ export const ProductFilters = ({
     <div className="mb-8 bg-stone-900 border border-stone-800/40 p-6 shadow-xl hover:shadow-2xl transition-all duration-300 backdrop-blur-sm">
       <div className="flex items-center justify-between mb-6">
         <h3 className="text-xl font-bold text-white flex items-center gap-2">
-          <span className="w-1 h-6 bg-gradient-to-b from-teal-400 to-teal-500"></span>
+          <span className="w-1 h-6 bg-gradient-to-b from-emerald-400 to-emerald-500"></span>
           {t('filters.title')}
         </h3>
         {hasActiveFilters && (

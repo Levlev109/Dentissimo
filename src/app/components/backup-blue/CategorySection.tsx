@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+﻿import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
@@ -22,9 +22,9 @@ export const CategorySection = () => {
       descriptionKey: 'categories.professionalDesc',
       image: '/images/DENTISSIMO_box_Complete_care (1).webp',
       link: '#products',
-      gradient: 'from-emerald-950 via-blue-900/80 to-stone-950',
-      gradientLight: 'from-emerald-100 via-blue-50 to-emerald-200',
-      accent: 'bg-gradient-to-r from-emerald-400 to-blue-500',
+      gradient: 'from-teal-950 via-blue-900/80 to-stone-950',
+      gradientLight: 'from-teal-100 via-blue-50 to-teal-200',
+      accent: 'bg-gradient-to-r from-teal-400 to-blue-500',
     },
     {
       id: 3,
@@ -60,7 +60,7 @@ export const CategorySection = () => {
           >
             <p className="text-stone-400 uppercase tracking-[0.3em] text-xs font-bold mb-4">{t('categorySection.subtitle')}</p>
             <h2 className="font-serif text-4xl md:text-5xl text-white mb-4">{t('categorySection.title')}</h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-transparent via-emerald-400 to-transparent mx-auto mt-6" />
+            <div className="w-24 h-1 bg-gradient-to-r from-transparent via-teal-400 to-transparent mx-auto mt-6" />
           </motion.div>
         </div>
 

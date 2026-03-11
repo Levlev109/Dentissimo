@@ -118,20 +118,20 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  /* ═══ WARM CHARCOAL STONE OVERRIDE (Pearl Noir theme) ═══ */
-  /* Backups in src/styles/backup-blue/ — to revert, restore that folder */
-  --color-stone-950: #0a0a08;
-  --color-stone-900: #141412;
-  --color-stone-850: #1c1c19;
-  --color-stone-800: #262622;
-  --color-stone-700: #3a3a34;
-  --color-stone-600: #52524a;
-  --color-stone-500: #78786e;
-  --color-stone-400: #9e9e92;
-  --color-stone-300: #c2c2b8;
-  --color-stone-200: #d9d9d1;
-  --color-stone-100: #eaeae4;
-  --color-stone-50: #f5f5f2;
+  /* ═══ DARK NAVY-BLUE STONE OVERRIDE (glacier aurora theme) ═══ */
+  /* Original stone palette backed up — to revert, delete this block */
+  --color-stone-950: #08101e;
+  --color-stone-900: #0d1829;
+  --color-stone-850: #111f35;
+  --color-stone-800: #162842;
+  --color-stone-700: #1e3558;
+  --color-stone-600: #2a456e;
+  --color-stone-500: #5e7d9a;
+  --color-stone-400: #8ba3b8;
+  --color-stone-300: #b0c4d6;
+  --color-stone-200: #cfdce8;
+  --color-stone-100: #e4ecf3;
+  --color-stone-50: #f2f5f9;
 }
 
 @layer base {

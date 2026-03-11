@@ -106,9 +106,9 @@ export const DecorativeEffects = () => {
         ctx.save();
         ctx.globalAlpha = alpha;
 
-        const r = Math.round(220 + p.hue * 35);
-        const g = Math.round(230 + p.hue * 25);
-        const b = Math.round(210 + p.hue * 30);
+        const r = Math.round(200 + p.hue * 55);
+        const g = Math.round(220 + p.hue * 35);
+        const b = Math.round(230 + p.hue * 25);
 
         // Soft glow
         const grad = ctx.createRadialGradient(p.x, screenY, 0, p.x, screenY, p.size * 3);
@@ -137,7 +137,7 @@ export const DecorativeEffects = () => {
             const lineAlpha = (1 - dist / CONNECT_DIST) * 0.04 * Math.min(visible[i].alpha, visible[j].alpha);
             ctx.save();
             ctx.globalAlpha = lineAlpha;
-            ctx.strokeStyle = 'rgba(220, 235, 215, 1)';
+            ctx.strokeStyle = 'rgba(200, 230, 255, 1)';
             ctx.lineWidth = 0.5;
             ctx.beginPath();
             ctx.moveTo(visible[i].x, visible[i].sy);

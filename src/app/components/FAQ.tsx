@@ -19,7 +19,7 @@ export const FAQ = () => {
   return (
     <section className="py-24 bg-gradient-to-b from-stone-950 to-stone-900/50 transition-colors duration-500 relative">
       {/* Decorative pattern */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(20,184,166,0.04),transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(16, 185, 129,0.04),transparent_60%)]" />
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <motion.div
@@ -29,11 +29,11 @@ export const FAQ = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-teal-500 uppercase tracking-[0.3em] text-xs font-bold mb-4">{t('faq.subtitle')}</p>
+          <p className="text-emerald-500 uppercase tracking-[0.3em] text-xs font-bold mb-4">{t('faq.subtitle')}</p>
           <h2 className="font-serif text-3xl md:text-5xl text-white mb-4">
             {t('faq.title')}
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-transparent via-teal-400 to-transparent mx-auto mt-6" />
+          <div className="w-24 h-1 bg-gradient-to-r from-transparent via-emerald-400 to-transparent mx-auto mt-6" />
         </motion.div>
 
         <div className="space-y-3">

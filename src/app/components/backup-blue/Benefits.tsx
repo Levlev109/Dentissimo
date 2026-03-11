@@ -1,4 +1,4 @@
-import { Check, Droplets, Shield, Sparkles } from 'lucide-react';
+﻿import { Check, Droplets, Shield, Sparkles } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'motion/react';
 
@@ -17,7 +17,7 @@ export const Benefits = () => {
   return (
     <section className="py-24 bg-stone-950 overflow-hidden transition-colors duration-500 relative">
       {/* Subtle decorative background */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_80%_50%,rgba(16, 185, 129,0.04),transparent)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_80%_50%,rgba(20,184,166,0.04),transparent)]" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="flex flex-col md:flex-row items-center gap-16">
@@ -28,13 +28,13 @@ export const Benefits = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <span className="inline-block text-emerald-500 text-xs font-bold tracking-[0.2em] uppercase mb-4">
+            <span className="inline-block text-teal-500 text-xs font-bold tracking-[0.2em] uppercase mb-4">
               {t('benefits.subtitle', 'Swiss Quality')}
             </span>
             <h2 className="font-serif text-3xl md:text-5xl text-white mb-6 leading-tight">
               {t('benefits.title')}<br/> <span className="text-stone-200 italic">{t('benefits.titleHighlight')}</span>
             </h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-emerald-400 to-transparent mb-8" />
+            <div className="w-20 h-1 bg-gradient-to-r from-teal-400 to-transparent mb-8" />
             <p className="text-lg text-stone-300 mb-8 leading-relaxed">
               {t('benefits.description')}
             </p>
@@ -49,7 +49,7 @@ export const Benefits = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.08 }}
                 >
-                  <div className="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-emerald-900/30 flex items-center justify-center text-emerald-400 group-hover:bg-emerald-800/40 transition-colors duration-300 shadow-sm">
+                  <div className="mt-1 flex-shrink-0 w-6 h-6 rounded-full bg-teal-900/30 flex items-center justify-center text-teal-400 group-hover:bg-teal-800/40 transition-colors duration-300 shadow-sm">
                     <Check size={13} strokeWidth={3} />
                   </div>
                   <span className="text-stone-300 font-medium">{t(key)}</span>
@@ -69,7 +69,7 @@ export const Benefits = () => {
             </motion.a>
           </motion.div>
 
-          {/* Right side — decorative premium visual */}
+          {/* Right side вЂ” decorative premium visual */}
           <motion.div
             className="w-full md:w-1/2 flex justify-center"
             initial={{ opacity: 0, x: 30 }}
@@ -80,11 +80,11 @@ export const Benefits = () => {
             <div className="relative w-full max-w-md">
               {/* Decorative floating icons */}
               <motion.div
-                className="absolute -top-4 -right-4 w-16 h-16 bg-emerald-900/20 border border-emerald-700/30 flex items-center justify-center shadow-lg"
+                className="absolute -top-4 -right-4 w-16 h-16 bg-teal-900/20 border border-teal-700/30 flex items-center justify-center shadow-lg"
                 animate={{ y: [0, -8, 0] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               >
-                <Droplets size={24} className="text-emerald-500" />
+                <Droplets size={24} className="text-teal-500" />
               </motion.div>
               <motion.div
                 className="absolute -bottom-4 -left-4 w-14 h-14 bg-emerald-900/20 border border-emerald-700/30 flex items-center justify-center shadow-lg"

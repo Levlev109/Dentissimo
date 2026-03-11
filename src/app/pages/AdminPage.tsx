@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { db, Order, ProductOverride, CustomProduct } from '../../services/database';
 import { orderService, checkSupabaseSetup } from '../../services/orderService';
 import { productService } from '../../services/productService';
@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 
 
-// ——— Helpers ———————————————————————————————————————————————————
+// ��� Helpers ���������������������������������������������������
 const fmt = (iso: string) =>
   new Date(iso).toLocaleString('uk-UA', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' });
 
@@ -24,13 +24,13 @@ const statusColors: Record<string, string> = {
 };
 
 const statusLabels: Record<string, string> = {
-  pending: 'Нове', confirmed: 'Підтверджено', shipped: 'Відправлено',
-  delivered: 'Доставлено', cancelled: 'Скасовано',
+  pending: '����', confirmed: 'ϳ����������', shipped: '³���������',
+  delivered: '����������', cancelled: '���������',
 };
 
 const BadgeStyle = 'inline-flex items-center px-2 py-0.5 rounded text-xs font-medium';
 
-// ——— COMPONENTS ——————————————————————————————————————————————
+// ��� COMPONENTS ����������������������������������������������
 
 interface StatCardProps { label: string; value: string | number; sub?: string; color?: string; }
 const StatCard = ({ label, value, sub, color = 'text-white' }: StatCardProps) => (
@@ -41,7 +41,7 @@ const StatCard = ({ label, value, sub, color = 'text-white' }: StatCardProps) =>
   </div>
 );
 
-// ——— ADMIN PAGE ——————————————————————————————————————————————
+// ��� ADMIN PAGE ����������������������������������������������
 
 export const AdminPage = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -76,7 +76,7 @@ export const AdminPage = () => {
     const { error } = await supabase.auth.signInWithPassword({ email, password });
     setLoginLoading(false);
     if (error) {
-      setLoginError('Невірний email або пароль');
+      setLoginError('������� email ��� ������');
     }
   };
 
@@ -98,11 +98,11 @@ export const AdminPage = () => {
       <div className="min-h-screen bg-stone-950 flex items-center justify-center px-4">
         <div className="w-full max-w-sm bg-stone-900 rounded-2xl border border-stone-800 p-8">
           <div className="text-center mb-8">
-            <div className="w-14 h-14 bg-teal-100 border border-teal-300 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-14 h-14 bg-emerald-100 border border-emerald-300 rounded-full flex items-center justify-center mx-auto mb-4">
               <Lock size={24} className="text-stone-300" />
             </div>
             <h1 className="font-serif text-2xl text-white">Dentissimo Admin</h1>
-            <p className="text-stone-400 text-sm mt-1">Панель керування</p>
+            <p className="text-stone-400 text-sm mt-1">������ ���������</p>
           </div>
           <form onSubmit={handleLogin} className="space-y-4">
             <div className="relative">
@@ -113,16 +113,16 @@ export const AdminPage = () => {
                 onChange={e => { setEmail(e.target.value); setLoginError(''); }}
                 placeholder="Email"
                 autoComplete="email"
-                className="w-full pl-10 pr-4 py-3 bg-stone-800 border border-stone-700 rounded-lg text-white placeholder-stone-500 focus:outline-none focus:border-teal-400"
+                className="w-full pl-10 pr-4 py-3 bg-stone-800 border border-stone-700 rounded-lg text-white placeholder-stone-500 focus:outline-none focus:border-emerald-400"
               />
             </div>
             <input
               type="password"
               value={password}
               onChange={e => { setPassword(e.target.value); setLoginError(''); }}
-              placeholder="Пароль"
+              placeholder="������"
               autoComplete="current-password"
-              className="w-full px-4 py-3 bg-stone-800 border border-stone-700 rounded-lg text-white placeholder-stone-500 focus:outline-none focus:border-teal-400"
+              className="w-full px-4 py-3 bg-stone-800 border border-stone-700 rounded-lg text-white placeholder-stone-500 focus:outline-none focus:border-emerald-400"
             />
             {loginError && (
               <p className="text-red-400 text-sm flex items-center gap-1">
@@ -130,20 +130,20 @@ export const AdminPage = () => {
               </p>
             )}
             <button type="submit" disabled={loginLoading} className="w-full py-3 bg-stone-700 hover:bg-stone-600 disabled:opacity-50 text-white font-semibold rounded-lg transition-colors">
-              {loginLoading ? 'Вхід…' : 'Увійти'}
+              {loginLoading ? '����' : '�����'}
             </button>
           </form>
-          <p className="text-xs text-stone-600 text-center mt-4">Створіть адмін-акаунт у Supabase Dashboard → Authentication → Users</p>
+          <p className="text-xs text-stone-600 text-center mt-4">������� ����-������ � Supabase Dashboard &gt; Authentication &gt; Users</p>
         </div>
       </div>
     );
   }
 
   const tabs = [
-    { id: 'dashboard', label: 'Дашборд', icon: LayoutDashboard },
-    { id: 'orders', label: 'Замовлення', icon: ShoppingBag },
-    { id: 'products', label: 'Продукти', icon: Package },
-    { id: 'customers', label: 'Клієнти', icon: Users },
+    { id: 'dashboard', label: '�������', icon: LayoutDashboard },
+    { id: 'orders', label: '����������', icon: ShoppingBag },
+    { id: 'products', label: '��������', icon: Package },
+    { id: 'customers', label: '�볺���', icon: Users },
   ] as const;
 
   return (
@@ -161,7 +161,7 @@ export const AdminPage = () => {
             ))}
           </div>
           <button onClick={handleLogout} className="flex items-center gap-1.5 text-stone-500 hover:text-red-500 text-sm transition-colors">
-            <LogOut size={15} /> Вийти
+            <LogOut size={15} /> �����
           </button>
         </div>
       </header>
@@ -182,12 +182,12 @@ export const AdminPage = () => {
             <div className="flex items-start gap-3">
               <AlertTriangle size={20} className="text-red-500 mt-0.5 shrink-0" />
               <div className="flex-1 min-w-0">
-                <p className="font-semibold text-red-400">Supabase не підключений — замовлення не зберігаються в базі!</p>
-                <p className="text-red-500 text-sm mt-1 break-all">Помилка: {supabaseError}</p>
+                <p className="font-semibold text-red-400">Supabase �� ���������� � ���������� �� ����������� � ���!</p>
+                <p className="text-red-500 text-sm mt-1 break-all">�������: {supabaseError}</p>
                 <details className="mt-3">
-                  <summary className="text-sm text-red-400 cursor-pointer font-medium">Як виправити — запусти цей SQL у Supabase</summary>
-                  <pre className="mt-2 p-3 bg-stone-900 text-green-400 text-xs rounded-lg overflow-x-auto whitespace-pre-wrap">{`-- 1. Відкрий app.supabase.com → твій проєкт → SQL Editor
--- 2. Встав цей код і натисни Run:
+                  <summary className="text-sm text-red-400 cursor-pointer font-medium">�� ��������� � ������� ��� SQL � Supabase</summary>
+                  <pre className="mt-2 p-3 bg-stone-900 text-green-400 text-xs rounded-lg overflow-x-auto whitespace-pre-wrap">{`-- 1. ³����� app.supabase.com > ��� ����� > SQL Editor
+-- 2. ����� ��� ��� � ������� Run:
 
 create table if not exists orders (
   id text primary key,
@@ -244,9 +244,9 @@ create policy "auth_all_custom" on custom_products for all to authenticated usin
   );
 };
 
-// ═══════════════════════════════════════════════════════════════════════
+// =======================================================================
 //  DASHBOARD TAB
-// ═══════════════════════════════════════════════════════════════════════
+// =======================================================================
 const DashboardTab = () => {
   const [orders, setOrders] = useState<Order[]>([]);
   const [customers, setCustomers] = useState(db.getUsers());
@@ -273,22 +273,22 @@ const DashboardTab = () => {
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-semibold text-white">Огляд</h2>
+        <h2 className="text-xl font-semibold text-white">�����</h2>
         <button onClick={refresh} className="flex items-center gap-1.5 text-sm text-stone-500 hover:text-white transition-colors">
-          <RefreshCw size={14} className={loading ? 'animate-spin' : ''} /> Оновити
+          <RefreshCw size={14} className={loading ? 'animate-spin' : ''} /> �������
         </button>
       </div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <StatCard label="Замовлень" value={orders.length} sub={`${pending} нових`} />
-        <StatCard label="Виручка" value={`₴${revenue.toLocaleString('uk-UA', { maximumFractionDigits: 0 })}`} color="text-green-600" />
-        <StatCard label="Клієнтів" value={customers.length} />
-        <StatCard label="Продуктів" value={baseProducts.length + db.getCustomProducts().length} />
+        <StatCard label="���������" value={orders.length} sub={`${pending} �����`} />
+        <StatCard label="�������" value={`?${revenue.toLocaleString('uk-UA', { maximumFractionDigits: 0 })}`} color="text-green-600" />
+        <StatCard label="�볺���" value={customers.length} />
+        <StatCard label="��������" value={baseProducts.length + db.getCustomProducts().length} />
       </div>
 
       {/* Recent orders */}
       <div className="bg-stone-900 rounded-xl border border-stone-800">
         <div className="px-6 py-4 border-b border-stone-800">
-          <h3 className="font-semibold text-white">Останні замовлення</h3>
+          <h3 className="font-semibold text-white">������� ����������</h3>
         </div>
         <div className="divide-y divide-stone-800">
           {orders.slice(0, 8).map(order => (
@@ -298,21 +298,21 @@ const DashboardTab = () => {
                 <p className="text-xs text-stone-400">{fmt(order.createdAt)}</p>
               </div>
               <div className="flex items-center gap-3">
-                <span className="font-semibold text-white text-sm">₴{order.total.toFixed(0)}</span>
+                <span className="font-semibold text-white text-sm">?{order.total.toFixed(0)}</span>
                 <span className={`${BadgeStyle} ${statusColors[order.status]}`}>{statusLabels[order.status]}</span>
               </div>
             </div>
           ))}
-          {orders.length === 0 && <p className="px-6 py-8 text-center text-stone-400 text-sm">Замовлень ще немає</p>}
+          {orders.length === 0 && <p className="px-6 py-8 text-center text-stone-400 text-sm">��������� �� ����</p>}
         </div>
       </div>
     </div>
   );
 };
 
-// ═══════════════════════════════════════════════════════════════════════
+// =======================================================================
 //  ORDERS TAB
-// ═══════════════════════════════════════════════════════════════════════
+// =======================================================================
 const OrdersTab = () => {
   const [orders, setOrders] = useState<Order[]>([]);
   const [filter, setFilter] = useState<'all' | Order['status']>('all');
@@ -340,28 +340,28 @@ const OrdersTab = () => {
   };
 
   const deleteOrder = async (id: string) => {
-    if (confirm('Видалити замовлення?')) { await orderService.deleteOrder(id); refresh(); }
+    if (confirm('�������� ����������?')) { await orderService.deleteOrder(id); refresh(); }
   };
 
   const shown = filter === 'all' ? orders : orders.filter(o => o.status === filter);
 
   const filterTabs: { id: 'all' | Order['status']; label: string }[] = [
-    { id: 'all', label: 'Всі' },
-    { id: 'pending', label: 'Нові' },
-    { id: 'confirmed', label: 'Підтверджено' },
-    { id: 'shipped', label: 'Відправлено' },
-    { id: 'delivered', label: 'Доставлено' },
-    { id: 'cancelled', label: 'Скасовано' },
+    { id: 'all', label: '��' },
+    { id: 'pending', label: '���' },
+    { id: 'confirmed', label: 'ϳ����������' },
+    { id: 'shipped', label: '³���������' },
+    { id: 'delivered', label: '����������' },
+    { id: 'cancelled', label: '���������' },
   ];
 
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-semibold text-white">Замовлення</h2>
+        <h2 className="text-xl font-semibold text-white">����������</h2>
         <div className="flex items-center gap-3">
-          <span className="text-sm text-stone-400">{shown.length} записів</span>
+          <span className="text-sm text-stone-400">{shown.length} ������</span>
           <button onClick={refresh} className="flex items-center gap-1.5 text-sm text-stone-500 hover:text-white transition-colors">
-            <RefreshCw size={14} className={loading ? 'animate-spin' : ''} /> Оновити
+            <RefreshCw size={14} className={loading ? 'animate-spin' : ''} /> �������
           </button>
         </div>
       </div>
@@ -387,10 +387,10 @@ const OrdersTab = () => {
                   <span className={`${BadgeStyle} ${statusColors[order.status]}`}>{statusLabels[order.status]}</span>
                 </div>
                 <p className="font-medium text-white mt-0.5">{order.customerInfo.firstName} {order.customerInfo.lastName}</p>
-                <p className="text-xs text-stone-400">{fmt(order.createdAt)} · {order.items.length} товарів</p>
+                <p className="text-xs text-stone-400">{fmt(order.createdAt)} � {order.items.length} ������</p>
               </div>
               <div className="flex items-center gap-3">
-                <span className="font-bold text-white">₴{order.total.toFixed(0)}</span>
+                <span className="font-bold text-white">?{order.total.toFixed(0)}</span>
                 {expandedId === order.id ? <ChevronUp size={16} className="text-stone-400" /> : <ChevronDown size={16} className="text-stone-400" />}
               </div>
             </div>
@@ -401,13 +401,13 @@ const OrdersTab = () => {
                 {/* Customer info */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                   <div className="space-y-1">
-                    <p className="text-xs text-stone-400 uppercase tracking-wide font-medium">Клієнт</p>
+                    <p className="text-xs text-stone-400 uppercase tracking-wide font-medium">�볺��</p>
                     <p className="text-white">{order.customerInfo.firstName} {order.customerInfo.lastName}</p>
                     {order.customerInfo.email && <p className="text-stone-300">{order.customerInfo.email}</p>}
                     <p className="text-stone-300">{order.customerInfo.phone}</p>
                   </div>
                   <div className="space-y-1">
-                    <p className="text-xs text-stone-400 uppercase tracking-wide font-medium">Доставка</p>
+                    <p className="text-xs text-stone-400 uppercase tracking-wide font-medium">��������</p>
                     <p className="text-white">{order.customerInfo.country}</p>
                     <p className="text-stone-300">{order.customerInfo.address}</p>
                     {order.customerInfo.city && <p className="text-stone-300">{order.customerInfo.city}</p>}
@@ -417,27 +417,27 @@ const OrdersTab = () => {
 
                 {/* Items */}
                 <div>
-                  <p className="text-xs text-stone-400 uppercase tracking-wide font-medium mb-2">Товари</p>
+                  <p className="text-xs text-stone-400 uppercase tracking-wide font-medium mb-2">������</p>
                   <div className="space-y-2">
                     {order.items.map((item, idx) => (
                       <div key={idx} className="flex items-center gap-3 p-2 bg-stone-800/50 rounded-lg">
                         <img src={item.product.image} alt={item.product.name} className="w-10 h-10 object-contain rounded" />
                         <div className="flex-1 min-w-0">
                           <p className="text-sm font-medium text-white truncate">{item.product.name}</p>
-                          <p className="text-xs text-stone-400">×{item.quantity}</p>
+                          <p className="text-xs text-stone-400">?{item.quantity}</p>
                         </div>
-                        <span className="text-sm font-semibold text-white">₴{(item.product.price * item.quantity).toFixed(0)}</span>
+                        <span className="text-sm font-semibold text-white">?{(item.product.price * item.quantity).toFixed(0)}</span>
                       </div>
                     ))}
                   </div>
                   <div className="flex justify-end mt-2 pt-2 border-t border-stone-800">
-                    <span className="font-bold text-white">Разом: ₴{order.total.toFixed(2)}</span>
+                    <span className="font-bold text-white">�����: ?{order.total.toFixed(2)}</span>
                   </div>
                 </div>
 
                 {/* Status change */}
                 <div>
-                  <p className="text-xs text-stone-400 uppercase tracking-wide font-medium mb-2">Змінити статус</p>
+                  <p className="text-xs text-stone-400 uppercase tracking-wide font-medium mb-2">������ ������</p>
                   <div className="flex flex-wrap gap-2">
                     {(['pending', 'confirmed', 'shipped', 'delivered', 'cancelled'] as const).map(s => (
                       <button key={s} onClick={() => setStatus(order.id, s)} disabled={order.status === s}
@@ -447,7 +447,7 @@ const OrdersTab = () => {
                       </button>
                     ))}
                     <button onClick={() => deleteOrder(order.id)} className="px-3 py-1.5 rounded-lg text-xs font-medium border border-red-200 text-red-500 hover:bg-red-950/20 transition-colors ml-auto">
-                      <Trash2 size={11} className="inline mr-1" /> Видалити
+                      <Trash2 size={11} className="inline mr-1" /> ��������
                     </button>
                   </div>
                 </div>
@@ -459,9 +459,9 @@ const OrdersTab = () => {
           <div className="text-center py-16 text-stone-400 text-sm bg-stone-900 rounded-xl border border-stone-800">
             {loading ? (
               <div className="flex items-center justify-center gap-2">
-                <RefreshCw size={16} className="animate-spin" /> Завантаження…
+                <RefreshCw size={16} className="animate-spin" /> �������������
               </div>
-            ) : 'Замовлень не знайдено'}
+            ) : '��������� �� ��������'}
           </div>
         )}
       </div>
@@ -469,9 +469,9 @@ const OrdersTab = () => {
   );
 };
 
-// ═══════════════════════════════════════════════════════════════════════
+// =======================================================================
 //  PRODUCTS TAB
-// ═══════════════════════════════════════════════════════════════════════
+// =======================================================================
 const CATEGORIES = ['limitedEdition', 'toothpaste', 'toothbrushes', 'mouthwash', 'kids'];
 const BADGES = ['', 'bestseller', 'recommended', 'topSales', 'eco', 'limitedStock'];
 
@@ -524,65 +524,65 @@ const ProductsTab = () => {
   };
 
   const deleteCustom = async (id: string) => {
-    if (confirm('Видалити продукт?')) { await productService.deleteCustomProduct(id); await refresh(); }
+    if (confirm('�������� �������?')) { await productService.deleteCustomProduct(id); await refresh(); }
   };
 
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-semibold text-white">Продукти</h2>
+        <h2 className="text-xl font-semibold text-white">��������</h2>
         <button onClick={() => setShowAddForm(!showAddForm)}
           className="flex items-center gap-1.5 px-4 py-2 bg-stone-900 hover:bg-stone-800 text-white rounded-lg text-sm font-medium transition-colors">
-          <PlusCircle size={15} /> Додати продукт
+          <PlusCircle size={15} /> ������ �������
         </button>
       </div>
 
       {/* Add product form */}
       {showAddForm && (
         <div className="bg-stone-900 rounded-xl border border-stone-300 p-6">
-          <h3 className="font-semibold text-white mb-4">Новий продукт</h3>
+          <h3 className="font-semibold text-white mb-4">����� �������</h3>
           <form onSubmit={addCustomProduct} className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="text-xs text-stone-500 block mb-1">Назва *</label>
+              <label className="text-xs text-stone-500 block mb-1">����� *</label>
               <input value={newProduct.name} onChange={e => setNewProduct(p => ({ ...p, name: e.target.value }))} required
-                className="w-full px-3 py-2 border border-stone-700 bg-stone-800 text-white rounded-lg text-sm focus:outline-none focus:border-teal-400" />
+                className="w-full px-3 py-2 border border-stone-700 bg-stone-800 text-white rounded-lg text-sm focus:outline-none focus:border-emerald-400" />
             </div>
             <div>
-              <label className="text-xs text-stone-500 block mb-1">Ціна (₴) *</label>
+              <label className="text-xs text-stone-500 block mb-1">ֳ�� (?) *</label>
               <input type="number" value={newProduct.price} onChange={e => setNewProduct(p => ({ ...p, price: e.target.value }))} required
-                className="w-full px-3 py-2 border border-stone-700 bg-stone-800 text-white rounded-lg text-sm focus:outline-none focus:border-teal-400" />
+                className="w-full px-3 py-2 border border-stone-700 bg-stone-800 text-white rounded-lg text-sm focus:outline-none focus:border-emerald-400" />
             </div>
             <div>
-              <label className="text-xs text-stone-500 block mb-1">Категорія</label>
+              <label className="text-xs text-stone-500 block mb-1">��������</label>
               <select value={newProduct.categoryKey} onChange={e => setNewProduct(p => ({ ...p, categoryKey: e.target.value }))}
-                className="w-full px-3 py-2 border border-stone-700 bg-stone-800 text-white rounded-lg text-sm focus:outline-none focus:border-teal-400">
+                className="w-full px-3 py-2 border border-stone-700 bg-stone-800 text-white rounded-lg text-sm focus:outline-none focus:border-emerald-400">
                 {CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}
               </select>
             </div>
             <div>
-              <label className="text-xs text-stone-500 block mb-1">Бейдж</label>
+              <label className="text-xs text-stone-500 block mb-1">�����</label>
               <select value={newProduct.badge} onChange={e => setNewProduct(p => ({ ...p, badge: e.target.value }))}
-                className="w-full px-3 py-2 border border-stone-700 bg-stone-800 text-white rounded-lg text-sm focus:outline-none focus:border-teal-400">
-                {BADGES.map(b => <option key={b} value={b}>{b || '(без бейджу)'}</option>)}
+                className="w-full px-3 py-2 border border-stone-700 bg-stone-800 text-white rounded-lg text-sm focus:outline-none focus:border-emerald-400">
+                {BADGES.map(b => <option key={b} value={b}>{b || '(��� ������)'}</option>)}
               </select>
             </div>
             <div className="md:col-span-2">
-              <label className="text-xs text-stone-500 block mb-1">URL зображення</label>
+              <label className="text-xs text-stone-500 block mb-1">URL ����������</label>
               <input value={newProduct.image} onChange={e => setNewProduct(p => ({ ...p, image: e.target.value }))} placeholder="/images/..."
-                className="w-full px-3 py-2 border border-stone-700 bg-stone-800 text-white rounded-lg text-sm focus:outline-none focus:border-teal-400" />
+                className="w-full px-3 py-2 border border-stone-700 bg-stone-800 text-white rounded-lg text-sm focus:outline-none focus:border-emerald-400" />
             </div>
             <div className="md:col-span-2">
-              <label className="text-xs text-stone-500 block mb-1">Опис</label>
+              <label className="text-xs text-stone-500 block mb-1">����</label>
               <textarea value={newProduct.description} onChange={e => setNewProduct(p => ({ ...p, description: e.target.value }))} rows={3}
-                className="w-full px-3 py-2 border border-stone-700 bg-stone-800 text-white rounded-lg text-sm focus:outline-none focus:border-teal-400 resize-none" />
+                className="w-full px-3 py-2 border border-stone-700 bg-stone-800 text-white rounded-lg text-sm focus:outline-none focus:border-emerald-400 resize-none" />
             </div>
             <div className="flex items-center gap-2">
               <input type="checkbox" id="isNew" checked={newProduct.isNew} onChange={e => setNewProduct(p => ({ ...p, isNew: e.target.checked }))} className="accent-stone-900" />
-              <label htmlFor="isNew" className="text-sm text-stone-300">Позначити як "Новинка"</label>
+              <label htmlFor="isNew" className="text-sm text-stone-300">��������� �� "�������"</label>
             </div>
             <div className="md:col-span-2 flex gap-3 justify-end pt-2">
-              <button type="button" onClick={() => setShowAddForm(false)} className="px-4 py-2 text-sm border border-stone-700 rounded-lg hover:bg-stone-800 transition-colors">Скасувати</button>
-              <button type="submit" className="px-4 py-2 text-sm bg-stone-900 hover:bg-stone-800 text-white rounded-lg transition-colors font-medium">Додати</button>
+              <button type="button" onClick={() => setShowAddForm(false)} className="px-4 py-2 text-sm border border-stone-700 rounded-lg hover:bg-stone-800 transition-colors">���������</button>
+              <button type="submit" className="px-4 py-2 text-sm bg-stone-900 hover:bg-stone-800 text-white rounded-lg transition-colors font-medium">������</button>
             </div>
           </form>
         </div>
@@ -591,10 +591,10 @@ const ProductsTab = () => {
       {/* Section tabs */}
       <div className="flex gap-2">
         <button onClick={() => setActiveSection('base')} className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${activeSection === 'base' ? 'bg-stone-800 text-white' : 'text-stone-400 hover:text-white'}`}>
-          Каталог ({baseProducts.length})
+          ������� ({baseProducts.length})
         </button>
         <button onClick={() => setActiveSection('custom')} className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${activeSection === 'custom' ? 'bg-stone-800 text-white' : 'text-stone-400 hover:text-white'}`}>
-          Додані ({customs.length})
+          ������ ({customs.length})
         </button>
       </div>
 
@@ -617,10 +617,10 @@ const ProductsTab = () => {
                   <div className="flex-1 min-w-0">
                     {isEditing ? (
                       <div className="flex flex-wrap gap-2 items-center">
-                        <input value={editValues.name} onChange={e => setEditValues(v => ({ ...v, name: e.target.value }))} placeholder="Назва" className="w-36 px-2 py-1 text-xs border border-stone-600 rounded bg-stone-800 text-white focus:outline-none focus:border-teal-400" />
-                        <input type="number" value={editValues.price} onChange={e => setEditValues(v => ({ ...v, price: e.target.value }))} placeholder="Ціна ₴" className="w-24 px-2 py-1 text-xs border border-stone-600 rounded bg-stone-800 text-white focus:outline-none focus:border-teal-400" />
-                        <select value={editValues.badge} onChange={e => setEditValues(v => ({ ...v, badge: e.target.value }))} className="px-2 py-1 text-xs border border-stone-600 rounded bg-stone-800 text-white focus:outline-none focus:border-teal-400">
-                          {BADGES.map(b => <option key={b} value={b}>{b || 'без бейджу'}</option>)}
+                        <input value={editValues.name} onChange={e => setEditValues(v => ({ ...v, name: e.target.value }))} placeholder="�����" className="w-36 px-2 py-1 text-xs border border-stone-600 rounded bg-stone-800 text-white focus:outline-none focus:border-emerald-400" />
+                        <input type="number" value={editValues.price} onChange={e => setEditValues(v => ({ ...v, price: e.target.value }))} placeholder="ֳ�� ?" className="w-24 px-2 py-1 text-xs border border-stone-600 rounded bg-stone-800 text-white focus:outline-none focus:border-emerald-400" />
+                        <select value={editValues.badge} onChange={e => setEditValues(v => ({ ...v, badge: e.target.value }))} className="px-2 py-1 text-xs border border-stone-600 rounded bg-stone-800 text-white focus:outline-none focus:border-emerald-400">
+                          {BADGES.map(b => <option key={b} value={b}>{b || '��� ������'}</option>)}
                         </select>
                         <button onClick={() => saveEdit(p.id)} className="p-1.5 bg-green-900/30 text-green-400 rounded hover:bg-green-200 transition-colors"><Save size={13} /></button>
                         <button onClick={() => setEditingId(null)} className="p-1.5 bg-stone-800 text-stone-400 rounded hover:bg-stone-200 transition-colors"><X size={13} /></button>
@@ -629,9 +629,9 @@ const ProductsTab = () => {
                       <div>
                         <p className="text-sm font-medium text-white truncate">{displayName}</p>
                         <div className="flex items-center gap-2 flex-wrap">
-                          <span className="text-xs text-stone-500">₴{displayPrice} · {p.categoryKey}</span>
+                          <span className="text-xs text-stone-500">?{displayPrice} � {p.categoryKey}</span>
                           {displayBadge && <span className="text-xs bg-stone-700 text-stone-300 px-1.5 py-0.5 rounded">{displayBadge}</span>}
-                          {hasOverride && <span className="text-xs bg-blue-900/20 text-blue-400 px-1.5 py-0.5 rounded">змінено</span>}
+                          {hasOverride && <span className="text-xs bg-blue-900/20 text-blue-400 px-1.5 py-0.5 rounded">������</span>}
                         </div>
                       </div>
                     )}
@@ -639,11 +639,11 @@ const ProductsTab = () => {
                   <div className="flex items-center gap-1 flex-shrink-0">
                     {!isEditing && (
                       <>
-                        <button onClick={() => startEdit({ id: p.id, name: displayName, price: displayPrice, badge: displayBadge })} title="Редагувати" className="p-1.5 text-stone-400 hover:text-stone-700 hover:bg-stone-800 rounded transition-colors"><Pencil size={14} /></button>
-                        <button onClick={() => toggleHide(p.id)} title={isHidden ? 'Показати' : 'Сховати'} className="p-1.5 text-stone-400 hover:text-stone-600 hover:bg-stone-800 rounded transition-colors">
+                        <button onClick={() => startEdit({ id: p.id, name: displayName, price: displayPrice, badge: displayBadge })} title="����������" className="p-1.5 text-stone-400 hover:text-stone-700 hover:bg-stone-800 rounded transition-colors"><Pencil size={14} /></button>
+                        <button onClick={() => toggleHide(p.id)} title={isHidden ? '��������' : '�������'} className="p-1.5 text-stone-400 hover:text-stone-600 hover:bg-stone-800 rounded transition-colors">
                           {isHidden ? <Eye size={14} /> : <EyeOff size={14} />}
                         </button>
-                        {hasOverride && <button onClick={() => resetOverride(p.id)} title="Скинути зміни" className="p-1.5 text-stone-400 hover:text-red-500 hover:bg-red-950/20 rounded transition-colors"><XCircle size={14} /></button>}
+                        {hasOverride && <button onClick={() => resetOverride(p.id)} title="������� ����" className="p-1.5 text-stone-400 hover:text-red-500 hover:bg-red-950/20 rounded transition-colors"><XCircle size={14} /></button>}
                       </>
                     )}
                   </div>
@@ -658,7 +658,7 @@ const ProductsTab = () => {
       {activeSection === 'custom' && (
         <div className="bg-stone-900 rounded-xl border border-stone-800 overflow-hidden">
           {customs.length === 0 ? (
-            <p className="text-center py-12 text-stone-400 text-sm">Додаткових продуктів немає. Натисніть "Додати продукт".</p>
+            <p className="text-center py-12 text-stone-400 text-sm">���������� �������� ����. ��������� "������ �������".</p>
           ) : (
             <div className="divide-y divide-stone-800">
               {customs.map(p => (
@@ -666,7 +666,7 @@ const ProductsTab = () => {
                   <img src={p.image} alt={p.name} className="w-10 h-10 object-contain rounded flex-shrink-0" />
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-medium text-white truncate">{p.name}</p>
-                    <p className="text-xs text-stone-500">₴{p.price} · {p.categoryKey} · {fmt(p.createdAt)}</p>
+                    <p className="text-xs text-stone-500">?{p.price} � {p.categoryKey} � {fmt(p.createdAt)}</p>
                   </div>
                   <button onClick={() => deleteCustom(p.id)} className="p-1.5 text-stone-400 hover:text-red-500 hover:bg-red-950/20 rounded transition-colors"><Trash2 size={14} /></button>
                 </div>
@@ -679,9 +679,9 @@ const ProductsTab = () => {
   );
 };
 
-// ═══════════════════════════════════════════════════════════════════════
+// =======================================================================
 //  CUSTOMERS TAB
-// ═══════════════════════════════════════════════════════════════════════
+// =======================================================================
 const CustomersTab = () => {
   const customers = db.getUsers();
   const orders = db.getOrders();
@@ -689,12 +689,12 @@ const CustomersTab = () => {
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
-        <h2 className="text-xl font-semibold text-white">Клієнти</h2>
-        <span className="text-sm text-stone-400">{customers.length} клієнтів</span>
+        <h2 className="text-xl font-semibold text-white">�볺���</h2>
+        <span className="text-sm text-stone-400">{customers.length} �볺���</span>
       </div>
       <div className="bg-stone-900 rounded-xl border border-stone-800 overflow-hidden">
         {customers.length === 0 ? (
-          <p className="text-center py-12 text-stone-400 text-sm">Зареєстрованих клієнтів ще немає</p>
+          <p className="text-center py-12 text-stone-400 text-sm">������������� �볺��� �� ����</p>
         ) : (
           <div className="divide-y divide-stone-800">
             {customers.map(c => {
@@ -708,12 +708,12 @@ const CustomersTab = () => {
                   <div className="flex-1 min-w-0">
                     <p className="font-medium text-white">{c.firstName} {c.lastName}</p>
                     <p className="text-xs text-stone-400">
-                      {c.email || c.phone} · реєстрація {fmt(c.createdAt)}
+                      {c.email || c.phone} � ��������� {fmt(c.createdAt)}
                     </p>
                   </div>
                   <div className="text-right flex-shrink-0">
-                    <p className="text-sm font-semibold text-white">₴{spent.toFixed(0)}</p>
-                    <p className="text-xs text-stone-400">{userOrders.length} замовл.</p>
+                    <p className="text-sm font-semibold text-white">?{spent.toFixed(0)}</p>
+                    <p className="text-xs text-stone-400">{userOrders.length} ������.</p>
                   </div>
                 </div>
               );

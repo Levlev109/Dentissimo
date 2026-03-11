@@ -56,7 +56,7 @@ export default function App() {
   );
 
   return (
-    <div className="min-h-screen bg-stone-950 text-white selection:bg-emerald-800/40 selection:text-white">
+    <div className="min-h-screen bg-stone-950 text-white selection:bg-teal-800/40 selection:text-white">
       <style>{`
         body, h1, h2, h3, h4, h5, h6, .font-serif { font-family: 'Cormorant Garamond', serif; }
       `}</style>
