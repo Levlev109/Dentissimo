@@ -9,7 +9,6 @@ import { orderService } from '../../services/orderService';
 import { openPayment } from '../../services/wayforpay';
 import { useNavigate } from 'react-router-dom';
 import { CheckCircle, Loader2, ArrowLeft, ShoppingBag, CreditCard, AlertTriangle } from 'lucide-react';
-import { NovaPoshtaSelector } from '../components/NovaPoshtaSelector';
 
 // в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ
 //  EmailJS configuration
@@ -54,10 +53,6 @@ export const CheckoutPage = () => {
     lastName:  user?.lastName  || '',
     email:     user?.email     || '',
     phone:     user?.phone     || '+380 ',
-    country:   'UA',
-    address:   '',
-    city:      '',
-    warehouse: '',
   });
 
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
@@ -74,8 +69,6 @@ export const CheckoutPage = () => {
     }
     if (!formData.phone.trim() || !/^\+?[\d\s\-()]{10,}$/.test(formData.phone.trim()))
       newErrors.phone = t('checkout.required');
-    if (!formData.city.trim())    newErrors.city    = t('checkout.required');
-    if (formData.country === 'UA' && !formData.warehouse.trim()) newErrors.warehouse = t('checkout.required');
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -114,7 +107,6 @@ export const CheckoutPage = () => {
 
       // Payment approved or pending — save order and send email
       const countryLabel = `\uD83C\uDDFA\uD83C\uDDE6 ${t('countries.ukraine')}`;
-      const deliveryInfo = formData.city ? `${formData.city} → ${formData.warehouse}` : formData.address;
       const itemsText = items
         .map(i => `${i.product.name} × ${i.quantity} = ${t('products.currency')}${formatPrice(i.product.price * i.quantity, i18n.language)}`)
         .join('\n');
@@ -125,10 +117,6 @@ export const CheckoutPage = () => {
         lastName:  sanitize(formData.lastName, 50),
         email:     sanitize(formData.email, 100),
         phone:     sanitize(formData.phone, 30),
-        country:   sanitize(formData.country, 5),
-        address:   sanitize(formData.address, 300),
-        city:      sanitize(formData.city, 100),
-        warehouse: sanitize(formData.warehouse, 200),
       };
 
       // Save order to Supabase (+ localStorage fallback)
@@ -142,9 +130,6 @@ export const CheckoutPage = () => {
           email:     safe.email,
           phone:     safe.phone,
           country:   'UA',
-          address:   safe.city ? `${safe.city}, ${safe.warehouse}` : safe.address,
-          city:      safe.city || undefined,
-          warehouse: safe.warehouse || undefined,
         },
         status: paymentResult === 'approved' ? 'paid' : 'pending',
       });
@@ -159,7 +144,6 @@ export const CheckoutPage = () => {
           customer_email:   safe.email,
           customer_phone:   safe.phone,
           customer_country: countryLabel,
-          customer_address: deliveryInfo,
           order_items:      itemsText,
           order_total:      `${t('products.currency')}${formatPrice(total, i18n.language)}`,
           to_email:         OWNER_EMAIL,
@@ -307,24 +291,6 @@ export const CheckoutPage = () => {
                 />
                 {errors.phone && (
                   <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
-                )}
-              </div>
-
-              <div>
-                <NovaPoshtaSelector
-                  onSelect={(data) => {
-                    setFormData(prev => ({
-                      ...prev,
-                      city:      data.city?.description || '',
-                      warehouse: data.warehouse?.description || '',
-                      address:   `${data.city?.description || ''}, ${data.warehouse?.description || ''}`,
-                    }));
-                    if (errors.city) setErrors(prev => ({ ...prev, city: '' }));
-                  }}
-                  cartTotal={total}
-                />
-                {errors.city && (
-                  <p className="text-red-500 text-sm mt-1">{errors.city}</p>
                 )}
               </div>
 
