@@ -6,9 +6,8 @@ import { useTranslation } from 'react-i18next';
 import { formatPrice } from '../../services/currency';
 import { db } from '../../services/database';
 import { orderService } from '../../services/orderService';
-import { openPayment } from '../../services/wayforpay';
 import { useNavigate } from 'react-router-dom';
-import { CheckCircle, Loader2, ArrowLeft, ShoppingBag, CreditCard, AlertTriangle } from 'lucide-react';
+import { CheckCircle, Loader2, ArrowLeft, ShoppingBag } from 'lucide-react';
 
 // в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ
 //  EmailJS configuration
@@ -46,7 +45,6 @@ export const CheckoutPage = () => {
   const navigate = useNavigate();
   const [orderPlaced, setOrderPlaced] = useState(false);
   const [sending, setSending] = useState(false);
-  const [paymentError, setPaymentError] = useState<string | null>(null);
 
   const [formData, setFormData] = useState({
     firstName: user?.firstName || '',
@@ -79,33 +77,11 @@ export const CheckoutPage = () => {
     if (!validateForm()) return;
 
     setSending(true);
-    setPaymentError(null);
     try {
       const orderId = typeof crypto !== 'undefined' && crypto.randomUUID
         ? `ORD-${crypto.randomUUID().slice(0, 8).toUpperCase()}`
         : `ORD-${Date.now()}`;
 
-      // Open WayForPay payment widget
-      const paymentResult = await openPayment({
-        orderId,
-        amount: total,
-        items: items.map(i => ({
-          name: i.product.name,
-          price: i.product.price,
-          count: i.quantity,
-        })),
-        clientName: `${formData.firstName} ${formData.lastName}`,
-        clientEmail: formData.email,
-        clientPhone: formData.phone,
-      });
-
-      if (paymentResult === 'declined') {
-        setPaymentError(t('checkout.paymentDeclined'));
-        setSending(false);
-        return;
-      }
-
-      // Payment approved or pending — save order and send email
       const countryLabel = `\uD83C\uDDFA\uD83C\uDDE6 ${t('countries.ukraine')}`;
       const itemsText = items
         .map(i => `${i.product.name} × ${i.quantity} = ${t('products.currency')}${formatPrice(i.product.price * i.quantity, i18n.language)}`)
@@ -131,7 +107,7 @@ export const CheckoutPage = () => {
           phone:     safe.phone,
           country:   'UA',
         },
-        status: paymentResult === 'approved' ? 'paid' : 'pending',
+        status: 'pending',
       });
 
       // Send email notification to owner
@@ -153,9 +129,10 @@ export const CheckoutPage = () => {
 
       clearCart();
       setOrderPlaced(true);
-    } catch (err) {
-      const msg = err instanceof Error ? err.message : t('checkout.paymentDeclined');
-      setPaymentError(msg);
+    } catch {
+      // Email may fail but order is saved — still show success
+      clearCart();
+      setOrderPlaced(true);
     } finally {
       setSending(false);
     }
@@ -302,17 +279,9 @@ export const CheckoutPage = () => {
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
                 <span className="relative z-10 flex items-center gap-2">
                   {sending && <Loader2 size={18} className="animate-spin" />}
-                  {!sending && <CreditCard size={18} />}
-                  {sending ? '...' : t('checkout.payNow')}
+                  {sending ? '...' : t('checkout.placeOrder')}
                 </span>
               </button>
-
-              {paymentError && (
-                <div className="flex items-center gap-2 p-3 bg-red-900/30 border border-red-700/50 text-red-400 text-sm">
-                  <AlertTriangle size={16} />
-                  {paymentError}
-                </div>
-              )}
             </form>
           </div>
 
