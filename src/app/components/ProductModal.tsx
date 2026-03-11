@@ -1,4 +1,4 @@
-import { X, Plus, Minus, ShoppingCart, ChevronRight } from 'lucide-react';
+import { X, Plus, Minus, ShoppingCart, ChevronRight, ShieldCheck, Award, BadgeCheck } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { useState, useEffect } from 'react';
 import { Product } from '../../services/database';
@@ -362,21 +362,27 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
                         </div>
                       </div>
 
-                      {/* bt3 — circle with letter + description */}
-                      <div className="flex items-center gap-5 mt-auto">
-                        <div className="shrink-0" style={{
-                          width: 76, height: 76, borderRadius: '50%',
-                          display: 'flex', alignItems: 'center', justifyContent: 'center',
-                          border: `3px solid ${accent}55`,
-                          background: `radial-gradient(circle at 35% 35%, ${accent}20, ${accent}08)`,
+                      {/* bt3 — trust badge */}
+                      <div className="flex items-center gap-4 mt-auto p-4" style={{
+                        backgroundColor: `${accent}0a`,
+                        border: `1.5px solid ${accent}25`,
+                        borderRadius: 16,
+                      }}>
+                        <div className="shrink-0 flex items-center justify-center" style={{
+                          width: 56, height: 56, borderRadius: '50%',
+                          backgroundColor: `${accent}15`,
+                          border: `2px solid ${accent}30`,
                         }}>
-                          <span className="font-serif" style={{ fontSize: 32, fontWeight: 700, color: accent }}>
-                            {t(`modal.${product.id}.bt3`).charAt(0).toUpperCase()}
-                          </span>
+                          <ShieldCheck size={26} style={{ color: accent }} strokeWidth={1.8} />
                         </div>
-                        <p className="text-[13px] leading-[1.6]" style={{ color: '#333', ...sans }}>
-                          {t(`modal.${product.id}.bt3`)} — {t(`modal.${product.id}.b3`).toLowerCase()}
-                        </p>
+                        <div>
+                          <p className="text-[13px] leading-[1.2] mb-1" style={{ fontWeight: 700, color: '#222', ...sans }}>
+                            {t(`modal.${product.id}.bt3`)}
+                          </p>
+                          <p className="text-[12px] leading-[1.5]" style={{ color: '#777', ...sans }}>
+                            {t(`modal.${product.id}.b3`)}
+                          </p>
+                        </div>
                       </div>
 
                       {/* Global Swiss GROUP logo text */}
