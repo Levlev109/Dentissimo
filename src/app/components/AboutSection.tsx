@@ -117,7 +117,7 @@ export const AboutSection = () => {
                   transition={{ duration: 0.6, delay: index * 0.15 }}
                 >
                   {/* Editorial number */}
-                  <span className="absolute -top-2 -left-3 font-serif text-6xl text-white/[0.04] font-bold leading-none select-none">
+                  <span className="absolute -top-2 -left-3 font-serif text-6xl text-white/[0.04] font-bold leading-none select-none pointer-events-none">
                     0{index + 1}
                   </span>
                   <div className="w-12 h-12 rounded-full bg-teal-900/20 flex items-center justify-center mb-5">

@@ -73,6 +73,7 @@ export const CheckoutPage = () => {
     if (!formData.phone.trim() || !/^\+?[\d\s\-()]{10,}$/.test(formData.phone.trim()))
       newErrors.phone = t('checkout.required');
     if (!formData.city.trim())    newErrors.city    = t('checkout.required');
+    if (formData.country === 'UA' && !formData.warehouse.trim()) newErrors.warehouse = t('checkout.required');
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;

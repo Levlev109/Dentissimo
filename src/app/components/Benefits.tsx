@@ -109,7 +109,7 @@ export const Benefits = () => {
                   className="w-full h-auto max-h-72 object-contain mx-auto drop-shadow-2xl"
                 />
                 <div className="mt-6 text-center">
-                  <p className="text-stone-400 text-xs font-bold tracking-[0.15em] uppercase">Swiss Premium Formula</p>
+                  <p className="text-stone-400 text-xs font-bold tracking-[0.15em] uppercase">{t('footer.swissQuality')}</p>
                 </div>
               </div>
             </div>

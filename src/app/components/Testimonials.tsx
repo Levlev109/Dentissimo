@@ -63,7 +63,7 @@ export const Testimonials = () => {
               transition={{ duration: 0.6, delay: index * 0.15 }}
             >
               {/* Editorial number */}
-              <span className="absolute -top-4 -left-2 md:-left-4 font-serif text-7xl md:text-8xl text-white/[0.04] font-bold leading-none select-none">
+              <span className="absolute -top-4 -left-2 md:-left-4 font-serif text-7xl md:text-8xl text-white/[0.04] font-bold leading-none select-none pointer-events-none">
                 0{index + 1}
               </span>
 
@@ -87,7 +87,7 @@ export const Testimonials = () => {
                   </div>
                   <div>
                     <p className="font-bold text-white text-sm">{t(review.nameKey)}</p>
-                    <p className="text-[11px] text-stone-500 uppercase tracking-wider">{t(review.locationKey)}</p>
+                    <p className="text-[11px] text-stone-400 uppercase tracking-wider">{t(review.locationKey)}</p>
                   </div>
                 </div>
               </div>

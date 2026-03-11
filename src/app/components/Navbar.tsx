@@ -204,7 +204,7 @@ export const Navbar = () => {
               {/* Language selector */}
               <div className="px-3 py-3">
                 <p className="text-xs uppercase tracking-widest text-stone-400 mb-3 font-semibold">{t('nav.language', 'Мова')}</p>
-                <div className="grid grid-cols-4 gap-2">
+                <div className="grid grid-cols-2 gap-2">
                   {languages.map(lang => (
                     <button
                       key={lang.code}

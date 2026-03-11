@@ -83,9 +83,9 @@ export const CategorySection = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-stone-900/20 to-transparent group-hover:from-stone-900/85 transition-all duration-500"></div>
               
-              <div className="absolute bottom-0 left-0 w-full p-6 text-white transform transition-all duration-500">
-                <h3 className="font-serif text-xl md:text-2xl mb-2 drop-shadow-lg font-bold group-hover:text-stone-200 transition-colors">{t(cat.titleKey)}</h3>
-                <p className="text-sm text-white/95 mb-3 drop-shadow-md leading-relaxed font-medium">{t(cat.descriptionKey)}</p>
+              <div className="absolute bottom-0 left-0 w-full p-3 sm:p-6 text-white transform transition-all duration-500">
+                <h3 className="font-serif text-base sm:text-xl md:text-2xl mb-1 sm:mb-2 drop-shadow-lg font-bold group-hover:text-stone-200 transition-colors">{t(cat.titleKey)}</h3>
+                <p className="text-xs sm:text-sm text-white/95 mb-2 sm:mb-3 drop-shadow-md leading-relaxed font-medium line-clamp-2">{t(cat.descriptionKey)}</p>
                 <div className="flex items-center gap-2 text-xs font-bold tracking-wider uppercase opacity-0 transform translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 bg-gradient-to-r from-white/20 to-transparent backdrop-blur-sm px-3 py-2 rounded-lg w-fit border border-white/30">
                   <span>{t('categorySection.learnMore')}</span>
                   <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />

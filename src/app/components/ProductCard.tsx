@@ -95,7 +95,7 @@ export const ProductCard = ({ product }: ProductProps) => {
                 style={{ backgroundColor: accent }}>
                 <ShieldCheck size={11} color="#fff" strokeWidth={2.2} />
               </div>
-              <span className="text-[9px] font-semibold text-white tracking-wide uppercase whitespace-nowrap">Swiss Quality</span>
+              <span className="text-[10px] font-semibold text-white tracking-wide uppercase whitespace-nowrap">{t('footer.swissQuality')}</span>
             </div>
           </div>
 

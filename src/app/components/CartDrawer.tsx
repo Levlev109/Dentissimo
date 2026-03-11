@@ -95,7 +95,7 @@ export const CartDrawer = () => {
                           <div className="flex items-center gap-2">
                             <button
                               onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
-                              className="w-9 h-9 flex items-center justify-center bg-stone-700 border border-stone-600 text-white hover:bg-stone-600 transition-colors"
+                              className="w-11 h-11 flex items-center justify-center bg-stone-700 border border-stone-600 text-white hover:bg-stone-600 transition-colors"
                             >
                               <Minus size={16} />
                             </button>
@@ -104,13 +104,13 @@ export const CartDrawer = () => {
                             </span>
                             <button
                               onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
-                              className="w-9 h-9 flex items-center justify-center bg-stone-700 border border-stone-600 text-white hover:bg-stone-600 transition-colors"
+                              className="w-11 h-11 flex items-center justify-center bg-stone-700 border border-stone-600 text-white hover:bg-stone-600 transition-colors"
                             >
                               <Plus size={16} />
                             </button>
                             <button
                               onClick={() => removeFromCart(item.product.id)}
-                              className="ml-auto p-2 text-red-600 hover:text-red-700 hover:bg-red-900/20 transition-colors"
+                              className="ml-auto p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center text-red-600 hover:text-red-700 hover:bg-red-900/20 transition-colors"
                             >
                               <Trash2 size={18} />
                             </button>

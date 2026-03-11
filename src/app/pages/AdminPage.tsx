@@ -590,10 +590,10 @@ const ProductsTab = () => {
 
       {/* Section tabs */}
       <div className="flex gap-2">
-        <button onClick={() => setActiveSection('base')} className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${activeSection === 'base' ? 'bg-stone-800 text-white' : 'text-stone-400 hover:text-stone-800'}`}>
+        <button onClick={() => setActiveSection('base')} className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${activeSection === 'base' ? 'bg-stone-800 text-white' : 'text-stone-400 hover:text-white'}`}>
           Каталог ({baseProducts.length})
         </button>
-        <button onClick={() => setActiveSection('custom')} className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${activeSection === 'custom' ? 'bg-stone-800 text-white' : 'text-stone-400 hover:text-stone-800'}`}>
+        <button onClick={() => setActiveSection('custom')} className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${activeSection === 'custom' ? 'bg-stone-800 text-white' : 'text-stone-400 hover:text-white'}`}>
           Додані ({customs.length})
         </button>
       </div>

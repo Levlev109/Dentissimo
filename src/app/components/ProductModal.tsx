@@ -138,7 +138,7 @@ export const ProductModal = ({ product, isOpen, onClose }: ProductModalProps) =>
               </span>
 
               {/* Tabs */}
-              <div className="flex items-center ml-auto gap-[2px]">
+              <div className="flex items-center ml-auto gap-[2px] overflow-x-auto">
                 {tabs.map((tab) => {
                   const active = activeTab === tab.key;
                   return (
