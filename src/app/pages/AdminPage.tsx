@@ -98,7 +98,7 @@ export const AdminPage = () => {
       <div className="min-h-screen bg-stone-950 flex items-center justify-center px-4">
         <div className="w-full max-w-sm bg-stone-900 rounded-2xl border border-stone-800 p-8">
           <div className="text-center mb-8">
-            <div className="w-14 h-14 bg-emerald-100 border border-emerald-300 rounded-full flex items-center justify-center mx-auto mb-4">
+            <div className="w-14 h-14 bg-cyan-100 border border-cyan-300 rounded-full flex items-center justify-center mx-auto mb-4">
               <Lock size={24} className="text-stone-300" />
             </div>
             <h1 className="font-serif text-2xl text-white">Dentissimo Admin</h1>
@@ -113,7 +113,7 @@ export const AdminPage = () => {
                 onChange={e => { setEmail(e.target.value); setLoginError(''); }}
                 placeholder="Email"
                 autoComplete="email"
-                className="w-full pl-10 pr-4 py-3 bg-stone-800 border border-stone-700 rounded-lg text-white placeholder-stone-500 focus:outline-none focus:border-emerald-400"
+                className="w-full pl-10 pr-4 py-3 bg-stone-800 border border-stone-700 rounded-lg text-white placeholder-stone-500 focus:outline-none focus:border-cyan-400"
               />
             </div>
             <input
@@ -122,7 +122,7 @@ export const AdminPage = () => {
               onChange={e => { setPassword(e.target.value); setLoginError(''); }}
               placeholder="������"
               autoComplete="current-password"
-              className="w-full px-4 py-3 bg-stone-800 border border-stone-700 rounded-lg text-white placeholder-stone-500 focus:outline-none focus:border-emerald-400"
+              className="w-full px-4 py-3 bg-stone-800 border border-stone-700 rounded-lg text-white placeholder-stone-500 focus:outline-none focus:border-cyan-400"
             />
             {loginError && (
               <p className="text-red-400 text-sm flex items-center gap-1">
@@ -545,36 +545,36 @@ const ProductsTab = () => {
             <div>
               <label className="text-xs text-stone-500 block mb-1">����� *</label>
               <input value={newProduct.name} onChange={e => setNewProduct(p => ({ ...p, name: e.target.value }))} required
-                className="w-full px-3 py-2 border border-stone-700 bg-stone-800 text-white rounded-lg text-sm focus:outline-none focus:border-emerald-400" />
+                className="w-full px-3 py-2 border border-stone-700 bg-stone-800 text-white rounded-lg text-sm focus:outline-none focus:border-cyan-400" />
             </div>
             <div>
               <label className="text-xs text-stone-500 block mb-1">ֳ�� (?) *</label>
               <input type="number" value={newProduct.price} onChange={e => setNewProduct(p => ({ ...p, price: e.target.value }))} required
-                className="w-full px-3 py-2 border border-stone-700 bg-stone-800 text-white rounded-lg text-sm focus:outline-none focus:border-emerald-400" />
+                className="w-full px-3 py-2 border border-stone-700 bg-stone-800 text-white rounded-lg text-sm focus:outline-none focus:border-cyan-400" />
             </div>
             <div>
               <label className="text-xs text-stone-500 block mb-1">��������</label>
               <select value={newProduct.categoryKey} onChange={e => setNewProduct(p => ({ ...p, categoryKey: e.target.value }))}
-                className="w-full px-3 py-2 border border-stone-700 bg-stone-800 text-white rounded-lg text-sm focus:outline-none focus:border-emerald-400">
+                className="w-full px-3 py-2 border border-stone-700 bg-stone-800 text-white rounded-lg text-sm focus:outline-none focus:border-cyan-400">
                 {CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}
               </select>
             </div>
             <div>
               <label className="text-xs text-stone-500 block mb-1">�����</label>
               <select value={newProduct.badge} onChange={e => setNewProduct(p => ({ ...p, badge: e.target.value }))}
-                className="w-full px-3 py-2 border border-stone-700 bg-stone-800 text-white rounded-lg text-sm focus:outline-none focus:border-emerald-400">
+                className="w-full px-3 py-2 border border-stone-700 bg-stone-800 text-white rounded-lg text-sm focus:outline-none focus:border-cyan-400">
                 {BADGES.map(b => <option key={b} value={b}>{b || '(��� ������)'}</option>)}
               </select>
             </div>
             <div className="md:col-span-2">
               <label className="text-xs text-stone-500 block mb-1">URL ����������</label>
               <input value={newProduct.image} onChange={e => setNewProduct(p => ({ ...p, image: e.target.value }))} placeholder="/images/..."
-                className="w-full px-3 py-2 border border-stone-700 bg-stone-800 text-white rounded-lg text-sm focus:outline-none focus:border-emerald-400" />
+                className="w-full px-3 py-2 border border-stone-700 bg-stone-800 text-white rounded-lg text-sm focus:outline-none focus:border-cyan-400" />
             </div>
             <div className="md:col-span-2">
               <label className="text-xs text-stone-500 block mb-1">����</label>
               <textarea value={newProduct.description} onChange={e => setNewProduct(p => ({ ...p, description: e.target.value }))} rows={3}
-                className="w-full px-3 py-2 border border-stone-700 bg-stone-800 text-white rounded-lg text-sm focus:outline-none focus:border-emerald-400 resize-none" />
+                className="w-full px-3 py-2 border border-stone-700 bg-stone-800 text-white rounded-lg text-sm focus:outline-none focus:border-cyan-400 resize-none" />
             </div>
             <div className="flex items-center gap-2">
               <input type="checkbox" id="isNew" checked={newProduct.isNew} onChange={e => setNewProduct(p => ({ ...p, isNew: e.target.checked }))} className="accent-stone-900" />
@@ -617,9 +617,9 @@ const ProductsTab = () => {
                   <div className="flex-1 min-w-0">
                     {isEditing ? (
                       <div className="flex flex-wrap gap-2 items-center">
-                        <input value={editValues.name} onChange={e => setEditValues(v => ({ ...v, name: e.target.value }))} placeholder="�����" className="w-36 px-2 py-1 text-xs border border-stone-600 rounded bg-stone-800 text-white focus:outline-none focus:border-emerald-400" />
-                        <input type="number" value={editValues.price} onChange={e => setEditValues(v => ({ ...v, price: e.target.value }))} placeholder="ֳ�� ?" className="w-24 px-2 py-1 text-xs border border-stone-600 rounded bg-stone-800 text-white focus:outline-none focus:border-emerald-400" />
-                        <select value={editValues.badge} onChange={e => setEditValues(v => ({ ...v, badge: e.target.value }))} className="px-2 py-1 text-xs border border-stone-600 rounded bg-stone-800 text-white focus:outline-none focus:border-emerald-400">
+                        <input value={editValues.name} onChange={e => setEditValues(v => ({ ...v, name: e.target.value }))} placeholder="�����" className="w-36 px-2 py-1 text-xs border border-stone-600 rounded bg-stone-800 text-white focus:outline-none focus:border-cyan-400" />
+                        <input type="number" value={editValues.price} onChange={e => setEditValues(v => ({ ...v, price: e.target.value }))} placeholder="ֳ�� ?" className="w-24 px-2 py-1 text-xs border border-stone-600 rounded bg-stone-800 text-white focus:outline-none focus:border-cyan-400" />
+                        <select value={editValues.badge} onChange={e => setEditValues(v => ({ ...v, badge: e.target.value }))} className="px-2 py-1 text-xs border border-stone-600 rounded bg-stone-800 text-white focus:outline-none focus:border-cyan-400">
                           {BADGES.map(b => <option key={b} value={b}>{b || '��� ������'}</option>)}
                         </select>
                         <button onClick={() => saveEdit(p.id)} className="p-1.5 bg-green-900/30 text-green-400 rounded hover:bg-green-200 transition-colors"><Save size={13} /></button>

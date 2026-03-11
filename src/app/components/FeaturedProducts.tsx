@@ -65,18 +65,18 @@ export const FeaturedProducts = () => {
   return (
     <section id="limited" className="py-28 bg-stone-950 transition-colors duration-500 relative overflow-hidden">
       {/* Enhanced premium pattern overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(16, 185, 129,0.05),transparent_50%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(16, 185, 129,0.03),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(6, 182, 212,0.05),transparent_50%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(6, 182, 212,0.03),transparent_50%)]" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="flex justify-between items-end mb-16">
           <div className="max-w-xl">
             <p className="text-stone-400 uppercase tracking-[0.3em] text-xs font-bold mb-3 flex items-center gap-2">
-              <span className="w-8 h-[2px] bg-gradient-to-r from-emerald-400 to-transparent"></span>
+              <span className="w-8 h-[2px] bg-gradient-to-r from-cyan-400 to-transparent"></span>
               {t('featuredProducts.subtitle')}
             </p>
             <h2 className="font-serif text-4xl md:text-5xl text-white mb-3 leading-tight">{t('featuredProducts.title')}</h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-emerald-400 via-emerald-300 to-transparent mt-4" />
+            <div className="w-20 h-1 bg-gradient-to-r from-cyan-400 via-cyan-300 to-transparent mt-4" />
           </div>
           <a href="#products" className="hidden md:inline-flex items-center gap-2 text-stone-200 font-semibold hover:text-stone-400 transition-all duration-300 pb-2 border-b-2 border-stone-400/40 hover:border-white group hover:gap-3">
             {t('featuredProducts.viewAll')}

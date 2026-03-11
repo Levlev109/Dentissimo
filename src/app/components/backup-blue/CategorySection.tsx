@@ -1,4 +1,4 @@
-﻿import { motion } from 'motion/react';
+import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
@@ -32,9 +32,9 @@ export const CategorySection = () => {
       descriptionKey: 'categories.naturalDesc',
       image: '/images/DENTISSIMO_box_Vegan.webp',
       link: '#products',
-      gradient: 'from-emerald-950 via-green-900/80 to-stone-950',
-      gradientLight: 'from-emerald-100 via-green-50 to-emerald-200',
-      accent: 'bg-gradient-to-r from-emerald-400 to-green-500',
+      gradient: 'from-cyan-950 via-green-900/80 to-stone-950',
+      gradientLight: 'from-cyan-100 via-green-50 to-cyan-200',
+      accent: 'bg-gradient-to-r from-cyan-400 to-green-500',
     },
     {
       id: 4,

@@ -34,7 +34,7 @@ export const AboutSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <span className="block text-emerald-500 text-xs font-bold tracking-[0.2em] uppercase mb-4">{t('about.tagline')}</span>
+              <span className="block text-cyan-500 text-xs font-bold tracking-[0.2em] uppercase mb-4">{t('about.tagline')}</span>
               <h2 className="font-serif text-3xl md:text-5xl mb-6 leading-tight text-white">
                 {t('about.glacierTitle')}
               </h2>
@@ -69,7 +69,7 @@ export const AboutSection = () => {
                 <p className="text-stone-200 mb-6 leading-relaxed font-normal">
                   {t('about.storyText2')}
                 </p>
-                <blockquote className="border-l-2 border-emerald-400/40 pl-4 italic text-stone-300 leading-relaxed">
+                <blockquote className="border-l-2 border-cyan-400/40 pl-4 italic text-stone-300 leading-relaxed">
                   {t('about.doctorQuote')}
                 </blockquote>
                 <p className="text-stone-400 text-sm mt-3 font-medium">
@@ -84,7 +84,7 @@ export const AboutSection = () => {
       {/* Part 2: Regera-PRO Complex */}
       <div className="py-14 md:py-24 relative">
         {/* Subtle section separator */}
-        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-emerald-400/10 to-transparent" />
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-cyan-400/10 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-b from-stone-900/30 via-stone-900/20 to-transparent" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -95,7 +95,7 @@ export const AboutSection = () => {
             transition={{ duration: 0.6 }}
           >
             <div>
-              <span className="text-emerald-500 text-xs font-bold tracking-[0.2em] uppercase mb-3 block">{t('about.complexLabel')}</span>
+              <span className="text-cyan-500 text-xs font-bold tracking-[0.2em] uppercase mb-3 block">{t('about.complexLabel')}</span>
               <h3 className="font-serif text-3xl md:text-4xl text-white">{t('about.complexTitle')}</h3>
               <p className="text-stone-400 max-w-xl mt-4 leading-relaxed">
                 {t('about.complexDesc')}
@@ -110,7 +110,7 @@ export const AboutSection = () => {
               return (
                 <motion.div
                   key={index}
-                  className="relative p-8 border-l border-white/[0.06] hover:border-emerald-500/20 transition-colors duration-500"
+                  className="relative p-8 border-l border-white/[0.06] hover:border-cyan-500/20 transition-colors duration-500"
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -120,11 +120,11 @@ export const AboutSection = () => {
                   <span className="absolute -top-2 -left-3 font-serif text-6xl text-white/[0.04] font-bold leading-none select-none pointer-events-none">
                     0{index + 1}
                   </span>
-                  <div className="w-12 h-12 rounded-full bg-emerald-900/20 flex items-center justify-center mb-5">
-                    <Icon size={22} className="text-emerald-500" />
+                  <div className="w-12 h-12 rounded-full bg-cyan-900/20 flex items-center justify-center mb-5">
+                    <Icon size={22} className="text-cyan-500" />
                   </div>
                   <h4 className="font-serif text-xl mb-3 text-white">
-                    <span className="text-emerald-500 font-bold">Re</span>{(t(item.titleKey) as string).substring(2)}
+                    <span className="text-cyan-500 font-bold">Re</span>{(t(item.titleKey) as string).substring(2)}
                   </h4>
                   <p className="text-stone-400 text-sm leading-relaxed">{t(item.descKey)}</p>
                 </motion.div>
@@ -145,7 +145,7 @@ export const AboutSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8 }}
             >
-              <span className="text-emerald-500 text-xs font-bold tracking-[0.2em] uppercase mb-3 block">{t('about.badRagazLabel')}</span>
+              <span className="text-cyan-500 text-xs font-bold tracking-[0.2em] uppercase mb-3 block">{t('about.badRagazLabel')}</span>
               <h3 className="font-serif text-2xl md:text-3xl mb-6 text-white">{t('about.badRagazTitle')}</h3>
               <p className="text-stone-200 mb-5 leading-relaxed font-normal">
                 {t('about.badRagazText1')}
@@ -161,7 +161,7 @@ export const AboutSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <span className="text-emerald-500 text-xs font-bold tracking-[0.2em] uppercase mb-3 block">{t('about.manufactureLabel')}</span>
+              <span className="text-cyan-500 text-xs font-bold tracking-[0.2em] uppercase mb-3 block">{t('about.manufactureLabel')}</span>
               <h3 className="font-serif text-2xl md:text-3xl mb-6 text-white">{t('about.manufactureTitle')}</h3>
               <p className="text-stone-200 mb-5 leading-relaxed font-normal">
                 {t('about.manufactureText1')}
@@ -187,8 +187,8 @@ export const AboutSection = () => {
                   className="text-center cursor-pointer group"
                   onClick={() => setActiveCert(activeCert === cert.id ? null : cert.id)}
                 >
-                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border border-white/[0.08] flex items-center justify-center mx-auto mb-2 group-hover:border-emerald-400/30 group-hover:bg-emerald-900/20 transition-all duration-300">
-                    <cert.icon size={22} className="text-stone-500 group-hover:text-emerald-500 transition-colors" />
+                  <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full border border-white/[0.08] flex items-center justify-center mx-auto mb-2 group-hover:border-cyan-400/30 group-hover:bg-cyan-900/20 transition-all duration-300">
+                    <cert.icon size={22} className="text-stone-500 group-hover:text-cyan-500 transition-colors" />
                   </div>
                   <span className="text-xs sm:text-sm text-stone-300 font-medium tracking-wide group-hover:text-stone-200 transition-colors leading-tight block">{t(cert.titleKey)}</span>
                 </div>

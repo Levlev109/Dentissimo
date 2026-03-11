@@ -214,7 +214,7 @@ export const CheckoutPage = () => {
                     type="text"
                     value={formData.firstName}
                     onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                    className={`w-full px-4 py-3 border ${errors.firstName ? 'border-red-500' : 'border-stone-700'} bg-stone-800 text-white placeholder-stone-500 focus:ring-2 focus:ring-emerald-400 focus:border-transparent outline-none`}
+                    className={`w-full px-4 py-3 border ${errors.firstName ? 'border-red-500' : 'border-stone-700'} bg-stone-800 text-white placeholder-stone-500 focus:ring-2 focus:ring-cyan-400 focus:border-transparent outline-none`}
                   />
                   {errors.firstName && (
                     <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>
@@ -229,7 +229,7 @@ export const CheckoutPage = () => {
                     type="text"
                     value={formData.lastName}
                     onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                    className={`w-full px-4 py-3 border ${errors.lastName ? 'border-red-500' : 'border-stone-700'} bg-stone-800 text-white placeholder-stone-500 focus:ring-2 focus:ring-emerald-400 focus:border-transparent outline-none`}
+                    className={`w-full px-4 py-3 border ${errors.lastName ? 'border-red-500' : 'border-stone-700'} bg-stone-800 text-white placeholder-stone-500 focus:ring-2 focus:ring-cyan-400 focus:border-transparent outline-none`}
                   />
                   {errors.lastName && (
                     <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>
@@ -247,7 +247,7 @@ export const CheckoutPage = () => {
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="example@mail.com"
-                  className={`w-full px-4 py-3 border ${errors.email ? 'border-red-500' : 'border-stone-700'} bg-stone-800 text-white placeholder-stone-500 focus:ring-2 focus:ring-emerald-400 focus:border-transparent outline-none`}
+                  className={`w-full px-4 py-3 border ${errors.email ? 'border-red-500' : 'border-stone-700'} bg-stone-800 text-white placeholder-stone-500 focus:ring-2 focus:ring-cyan-400 focus:border-transparent outline-none`}
                 />
                 {errors.email && (
                   <p className="text-red-500 text-sm mt-1">{errors.email}</p>
@@ -266,7 +266,7 @@ export const CheckoutPage = () => {
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   placeholder={t('checkout.phonePlaceholder')}
-                  className={`w-full px-4 py-3 border ${errors.phone ? 'border-red-500' : 'border-stone-700'} bg-stone-800 text-white placeholder-stone-500 focus:ring-2 focus:ring-emerald-400 focus:border-transparent outline-none`}
+                  className={`w-full px-4 py-3 border ${errors.phone ? 'border-red-500' : 'border-stone-700'} bg-stone-800 text-white placeholder-stone-500 focus:ring-2 focus:ring-cyan-400 focus:border-transparent outline-none`}
                 />
                 {errors.phone && (
                   <p className="text-red-500 text-sm mt-1">{errors.phone}</p>

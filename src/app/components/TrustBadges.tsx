@@ -41,7 +41,7 @@ export const TrustBadges = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
             >
-              <div className="p-3.5 bg-emerald-900/20 border border-emerald-800/30 text-emerald-400 group-hover:bg-emerald-800/30 group-hover:scale-110 transition-all duration-300 shadow-sm">
+              <div className="p-3.5 bg-cyan-900/20 border border-cyan-800/30 text-cyan-400 group-hover:bg-cyan-800/30 group-hover:scale-110 transition-all duration-300 shadow-sm">
                 <badge.icon size={22} strokeWidth={1.5} />
               </div>
               <div>

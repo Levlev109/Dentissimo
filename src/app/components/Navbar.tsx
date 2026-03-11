@@ -15,7 +15,7 @@ const ScrollProgress = () => {
   return (
     <motion.div
       className="absolute bottom-0 left-0 right-0 h-px origin-left"
-      style={{ scaleX, background: 'linear-gradient(90deg, rgba(16, 185, 129,0.3), rgba(16, 185, 129,0.6), rgba(16, 185, 129,0.3))' }}
+      style={{ scaleX, background: 'linear-gradient(90deg, rgba(6, 182, 212,0.3), rgba(6, 182, 212,0.6), rgba(6, 182, 212,0.3))' }}
     />
   );
 };

@@ -15,7 +15,7 @@ const themes: Record<string, { color: string; glow: string; gradient: string }> 
   'whitening-gold':   { color: '#d4a934', glow: 'rgba(212,169,52,0.18)', gradient: 'from-amber-950/40 via-stone-950 to-stone-950' },
   'whitening-black':  { color: '#9ca3af', glow: 'rgba(156,163,175,0.15)', gradient: 'from-slate-950/60 via-stone-950 to-stone-950' },
   'diamond':          { color: '#94a3b8', glow: 'rgba(148,163,184,0.18)', gradient: 'from-slate-950/50 via-stone-950 to-stone-950' },
-  'gentle-care':      { color: '#34d399', glow: 'rgba(52,211,153,0.15)', gradient: 'from-emerald-950/40 via-stone-950 to-stone-950' },
+  'gentle-care':      { color: '#34d399', glow: 'rgba(52,211,153,0.15)', gradient: 'from-cyan-950/40 via-stone-950 to-stone-950' },
   'complete-care':    { color: '#2dd4bf', glow: 'rgba(45,212,191,0.15)', gradient: 'from-teal-950/40 via-stone-950 to-stone-950' },
   'pro-care':         { color: '#2dd4bf', glow: 'rgba(45,212,191,0.15)', gradient: 'from-teal-950/40 via-stone-950 to-stone-950' },
   'vegan-b12':        { color: '#4ade80', glow: 'rgba(74,222,128,0.15)', gradient: 'from-green-950/40 via-stone-950 to-stone-950' },
@@ -32,7 +32,7 @@ const themes: Record<string, { color: string; glow: string; gradient: string }> 
   'brush-junior':     { color: '#4ade80', glow: 'rgba(74,222,128,0.15)', gradient: 'from-green-950/40 via-stone-950 to-stone-950' },
   'mouthwash-gold':   { color: '#d4a934', glow: 'rgba(212,169,52,0.15)', gradient: 'from-amber-950/40 via-stone-950 to-stone-950' },
   'mouthwash-fresh':  { color: '#2dd4bf', glow: 'rgba(45,212,191,0.15)', gradient: 'from-teal-950/40 via-stone-950 to-stone-950' },
-  'mouthwash-gum':    { color: '#34d399', glow: 'rgba(52,211,153,0.15)', gradient: 'from-emerald-950/40 via-stone-950 to-stone-950' },
+  'mouthwash-gum':    { color: '#34d399', glow: 'rgba(52,211,153,0.15)', gradient: 'from-cyan-950/40 via-stone-950 to-stone-950' },
 };
 
 const defaultTheme = { color: '#d4a934', glow: 'rgba(212,169,52,0.15)', gradient: 'from-amber-950/40 via-stone-950 to-stone-950' };

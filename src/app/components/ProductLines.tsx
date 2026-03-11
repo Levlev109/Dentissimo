@@ -65,15 +65,15 @@ const ProductCard = ({ product, index, accent }: { product: LineProduct; index: 
     premium: 'from-stone-800/60 via-stone-800 to-stone-800/60',
   };
   const borderColors = {
-    pro: 'border-emerald-800/30 hover:border-emerald-700',
+    pro: 'border-cyan-800/30 hover:border-cyan-700',
     premium: 'border-amber-800/30 hover:border-amber-700',
   };
   const badgeBg = {
-    pro: 'bg-emerald-900/30 text-emerald-300 border-emerald-800/40',
+    pro: 'bg-cyan-900/30 text-cyan-300 border-cyan-800/40',
     premium: 'bg-amber-900/30 text-amber-300 border-amber-200 border-amber-800/40',
   };
   const bulletColor = {
-    pro: 'bg-emerald-500',
+    pro: 'bg-cyan-500',
     premium: 'bg-amber-500',
   };
 
@@ -155,7 +155,7 @@ export const ProductLines = () => {
             transition={{ duration: 0.6 }}
           >
             <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-1 bg-gradient-to-r from-emerald-400 to-emerald-500 rounded-full" />
+              <div className="w-10 h-1 bg-gradient-to-r from-cyan-400 to-cyan-500 rounded-full" />
               <h3 className="font-serif text-2xl md:text-3xl font-bold text-white">
                 {t('productLines.proLine')}
               </h3>

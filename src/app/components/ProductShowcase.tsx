@@ -10,11 +10,11 @@ const iconPool = [Sparkles, Droplets, Shield, FlaskConical, Atom, Leaf, Heart, G
 
 const colorPool = [
   { bg: 'bg-amber-900/30', text: 'text-amber-400', ring: 'ring-amber-700', glow: 'shadow-amber-800/30' },
-  { bg: 'bg-emerald-900/30', text: 'text-emerald-400', ring: 'ring-emerald-700', glow: 'shadow-emerald-800/30' },
-  { bg: 'bg-emerald-900/30', text: 'text-emerald-400', ring: 'ring-emerald-700', glow: 'shadow-emerald-800/30' },
+  { bg: 'bg-cyan-900/30', text: 'text-cyan-400', ring: 'ring-cyan-700', glow: 'shadow-cyan-800/30' },
+  { bg: 'bg-cyan-900/30', text: 'text-cyan-400', ring: 'ring-cyan-700', glow: 'shadow-cyan-800/30' },
   { bg: 'bg-violet-900/30', text: 'text-violet-400', ring: 'ring-violet-700', glow: 'shadow-violet-800/30' },
   { bg: 'bg-rose-900/30', text: 'text-rose-400', ring: 'ring-rose-700', glow: 'shadow-rose-800/30' },
-  { bg: 'bg-emerald-900/30', text: 'text-emerald-400', ring: 'ring-emerald-700', glow: 'shadow-emerald-800/30' },
+  { bg: 'bg-cyan-900/30', text: 'text-cyan-400', ring: 'ring-cyan-700', glow: 'shadow-cyan-800/30' },
   { bg: 'bg-orange-900/30', text: 'text-orange-400', ring: 'ring-orange-700', glow: 'shadow-orange-800/30' },
   { bg: 'bg-stone-800/50', text: 'text-stone-400', ring: 'ring-stone-600', glow: 'shadow-stone-800/30' },
 ];
@@ -55,7 +55,7 @@ export const ProductShowcase = () => {
           <h2 className="font-serif text-4xl md:text-5xl text-white mb-4">
             {t('productShowcase.title')}
           </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-transparent via-emerald-400 to-transparent mx-auto mt-4" />
+          <div className="w-24 h-1 bg-gradient-to-r from-transparent via-cyan-400 to-transparent mx-auto mt-4" />
         </motion.div>
 
         {/* Product Selector — horizontal scroll */}
@@ -76,7 +76,7 @@ export const ProductShowcase = () => {
                 }}
                 className={`flex-shrink-0 snap-start flex items-center gap-3 px-4 py-3 rounded-xl border transition-all duration-300 min-w-[160px] ${
                   selectedProductId === product.id
-                    ? 'bg-stone-800 border-emerald-700 shadow-lg ring-1 ring-emerald-800'
+                    ? 'bg-stone-800 border-cyan-700 shadow-lg ring-1 ring-cyan-800'
                     : 'bg-stone-800/30 border-stone-700/30 hover:bg-stone-800 hover:shadow-md'
                 }`}
               >
@@ -110,7 +110,7 @@ export const ProductShowcase = () => {
             {/* Left — Product Image & Benefits */}
             <div className="w-full lg:w-5/12 flex flex-col items-center lg:sticky lg:top-24">
               <div className="relative w-full max-w-sm">
-                <div className="absolute inset-0 bg-gradient-to-br from-emerald-900/10 via-transparent to-emerald-900/10 rounded-3xl blur-2xl scale-110" />
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-900/10 via-transparent to-cyan-900/10 rounded-3xl blur-2xl scale-110" />
                 <div className="relative bg-gradient-to-br from-stone-800/80 via-stone-850 to-stone-800/80 rounded-3xl p-8 border border-stone-700/50 shadow-xl">
                   <img
                     src={selectedProduct.image}
@@ -134,8 +134,8 @@ export const ProductShowcase = () => {
                     <ul className="space-y-2">
                       {keyBenefits.map((benefitKey, i) => (
                         <li key={i} className="flex items-center gap-2.5 text-sm text-stone-300">
-                          <div className="flex-shrink-0 w-5 h-5 rounded-full bg-emerald-900/30 flex items-center justify-center">
-                            <Check size={11} strokeWidth={3} className="text-emerald-400" />
+                          <div className="flex-shrink-0 w-5 h-5 rounded-full bg-cyan-900/30 flex items-center justify-center">
+                            <Check size={11} strokeWidth={3} className="text-cyan-400" />
                           </div>
                           {t(benefitKey)}
                         </li>

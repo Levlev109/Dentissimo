@@ -1,4 +1,4 @@
-﻿import { Check, Droplets, Shield, Sparkles } from 'lucide-react';
+import { Check, Droplets, Shield, Sparkles } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'motion/react';
 
@@ -69,7 +69,7 @@ export const Benefits = () => {
             </motion.a>
           </motion.div>
 
-          {/* Right side вЂ” decorative premium visual */}
+          {/* Right side — decorative premium visual */}
           <motion.div
             className="w-full md:w-1/2 flex justify-center"
             initial={{ opacity: 0, x: 30 }}
@@ -87,11 +87,11 @@ export const Benefits = () => {
                 <Droplets size={24} className="text-teal-500" />
               </motion.div>
               <motion.div
-                className="absolute -bottom-4 -left-4 w-14 h-14 bg-emerald-900/20 border border-emerald-700/30 flex items-center justify-center shadow-lg"
+                className="absolute -bottom-4 -left-4 w-14 h-14 bg-cyan-900/20 border border-cyan-700/30 flex items-center justify-center shadow-lg"
                 animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
               >
-                <Shield size={22} className="text-emerald-500" />
+                <Shield size={22} className="text-cyan-500" />
               </motion.div>
               <motion.div
                 className="absolute top-1/2 -right-6 w-12 h-12 bg-amber-900/20 border border-amber-700/30 flex items-center justify-center shadow-lg"

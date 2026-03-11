@@ -36,8 +36,8 @@ export const Newsletter = () => {
   return (
     <section className="py-20 bg-gradient-to-br from-stone-950 via-stone-900 to-stone-950 relative overflow-hidden">
       {/* Decorative background */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_80%_at_50%_-20%,rgba(16, 185, 129,0.12),transparent)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_40%_60%_at_80%_100%,rgba(16, 185, 129,0.06),transparent)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_50%_80%_at_50%_-20%,rgba(6, 182, 212,0.12),transparent)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_40%_60%_at_80%_100%,rgba(6, 182, 212,0.06),transparent)]" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <motion.div
@@ -60,13 +60,13 @@ export const Newsletter = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder={t('newsletter.placeholder')}
-              className="flex-1 px-5 py-4 border border-white/10 bg-white/5 backdrop-blur-sm text-white placeholder-stone-500 focus:ring-2 focus:ring-emerald-400 focus:border-transparent outline-none transition-all duration-300"
+              className="flex-1 px-5 py-4 border border-white/10 bg-white/5 backdrop-blur-sm text-white placeholder-stone-500 focus:ring-2 focus:ring-cyan-400 focus:border-transparent outline-none transition-all duration-300"
               disabled={loading || subscribed}
             />
             <button
               type="submit"
               disabled={loading || subscribed}
-              className="px-8 py-4 bg-emerald-500 text-white font-bold hover:bg-emerald-400 transition-all disabled:opacity-60 disabled:cursor-not-allowed shadow-lg shadow-emerald-500/25 hover:shadow-xl hover:shadow-emerald-400/30 hover:scale-105 transform flex items-center justify-center gap-2 whitespace-nowrap"
+              className="px-8 py-4 bg-cyan-500 text-white font-bold hover:bg-cyan-400 transition-all disabled:opacity-60 disabled:cursor-not-allowed shadow-lg shadow-cyan-500/25 hover:shadow-xl hover:shadow-cyan-400/30 hover:scale-105 transform flex items-center justify-center gap-2 whitespace-nowrap"
             >
               <AnimatePresence mode="wait">
                 {subscribed ? (

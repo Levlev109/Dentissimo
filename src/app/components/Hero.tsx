@@ -3,8 +3,8 @@ import { ArrowRight } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useRef, useState, useCallback } from 'react';
 
-// ─── Glacier Aurora Canvas Background ───
-// Renders flowing light waves that mimic glacier water refraction / aurora
+// ─── Dental Clean Canvas Background ───
+// Soft cyan light beams with white pearl accents — dental-grade cleanliness
 const useGlacierCanvas = (canvasRef: React.RefObject<HTMLCanvasElement | null>, active: boolean) => {
   const animRef = useRef<number>(0);
   const timeRef = useRef(0);
@@ -14,18 +14,18 @@ const useGlacierCanvas = (canvasRef: React.RefObject<HTMLCanvasElement | null>, 
     const t = timeRef.current;
     ctx.clearRect(0, 0, W, H);
 
-    // Dark base
-    ctx.fillStyle = '#0a0a08';
+    // Dark base — deep dental midnight
+    ctx.fillStyle = '#080c12';
     ctx.fillRect(0, 0, W, H);
 
-    // Pearl / champagne / gold light waves — premium dental aesthetic
+    // Dental clean cyan / white light streams
     const waves = [
-      { yBase: 0.30, amp: 0.07, freq: 0.65, speed: 0.45, color: [235, 228, 215], alpha: 0.10, width: 0.55 },
-      { yBase: 0.42, amp: 0.09, freq: 0.40, speed: -0.35, color: [225, 218, 200], alpha: 0.08, width: 0.70 },
-      { yBase: 0.48, amp: 0.05, freq: 1.00, speed: 0.75, color: [201, 175, 125], alpha: 0.07, width: 0.40 },
-      { yBase: 0.55, amp: 0.11, freq: 0.28, speed: -0.22, color: [240, 235, 222], alpha: 0.09, width: 0.80 },
-      { yBase: 0.63, amp: 0.04, freq: 1.20, speed: 0.90, color: [195, 170, 120], alpha: 0.05, width: 0.35 },
-      { yBase: 0.36, amp: 0.08, freq: 0.50, speed: 0.30, color: [230, 222, 208], alpha: 0.07, width: 0.60 },
+      { yBase: 0.28, amp: 0.06, freq: 0.55, speed: 0.40, color: [6, 182, 212],   alpha: 0.12, width: 0.50 },
+      { yBase: 0.40, amp: 0.10, freq: 0.35, speed: -0.30, color: [14, 165, 233], alpha: 0.08, width: 0.65 },
+      { yBase: 0.48, amp: 0.04, freq: 0.90, speed: 0.65, color: [186, 230, 253], alpha: 0.06, width: 0.35 },
+      { yBase: 0.55, amp: 0.12, freq: 0.25, speed: -0.20, color: [8, 145, 178],  alpha: 0.10, width: 0.75 },
+      { yBase: 0.64, amp: 0.03, freq: 1.10, speed: 0.80, color: [224, 242, 254], alpha: 0.05, width: 0.30 },
+      { yBase: 0.35, amp: 0.07, freq: 0.45, speed: 0.28, color: [22, 78, 99],    alpha: 0.14, width: 0.55 },
     ];
 
     for (const wave of waves) {
@@ -60,23 +60,23 @@ const useGlacierCanvas = (canvasRef: React.RefObject<HTMLCanvasElement | null>, 
       }
     }
 
-    // Central pearl radiance — bright, warm, luxurious
-    const glowX = W * (0.5 + Math.sin(t * 0.35) * 0.08);
-    const glowY = H * (0.40 + Math.sin(t * 0.20) * 0.03);
-    const glowR = Math.min(W, H) * 0.55;
+    // Central cyan radiance — clinical, clean
+    const glowX = W * (0.5 + Math.sin(t * 0.30) * 0.06);
+    const glowY = H * (0.42 + Math.sin(t * 0.18) * 0.03);
+    const glowR = Math.min(W, H) * 0.60;
     const glow = ctx.createRadialGradient(glowX, glowY, 0, glowX, glowY, glowR);
-    glow.addColorStop(0, 'rgba(245, 240, 228, 0.10)');
-    glow.addColorStop(0.25, 'rgba(230, 222, 205, 0.06)');
-    glow.addColorStop(0.5, 'rgba(201, 180, 135, 0.03)');
+    glow.addColorStop(0, 'rgba(186, 230, 253, 0.08)');
+    glow.addColorStop(0.3, 'rgba(6, 182, 212, 0.05)');
+    glow.addColorStop(0.6, 'rgba(8, 145, 178, 0.02)');
     glow.addColorStop(1, 'rgba(0, 0, 0, 0)');
     ctx.fillStyle = glow;
     ctx.fillRect(0, 0, W, H);
 
-    // Secondary gold undertone
-    const glow2X = W * (0.38 + Math.sin(t * 0.25 + 2) * 0.12);
-    const glow2Y = H * (0.52 + Math.sin(t * 0.15 + 1) * 0.04);
-    const glow2 = ctx.createRadialGradient(glow2X, glow2Y, 0, glow2X, glow2Y, glowR * 0.5);
-    glow2.addColorStop(0, 'rgba(201, 175, 120, 0.06)');
+    // Secondary soft white undertone — pearl clean
+    const glow2X = W * (0.40 + Math.sin(t * 0.22 + 2) * 0.10);
+    const glow2Y = H * (0.50 + Math.sin(t * 0.14 + 1) * 0.04);
+    const glow2 = ctx.createRadialGradient(glow2X, glow2Y, 0, glow2X, glow2Y, glowR * 0.45);
+    glow2.addColorStop(0, 'rgba(224, 242, 254, 0.05)');
     glow2.addColorStop(1, 'rgba(0, 0, 0, 0)');
     ctx.fillStyle = glow2;
     ctx.fillRect(0, 0, W, H);
@@ -166,7 +166,7 @@ export const Hero = () => {
             {/* Inner ring */}
             <motion.div
               className="absolute rounded-full"
-              style={{ border: '1px solid rgba(201,175,120,0.20)' }}
+              style={{ border: '1px solid rgba(6,182,212,0.20)' }}
               initial={{ width: 0, height: 0 }}
               animate={{ width: 160, height: 160, opacity: splashPhase >= 2 ? 0 : 0.4 }}
               transition={{ duration: 0.8, delay: 0.1, ease: 'easeOut' }}
@@ -189,7 +189,7 @@ export const Hero = () => {
             {/* Radial pulse */}
             <motion.div
               className="absolute w-[300px] h-[300px] rounded-full"
-              style={{ background: 'radial-gradient(circle, rgba(230,222,205,0.08) 0%, transparent 70%)' }}
+              style={{ background: 'radial-gradient(circle, rgba(6,182,212,0.06) 0%, transparent 70%)' }}
               animate={{ scale: [1, 1.5, 1], opacity: [0.3, 0, 0.3] }}
               transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
             />
@@ -197,7 +197,7 @@ export const Hero = () => {
         )}
       </AnimatePresence>
 
-      {/* ═══ Glacier Aurora Canvas Background ═══ */}
+      {/* ═══ Dental Clean Canvas Background ═══ */}
       <motion.div
         className="absolute inset-3 sm:inset-4 md:inset-6 lg:inset-8 z-0 overflow-hidden"
         style={{ scale: bgScale, opacity: bgOpacity }}

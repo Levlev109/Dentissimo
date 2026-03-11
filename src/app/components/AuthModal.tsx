@@ -74,7 +74,7 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
                   required
                   value={formData.firstName}
                   onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                  className="w-full px-4 py-3 border border-stone-700 bg-stone-800 text-white focus:ring-2 focus:ring-emerald-400 focus:border-transparent outline-none placeholder-stone-500"
+                  className="w-full px-4 py-3 border border-stone-700 bg-stone-800 text-white focus:ring-2 focus:ring-cyan-400 focus:border-transparent outline-none placeholder-stone-500"
                   placeholder={t('auth.firstName')}
                 />
               </div>
@@ -88,7 +88,7 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
                   required
                   value={formData.lastName}
                   onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                  className="w-full px-4 py-3 border border-stone-700 bg-stone-800 text-white focus:ring-2 focus:ring-emerald-400 focus:border-transparent outline-none placeholder-stone-500"
+                  className="w-full px-4 py-3 border border-stone-700 bg-stone-800 text-white focus:ring-2 focus:ring-cyan-400 focus:border-transparent outline-none placeholder-stone-500"
                   placeholder={t('auth.lastName')}
                 />
               </div>
@@ -103,7 +103,7 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 border border-stone-700 bg-stone-800 text-white focus:ring-2 focus:ring-emerald-400 focus:border-transparent outline-none placeholder-stone-500"
+                    className="w-full px-4 py-3 border border-stone-700 bg-stone-800 text-white focus:ring-2 focus:ring-cyan-400 focus:border-transparent outline-none placeholder-stone-500"
                     placeholder={t('auth.emailPlaceholder')}
                   />
                   <button
@@ -124,7 +124,7 @@ export const AuthModal = ({ isOpen, onClose }: AuthModalProps) => {
                     required
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-4 py-3 border border-stone-700 bg-stone-800 text-white focus:ring-2 focus:ring-emerald-400 focus:border-transparent outline-none placeholder-stone-500"
+                    className="w-full px-4 py-3 border border-stone-700 bg-stone-800 text-white focus:ring-2 focus:ring-cyan-400 focus:border-transparent outline-none placeholder-stone-500"
                     placeholder={t('auth.phonePlaceholder')}
                   />
                   <button

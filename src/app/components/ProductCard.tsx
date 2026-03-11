@@ -14,9 +14,9 @@ interface ProductProps {
 
 const badgeConfig = {
   bestseller: { icon: TrendingUp, labelKey: 'badges.bestseller', color: 'bg-stone-900' },
-  recommended: { icon: Star, labelKey: 'badges.recommended', color: 'bg-emerald-600' },
-  topSales: { icon: Flame, labelKey: 'badges.topSales', color: 'bg-emerald-700' },
-  eco: { icon: Leaf, labelKey: 'badges.eco', color: 'bg-emerald-600' },
+  recommended: { icon: Star, labelKey: 'badges.recommended', color: 'bg-cyan-600' },
+  topSales: { icon: Flame, labelKey: 'badges.topSales', color: 'bg-cyan-700' },
+  eco: { icon: Leaf, labelKey: 'badges.eco', color: 'bg-cyan-600' },
 };
 
 const cardAccents: Record<string, string> = {

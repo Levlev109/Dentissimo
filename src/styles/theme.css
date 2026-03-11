@@ -118,20 +118,20 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-  /* ═══ WARM CHARCOAL STONE OVERRIDE (Pearl Noir theme) ═══ */
-  /* Backups in src/styles/backup-blue/ — to revert, restore that folder */
-  --color-stone-950: #0a0a08;
-  --color-stone-900: #141412;
-  --color-stone-850: #1c1c19;
-  --color-stone-800: #262622;
-  --color-stone-700: #3a3a34;
-  --color-stone-600: #52524a;
-  --color-stone-500: #78786e;
-  --color-stone-400: #9e9e92;
-  --color-stone-300: #c2c2b8;
-  --color-stone-200: #d9d9d1;
-  --color-stone-100: #eaeae4;
-  --color-stone-50: #f5f5f2;
+  /* ═══ DENTAL CLEAN STONE OVERRIDE ═══ */
+  /* Cool-neutral dark palette suited for dental/clinical branding */
+  --color-stone-950: #080c12;
+  --color-stone-900: #0f1419;
+  --color-stone-850: #161c22;
+  --color-stone-800: #1e262e;
+  --color-stone-700: #2e3842;
+  --color-stone-600: #475569;
+  --color-stone-500: #64748b;
+  --color-stone-400: #94a3b8;
+  --color-stone-300: #cbd5e1;
+  --color-stone-200: #e2e8f0;
+  --color-stone-100: #f1f5f9;
+  --color-stone-50: #f8fafc;
 }
 
 @layer base {
