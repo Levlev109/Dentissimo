@@ -372,7 +372,7 @@ export const Hero = () => {
         animate={splashDone ? { opacity: 0.4 } : {}}
         transition={{ delay: 1.5, duration: 1 }}
       >
-        <span className="text-[9px] uppercase tracking-[0.25em] text-stone-500 font-semibold">{t('common.scroll')}</span>
+        <span className="text-[9px] uppercase tracking-[0.25em] text-stone-400 font-semibold">{t('common.scroll')}</span>
         <motion.div
           className="w-px h-8 bg-gradient-to-b from-white/40 to-transparent origin-top"
           animate={{ scaleY: [1, 0.4, 1] }}

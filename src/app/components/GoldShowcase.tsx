@@ -171,7 +171,7 @@ export const GoldShowcase = () => {
                   className={`relative px-3 py-2 md:px-6 md:py-3 text-[10px] md:text-sm font-bold tracking-[0.05em] md:tracking-[0.1em] uppercase transition-all duration-300 ${
                     selectedCategory === cat
                       ? 'text-stone-900 shadow-lg'
-                      : 'text-stone-500 hover:text-stone-300 hover:bg-white/[0.04]'
+                      : 'text-stone-400 hover:text-stone-300 hover:bg-white/[0.04]'
                   }`}
                   style={
                     selectedCategory === cat
@@ -212,7 +212,7 @@ export const GoldShowcase = () => {
                         />
                       </div>
                       <span className={`text-[9px] sm:text-[10px] md:text-xs font-medium text-center leading-tight line-clamp-2 ${
-                        i === selectedIndex ? 'text-white' : 'text-stone-500'
+                        i === selectedIndex ? 'text-white' : 'text-stone-400'
                       }`}>
                         {p.name}
                       </span>
