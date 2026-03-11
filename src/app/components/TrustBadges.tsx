@@ -1,4 +1,4 @@
-﻿import { Truck, Users, Lock, RotateCcw } from 'lucide-react';
+﻿import { ShieldCheck, Users, Lock, RotateCcw } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'motion/react';
 
@@ -7,7 +7,7 @@ export const TrustBadges = () => {
   
   const badges = [
     {
-      icon: Truck,
+      icon: ShieldCheck,
       titleKey: "trustBadges.swissMade",
       descKey: "trustBadges.swissMadeDesc"
     },
