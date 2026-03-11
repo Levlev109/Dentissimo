@@ -39,31 +39,50 @@ export async function openPayment(params: PaymentParams): Promise<'approved' | '
   const productCounts = params.items.map(i => i.count);
   const productPrices = params.items.map(i => i.price);
 
-  // Get signature from server-side API (secret key never reaches the browser)
-  const sigResponse = await fetch('/api/payment-signature', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      orderId: params.orderId,
-      orderDate,
-      amount: params.amount,
-      productNames,
-      productCounts,
-      productPrices,
-    }),
-  });
+  // Fetch with 15-second timeout
+  const controller = new AbortController();
+  const fetchTimer = setTimeout(() => controller.abort(), 15_000);
+
+  let sigResponse: Response;
+  try {
+    sigResponse = await fetch('/api/payment-signature', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      signal: controller.signal,
+      body: JSON.stringify({
+        orderId: params.orderId,
+        orderDate,
+        amount: params.amount,
+        productNames,
+        productCounts,
+        productPrices,
+      }),
+    });
+  } catch (err) {
+    clearTimeout(fetchTimer);
+    if (err instanceof DOMException && err.name === 'AbortError') {
+      throw new Error('Сервер не відповідає. Спробуйте пізніше.');
+    }
+    throw new Error('Не вдалося з\'єднатися з сервером оплати.');
+  }
+  clearTimeout(fetchTimer);
 
   if (!sigResponse.ok) {
-    throw new Error('Failed to generate payment signature');
+    throw new Error('Помилка генерації підпису оплати.');
   }
 
   const { merchantSignature } = await sigResponse.json();
 
+  // Widget with 3-minute timeout (user may close popup → Promise never resolves)
   return new Promise((resolve, reject) => {
     if (!window.Wayforpay) {
-      reject(new Error('WayForPay script not loaded'));
+      reject(new Error('Скрипт WayForPay не завантажено. Оновіть сторінку.'));
       return;
     }
+
+    const widgetTimer = setTimeout(() => {
+      reject(new Error('Час очікування оплати вичерпано.'));
+    }, 180_000);
 
     const wayforpay = new window.Wayforpay();
     wayforpay.run(
@@ -86,9 +105,9 @@ export async function openPayment(params: PaymentParams): Promise<'approved' | '
         returnUrl: 'https://dentissimo.sale/',
         serviceUrl: 'https://dentissimo.sale/',
       },
-      () => resolve('approved'),
-      () => resolve('declined'),
-      () => resolve('pending'),
+      () => { clearTimeout(widgetTimer); resolve('approved'); },
+      () => { clearTimeout(widgetTimer); resolve('declined'); },
+      () => { clearTimeout(widgetTimer); resolve('pending'); },
     );
   });
 }

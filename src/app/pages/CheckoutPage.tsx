@@ -169,10 +169,9 @@ export const CheckoutPage = () => {
 
       clearCart();
       setOrderPlaced(true);
-    } catch (_err) {
-      // Order saved locally even if email fails вЂ” still show success
-      clearCart();
-      setOrderPlaced(true);
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : t('checkout.paymentDeclined');
+      setPaymentError(msg);
     } finally {
       setSending(false);
     }
