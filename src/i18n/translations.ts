@@ -536,6 +536,12 @@
         contactTitle: '4. Контакти',
         contactText: 'З питань щодо cookie звертайтесь: email — info@blasspharma.com, телефон — 0 800 300 024 (безкоштовно по Україні).'
       },
+      cookieConsent: {
+        message: 'Ми використовуємо cookie для забезпечення коректної роботи сайту, збереження ваших налаштувань та покращення вашого досвіду.',
+        learnMore: 'Детальніше',
+        accept: 'Прийняти',
+        decline: 'Відхилити'
+      },
       productShowcase: {
         title: 'Активні інгредієнти',
         subtitle: 'Швейцарська формула',
@@ -1459,6 +1465,12 @@
         manageText: 'You can configure or disable cookies in your browser settings. Please note that disabling essential cookies may affect the functionality of some website features (cart, checkout).',
         contactTitle: '4. Contact',
         contactText: 'For cookie-related questions, contact us: email — info@blasspharma.com, phone — 0 800 300 024 (free within Ukraine).'
+      },
+      cookieConsent: {
+        message: 'We use cookies to ensure the website works correctly, save your preferences, and improve your experience.',
+        learnMore: 'Learn more',
+        accept: 'Accept',
+        decline: 'Decline'
       },
       faq: {
         subtitle: 'Answers',

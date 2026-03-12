@@ -15,6 +15,7 @@ import { RefundPolicyPage } from "@/app/pages/RefundPolicyPage";
 import { ContactInfoPage } from "@/app/pages/ContactInfoPage";
 import { PrivacyPolicyPage } from "@/app/pages/PrivacyPolicyPage";
 import { CookiePolicyPage } from "@/app/pages/CookiePolicyPage";
+import { CookieConsent } from "@/app/components/CookieConsent";
 import { GoldShowcase } from "@/app/components/GoldShowcase";
 import { ScrollToTop } from "@/app/components/ScrollToTop";
 import { ToastContainer } from "@/app/components/Toast";
@@ -81,6 +82,7 @@ export default function App() {
         <Route path="/admin" element={<AdminPage />} />
       </Routes>
       {!isAdmin && <Footer />}
+      {!isAdmin && <CookieConsent />}
       {!isAdmin && <DecorativeEffects />}
     </div>
   );
