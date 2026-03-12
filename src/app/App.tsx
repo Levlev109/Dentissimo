@@ -10,6 +10,11 @@ import { DecorativeEffects } from "@/app/components/DecorativeEffects";
 import { CheckoutPage } from "@/app/pages/CheckoutPage";
 import { ProfilePage } from "@/app/pages/ProfilePage";
 import { AdminPage } from "@/app/pages/AdminPage";
+import { TermsPage } from "@/app/pages/TermsPage";
+import { RefundPolicyPage } from "@/app/pages/RefundPolicyPage";
+import { ContactInfoPage } from "@/app/pages/ContactInfoPage";
+import { PrivacyPolicyPage } from "@/app/pages/PrivacyPolicyPage";
+import { CookiePolicyPage } from "@/app/pages/CookiePolicyPage";
 import { GoldShowcase } from "@/app/components/GoldShowcase";
 import { ScrollToTop } from "@/app/components/ScrollToTop";
 import { ToastContainer } from "@/app/components/Toast";
@@ -68,6 +73,11 @@ export default function App() {
         <Route path="/" element={<main className="overflow-hidden"><HomePage /></main>} />
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/profile" element={<ProfilePage />} />
+        <Route path="/terms" element={<TermsPage />} />
+        <Route path="/refund-policy" element={<RefundPolicyPage />} />
+        <Route path="/contact-info" element={<ContactInfoPage />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+        <Route path="/cookie-policy" element={<CookiePolicyPage />} />
         <Route path="/admin" element={<AdminPage />} />
       </Routes>
       {!isAdmin && <Footer />}
