@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import emailjs from '@emailjs/browser';
 import { useCart } from '../../contexts/CartContext';
 import { useAuth } from '../../contexts/AuthContext';
@@ -49,6 +49,7 @@ export const CheckoutPage = () => {
   const [orderPlaced, setOrderPlaced] = useState(false);
   const [sending, setSending] = useState(false);
   const [paymentError, setPaymentError] = useState<string | null>(null);
+  const paymentHandled = useRef(false);
 
   // Nova Poshta delivery state
   const [deliveryData, setDeliveryData] = useState<{
@@ -65,6 +66,9 @@ export const CheckoutPage = () => {
   // Handle return from WayForPay after payment
   useEffect(() => {
     const paymentStatus = searchParams.get('payment');
+    if (!paymentStatus || paymentHandled.current) return;
+    paymentHandled.current = true;
+
     if (paymentStatus === 'success') {
       clearCart();
       setOrderPlaced(true);
@@ -72,6 +76,7 @@ export const CheckoutPage = () => {
       // Send email notification if pending
       const pendingRaw = localStorage.getItem('dentissimo_pending_email');
       if (pendingRaw) {
+        localStorage.removeItem('dentissimo_pending_email');
         try {
           const pending = JSON.parse(pendingRaw);
           emailjs.send(
@@ -89,17 +94,20 @@ export const CheckoutPage = () => {
               to_email:         OWNER_EMAIL,
             },
             EMAILJS_PUBLIC_KEY
-          ).finally(() => {
-            localStorage.removeItem('dentissimo_pending_email');
+          ).then(() => {
+            console.log('[Dentissimo] Order email sent successfully');
+          }).catch((err) => {
+            console.error('[Dentissimo] Failed to send order email:', err);
           });
         } catch {
-          localStorage.removeItem('dentissimo_pending_email');
+          // JSON parse failed
         }
       }
     } else if (paymentStatus === 'failed') {
       setPaymentError(t('checkout.paymentFailed'));
     }
-  }, [searchParams, clearCart, t]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams]);
 
   const [formData, setFormData] = useState({
     firstName: user?.firstName || '',
