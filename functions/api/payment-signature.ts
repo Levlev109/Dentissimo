@@ -68,10 +68,10 @@ function coreMD5(x: number[], len: number): number[] {
   return [a, b, c, d];
 }
 
-function str2binl(str: string): number[] {
+function bytes2binl(bytes: Uint8Array): number[] {
   const bin: number[] = [];
-  for (let i = 0; i < str.length * 8; i += 8)
-    bin[i >> 5] |= (str.charCodeAt(i / 8) & 0xff) << (i % 32);
+  for (let i = 0; i < bytes.length * 8; i += 8)
+    bin[i >> 5] |= bytes[i / 8] << (i % 32);
   return bin;
 }
 
@@ -85,15 +85,19 @@ function binl2hex(binarray: number[]): string {
 }
 
 function hmacMD5(key: string, data: string): string {
-  let bkey = str2binl(key);
-  if (bkey.length > 16) bkey = coreMD5(bkey, key.length * 8);
+  const enc = new TextEncoder();
+  const keyBytes = enc.encode(key);
+  const dataBytes = enc.encode(data);
+
+  let bkey = bytes2binl(keyBytes);
+  if (bkey.length > 16) bkey = coreMD5(bkey, keyBytes.length * 8);
   const ipad = new Array(16).fill(0);
   const opad = new Array(16).fill(0);
   for (let i = 0; i < 16; i++) {
     ipad[i] = (bkey[i] || 0) ^ 0x36363636;
     opad[i] = (bkey[i] || 0) ^ 0x5c5c5c5c;
   }
-  const hash = coreMD5(ipad.concat(str2binl(data)), 512 + data.length * 8);
+  const hash = coreMD5(ipad.concat(bytes2binl(dataBytes)), 512 + dataBytes.length * 8);
   return binl2hex(coreMD5(opad.concat(hash), 512 + 128));
 }
 

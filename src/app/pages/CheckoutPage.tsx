@@ -4,7 +4,6 @@ import { useCart } from '../../contexts/CartContext';
 import { useAuth } from '../../contexts/AuthContext';
 import { useTranslation } from 'react-i18next';
 import { formatPrice } from '../../services/currency';
-import { db } from '../../services/database';
 import { orderService } from '../../services/orderService';
 import { openPayment } from '../../services/wayforpay';
 import { useNavigate } from 'react-router-dom';
@@ -81,9 +80,6 @@ export const CheckoutPage = () => {
     setSending(true);
     setPaymentError(null);
     try {
-      const orderId = typeof crypto !== 'undefined' && crypto.randomUUID
-        ? `ORD-${crypto.randomUUID().slice(0, 8).toUpperCase()}`
-        : `ORD-${Date.now()}`;
 
       const countryLabel = `\uD83C\uDDFA\uD83C\uDDE6 ${t('countries.ukraine')}`;
       const itemsText = items
@@ -99,7 +95,7 @@ export const CheckoutPage = () => {
       };
 
       // Save order to Supabase (+ localStorage fallback) with pending status
-      await orderService.createOrder({
+      const order = await orderService.createOrder({
         userId: user?.id ?? 'guest',
         items,
         total,
@@ -112,6 +108,7 @@ export const CheckoutPage = () => {
         },
         status: 'pending',
       });
+      const orderId = order.id;
 
       // Open WayForPay payment widget
       const paymentResult = await openPayment({
@@ -128,6 +125,8 @@ export const CheckoutPage = () => {
       });
 
       if (paymentResult === 'approved') {
+        // Update order status
+        await orderService.updateStatus(orderId, 'confirmed');
         // Payment successful — send email notification
         try {
           await emailjs.send(
@@ -153,6 +152,7 @@ export const CheckoutPage = () => {
       } else if (paymentResult === 'pending') {
         setPaymentError(t('checkout.paymentPending'));
       } else {
+        await orderService.updateStatus(orderId, 'cancelled');
         setPaymentError(t('checkout.paymentDeclined'));
       }
     } catch (err) {
