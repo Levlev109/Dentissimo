@@ -71,6 +71,11 @@ export async function openPayment(params: PaymentParams): Promise<'approved' | '
     throw new Error('Помилка генерації підпису оплати.');
   }
 
+  const contentType = sigResponse.headers.get('content-type') || '';
+  if (!contentType.includes('application/json')) {
+    throw new Error('Сервер оплати повернув невірну відповідь. Зверніться до підтримки.');
+  }
+
   const { merchantSignature } = await sigResponse.json();
 
   // Widget with 3-minute timeout (user may close popup → Promise never resolves)
