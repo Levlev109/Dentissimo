@@ -187,7 +187,9 @@
         invalidPhone: 'Невірний формат',
         invalidEmail: 'Невірний формат email',
         selectCountry: 'Оберіть країну',
-        orderSuccess: 'Ваше замовлення успішно оформлено! Ми зв\'яжемося з вами найближчим часом.'
+        orderSuccess: 'Ваше замовлення успішно оформлено! Ми зв\'яжемося з вами найближчим часом.',
+        selectDelivery: 'Оберіть спосіб та місце доставки',
+        deliverySection: 'Доставка Новою Поштою',
       },
       novaPoshta: {
         deliveryType: 'Спосіб доставки',
@@ -208,6 +210,10 @@
         estimatedDelivery: 'Орієнтовний термін',
         days12: '1-2 дні',
         days24: '2-4 дні',
+        noCitiesFound: 'Населений пункт не знайдено',
+        warehouseSearchPlaceholder: 'Пошук за номером або адресою',
+        noWarehousesFound: 'Відділення не знайдено',
+        selectedWarehouse: 'Обране відділення',
       },
       countries: {
         ukraine: 'Україна',
@@ -1117,7 +1123,9 @@
         invalidPhone: 'Invalid phone format',
         invalidEmail: 'Invalid email format',
         selectCountry: 'Select country',
-        orderSuccess: 'Your order has been successfully placed! We will contact you shortly.'
+        orderSuccess: 'Your order has been successfully placed! We will contact you shortly.',
+        selectDelivery: 'Please select delivery method and location',
+        deliverySection: 'Nova Poshta Delivery',
       },
       novaPoshta: {
         deliveryType: 'Delivery method',
@@ -1138,6 +1146,10 @@
         estimatedDelivery: 'Estimated delivery',
         days12: '1-2 days',
         days24: '2-4 days',
+        noCitiesFound: 'City not found',
+        warehouseSearchPlaceholder: 'Search by number or address',
+        noWarehousesFound: 'No warehouses found',
+        selectedWarehouse: 'Selected warehouse',
       },
       countries: {
         ukraine: 'Ukraine',

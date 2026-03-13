@@ -1,20 +1,29 @@
-// Nova Poshta delivery service
-// For production: integrate with real Nova Poshta API (https://developers.novaposhta.ua/)
-// API Key needed: https://my.novaposhta.ua/settings/api
+// Nova Poshta delivery service — real API integration
+// Docs: https://developers.novaposhta.ua/
+// API Key: https://my.novaposhta.ua/settings/api
+
+const API_URL = 'https://api.novaposhta.ua/v2.0/json/';
+const API_KEY = import.meta.env.VITE_NOVA_POSHTA_API_KEY || '';
+
+// Nova Poshta warehouse type refs
+const POSTOMAT_TYPE_REF = 'f9316480-5f2d-425d-bc2c-ac7cd29decf0';
 
 export interface NovaPoshtaCity {
-  ref: string;
-  description: string;
-  area: string;
+  ref: string;          // DeliveryCity ref (used for warehouse lookups)
+  settlementRef: string; // Settlement ref
+  description: string;  // City/town/village name
+  area: string;         // Oblast
+  region: string;       // Raion
+  settlementType: string;
 }
 
 export interface NovaPoshtaWarehouse {
   ref: string;
   description: string;
+  shortAddress: string;
   number: string;
   cityRef: string;
-  typeOfWarehouse: string;
-  postalCodeUA?: string;
+  typeOfWarehouse: string; // 'branch' | 'locker'
 }
 
 export interface NovaPoshtaDeliveryCost {
@@ -22,158 +31,136 @@ export interface NovaPoshtaDeliveryCost {
   estimatedDays: string;
 }
 
-// Mock cities data (popular Ukrainian cities)
-const mockCities: NovaPoshtaCity[] = [
-  { ref: 'kyiv-1', description: 'Київ', area: 'Київська область' },
-  { ref: 'lviv-1', description: 'Львів', area: 'Львівська область' },
-  { ref: 'odesa-1', description: 'Одеса', area: 'Одеська область' },
-  { ref: 'dnipro-1', description: 'Дніпро', area: 'Дніпропетровська область' },
-  { ref: 'kharkiv-1', description: 'Харків', area: 'Харківська область' },
-  { ref: 'zaporizhia-1', description: 'Запоріжжя', area: 'Запорізька область' },
-  { ref: 'kryvyi-rih-1', description: 'Кривий Ріг', area: 'Дніпропетровська область' },
-  { ref: 'mykolaiv-1', description: 'Миколаїв', area: 'Миколаївська область' },
-  { ref: 'vinnytsia-1', description: 'Вінниця', area: 'Вінницька область' },
-  { ref: 'kherson-1', description: 'Херсон', area: 'Херсонська область' },
-  { ref: 'poltava-1', description: 'Полтава', area: 'Полтавська область' },
-  { ref: 'chernihiv-1', description: 'Чернігів', area: 'Чернігівська область' },
-  { ref: 'cherkasy-1', description: 'Черкаси', area: 'Черкаська область' },
-  { ref: 'sumy-1', description: 'Суми', area: 'Сумська область' },
-  { ref: 'zhytomyr-1', description: 'Житомир', area: 'Житомирська область' },
-  { ref: 'rivne-1', description: 'Рівне', area: 'Рівненська область' },
-  { ref: 'ivano-frankivsk-1', description: 'Івано-Франківськ', area: 'Івано-Франківська область' },
-  { ref: 'ternopil-1', description: 'Тернопіль', area: 'Тернопільська область' },
-  { ref: 'lutsk-1', description: 'Луцьк', area: 'Волинська область' },
-  { ref: 'uzhhorod-1', description: 'Ужгород', area: 'Закарпатська область' },
-];
+async function apiRequest(model: string, method: string, properties: Record<string, unknown>) {
+  const response = await fetch(API_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      apiKey: API_KEY,
+      modelName: model,
+      calledMethod: method,
+      methodProperties: properties,
+    }),
+  });
 
-// Mock warehouses for each city
-const generateWarehouses = (cityRef: string, cityName: string): NovaPoshtaWarehouse[] => {
-  const warehouses: NovaPoshtaWarehouse[] = [];
-  
-  // Generate 5 regular branches
-  for (let i = 1; i <= 5; i++) {
-    warehouses.push({
-      ref: `${cityRef}-branch-${i}`,
-      description: `Відділення №${i}: вул. ${getStreetName(i)}, ${cityName}`,
-      number: `${i}`,
-      cityRef,
-      typeOfWarehouse: 'branch',
-    });
+  if (!response.ok) {
+    throw new Error(`Nova Poshta API HTTP ${response.status}`);
   }
-  
-  // Generate 3 parcel lockers
-  for (let i = 1; i <= 3; i++) {
-    warehouses.push({
-      ref: `${cityRef}-locker-${i}`,
-      description: `Поштомат №${i}: ${getLockerLocation(i)}, ${cityName}`,
-      number: `P${i}`,
-      cityRef,
-      typeOfWarehouse: 'locker',
-    });
+
+  const data = await response.json();
+  if (!data.success) {
+    throw new Error(data.errors?.[0] || 'Nova Poshta API error');
   }
-  
-  return warehouses;
-};
-
-const getStreetName = (num: number): string => {
-  const streets = [
-    'Хрещатик, 1',
-    'Шевченка, 45',
-    'Грушевського, 12',
-    'Лесі Українки, 28',
-    'Бандери, 67',
-  ];
-  return streets[num - 1] || `Центральна, ${num}`;
-};
-
-const getLockerLocation = (num: number): string => {
-  const locations = [
-    'ТРЦ "Глобус"',
-    'Супермаркет "Сільпо"',
-    'Метро "Центральна"',
-  ];
-  return locations[num - 1] || 'Центр міста';
-};
+  return data;
+}
 
 class NovaPoshtaService {
-  private apiKey: string;
-  
-  constructor(apiKey: string = '') {
-    this.apiKey = apiKey;
-  }
-
   /**
-   * Search cities by name
+   * Search cities / towns / villages by name (real API)
    */
   async searchCities(query: string): Promise<NovaPoshtaCity[]> {
-    // Simulate API delay
-    await new Promise(resolve => setTimeout(resolve, 300));
-    
-    if (!query || query.length < 2) return mockCities.slice(0, 10);
-    
-    const normalized = query.toLowerCase().trim();
-    return mockCities.filter(city => 
-      city.description.toLowerCase().includes(normalized)
-    );
+    if (!query || query.length < 2) return [];
+
+    const result = await apiRequest('Address', 'searchSettlements', {
+      CityName: query,
+      Limit: '20',
+      Page: '1',
+    });
+
+    const addresses = result.data?.[0]?.Addresses;
+    if (!Array.isArray(addresses)) return [];
+
+    return addresses.map((a: Record<string, string>) => ({
+      ref: a.DeliveryCity,
+      settlementRef: a.Ref,
+      description: a.MainDescription,
+      area: a.Area,
+      region: a.Region || '',
+      settlementType: a.SettlementTypeDescription || '',
+    }));
   }
 
   /**
-   * Get all warehouses for a city
+   * Get warehouses / postomats for a city (real API)
    */
-  async getWarehouses(cityRef: string, type?: 'branch' | 'locker'): Promise<NovaPoshtaWarehouse[]> {
-    await new Promise(resolve => setTimeout(resolve, 300));
-    
-    const city = mockCities.find(c => c.ref === cityRef);
-    if (!city) return [];
-    
-    const warehouses = generateWarehouses(cityRef, city.description);
-    
-    if (type) {
-      return warehouses.filter(w => w.typeOfWarehouse === type);
+  async getWarehouses(
+    cityRef: string,
+    type?: 'branch' | 'locker',
+    searchQuery?: string,
+    page = 1,
+    limit = 50,
+  ): Promise<NovaPoshtaWarehouse[]> {
+    const properties: Record<string, unknown> = {
+      CityRef: cityRef,
+      Limit: String(limit),
+      Page: String(page),
+    };
+
+    if (type === 'locker') {
+      properties.TypeOfWarehouseRef = POSTOMAT_TYPE_REF;
+    } else if (type === 'branch') {
+      // Exclude postomats — fetch all then filter client-side
     }
-    
+
+    if (searchQuery) {
+      properties.FindByString = searchQuery;
+    }
+
+    const result = await apiRequest('Address', 'getWarehouses', properties);
+
+    const warehouses: NovaPoshtaWarehouse[] = (result.data || []).map(
+      (w: Record<string, string>) => ({
+        ref: w.Ref,
+        description: w.Description,
+        shortAddress: w.ShortAddress || w.Description,
+        number: w.Number,
+        cityRef: w.CityRef,
+        typeOfWarehouse: w.CategoryOfWarehouse === 'Postomat' ? 'locker' : 'branch',
+      }),
+    );
+
+    // If requesting branches only, filter out postomats on client side
+    if (type === 'branch') {
+      return warehouses.filter((w) => w.typeOfWarehouse === 'branch');
+    }
+
     return warehouses;
   }
 
   /**
-   * Calculate delivery cost
+   * Estimate delivery cost via InternetDocument/getDocumentPrice
    */
   async calculateCost(
-    cityRef: string,
-    warehouseRef: string,
-    weight: number, // kg
-    cost: number // product cost in UAH
+    citySenderRef: string,
+    cityRecipientRef: string,
+    weight: number,
+    cost: number,
   ): Promise<NovaPoshtaDeliveryCost> {
-    await new Promise(resolve => setTimeout(resolve, 300));
-    
-    // Nova Poshta pricing simulation
-    // Branch: 65 UAH base + 10 UAH per kg
-    // Locker: 45 UAH base + 8 UAH per kg
-    
-    const isLocker = warehouseRef.includes('locker');
-    const baseCost = isLocker ? 45 : 65;
-    const weightCost = (isLocker ? 8 : 10) * Math.ceil(weight);
-    
-    const deliveryCost = baseCost + weightCost;
-    
-    // Estimated delivery time
-    const isCapital = cityRef.includes('kyiv');
-    const estimatedDays = isCapital ? '1-2' : '2-4';
-    
-    return {
-      cost: deliveryCost,
-      estimatedDays,
-    };
-  }
+    try {
+      const result = await apiRequest('InternetDocument', 'getDocumentPrice', {
+        CitySender: citySenderRef,
+        CityRecipient: cityRecipientRef,
+        Weight: String(weight),
+        ServiceType: 'WarehouseWarehouse',
+        Cost: String(cost),
+        CargoType: 'Parcel',
+        SeatsAmount: '1',
+      });
 
-  /**
-   * Get popular cities
-   */
-  async getPopularCities(): Promise<NovaPoshtaCity[]> {
-    await new Promise(resolve => setTimeout(resolve, 200));
-    return mockCities.slice(0, 10);
+      const info = result.data?.[0];
+      if (info) {
+        return {
+          cost: Math.ceil(Number(info.Cost) || 0),
+          estimatedDays: `${info.EstimatedDeliveryDateSat || info.DeliveryDate?.day || '2-4'}`,
+        };
+      }
+    } catch {
+      // Fallback to static estimate if API fails
+    }
+
+    // Fallback estimate
+    return { cost: 70, estimatedDays: '2-4' };
   }
 }
 
-// Export singleton instance
 export const novaPoshtaService = new NovaPoshtaService();

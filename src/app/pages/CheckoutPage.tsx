@@ -8,6 +8,8 @@ import { orderService } from '../../services/orderService';
 import { openPayment } from '../../services/wayforpay';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { CheckCircle, Loader2, ArrowLeft, ShoppingBag, CreditCard, AlertTriangle } from 'lucide-react';
+import { NovaPoshtaSelector } from '../components/NovaPoshtaSelector';
+import type { NovaPoshtaCity, NovaPoshtaWarehouse } from '../../services/novaPoshta';
 
 // ─────────────────────────────────────────────────────────────────────────────
 //  EmailJS configuration
@@ -48,6 +50,14 @@ export const CheckoutPage = () => {
   const [sending, setSending] = useState(false);
   const [paymentError, setPaymentError] = useState<string | null>(null);
 
+  // Nova Poshta delivery state
+  const [deliveryData, setDeliveryData] = useState<{
+    city: NovaPoshtaCity;
+    warehouse: NovaPoshtaWarehouse;
+    deliveryType: string;
+    courierAddress?: string;
+  } | null>(null);
+
   // Handle return from WayForPay after payment
   useEffect(() => {
     const paymentStatus = searchParams.get('payment');
@@ -69,6 +79,7 @@ export const CheckoutPage = () => {
               customer_email:   pending.customerEmail,
               customer_phone:   pending.customerPhone,
               customer_country: pending.customerCountry,
+              customer_address: pending.customerAddress,
               order_items:      pending.orderItems,
               order_total:      pending.orderTotal,
               to_email:         OWNER_EMAIL,
@@ -106,6 +117,10 @@ export const CheckoutPage = () => {
     if (!formData.phone.trim() || !/^\+?[\d\s\-()]{10,}$/.test(formData.phone.trim()))
       newErrors.phone = t('checkout.required');
 
+    if (!deliveryData) {
+      newErrors.delivery = t('checkout.selectDelivery');
+    }
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -125,6 +140,13 @@ export const CheckoutPage = () => {
         phone:     sanitize(formData.phone, 30),
       };
 
+      // Build delivery address string
+      const deliveryAddress = deliveryData
+        ? deliveryData.deliveryType === 'courier'
+          ? `${deliveryData.city.description}, ${deliveryData.courierAddress || ''}`
+          : `${deliveryData.city.description}, ${deliveryData.warehouse.description}`
+        : '';
+
       // Save order to Supabase (+ localStorage fallback) with pending status
       const order = await orderService.createOrder({
         userId: user?.id ?? 'guest',
@@ -136,6 +158,7 @@ export const CheckoutPage = () => {
           email:     safe.email,
           phone:     safe.phone,
           country:   'UA',
+          address:   sanitize(deliveryAddress, 300),
         },
         status: 'pending',
       });
@@ -152,6 +175,7 @@ export const CheckoutPage = () => {
         customerEmail: safe.email,
         customerPhone: safe.phone,
         customerCountry: countryLabel,
+        customerAddress: sanitize(deliveryAddress, 300),
         orderItems: itemsText,
         orderTotal: `${t('products.currency')}${formatPrice(total, i18n.language)}`,
       }));
@@ -306,6 +330,19 @@ export const CheckoutPage = () => {
                 />
                 {errors.phone && (
                   <p className="text-red-500 text-sm mt-1">{errors.phone}</p>
+                )}
+              </div>
+
+              {/* Nova Poshta Delivery Selection */}
+              <div className="pt-4 border-t border-stone-700">
+                <h3 className="font-serif text-xl text-white mb-4">
+                  {t('checkout.deliverySection')}
+                </h3>
+                <NovaPoshtaSelector
+                  onSelect={(data) => setDeliveryData(data)}
+                />
+                {errors.delivery && (
+                  <p className="text-red-500 text-sm mt-2">{errors.delivery}</p>
                 )}
               </div>
 
