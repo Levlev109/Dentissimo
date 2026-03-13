@@ -55,8 +55,12 @@ export const CheckoutPage = () => {
     city: NovaPoshtaCity;
     warehouse: NovaPoshtaWarehouse;
     deliveryType: string;
+    deliveryCost: number;
     courierAddress?: string;
   } | null>(null);
+
+  const deliveryCost = deliveryData?.deliveryCost ?? 0;
+  const grandTotal = total + deliveryCost;
 
   // Handle return from WayForPay after payment
   useEffect(() => {
@@ -151,7 +155,7 @@ export const CheckoutPage = () => {
       const order = await orderService.createOrder({
         userId: user?.id ?? 'guest',
         items,
-        total,
+        total: grandTotal,
         customerInfo: {
           firstName: safe.firstName,
           lastName:  safe.lastName,
@@ -177,13 +181,14 @@ export const CheckoutPage = () => {
         customerCountry: countryLabel,
         customerAddress: sanitize(deliveryAddress, 300),
         orderItems: itemsText,
-        orderTotal: `${t('products.currency')}${formatPrice(total, i18n.language)}`,
+        deliveryCost: `${t('products.currency')}${deliveryCost}`,
+        orderTotal: `${t('products.currency')}${formatPrice(grandTotal, i18n.language)}`,
       }));
 
       // Redirect to WayForPay payment page
       await openPayment({
         orderId,
-        amount: total,
+        amount: grandTotal,
         items: items.map(i => ({
           name: i.product.name,
           price: i.product.price,
@@ -404,11 +409,15 @@ export const CheckoutPage = () => {
               </div>
               <div className="flex justify-between text-stone-400">
                 <span>{t('checkout.delivery')}</span>
-                <span className="text-green-600">{t('checkout.free')}</span>
+                {deliveryCost > 0 ? (
+                  <span>{t('products.currency')}{deliveryCost}</span>
+                ) : (
+                  <span className="text-stone-500">—</span>
+                )}
               </div>
               <div className="flex justify-between text-xl font-bold text-white pt-2 border-t border-stone-700">
                 <span>{t('cart.total')}</span>
-                <span>{t('products.currency')}{formatPrice(total, i18n.language)}</span>
+                <span>{t('products.currency')}{formatPrice(grandTotal, i18n.language)}</span>
               </div>
             </div>
           </div>

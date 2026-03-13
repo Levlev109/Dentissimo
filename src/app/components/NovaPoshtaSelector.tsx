@@ -7,11 +7,19 @@ import {
   NovaPoshtaWarehouse,
 } from '../../services/novaPoshta';
 
+// Fixed delivery cost tiers (UAH), matching real Nova Poshta pricing
+const DELIVERY_PRICES = {
+  branch: 70,
+  locker: 45,
+  courier: 100,
+} as const;
+
 interface NovaPoshtaSelectorProps {
   onSelect: (data: {
     city: NovaPoshtaCity;
     warehouse: NovaPoshtaWarehouse;
     deliveryType: string;
+    deliveryCost: number;
     courierAddress?: string;
   }) => void;
 }
@@ -99,6 +107,8 @@ export const NovaPoshtaSelector = ({ onSelect }: NovaPoshtaSelectorProps) => {
     }
   };
 
+  const deliveryCost = DELIVERY_PRICES[deliveryType];
+
   // Notify parent when warehouse selected
   useEffect(() => {
     if (!selectedCity || !selectedWarehouse) return;
@@ -106,6 +116,7 @@ export const NovaPoshtaSelector = ({ onSelect }: NovaPoshtaSelectorProps) => {
       city: selectedCity,
       warehouse: selectedWarehouse,
       deliveryType,
+      deliveryCost,
     });
   }, [selectedWarehouse]);
 
@@ -126,6 +137,7 @@ export const NovaPoshtaSelector = ({ onSelect }: NovaPoshtaSelectorProps) => {
         city: selectedCity,
         warehouse: mockWarehouse,
         deliveryType: 'courier',
+        deliveryCost: DELIVERY_PRICES.courier,
         courierAddress,
       });
     }, 300);
@@ -171,6 +183,7 @@ export const NovaPoshtaSelector = ({ onSelect }: NovaPoshtaSelectorProps) => {
             <Package className={`mx-auto mb-2 ${deliveryType === 'branch' ? 'text-white' : 'text-stone-400'}`} size={24} />
             <div className="text-sm font-medium text-white">{t('novaPoshta.branch')}</div>
             <div className="text-xs text-stone-500 mt-1">{t('novaPoshta.branchDesc')}</div>
+            <div className="text-xs text-cyan-400 mt-1">{DELIVERY_PRICES.branch} {t('products.currency')}</div>
           </button>
 
           <button
@@ -185,6 +198,7 @@ export const NovaPoshtaSelector = ({ onSelect }: NovaPoshtaSelectorProps) => {
             <Box className={`mx-auto mb-2 ${deliveryType === 'locker' ? 'text-white' : 'text-stone-400'}`} size={24} />
             <div className="text-sm font-medium text-white">{t('novaPoshta.locker')}</div>
             <div className="text-xs text-stone-500 mt-1">{t('novaPoshta.lockerDesc')}</div>
+            <div className="text-xs text-cyan-400 mt-1">{DELIVERY_PRICES.locker} {t('products.currency')}</div>
           </button>
 
           <button
@@ -199,6 +213,7 @@ export const NovaPoshtaSelector = ({ onSelect }: NovaPoshtaSelectorProps) => {
             <TruckIcon className={`mx-auto mb-2 ${deliveryType === 'courier' ? 'text-white' : 'text-stone-400'}`} size={24} />
             <div className="text-sm font-medium text-white">{t('novaPoshta.courier')}</div>
             <div className="text-xs text-stone-500 mt-1">{t('novaPoshta.courierDesc')}</div>
+            <div className="text-xs text-cyan-400 mt-1">{DELIVERY_PRICES.courier} {t('products.currency')}</div>
           </button>
         </div>
       </div>
