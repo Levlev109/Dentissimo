@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
 import { useCart } from '../../contexts/CartContext';
 import { useAuth } from '../../contexts/AuthContext';
@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { formatPrice } from '../../services/currency';
 import { orderService } from '../../services/orderService';
 import { openPayment } from '../../services/wayforpay';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { CheckCircle, Loader2, ArrowLeft, ShoppingBag, CreditCard, AlertTriangle } from 'lucide-react';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -43,9 +43,46 @@ export const CheckoutPage = () => {
   const { user } = useAuth();
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [orderPlaced, setOrderPlaced] = useState(false);
   const [sending, setSending] = useState(false);
   const [paymentError, setPaymentError] = useState<string | null>(null);
+
+  // Handle return from WayForPay after payment
+  useEffect(() => {
+    const paymentStatus = searchParams.get('payment');
+    if (paymentStatus === 'success') {
+      clearCart();
+      setOrderPlaced(true);
+
+      // Send email notification if pending
+      const pendingRaw = localStorage.getItem('dentissimo_pending_email');
+      if (pendingRaw) {
+        try {
+          const pending = JSON.parse(pendingRaw);
+          emailjs.send(
+            EMAILJS_SERVICE_ID,
+            EMAILJS_TEMPLATE_ID,
+            {
+              order_id:         pending.orderId,
+              customer_name:    pending.customerName,
+              customer_email:   pending.customerEmail,
+              customer_phone:   pending.customerPhone,
+              customer_country: pending.customerCountry,
+              order_items:      pending.orderItems,
+              order_total:      pending.orderTotal,
+              to_email:         OWNER_EMAIL,
+            },
+            EMAILJS_PUBLIC_KEY
+          ).finally(() => {
+            localStorage.removeItem('dentissimo_pending_email');
+          });
+        } catch {
+          localStorage.removeItem('dentissimo_pending_email');
+        }
+      }
+    }
+  }, [searchParams, clearCart]);
 
   const [formData, setFormData] = useState({
     firstName: user?.firstName || '',
@@ -80,12 +117,6 @@ export const CheckoutPage = () => {
     setSending(true);
     setPaymentError(null);
     try {
-
-      const countryLabel = `\uD83C\uDDFA\uD83C\uDDE6 ${t('countries.ukraine')}`;
-      const itemsText = items
-        .map(i => `${i.product.name} ? ${i.quantity} = ${t('products.currency')}${formatPrice(i.product.price * i.quantity, i18n.language)}`)
-        .join('\n');
-
       // Sanitize inputs before storage
       const safe = {
         firstName: sanitize(formData.firstName, 50),
@@ -110,8 +141,23 @@ export const CheckoutPage = () => {
       });
       const orderId = order.id;
 
-      // Open WayForPay payment widget
-      const paymentResult = await openPayment({
+      // Save order info for email after return from WayForPay
+      const countryLabel = `\uD83C\uDDFA\uD83C\uDDE6 ${t('countries.ukraine')}`;
+      const itemsText = items
+        .map(i => `${i.product.name} × ${i.quantity} = ${t('products.currency')}${formatPrice(i.product.price * i.quantity, i18n.language)}`)
+        .join('\n');
+      localStorage.setItem('dentissimo_pending_email', JSON.stringify({
+        orderId,
+        customerName: `${safe.firstName} ${safe.lastName}`,
+        customerEmail: safe.email,
+        customerPhone: safe.phone,
+        customerCountry: countryLabel,
+        orderItems: itemsText,
+        orderTotal: `${t('products.currency')}${formatPrice(total, i18n.language)}`,
+      }));
+
+      // Redirect to WayForPay payment page
+      await openPayment({
         orderId,
         amount: total,
         items: items.map(i => ({
@@ -123,41 +169,9 @@ export const CheckoutPage = () => {
         clientEmail: safe.email,
         clientPhone: safe.phone,
       });
-
-      if (paymentResult === 'approved') {
-        // Update order status
-        await orderService.updateStatus(orderId, 'confirmed');
-        // Payment successful — send email notification
-        try {
-          await emailjs.send(
-            EMAILJS_SERVICE_ID,
-            EMAILJS_TEMPLATE_ID,
-            {
-              order_id:         orderId,
-              customer_name:    `${safe.firstName} ${safe.lastName}`,
-              customer_email:   safe.email,
-              customer_phone:   safe.phone,
-              customer_country: countryLabel,
-              order_items:      itemsText,
-              order_total:      `${t('products.currency')}${formatPrice(total, i18n.language)}`,
-              to_email:         OWNER_EMAIL,
-            },
-            EMAILJS_PUBLIC_KEY
-          );
-        } catch {
-          // Email may fail but payment was successful
-        }
-        clearCart();
-        setOrderPlaced(true);
-      } else if (paymentResult === 'pending') {
-        setPaymentError(t('checkout.paymentPending'));
-      } else {
-        await orderService.updateStatus(orderId, 'cancelled');
-        setPaymentError(t('checkout.paymentDeclined'));
-      }
+      // Page will redirect — code below only runs if redirect fails
     } catch (err) {
       setPaymentError(err instanceof Error ? err.message : t('checkout.paymentError'));
-    } finally {
       setSending(false);
     }
   };

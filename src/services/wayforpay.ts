@@ -1,8 +1,9 @@
-// WayForPay payment integration (client-side widget)
+// WayForPay payment integration — redirect-based (form POST to WayForPay)
 // Signature is generated server-side via Cloudflare Pages Function
 
 const MERCHANT_ACCOUNT = 'dentissimo_sale';
 const MERCHANT_DOMAIN  = 'dentissimo.sale';
+const WAYFORPAY_URL    = 'https://secure.wayforpay.com/pay';
 
 export interface PaymentItem {
   name: string;
@@ -19,27 +20,14 @@ export interface PaymentParams {
   clientPhone: string;
 }
 
-declare global {
-  interface Window {
-    Wayforpay: new () => {
-      run(
-        params: Record<string, unknown>,
-        onApproved?: (response: unknown) => void,
-        onDeclined?: (response: unknown) => void,
-        onPending?: (response: unknown) => void
-      ): void;
-    };
-  }
-}
-
-export async function openPayment(params: PaymentParams): Promise<'approved' | 'declined' | 'pending'> {
+export async function openPayment(params: PaymentParams): Promise<void> {
   const orderDate = Math.floor(Date.now() / 1000);
 
   const productNames = params.items.map(i => i.name);
   const productCounts = params.items.map(i => i.count);
   const productPrices = params.items.map(i => i.price);
 
-  // Fetch with 15-second timeout
+  // Fetch signature with 15-second timeout
   const controller = new AbortController();
   const fetchTimer = setTimeout(() => controller.abort(), 15_000);
 
@@ -78,41 +66,50 @@ export async function openPayment(params: PaymentParams): Promise<'approved' | '
 
   const { merchantSignature } = await sigResponse.json();
 
-  // Widget with 3-minute timeout (user may close popup → Promise never resolves)
-  return new Promise((resolve, reject) => {
-    if (!window.Wayforpay) {
-      reject(new Error('Скрипт WayForPay не завантажено. Оновіть сторінку.'));
-      return;
+  // Build and submit a hidden form to WayForPay (redirect-based payment)
+  const form = document.createElement('form');
+  form.method = 'POST';
+  form.action = WAYFORPAY_URL;
+  form.style.display = 'none';
+
+  const fields: Record<string, string | string[]> = {
+    merchantAccount: MERCHANT_ACCOUNT,
+    merchantDomainName: MERCHANT_DOMAIN,
+    merchantSignature,
+    orderReference: params.orderId,
+    orderDate: String(orderDate),
+    amount: String(params.amount),
+    currency: 'UAH',
+    productName: productNames,
+    productPrice: productPrices.map(String),
+    productCount: productCounts.map(String),
+    clientFirstName: params.clientName.split(' ')[0] || '',
+    clientLastName: params.clientName.split(' ').slice(1).join(' ') || '',
+    clientEmail: params.clientEmail,
+    clientPhone: params.clientPhone,
+    language: 'UA',
+    returnUrl: 'https://dentissimo.sale/checkout?payment=success',
+    serviceUrl: 'https://dentissimo.sale/api/payment-callback',
+  };
+
+  for (const [key, value] of Object.entries(fields)) {
+    if (Array.isArray(value)) {
+      for (const v of value) {
+        const input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = `${key}[]`;
+        input.value = v;
+        form.appendChild(input);
+      }
+    } else {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = key;
+      input.value = value;
+      form.appendChild(input);
     }
+  }
 
-    const widgetTimer = setTimeout(() => {
-      reject(new Error('Час очікування оплати вичерпано.'));
-    }, 180_000);
-
-    const wayforpay = new window.Wayforpay();
-    wayforpay.run(
-      {
-        merchantAccount: MERCHANT_ACCOUNT,
-        merchantDomainName: MERCHANT_DOMAIN,
-        merchantSignature,
-        orderReference: params.orderId,
-        orderDate,
-        amount: params.amount,
-        currency: 'UAH',
-        productName: productNames,
-        productPrice: productPrices,
-        productCount: productCounts,
-        clientFirstName: params.clientName.split(' ')[0] || '',
-        clientLastName: params.clientName.split(' ').slice(1).join(' ') || '',
-        clientEmail: params.clientEmail,
-        clientPhone: params.clientPhone,
-        language: 'UA',
-        returnUrl: 'https://dentissimo.sale/',
-        serviceUrl: 'https://dentissimo.sale/',
-      },
-      () => { clearTimeout(widgetTimer); resolve('approved'); },
-      () => { clearTimeout(widgetTimer); resolve('declined'); },
-      () => { clearTimeout(widgetTimer); resolve('pending'); },
-    );
-  });
+  document.body.appendChild(form);
+  form.submit();
 }
