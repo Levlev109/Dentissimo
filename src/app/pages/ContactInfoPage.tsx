@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Mail, Phone, MapPin, Building } from 'lucide-react';
+import { ArrowLeft, Mail, Building } from 'lucide-react';
 
 export const ContactInfoPage = () => {
   const { t } = useTranslation();
@@ -22,50 +22,8 @@ export const ContactInfoPage = () => {
 
         <div className="space-y-8 text-stone-300 leading-relaxed text-sm md:text-base">
           <section>
-            <h2 className="text-xl font-semibold text-white mb-4">{t('contactInfo.companyTitle')}</h2>
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <Building size={20} className="text-cyan-400 mt-0.5 shrink-0" />
-                <div>
-                  <p className="text-white font-medium">{t('contactInfo.companyName')}</p>
-                  <p className="text-stone-400 text-sm">{t('contactInfo.companyCode')}</p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-semibold text-white mb-4">{t('contactInfo.addressTitle')}</h2>
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <MapPin size={20} className="text-cyan-400 mt-0.5 shrink-0" />
-                <div>
-                  <p className="text-white font-medium">{t('contactInfo.legalAddressLabel')}</p>
-                  <p>{t('contactInfo.legalAddress')}</p>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <MapPin size={20} className="text-cyan-400 mt-0.5 shrink-0" />
-                <div>
-                  <p className="text-white font-medium">{t('contactInfo.actualAddressLabel')}</p>
-                  <p>{t('contactInfo.actualAddress')}</p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section>
             <h2 className="text-xl font-semibold text-white mb-4">{t('contactInfo.contactsTitle')}</h2>
             <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <Phone size={20} className="text-cyan-400 shrink-0" />
-                <a
-                  href="tel:+380800300024"
-                  className="hover:text-cyan-400 transition-colors"
-                >
-                  {t('contactInfo.phone')}
-                </a>
-              </div>
               <div className="flex items-center gap-3">
                 <Mail size={20} className="text-cyan-400 shrink-0" />
                 <a
@@ -79,13 +37,11 @@ export const ContactInfoPage = () => {
           </section>
 
           <section>
-            <h2 className="text-xl font-semibold text-white mb-4">{t('contactInfo.workingHoursTitle')}</h2>
-            <p>{t('contactInfo.workingHours')}</p>
-          </section>
-
-          <section>
-            <h2 className="text-xl font-semibold text-white mb-4">{t('contactInfo.distributorTitle')}</h2>
-            <p>{t('contactInfo.distributorText')}</p>
+            <h2 className="text-xl font-semibold text-white mb-4">Власник</h2>
+            <div className="flex items-start gap-3">
+              <Building size={20} className="text-cyan-400 mt-0.5 shrink-0" />
+              <p className="text-white font-medium">Blass Polska Sp. z o.o.</p>
+            </div>
           </section>
         </div>
       </div>
