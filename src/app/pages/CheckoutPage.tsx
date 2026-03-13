@@ -96,8 +96,10 @@ export const CheckoutPage = () => {
           localStorage.removeItem('dentissimo_pending_email');
         }
       }
+    } else if (paymentStatus === 'failed') {
+      setPaymentError(t('checkout.paymentFailed'));
     }
-  }, [searchParams, clearCart]);
+  }, [searchParams, clearCart, t]);
 
   const [formData, setFormData] = useState({
     firstName: user?.firstName || '',

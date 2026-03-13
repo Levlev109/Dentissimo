@@ -88,7 +88,7 @@ export async function openPayment(params: PaymentParams): Promise<void> {
     clientEmail: params.clientEmail,
     clientPhone: params.clientPhone,
     language: 'UA',
-    returnUrl: 'https://dentissimo.sale/checkout?payment=success',
+    returnUrl: 'https://dentissimo.sale/api/payment-return',
     serviceUrl: 'https://dentissimo.sale/api/payment-callback',
   };
 
