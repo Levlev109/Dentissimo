@@ -1,9 +1,7 @@
-// Nova Poshta delivery service — real API integration
-// Docs: https://developers.novaposhta.ua/
-// API Key: https://my.novaposhta.ua/settings/api
+// Nova Poshta delivery service — real API integration via proxy
+// Proxy function: /api/nova-poshta (Cloudflare Pages Function)
 
-const API_URL = 'https://api.novaposhta.ua/v2.0/json/';
-const API_KEY = import.meta.env.VITE_NOVA_POSHTA_API_KEY || '';
+const PROXY_URL = '/api/nova-poshta';
 
 // Nova Poshta warehouse type refs
 const POSTOMAT_TYPE_REF = 'f9316480-5f2d-425d-bc2c-ac7cd29decf0';
@@ -32,11 +30,10 @@ export interface NovaPoshtaDeliveryCost {
 }
 
 async function apiRequest(model: string, method: string, properties: Record<string, unknown>) {
-  const response = await fetch(API_URL, {
+  const response = await fetch(PROXY_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      apiKey: API_KEY,
       modelName: model,
       calledMethod: method,
       methodProperties: properties,
